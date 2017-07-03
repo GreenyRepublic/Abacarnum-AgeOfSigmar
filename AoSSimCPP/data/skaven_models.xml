@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-->
+Template for a model profile
+
+Attributes: Name
+
+Integers:
+Move (Inches)
+Save
+Bravery
+Wounds
+Unit Size
+
+<model name = "">
+  <stats>
+    <move></move>
+    <save></save>
+    <bravery></bravery>
+    <wounds></wounds>
+  </stats>
+  <size></size>
+  <weapons></weapons>
+  <upgrades></upgrades>
+  <abilities></abilities>
+</model>
+<-->
+
+<faction name = "Skaven">
+    <model name = "Clanrats (Spears)">
+        <stats>
+            <move>6</move>
+            <save>6</save>
+            <bravery>4</bravery>
+            <wounds>1</wounds>
+        </stats>
+        <size>10</size>
+        <cost>60</cost>
+      <weapons>
+        <weapon type ="melee">Rusty Spear</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+    <model name = "Clanrats (Blades)">
+        <stats>
+            <move>6</move>
+            <save>6</save>
+            <bravery>4</bravery>
+            <wounds>1</wounds>
+        </stats>
+        <size>10</size>
+        <cost>60</cost>
+      <weapons>
+        <weapon type ="melee">Rusty Blade</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+    <model name = "Stormvermin">
+        <stats>
+            <move>6</move>
+            <save>5</save>
+            <bravery>5</bravery>
+            <wounds>1</wounds>
+        </stats>
+        <size>10</size>
+        <cost>60</cost>
+      <weapons>
+        <weapon type ="melee">Rusty Halberd</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+</faction>

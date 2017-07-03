@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-->Template for a weapon profile
+Attributes: Name
+Integers: Range
+          Attacks
+          To tohit
+          To towound
+          Rend
+          Damage
+<weapon name = "">
+    <range></range>
+    <attacks></attacks>
+    <tohit></tohit>
+    <towound></towound>
+    <rend></rend>
+    <damage>/<damage>
+</weapon><-->
+
+<ironjawz>
+    <weapon name = "Boss Choppa">
+      <range>1</range>
+      <attacks>6</attacks>
+      <tohit>3</tohit>
+      <towound>3</towound>
+      <rend>-1</rend>
+      <damage>2</damage>
+    </weapon>
+    
+    <weapon name = "Rip-tooth Fist">
+      <range>1</range>
+      <attacks>2</attacks>
+      <tohit>5</tohit>
+      <towound>3</towound>
+      <rend>-2</rend>
+      <damage>2</damage>
+    </weapon>
+
+  <weapon name = "Brute Choppa">
+      <range>1</range>
+      <attacks>4</attacks>
+      <tohit>3</tohit>
+      <towound>3</towound>
+      <rend>-1</rend>
+      <damage>1</damage>
+    </weapon>
+
+ <weapon name = "Brute Hacka">
+      <range>2</range>
+      <attacks>3</attacks>
+      <tohit>3</tohit>
+      <towound>3</towound>
+      <rend>-1</rend>
+      <damage>1</damage>
+    </weapon>
+
+ <weapon name = "Gruntas Pig Choppa">
+      <range>1</range>
+      <attacks>4</attacks>
+      <tohit>3</tohit>
+      <towound>3</towound>
+      <rend>-1</rend>
+      <damage>1</damage>
+    </weapon>
+
+ <weapon name = "Gruntas Gore Hacka">
+      <range>1</range>
+      <attacks>4</attacks>
+      <tohit>3</tohit>
+      <towound>3</towound>
+      <rend>-1</rend>
+      <damage>1</damage>
+    </weapon>
+
+<weapon name = "Fanged Maws and Hooves">
+      <range>1</range>
+      <attacks>4</attacks>
+      <tohit>4</tohit>
+      <towound>4</towound>
+      <rend>0</rend>
+      <damage>1</damage>
+    </weapon>
+
+<weapon name = "Ardboy Choppa">
+      <range>1</range>
+      <attacks>2</attacks>
+      <tohit>4</tohit>
+      <towound>3</towound>
+      <rend>0</rend>
+      <damage>1</damage>
+    </weapon>
+
+<weapon name = "Ardboy Choppa">
+      <range>1</range>
+      <attacks>2</attacks>
+      <tohit>4</tohit>
+      <towound>3</towound>
+      <rend>0</rend>
+      <damage>1</damage>
+    </weapon>
+</ironjawz>

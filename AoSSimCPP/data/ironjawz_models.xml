@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-->
+Template for a model profile
+
+Attributes: Name
+
+Integers:
+Move (Inches)
+Save
+Bravery
+Wounds
+Unit Size
+
+<model name = "">
+  <stats>
+    <move></move>
+    <save></save>
+    <bravery></bravery>
+    <wounds></wounds>
+  </stats>
+  <size></size>
+  <weapons></weapons>
+  <upgrades></upgrades>
+  <abilities></abilities>
+</model>
+<-->
+
+<ironjawz>
+    <model name = "Orruk Megaboss">
+        <stats>
+            <move>4</move>
+            <save>3</save>
+            <bravery>8</bravery>
+            <wounds>7</wounds>
+        </stats>
+        <size>1</size>
+        <cost>140</cost>
+      <weapons>
+        <weapon type ="melee">Boss Choppa</weapon>
+        <weapon type ="melee">Rip-tooth Fist</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+  <model name = "Orruk Brutes (Choppa)">
+        <stats>
+            <move>4</move>
+            <save>4</save>
+            <bravery>6</bravery>
+            <wounds>3</wounds>
+        </stats>
+        <size>5</size>
+        <cost>140</cost>
+      <weapons>
+        <weapon type ="melee">Brute Choppa</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+<model name = "Orruk Brutes (Hacka)">
+        <stats>
+            <move>4</move>
+            <save>4</save>
+            <bravery>6</bravery>
+            <wounds>3</wounds>
+        </stats>
+        <size>5</size>
+        <cost>140</cost>
+      <weapons>
+        <weapon type ="melee">Brute Hacka</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+<model name = "Orruk Gruntas (Choppa)">
+        <stats>
+            <move>4</move>
+            <save>4</save>
+            <bravery>6</bravery>
+            <wounds>3</wounds>
+        </stats>
+        <size>5</size>
+        <cost>140</cost>
+      <weapons>
+        <weapon type ="melee">Gruntas Pig Choppa</weapon>
+	<weapon type ="melee">Fanged Maws and Hooves</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+<model name = "Orruk Gruntas (Hacka)">
+        <stats>
+            <move>4</move>
+            <save>4</save>
+            <bravery>6</bravery>
+            <wounds>3</wounds>
+        </stats>
+        <size>5</size>
+        <cost>140</cost>
+      <weapons>
+        <weapon type ="melee">Gruntas Gore Hacka</weapon>
+	<weapon type ="melee">Fanged Maws and Hooves</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+<model name = "Orruk Ardboys (Shield)">
+        <stats>
+            <move>4</move>
+            <save>4</save>
+            <bravery>6</bravery>
+            <wounds>2</wounds>
+        </stats>
+        <size>5</size>
+        <cost>140</cost>
+      <weapons>
+        <weapon type ="melee">Ardboy Choppa</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+<model name = "Orruk Ardboys (C&S)">
+        <stats>
+            <move>4</move>
+            <save>4</save>
+            <bravery>6</bravery>
+            <wounds>2</wounds>
+        </stats>
+        <size>5</size>
+        <cost>140</cost>
+      <weapons>
+        <weapon type ="melee">Ardboy C&S</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+</ironjawz>
