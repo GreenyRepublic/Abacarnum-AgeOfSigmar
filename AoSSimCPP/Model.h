@@ -30,7 +30,10 @@ public:
 
 	void AddWeapon(bool, Weapon*);
 
-	int SaveRoll();
+	//Combat rolls and stuff
+	bool SaveRoll();
+	int MeleeAttack(Model*);
+
 	std::string getName() { return Name; }
 	std::string getFaction() { return Faction; }
 };

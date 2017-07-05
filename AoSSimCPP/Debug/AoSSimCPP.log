@@ -1,3 +1,13 @@
-﻿  AoSSimCPP.cpp
-  AoSSimCPP.vcxproj -> C:\Users\Benfclark\Documents\GitHub\AoSSimCPP\AoSSimCPP\Debug\AoSSimCPP.exe
-  AoSSimCPP.vcxproj -> C:\Users\Benfclark\Documents\GitHub\AoSSimCPP\AoSSimCPP\Debug\AoSSimCPP.pdb (Partial PDB)
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  Weapon.cpp
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+  Model.cpp
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(70): error C2660: 'Weapon::GenerateWounds': function does not take 1 arguments
+  FactionTable.cpp
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+  Faction.cpp
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+  AoSSimCPP.cpp
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+  Generating Code...

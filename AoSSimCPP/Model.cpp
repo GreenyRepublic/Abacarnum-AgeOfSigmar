@@ -55,9 +55,21 @@ Model::~Model()
 	//std::cout << "Model profile " << Name << " deleted!" << std::endl;
 }
 
-int Model::SaveRoll()
+bool Model::SaveRoll()
 {
-	return Roll();
+	return Roll() >= Save;
+}
+
+int Model::MeleeAttack(Model* target)
+{
+	Weapon* weap;
+	int wounds = 0;
+	for (auto w = MeleeWeapons->begin(); w != MeleeWeapons->end(); w++)
+	{
+		weap = *w;
+		wounds += weap->GenerateWounds(target);
+	}
+	return wounds;
 }
 
 void Model::AddWeapon(bool melee, Weapon* weapon)

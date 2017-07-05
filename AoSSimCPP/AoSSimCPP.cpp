@@ -39,7 +39,10 @@ void ParseData(FactionTable *table)
 		{
 			//When a faction has been found parse out its individual data files.
 			table->AddFaction(Standardise(node.child_value()));
+
 			std::cout << "Found " << node.attribute("allegiance").value() << " faction " << node.child_value() << std::endl;
+			Faction* fac = table->GetFaction(Standardise(node.child_value()));
+			//fac->PrintStats();
 		}
 	}
 	else std::cout << "Could not find /data/faction_list.xml! Aborting data parse." << std::endl;

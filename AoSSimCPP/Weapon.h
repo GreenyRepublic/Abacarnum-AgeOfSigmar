@@ -23,6 +23,8 @@ public:
 	bool HitRoll();
 	bool WoundRoll();
 
+	int GenerateWounds(Model*);
+
 	std::string getName() { return Name; }
 };
 

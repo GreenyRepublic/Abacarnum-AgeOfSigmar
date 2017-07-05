@@ -19,6 +19,9 @@ public:
 	void addWeapon(Weapon*);
 	void addModel(Model*);
 
+	//Just spits out some debug data nothing to see here gents move along.
+	void PrintStats();
+
 	//Get model/weapon profiles by name.
 	Weapon* getWeapon(std::string);
 	Model* getModel(std::string);

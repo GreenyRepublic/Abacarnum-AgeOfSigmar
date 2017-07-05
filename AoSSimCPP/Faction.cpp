@@ -14,6 +14,14 @@ Faction::~Faction()
 	std::cout << "Faction " << Name << " deleted!" << std::endl;
 }
 
+
+
+void Faction::PrintStats()
+{
+	std::cout << "Weapons: " << weaponData->size() << std::endl;
+	std::cout << "Models: " << modelData->size() << std::endl;
+}
+
 void Faction::addWeapon(Weapon * weapon)
 {
 	std::pair<std::string, Weapon*> entry(weapon->getName(), weapon);

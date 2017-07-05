@@ -20,7 +20,8 @@ public:
 	void AddFaction(std::string);
 	int GetCount() { return Factions->size(); }
 
-	//Get model or weapon data.
-	Weapon* GetWeapon(std::string, std::string = nullptr);
-	Model* GetModel(std::string, std::string = nullptr);
+	//Get data.
+	Faction* GetFaction(std::string);
+	Weapon* GetWeapon(std::string, std::string);
+	Model* GetModel(std::string, std::string);
 };

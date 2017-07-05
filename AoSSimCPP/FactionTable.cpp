@@ -73,7 +73,7 @@ void FactionTable::AddFaction(std::string facname)
 			uint8_t size = std::stoi(node.child("size").child_value());
 			uint8_t cost = std::stoi(node.child("cost").child_value());
 
-			Model *model = new Model(name, move, wounds, bravery, save, size, cost);
+			Model *model = new Model(name, move, wounds, bravery, save, size, cost, facname);
 
 			for (pugi::xml_node weapons = node.child("weapons").first_child(); weapons; weapons = weapons.next_sibling())
 			{
@@ -93,17 +93,43 @@ void FactionTable::AddFaction(std::string facname)
 			faction->addModel(model);
 			//std::cout << "Added model " << name << " to faction " << facname << "." << std::endl;
 		}
+		
 		Factions->insert(std::pair<std::string, Faction*>(facname, faction));
 	}
 	//std::cout << "Successfully loaded " << Factions->size() << " factions" << std::endl;
+}
+
+Faction* FactionTable::GetFaction(std::string name)
+{
+	try
+	{
+		return Factions->at(name);
+	}
+	catch (std::out_of_range o) { std::cout << "Cannot find faction " << name << "! (" << o.what() << ")" << std::endl; }
 }
 
 Weapon* FactionTable::GetWeapon(std::string name, std::string faction = nullptr)
 {
 	if (!faction.empty())
 	{
-		Faction fac = Factions->find(faction);
+		try
+		{
+			Faction* fac = GetFaction(faction);
+			return (fac->getWeapon(name));
+		}
+		catch (std::out_of_range o) { std::cout << "Cannot find weapon " << name << "! (" << o.what() << ")" << std::endl; }
 	}
-
-	else
 }
+
+	/*else
+	{
+		for (int i = 0; i < Factions->size(); i++)
+		{
+			
+			try
+			{
+				
+			}
+			catch (std::out_of_range o) { std::cout << "Cannot find weapon " + name + " !" + o.what << std::endl; }
+		}
+	}*/
