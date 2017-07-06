@@ -41,7 +41,7 @@ Weapon * Faction::getWeapon(std::string name)
 	throw nullptr;
 }
 
-Model * Faction::getModel(std::string name)
+Model * Faction::GetModel(std::string name)
 {
 	try { return modelData->at(name); }
 	catch (std::out_of_range e) { std::cout << "Model " << name << " not found! (" << e.what() << ")" << std::endl; }

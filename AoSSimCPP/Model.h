@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Weapon.h"
+
 //Header for Model.cpp
 class Model
 {
@@ -32,7 +33,7 @@ public:
 
 	//Combat rolls and stuff
 	bool SaveRoll();
-	int MeleeAttack(Model*);
+	uint8_t MeleeAttack(Model*);
 
 	std::string getName() { return Name; }
 	std::string getFaction() { return Faction; }

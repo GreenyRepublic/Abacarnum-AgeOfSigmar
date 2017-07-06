@@ -24,6 +24,6 @@ public:
 
 	//Get model/weapon profiles by name.
 	Weapon* getWeapon(std::string);
-	Model* getModel(std::string);
+	Model* GetModel(std::string);
 };
 

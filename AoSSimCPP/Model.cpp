@@ -60,7 +60,7 @@ bool Model::SaveRoll()
 	return Roll() >= Save;
 }
 
-int Model::MeleeAttack(Model* target)
+uint8_t Model::MeleeAttack(Model* target)
 {
 	Weapon* weap;
 	int wounds = 0;

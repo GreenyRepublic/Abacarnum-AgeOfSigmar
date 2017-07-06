@@ -55,5 +55,13 @@ int main()
 {
 	FactionTable *FacTable = new FactionTable();
 	ParseData(FacTable);
+	Model testAtt(FacTable->GetModel("saurus warriors (clubs)", "seraphon"));
+	Model testDef(FacTable->GetModel("liberators", "stormcasteternals"));
+	std::cout << "Test Attacking:" << std::endl;
+	for (int i = 0; i > 50; i++)
+	{
+		std::cout << testAtt.MeleeAttack(&testDef) << " wounds rolled." << std::endl;
+	}
+
     return 0;
 }

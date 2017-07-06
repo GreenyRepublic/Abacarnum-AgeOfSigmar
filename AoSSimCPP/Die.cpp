@@ -8,7 +8,7 @@
 std::default_random_engine generator;
 std::uniform_int_distribution<int> distribution(1, 6);
 
-int Roll()
+uint8_t Roll()
 {
 	return distribution(generator);  // generates number in the range 1..6 
 }

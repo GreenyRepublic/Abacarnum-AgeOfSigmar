@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Weapon.h"
 #include "Die.h"
+#include "Model.h"
+
 #include <string>
 #include <iostream>
 
@@ -35,4 +37,18 @@ bool Weapon::HitRoll()
 bool Weapon::WoundRoll()
 {
 	return (Roll() > ToWound);
+}
+
+//This is longer than it needs to be right now, as I need it to be clean for possible expansion when I add abilities etc.
+uint8_t Weapon::GenerateWounds(Model* target)
+{
+	int hits = 0;
+	int wounds = 0;
+	int saves = 0;
+
+	for (int i = 0; i < Attacks; i++) hits += (int)HitRoll();
+	for (int i = 0; i < hits; i++) wounds += (int)WoundRoll();
+	for (int i = 0; i < wounds; i++) saves += (int)target->SaveRoll();
+
+	return (uint8_t) max(0, (wounds - saves) * Damage);
 }

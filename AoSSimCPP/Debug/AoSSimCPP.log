@@ -1,13 +1,47 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   Weapon.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2065: 'Weapon': undeclared identifier
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2059: syntax error: '>'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector(700): note: see declaration of 'std::vector'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2065: 'Weapon': undeclared identifier
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2059: syntax error: '>'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector(700): note: see declaration of 'std::vector'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(32): error C2061: syntax error: identifier 'Weapon'
   Model.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(28): error C2061: syntax error: identifier 'Model'
 c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(70): error C2660: 'Weapon::GenerateWounds': function does not take 1 arguments
   FactionTable.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2065: 'Weapon': undeclared identifier
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2059: syntax error: '>'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector(700): note: see declaration of 'std::vector'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2065: 'Weapon': undeclared identifier
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2059: syntax error: '>'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector(700): note: see declaration of 'std::vector'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(32): error C2061: syntax error: identifier 'Weapon'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(89): error C2660: 'Model::AddWeapon': function does not take 2 arguments
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(90): error C2660: 'Model::AddWeapon': function does not take 2 arguments
   Faction.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2065: 'Weapon': undeclared identifier
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2059: syntax error: '>'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector(700): note: see declaration of 'std::vector'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2065: 'Weapon': undeclared identifier
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2059: syntax error: '>'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector(700): note: see declaration of 'std::vector'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(32): error C2061: syntax error: identifier 'Weapon'
   AoSSimCPP.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(26): error C2061: syntax error: identifier 'Model'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2065: 'Weapon': undeclared identifier
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2059: syntax error: '>'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector(700): note: see declaration of 'std::vector'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2065: 'Weapon': undeclared identifier
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2059: syntax error: '>'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(25): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\vector(700): note: see declaration of 'std::vector'
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(32): error C2061: syntax error: identifier 'Weapon'
   Generating Code...

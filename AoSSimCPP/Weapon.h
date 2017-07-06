@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Model.h"
+
 //Header for Weapon.cpp
 class Weapon
 {
@@ -23,7 +25,7 @@ public:
 	bool HitRoll();
 	bool WoundRoll();
 
-	int GenerateWounds(Model*);
+	uint8_t GenerateWounds(Model*);
 
 	std::string getName() { return Name; }
 };

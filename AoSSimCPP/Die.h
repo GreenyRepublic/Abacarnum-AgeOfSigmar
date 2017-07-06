@@ -1,4 +1,4 @@
 #pragma once
 #include <random>
 //Die Header
-int Roll();
+uint8_t Roll();
