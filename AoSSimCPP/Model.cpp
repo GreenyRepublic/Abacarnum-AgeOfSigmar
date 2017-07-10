@@ -1,10 +1,9 @@
 #include "stdafx.h"
+
 #include "Model.h"
 #include "Weapon.h"
 #include "Die.h"
-#include <string>
-#include <vector>
-#include <iostream>
+#include "GameEntity.h"
 
 /*
 * Model.cpp: Defines the model class.
@@ -14,11 +13,10 @@
 */ 
 
 //Initialise using raw stat values.
-Model::Model(std::string name, uint8_t move, uint8_t wounds, uint8_t bravery, uint8_t save, uint8_t unitsize, uint8_t cost, std::string faction)
+Model::Model(std::string name, uint8_t move, uint8_t wounds, uint8_t bravery, uint8_t save, uint8_t unitsize, uint8_t cost, std::string faction) : GameEntity(name)
 {
-	Name = name;
 	Move = move;
-	Wounds = wounds;
+	MaxWounds = Wounds = wounds;
 	Bravery = bravery;
 	Save = save;
 	
@@ -31,11 +29,10 @@ Model::Model(std::string name, uint8_t move, uint8_t wounds, uint8_t bravery, ui
 }
 
 //Initialise using another model as a template.
-Model::Model(Model *model)
+Model::Model(Model *model) : GameEntity(model->Name)
 {
-	Name = model-> Name;
 	Move = model-> Move;
-	Wounds = model-> Wounds;
+	MaxWounds = Wounds = model-> Wounds;
 	Bravery = model-> Bravery;
 	Save = model-> Save;
 	
@@ -44,6 +41,9 @@ Model::Model(Model *model)
 
 	MeleeWeapons = new std::vector<Weapon*>;
 	RangedWeapons = new std::vector<Weapon*>;
+
+	for (auto w = model->MeleeWeapons->begin(); w != model->MeleeWeapons->end(); w++){ AddWeapon(true, *w); }
+	for (auto w = model->RangedWeapons->begin(); w != model->RangedWeapons->end(); w++) { AddWeapon(false, *w); }
 
 	//std::cout << "Model profile " << Name << " created!" << std::endl;
 }
@@ -55,10 +55,6 @@ Model::~Model()
 	//std::cout << "Model profile " << Name << " deleted!" << std::endl;
 }
 
-bool Model::SaveRoll()
-{
-	return Roll() >= Save;
-}
 
 uint8_t Model::MeleeAttack(Model* target)
 {
@@ -67,14 +63,19 @@ uint8_t Model::MeleeAttack(Model* target)
 	for (auto w = MeleeWeapons->begin(); w != MeleeWeapons->end(); w++)
 	{
 		weap = *w;
-		wounds += weap->GenerateWounds(target);
+		wounds += weap->GenerateWounds(target->GetSave());
 	}
 	return wounds;
 }
+
+void Model::TakeWound()
+{
+	Wounds--;
+}
+
 
 void Model::AddWeapon(bool melee, Weapon* weapon)
 {
 	if (melee) MeleeWeapons->push_back(weapon);
 	else RangedWeapons->push_back(weapon);
 }
-

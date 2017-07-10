@@ -4,7 +4,6 @@
 //
 
 #pragma once
-
 #include "targetver.h"
 
 #include <stdio.h>
@@ -24,3 +23,6 @@
 #include <string>
 #include <exception>
 #include <map>
+#include <vector>
+
+void PrintHeader(std::string, int);

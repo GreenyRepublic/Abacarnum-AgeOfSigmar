@@ -24,4 +24,7 @@ public:
 	Faction* GetFaction(std::string);
 	Weapon* GetWeapon(std::string, std::string);
 	Model* GetModel(std::string, std::string);
+
+	void ListAll();
+	void ListFaction(std::string facname);
 };

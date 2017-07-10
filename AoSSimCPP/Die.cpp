@@ -10,5 +10,7 @@ std::uniform_int_distribution<int> distribution(1, 6);
 
 uint8_t Roll()
 {
-	return distribution(generator);  // generates number in the range 1..6 
+	int r = distribution(generator);
+	//std::cout << "Rolled: " << r << std::endl;
+	return r;  // generates number in the range 1..6 
 }

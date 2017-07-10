@@ -1,10 +1,9 @@
 #include "stdafx.h"
+
 #include "Weapon.h"
 #include "Die.h"
 #include "Model.h"
-
-#include <string>
-#include <iostream>
+#include "GameEntity.h"
 
 /*
 * Weapon.cpp: Defines the weapon class.
@@ -12,9 +11,8 @@
 * Contains stats/data as well as methods for resolving hit and wound rolls.
 */
 
-Weapon::Weapon(std::string name, uint8_t range, uint8_t attacks, uint8_t tohit, uint8_t towound, uint8_t rend, uint8_t damage)
+Weapon::Weapon(std::string name, uint8_t range, uint8_t attacks, uint8_t tohit, uint8_t towound, uint8_t rend, uint8_t damage) : GameEntity(name)
 {
-	Name = name;
 	Range = range;
 	Attacks = attacks;
 	ToHit = tohit;
@@ -31,16 +29,16 @@ Weapon::~Weapon()
 
 bool Weapon::HitRoll()
 {
-	return (Roll() > ToHit);
+	return (Roll() >= ToHit);
 }
 
 bool Weapon::WoundRoll()
 {
-	return (Roll() > ToWound);
+	return (Roll() >= ToWound);
 }
 
 //This is longer than it needs to be right now, as I need it to be clean for possible expansion when I add abilities etc.
-uint8_t Weapon::GenerateWounds(Model* target)
+uint8_t Weapon::GenerateWounds(uint8_t save)
 {
 	int hits = 0;
 	int wounds = 0;
@@ -48,7 +46,7 @@ uint8_t Weapon::GenerateWounds(Model* target)
 
 	for (int i = 0; i < Attacks; i++) hits += (int)HitRoll();
 	for (int i = 0; i < hits; i++) wounds += (int)WoundRoll();
-	for (int i = 0; i < wounds; i++) saves += (int)target->SaveRoll();
+	for (int i = 0; i < wounds; i++) saves += (int)((Roll() + Rend) >= save);
 
 	return (uint8_t) max(0, (wounds - saves) * Damage);
 }

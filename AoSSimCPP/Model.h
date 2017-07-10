@@ -1,14 +1,15 @@
 #pragma once
+#include "Weapon.h"
+#include "GameEntity.h"
+
 #include <string>
 #include <vector>
-#include "Weapon.h"
 
 //Header for Model.cpp
-class Model
+class Model : public GameEntity
 {
 private:
 	//Core Stats
-	std::string Name;
 	uint8_t Move;
 	uint8_t MaxWounds;
 	uint8_t Wounds;
@@ -31,12 +32,14 @@ public:
 
 	void AddWeapon(bool, Weapon*);
 
-	//Combat rolls and stuff
-	bool SaveRoll();
+	//Combat rolls and stuff	
 	uint8_t MeleeAttack(Model*);
+	void TakeWound();
 
-	std::string getName() { return Name; }
-	std::string getFaction() { return Faction; }
+	uint8_t GetSave() { return Save; }
+	std::string GetFaction() { return Faction; }
+	uint8_t GetSize() { return UnitSize; }
+	uint8_t GetCost() { return Cost; }
 };
 
 
