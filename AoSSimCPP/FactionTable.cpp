@@ -124,7 +124,7 @@ Weapon* FactionTable::GetWeapon(std::string name, std::string faction = nullptr)
 	}
 }
 
-Model * FactionTable::GetModel(std::string name, std::string faction = nullptr)
+Model * FactionTable::GetModel(std::string name, std::string faction)
 {
 	if (!faction.empty())
 	{
@@ -141,8 +141,15 @@ Model * FactionTable::GetModel(std::string name, std::string faction = nullptr)
 		for (auto i = Factions->begin(); i != Factions->end(); i++)
 		{
 			Faction* fac = (*i).second;
-			return fac->GetModel(name);
-		}
+			std::cout << (std::string)(*i).first << std::endl;
+			if (fac->GetModel(name) != nullptr) return fac->GetModel(name);
+			else if (i == Factions->end())
+			{
+				std::cout << "Cannot find model " << name << "! (" << ")" << std::endl;
+				return nullptr;
+			}
+			else continue;
+		}		
 	}
 }
 

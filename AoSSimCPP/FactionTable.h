@@ -23,7 +23,7 @@ public:
 	//Get data.
 	Faction* GetFaction(std::string);
 	Weapon* GetWeapon(std::string, std::string);
-	Model* GetModel(std::string, std::string = nullptr);
+	Model* GetModel(std::string name, std::string faction = "");
 
 	void ListAll();
 	void ListFaction(std::string facname);

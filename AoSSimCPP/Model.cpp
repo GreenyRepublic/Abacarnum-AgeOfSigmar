@@ -57,7 +57,28 @@ Model::~Model()
 
 void Model::PrintStats()
 {
+	std::cout << "|<>| " << ToUpper(Name) << " |<>|" << std::endl;
+	std::cout << std::endl;
+	std::cout << "   | STATS |" << std::endl;
+	std::cout << "|<>| " << "Move: " << (int)Move << '"' << std::endl;
+	std::cout << "|<>| " << "Wounds: " << (int)Wounds << std::endl;
+	std::cout << "|<>| " << "Bravery: " << (int)Bravery << std::endl;
+	std::cout << "|<>| " << "Save: " << (int)Save << "+" << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << "   | MELEE WEAPONS |" << std::endl;
+	for (auto w = MeleeWeapons->begin(); w != MeleeWeapons->end(); w++)
+	{
+		std::cout << "|<>| " << (*w)->GetName(false) <<  std::endl;
+	}
 
+	std::cout << std::endl;
+	std::cout << "   | RANGED WEAPONS |" << std::endl;
+	for (auto w = RangedWeapons->begin(); w != RangedWeapons->end(); w++)
+	{
+		std::cout << "|<>| " << (*w)->GetName(false) << std::endl;
+	}
+	std::cout << std::endl;
 }
 
 

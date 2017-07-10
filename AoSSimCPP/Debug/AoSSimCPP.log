@@ -1,6 +1,10 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  AoSSimCPP.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(90): warning C4930: 'Unit unitA(void)': prototyped function not called (was a variable definition intended?)
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(91): warning C4930: 'Unit unitB(void)': prototyped function not called (was a variable definition intended?)
-  AoSSimCPP.vcxproj -> C:\Users\Benfclark\Documents\GitHub\AoSSimCPP\AoSSimCPP\..\..\..\..\Desktop\AoSSimCPP_Debug\AoSSimCPP.exe
-  AoSSimCPP.vcxproj -> ..\..\..\..\Desktop\AoSSimCPP_Debug\AoSSimCPP.pdb (Partial PDB)
+  Model.cpp
+  Faction.cpp
+  Compiling...
+  Generating Code...
+  AoSSimCPP.vcxproj -> C:\Users\Ben\Desktop\AoSSimCPP_Debug\AoSSimCPP.exe
+  AoSSimCPP.vcxproj -> C:\Users\Ben\Desktop\AoSSimCPP_Debug\AoSSimCPP.pdb (Partial PDB)
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.

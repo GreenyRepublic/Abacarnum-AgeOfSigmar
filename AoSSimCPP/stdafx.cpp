@@ -21,3 +21,17 @@ void PrintHeader(std::string title, int level)
 	for (auto c = title.begin(); c != title.end(); c++)	std::cout << "-";
 	std::cout << "-==" << std::endl;
 }
+
+char UpperChar(char in)
+{
+	return toupper(in);
+}
+
+std::string ToUpper(std::string in)
+{
+	if (in.empty()) return  "";
+	else
+	{
+		return UpperChar(in.at(0)) + ToUpper(in.substr(1));
+	}
+}

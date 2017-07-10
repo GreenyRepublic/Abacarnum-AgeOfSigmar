@@ -76,12 +76,12 @@ void List(const std::string name, FactionTable *ft)
 void Stats(const std::string name, FactionTable *ft)
 {
 	Model* mod = ft->GetModel(name);
-	mod->PrintStats();
+	if (mod != nullptr) mod->PrintStats();
 }
 
 int main()
 {
-	std::cout << "Welcome to the Age of Sigmar Fight-O-Matic v" << version << "!" << std::endl;
+	std::cout << ToUpper("Welcome to the Age of Sigmar Fight-O-Matic v") << version << std::endl;
 
 	//Initialisation
 	FactionTable *FacTable = new FactionTable();
@@ -109,7 +109,7 @@ int main()
 		
 		if (args[0] == "help") { PrintHelp(); }
 		else if (args[0] == "list") { List(args[1], FacTable); }
-		else if (args[1] == "stats") { Stats(args[1], FacTable); }
+		else if (args[0] == "stats") { Stats(args[1], FacTable); }
 		else if (input == "exit") { break; }
 
 		else { std::cout << "Unrecognised Command! For a list type 'help'." << std::endl; }

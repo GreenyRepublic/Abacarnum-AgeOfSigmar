@@ -25,4 +25,7 @@
 #include <map>
 #include <vector>
 
+#include <ctype.h>
+
 void PrintHeader(std::string, int);
+std::string ToUpper(std::string);

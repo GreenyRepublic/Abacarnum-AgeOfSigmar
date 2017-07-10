@@ -15,10 +15,10 @@ Faction::~Faction()
 
 void Faction::PrintStats()
 {
-	PrintHeader(Name, 0);
+	PrintHeader(ToUpper(Name), 0);
 
 	//Print models
-	std::cout << "|| Models ||" << std::endl;
+	std::cout << "|| MODELS ||" << std::endl;
 	std::cout << std::endl;
 	Model* m;
 	std::pair<std::string, Model*> p;
@@ -48,13 +48,11 @@ void Faction::AddModel(Model * model)
 Weapon * Faction::GetWeapon(std::string name)
 {
 	try { return weaponData->at(Standardise(name)); }
-	catch (std::out_of_range e) { std::cout << "Weapon " << name << " not found! (" << e.what() << ")" << std::endl; }
-	return nullptr;
+	catch (std::out_of_range e) { return nullptr; }
 }
 
 Model * Faction::GetModel(std::string name)
 {
 	try { return modelData->at(Standardise(name)); }
-	catch (std::out_of_range e) { std::cout << "Model " << name << " not found! (" << e.what() << ")" << std::endl; }
-	return nullptr;
+	catch (std::out_of_range e) { return nullptr; }
 }
