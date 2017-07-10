@@ -31,6 +31,7 @@ public:
 	~Model();
 
 	void AddWeapon(bool, Weapon*);
+	void PrintStats();
 
 	//Combat rolls and stuff	
 	uint8_t MeleeAttack(Model*);

@@ -135,6 +135,15 @@ Model * FactionTable::GetModel(std::string name, std::string faction = nullptr)
 		}
 		catch (std::out_of_range o) { std::cout << "Cannot find model " << name << "! (" << o.what() << ")" << std::endl; }
 	}
+
+	else
+	{
+		for (auto i = Factions->begin(); i != Factions->end(); i++)
+		{
+			Faction* fac = (*i).second;
+			return fac->GetModel(name);
+		}
+	}
 }
 
 	/*else

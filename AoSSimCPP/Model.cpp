@@ -55,6 +55,11 @@ Model::~Model()
 	//std::cout << "Model profile " << Name << " deleted!" << std::endl;
 }
 
+void Model::PrintStats()
+{
+
+}
+
 
 uint8_t Model::MeleeAttack(Model* target)
 {
