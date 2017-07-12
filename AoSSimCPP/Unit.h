@@ -19,9 +19,10 @@ public:
 	~Unit();
 
 	void MeleeAttack(Unit target, int frontage);
-	void TakeWounds(int count);
-	void Battleshock();
+	bool TakeWounds(int count);
+	bool Battleshock();
 
 	void NewTurn();
+	int LiveCount() { return Models->size(); }
 };
 

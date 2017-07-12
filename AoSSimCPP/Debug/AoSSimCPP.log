@@ -1,15 +1,11 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  Unit.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(13): warning C4244: '=': conversion from 'double' to 'uint8_t', possible loss of data
-  Compiling...
-  Generating Code...
-  Skipping... (no relevant changes detected)
   AoSSimCPP.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(102): warning C4930: 'Unit unitB(void)': prototyped function not called (was a variable definition intended?)
   AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.exe
   AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.pdb (Partial PDB)
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.

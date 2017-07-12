@@ -94,7 +94,11 @@ int main()
 	std::string input;
 	std::stringstream ss;
 
-	Unit unitA();
+	Unit unitA(FacTable->GetModel("Liberators"), 500);
+	Sleep(1000);
+	std::cout << unitA.LiveCount() << std::endl;
+	std::cout << unitA.TakeWounds(250) << std::endl;
+	std::cout << unitA.LiveCount() << std::endl;
 	Unit unitB();
 
 	while (1)

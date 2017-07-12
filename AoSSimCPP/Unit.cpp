@@ -39,33 +39,38 @@ void Unit::MeleeAttack(Unit target, int frontage)
 	target.TakeWounds(wounds);
 }
 
-void Unit::TakeWounds(int count)
+//Allocates wounds and returns whether or not the unit has been wiped out.
+bool Unit::TakeWounds(int count)
 {
-	for (auto m = Models->end(); m != Models->begin(); m--)
+	for (int i = Models->size() - 1; i > -1; i--)
 	{
-		if ((*m)->GetWounds() > count)
+		Model* m = Models->at(i);
+		if (m == nullptr) continue;
+		if (m->GetWounds() > count)
 		{
-			(*m)->TakeWounds(count); 
-			break;
+			m->TakeWounds(count); 
+			return false;
 		}
 
 		else 
 		{ 
-			count -= (*m)->GetWounds();
-			delete (*m); 
+			count -= m->GetWounds();
+			delete(m);
+			Models->pop_back();
 			Losses++;
+			if (Models->size() == 0) return true;
 		}
 	}
 }
 
-void Unit::Battleshock()
+//Resolves battleshock, with a bool returning if the unit has been wiped out or not.
+bool Unit::Battleshock()
 {
 	//Calculate losses.
 	int roll = Roll();
 	int bonus = floor(Models->size()/10);
 	int result = max(0, (roll + Losses) - (TypeModel->GetBravery() + bonus));
-	
-	
+	return true;
 }
 
 void Unit::NewTurn()
