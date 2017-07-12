@@ -58,27 +58,34 @@ Model::~Model()
 void Model::PrintStats()
 {
 	std::cout << "|<>| " << ToUpper(Name) << " |<>|" << std::endl;
+	std::cout << "  || " << Faction << " ||  " << std::endl;
 	std::cout << std::endl;
-	std::cout << "   | STATS |" << std::endl;
-	std::cout << "|<>| " << "Move: " << (int)Move << '"' << std::endl;
-	std::cout << "|<>| " << "Wounds: " << (int)Wounds << std::endl;
-	std::cout << "|<>| " << "Bravery: " << (int)Bravery << std::endl;
-	std::cout << "|<>| " << "Save: " << (int)Save << "+" << std::endl;
+	std::cout << "|==| STATS |==|" << std::endl;
+	std::cout << " |o| Move: " << (int)Move << '"' << std::endl;
+	std::cout << " |o| Wounds: " << (int)Wounds << std::endl;
+	std::cout << " |o| Bravery: " << (int)Bravery << std::endl;
+	std::cout << " |o| Save: " << (int)Save << "+" << std::endl;
 	
 	std::cout << std::endl;
-	std::cout << "   | MELEE WEAPONS |" << std::endl;
+	std::cout << "|==| MELEE WEAPONS |==|" << std::endl;
 	for (auto w = MeleeWeapons->begin(); w != MeleeWeapons->end(); w++)
 	{
-		std::cout << "|<>| " << (*w)->GetName(false) <<  std::endl;
+		std::cout << " |o| " << (*w)->GetName(false) <<  std::endl;
+		(*w)->PrintStats();
 	}
 
 	std::cout << std::endl;
-	std::cout << "   | RANGED WEAPONS |" << std::endl;
+	std::cout << "|==| RANGED WEAPONS |==|" << std::endl;
 	for (auto w = RangedWeapons->begin(); w != RangedWeapons->end(); w++)
 	{
-		std::cout << "|<>| " << (*w)->GetName(false) << std::endl;
+		std::cout << " |o| " << (*w)->GetName(false) << std::endl;
 	}
 	std::cout << std::endl;
+
+	std::cout << "|==| METADATA |==|" << std::endl;
+	std::cout << " |o| Unit Size: " << (int)UnitSize << std::endl;
+	std::cout << " |o| Points Cost: " << (int)Cost << std::endl;
+	std::cout << " |o| Army Role: " << std::endl;
 }
 
 
@@ -94,11 +101,10 @@ uint8_t Model::MeleeAttack(Model* target)
 	return wounds;
 }
 
-void Model::TakeWound()
+void Model::TakeWounds(int count)
 {
-	Wounds--;
+	Wounds -= count;
 }
-
 
 void Model::AddWeapon(bool melee, Weapon* weapon)
 {

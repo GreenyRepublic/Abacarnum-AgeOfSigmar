@@ -141,7 +141,6 @@ Model * FactionTable::GetModel(std::string name, std::string faction)
 		for (auto i = Factions->begin(); i != Factions->end(); i++)
 		{
 			Faction* fac = (*i).second;
-			std::cout << (std::string)(*i).first << std::endl;
 			if (fac->GetModel(name) != nullptr) return fac->GetModel(name);
 			else if (i == Factions->end())
 			{

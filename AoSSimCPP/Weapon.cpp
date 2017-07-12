@@ -27,6 +27,17 @@ Weapon::~Weapon()
 	//std::cout << "Weapon profile " << Name << " deleted!" << std::endl;
 }
 
+void Weapon::PrintStats()
+{
+	std::cout << "   |- " << "Ra: " << (int)Range << '"'
+			  << " | A: " << (int)Attacks 
+			  << " | H: " << (int)ToHit << "+"
+			  << " | W: " << (int)ToWound << "+"
+			  << " | Re: " << (int)Rend 
+			  << " | D: " << (int)Damage 
+			  << std::endl;
+}
+
 bool Weapon::HitRoll()
 {
 	return (Roll() >= ToHit);

@@ -8,18 +8,34 @@
 // and not in this file
 
 //Pretty ascii art for titles and whatnot.
-//Levels: 1 = fanciest (top-level header), 3 = least fancy (lowest-level header).
+//Levels: 1 = Box header 
+//		  2 = Top-level Line header
+//		  3 = Low-level line header
+//		  4 = 
 void PrintHeader(std::string title, int level)
 {
-	std::cout << "==-";
-	for (auto c = title.begin(); c != title.end(); c++)	std::cout << "-";
-	std::cout << "-==" << std::endl;
+	if (level == 1)
+	{
+		std::cout << "==-";
+		for (auto c = title.begin(); c != title.end(); c++)	std::cout << "-";
+		std::cout << "-==" << std::endl;
 
-	std::cout << "|| " << title << " ||" << std::endl;
+		std::cout << "|| " << title << " ||" << std::endl;
 
-	std::cout << "==-";
-	for (auto c = title.begin(); c != title.end(); c++)	std::cout << "-";
-	std::cout << "-==" << std::endl;
+		std::cout << "==-";
+		for (auto c = title.begin(); c != title.end(); c++)	std::cout << "-";
+		std::cout << "-==" << std::endl;
+	}
+
+	else if (level == 2)
+	{
+		std::cout << "|<>| " << title << " |<>|" << std::endl;
+	}
+
+	else if (level == 3)
+	{
+		std::cout << "|==| " << title << " |==|" << std::endl;
+	}
 }
 
 char UpperChar(char in)

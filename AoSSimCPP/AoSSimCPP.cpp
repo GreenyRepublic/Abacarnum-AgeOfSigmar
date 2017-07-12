@@ -45,11 +45,12 @@ void ParseData(FactionTable *table)
 void PrintHelp()
 {
 	std::cout << "Available commands:" << std::endl;
-
 	std::cout << std::endl;
 
 	std::cout << "help" << std::endl;
+	std::cout << std::endl;
 
+	std::cout << "stats [name]" << std::endl; 
 	std::cout << std::endl;
 
 	std::cout << "list [name]" << std::endl;
@@ -109,7 +110,7 @@ int main()
 		
 		if (args[0] == "help") { PrintHelp(); }
 		else if (args[0] == "list") { List(args[1], FacTable); }
-		else if (args[0] == "stats") { Stats(args[1], FacTable); }
+		else if (args[0] == "stats") { Stats(args[1] + args[2] + args[3] + args[4] + args[5] + args[6] + args[7], FacTable); }
 		else if (input == "exit") { break; }
 
 		else { std::cout << "Unrecognised Command! For a list type 'help'." << std::endl; }

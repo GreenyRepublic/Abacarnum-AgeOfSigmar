@@ -17,8 +17,11 @@ private:
 public:
 	Unit(Model*, int);
 	~Unit();
+
 	void MeleeAttack(Unit target, int frontage);
 	void TakeWounds(int count);
 	void Battleshock();
+
+	void NewTurn();
 };
 

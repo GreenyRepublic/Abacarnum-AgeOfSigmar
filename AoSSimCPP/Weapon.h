@@ -21,6 +21,8 @@ public:
 	Weapon(std::string, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t);
 	~Weapon();
 
+	void PrintStats();
+
 	bool HitRoll();
 	bool WoundRoll();
 

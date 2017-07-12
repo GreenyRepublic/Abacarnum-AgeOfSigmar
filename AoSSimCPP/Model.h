@@ -35,12 +35,14 @@ public:
 
 	//Combat rolls and stuff	
 	uint8_t MeleeAttack(Model*);
-	void TakeWound();
+	void TakeWounds(int);
 
 	uint8_t GetSave() { return Save; }
 	std::string GetFaction() { return Faction; }
 	uint8_t GetSize() { return UnitSize; }
 	uint8_t GetCost() { return Cost; }
+	uint8_t GetWounds() { return Wounds; }
+	uint8_t GetBravery() { return Bravery; }
 };
 
 
