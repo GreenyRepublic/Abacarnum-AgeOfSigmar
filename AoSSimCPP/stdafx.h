@@ -24,6 +24,7 @@
 #include <exception>
 #include <map>
 #include <vector>
+#include <windows.h>
 
 #include <ctype.h>
 

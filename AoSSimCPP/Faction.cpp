@@ -27,10 +27,6 @@ void Faction::PrintStats()
 		m = i->second;
 		std::cout << "|<>| " << m->GetName(false) << std::endl;
 	}
-
-
-	std::cout << "Weapons: " << weaponData->size() << std::endl;
-	std::cout << "Models: " << modelData->size() << std::endl;
 }
 
 void Faction::AddWeapon(Weapon * weapon)

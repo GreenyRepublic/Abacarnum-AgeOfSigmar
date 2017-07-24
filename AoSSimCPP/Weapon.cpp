@@ -11,7 +11,7 @@
 * Contains stats/data as well as methods for resolving hit and wound rolls.
 */
 
-Weapon::Weapon(std::string name, uint8_t range, uint8_t attacks, uint8_t tohit, uint8_t towound, uint8_t rend, uint8_t damage) : GameEntity(name)
+Weapon::Weapon(std::string name, int range, int attacks, int tohit, int towound, int rend, int damage) : GameEntity(name)
 {
 	Range = range;
 	Attacks = attacks;
@@ -49,7 +49,7 @@ bool Weapon::WoundRoll()
 }
 
 //This is longer than it needs to be right now, as I need it to be clean for possible expansion when I add abilities etc.
-uint8_t Weapon::GenerateWounds(uint8_t save)
+int Weapon::GenerateWounds(int save)
 {
 	int hits = 0;
 	int wounds = 0;
@@ -59,5 +59,5 @@ uint8_t Weapon::GenerateWounds(uint8_t save)
 	for (int i = 0; i < hits; i++) wounds += (int)WoundRoll();
 	for (int i = 0; i < wounds; i++) saves += (int)((Roll() + Rend) >= save);
 
-	return (uint8_t) max(0, (wounds - saves) * Damage);
+	return (int) max(0, (wounds - saves) * Damage);
 }

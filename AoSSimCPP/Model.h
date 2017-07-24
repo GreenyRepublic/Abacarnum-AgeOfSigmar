@@ -10,15 +10,15 @@ class Model : public GameEntity
 {
 private:
 	//Core Stats
-	uint8_t Move;
-	uint8_t MaxWounds;
-	uint8_t Wounds;
-	uint8_t Bravery;
-	uint8_t Save;
+	int Move;
+	int MaxWounds;
+	int Wounds;
+	int Bravery;
+	int Save;
 
 	//Army Composition Stats
-	uint8_t UnitSize;
-	uint8_t Cost;
+	int UnitSize;
+	int Cost;
 	std::string Faction;
 
 	//Weapon Lists
@@ -26,7 +26,7 @@ private:
 	std::vector<Weapon*> *RangedWeapons;
 
 public:
-	Model(std::string, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, std::string);
+	Model(std::string, int, int, int, int, int, int, std::string);
 	Model(Model*);
 	~Model();
 
@@ -34,15 +34,15 @@ public:
 	void PrintStats();
 
 	//Combat rolls and stuff	
-	uint8_t MeleeAttack(Model*);
+	int MeleeAttack(Model*);
 	void TakeWounds(int);
 
-	uint8_t GetSave() { return Save; }
+	int GetSave() { return Save; }
 	std::string GetFaction() { return Faction; }
-	uint8_t GetSize() { return UnitSize; }
-	uint8_t GetCost() { return Cost; }
-	uint8_t GetWounds() { return Wounds; }
-	uint8_t GetBravery() { return Bravery; }
+	int GetSize() { return UnitSize; }
+	int GetCost() { return Cost; }
+	int GetWounds() { return Wounds; }
+	int GetBravery() { return Bravery; }
 };
 
 

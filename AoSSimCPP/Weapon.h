@@ -10,15 +10,15 @@ class Weapon : public GameEntity
 private:
 	
 	//Stats
-	uint8_t Range;
-	uint8_t Attacks;
-	uint8_t ToHit;
-	uint8_t ToWound;
+	int Range;
+	int Attacks;
+	int ToHit;
+	int ToWound;
 	int8_t Rend;
-	uint8_t Damage;
+	int Damage;
 
 public:
-	Weapon(std::string, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t);
+	Weapon(std::string, int, int, int, int, int, int);
 	~Weapon();
 
 	void PrintStats();
@@ -26,6 +26,6 @@ public:
 	bool HitRoll();
 	bool WoundRoll();
 
-	uint8_t GenerateWounds(uint8_t);
+	int GenerateWounds(int);
 };
 

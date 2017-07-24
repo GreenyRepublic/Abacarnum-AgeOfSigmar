@@ -14,6 +14,7 @@ Unit::Unit(Model* model, int number)
 	Mult = ceil(number / model->GetSize());
 	PointsValue = Mult * model->GetCost();
 	Losses = 0;
+	Name = model->GetName(false);
 }
 
 Unit::~Unit()
@@ -23,29 +24,30 @@ Unit::~Unit()
 }
 
 //Attack a target.
-//Takes the profile model of the enemy unit, tests against it to generate wounds and then passes those wounds to the target unit.
-void Unit::MeleeAttack(Unit target, int frontage)
+//Takes the profile model of the enemy unit, tests against it to generate wounds and returns those wounds.
+int Unit::MeleeAttack(Unit* target, int frontage)
 {
-	Model type = target.TypeModel;
-	uint8_t wounds = 0;
+	Model* type = target->TypeModel;
+	int wounds = 0;
 	int i = 0;
 	for (auto m = Models->begin(); m != Models->end(); m++)
 	{
 		if (i == frontage) break;
-		Model mod = *m;
-		wounds += mod.MeleeAttack(&type);
+		wounds += (*m)->MeleeAttack(type);
+		i++;
 	}
 	std::cout << "Generate: " << wounds << " wounds!" << std::endl;
-	target.TakeWounds(wounds);
+	return wounds;
 }
 
 //Allocates wounds and returns whether or not the unit has been wiped out.
 bool Unit::TakeWounds(int count)
 {
-	for (int i = Models->size() - 1; i > -1; i--)
+	while(Models->size() > 0)
 	{
-		Model* m = Models->at(i);
-		if (m == nullptr) continue;
+		//std::cout << Models->size() << std::endl;
+		Model *m = Models->at(Models->size()-1);
+
 		if (m->GetWounds() > count)
 		{
 			m->TakeWounds(count); 
@@ -55,12 +57,13 @@ bool Unit::TakeWounds(int count)
 		else 
 		{ 
 			count -= m->GetWounds();
-			delete(m);
 			Models->pop_back();
 			Losses++;
-			if (Models->size() == 0) return true;
+			//std::cout << count << std::endl;
 		}
 	}
+	std::cout << "DING " << Models->size() << std::endl;
+	return true;
 }
 
 //Resolves battleshock, with a bool returning if the unit has been wiped out or not.
@@ -70,7 +73,17 @@ bool Unit::Battleshock()
 	int roll = Roll();
 	int bonus = floor(Models->size()/10);
 	int result = max(0, (roll + Losses) - (TypeModel->GetBravery() + bonus));
-	return true;
+
+	if (result > Models->size())
+	{
+		Models->clear();
+		return true;
+	}
+	
+	for (int i = 0; i < result; i++)
+	{
+		Models->pop_back();
+	}
 }
 
 void Unit::NewTurn()

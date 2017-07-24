@@ -13,7 +13,7 @@
 */ 
 
 //Initialise using raw stat values.
-Model::Model(std::string name, uint8_t move, uint8_t wounds, uint8_t bravery, uint8_t save, uint8_t unitsize, uint8_t cost, std::string faction) : GameEntity(name)
+Model::Model(std::string name, int move, int wounds, int bravery, int save, int unitsize, int cost, std::string faction) : GameEntity(name)
 {
 	Move = move;
 	MaxWounds = Wounds = wounds;
@@ -89,14 +89,12 @@ void Model::PrintStats()
 }
 
 
-uint8_t Model::MeleeAttack(Model* target)
+int Model::MeleeAttack(Model* target)
 {
-	Weapon* weap;
 	int wounds = 0;
 	for (auto w = MeleeWeapons->begin(); w != MeleeWeapons->end(); w++)
 	{
-		weap = *w;
-		wounds += weap->GenerateWounds(target->GetSave());
+		wounds += (*w)->GenerateWounds(target->GetSave());
 	}
 	return wounds;
 }

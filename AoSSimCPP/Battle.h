@@ -5,8 +5,7 @@
 class Battle
 {
 private:
-	enum Side {A, B};
-	Side Winner;
+	Unit* Winner;
 	int Survivors;
 
 	int Frontage;
@@ -21,6 +20,6 @@ public:
 	void Fight();
 
 	int GetSurvivors() { return Survivors; }
-	Side GetWinner() { return Winner; }
+	Unit* GetWinner() { return Winner; }
 };
 

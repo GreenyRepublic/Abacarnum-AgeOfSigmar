@@ -32,12 +32,12 @@ void FactionTable::AddFaction(std::string facname)
 		for (pugi::xml_node node = facFile.child("faction").child("weapon"); node; node = node.next_sibling("weapon"))
 		{
 			std::string name = node.attribute("name").value();
-			uint8_t range = std::stoi(node.child("range").child_value());
-			uint8_t attacks = std::stoi(node.child("attacks").child_value());
-			uint8_t tohit = std::stoi(node.child("tohit").child_value());
-			uint8_t towound = std::stoi(node.child("towound").child_value());
-			uint8_t rend = std::stoi(node.child("rend").child_value());
-			uint8_t damage = std::stoi(node.child("damage").child_value());
+			int range = std::stoi(node.child("range").child_value());
+			int attacks = std::stoi(node.child("attacks").child_value());
+			int tohit = std::stoi(node.child("tohit").child_value());
+			int towound = std::stoi(node.child("towound").child_value());
+			int rend = std::stoi(node.child("rend").child_value());
+			int damage = std::stoi(node.child("damage").child_value());
 
 			Weapon *weapon = new Weapon(name, range, attacks, tohit, towound, rend, damage);
 			faction->AddWeapon(weapon);
@@ -56,10 +56,10 @@ void FactionTable::AddFaction(std::string facname)
 	{
 		for (pugi::xml_node node = facFile.child("faction").child("model"); node; node = node.next_sibling("model"))
 		{
-			uint8_t move;
-			uint8_t save;
-			uint8_t bravery;
-			uint8_t wounds;
+			int move;
+			int save;
+			int bravery;
+			int wounds;
 
 			std::string name = node.attribute("name").value();
 			
@@ -71,8 +71,8 @@ void FactionTable::AddFaction(std::string facname)
 			bravery = std::stoi(stats.child("bravery").child_value());
 			wounds = std::stoi(stats.child("wounds").child_value());
 
-			uint8_t size = std::stoi(node.child("size").child_value());
-			uint8_t cost = std::stoi(node.child("cost").child_value());
+			int size = std::stoi(node.child("size").child_value());
+			int cost = std::stoi(node.child("cost").child_value());
 
 			Model *model = new Model(name, move, wounds, bravery, save, size, cost, facname);
 			bool bad = 0;

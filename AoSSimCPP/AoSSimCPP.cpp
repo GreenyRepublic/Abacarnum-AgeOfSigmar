@@ -10,6 +10,7 @@
 #include "Die.h"
 #include "FactionTable.h"
 #include "Unit.h"
+#include "Battle.h"
 
 #include "./PugiXML/pugixml.hpp"
 #include "./PugiXML/pugiconfig.hpp"
@@ -80,6 +81,29 @@ void Stats(const std::string name, FactionTable *ft)
 	if (mod != nullptr) mod->PrintStats();
 }
 
+Unit* SetSide(std::string input, FactionTable *fac)
+{
+	std::stringstream ss;
+	ss << input;
+	char temp[64];
+	std::string mod;
+	int num;
+	while (ss.getline(temp, 64, ' '))
+	{
+		try
+		{
+			num = std::stoi(temp);
+			break;
+		}
+		catch (std::exception _Xinvalid_argument)
+		{
+			mod += temp;
+		}
+	}
+	
+	return new Unit(fac->GetModel(mod), num);
+}
+
 int main()
 {
 	std::cout << ToUpper("Welcome to the Age of Sigmar Fight-O-Matic v") << version << std::endl;
@@ -88,21 +112,16 @@ int main()
 	FactionTable *FacTable = new FactionTable();
 	ParseData(FacTable);
 
-	
 	//Begin console loop
 	std::string args[8];
 	std::string input;
 	std::stringstream ss;
 
-	Unit unitA(FacTable->GetModel("Liberators"), 500);
-	Sleep(1000);
-	std::cout << unitA.LiveCount() << std::endl;
-	std::cout << unitA.TakeWounds(250) << std::endl;
-	std::cout << unitA.LiveCount() << std::endl;
-	Unit unitB();
-
 	while (1)
 	{
+		Unit *SideA;
+		Unit *SideB;
+
 		for (int i = 0; i < 8; i++) args[i] = "";
 		ss.clear();
 
@@ -115,6 +134,8 @@ int main()
 		if (args[0] == "help") { PrintHelp(); }
 		else if (args[0] == "list") { List(args[1], FacTable); }
 		else if (args[0] == "stats") { Stats(args[1] + args[2] + args[3] + args[4] + args[5] + args[6] + args[7], FacTable); }
+		else if (args[0] == "setA") { SideA = SetSide(args[1] + args[2] + args[3] + args[4] + args[5] + args[6] + args[7], FacTable); }
+
 		else if (input == "exit") { break; }
 
 		else { std::cout << "Unrecognised Command! For a list type 'help'." << std::endl; }

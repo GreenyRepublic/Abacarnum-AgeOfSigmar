@@ -1,11 +1,15 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   AoSSimCPP.cpp
-s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(102): warning C4930: 'Unit unitB(void)': prototyped function not called (was a variable definition intended?)
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(123): warning C4101: 'SideB': unreferenced local variable
   AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.exe
   AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.pdb (Partial PDB)
-s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
-s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
-s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.
 c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
 c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
 c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(123): warning C6001: Using uninitialized memory 'SideA'.
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(91): warning C6001: Using uninitialized memory 'temp'.
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(104): warning C6001: Using uninitialized memory 'num'.
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.cpp(14): warning C6001: Using uninitialized memory 'time'.
