@@ -36,7 +36,7 @@ int Unit::MeleeAttack(Unit* target, int frontage)
 		wounds += (*m)->MeleeAttack(type);
 		i++;
 	}
-	std::cout << "Generate: " << wounds << " wounds!" << std::endl;
+	//std::cout << "Generate: " << wounds << " wounds!" << std::endl;
 	return wounds;
 }
 
@@ -62,7 +62,7 @@ bool Unit::TakeWounds(int count)
 			//std::cout << count << std::endl;
 		}
 	}
-	std::cout << "DING " << Models->size() << std::endl;
+	//std::cout << "DING " << Models->size() << std::endl;
 	return true;
 }
 
@@ -73,8 +73,9 @@ bool Unit::Battleshock()
 	int roll = Roll();
 	int bonus = floor(Models->size()/10);
 	int result = max(0, (roll + Losses) - (TypeModel->GetBravery() + bonus));
+	std::cout << "Battleshock - " << Name << " loses " << result << " models!" << std::endl;
 
-	if (result > Models->size())
+	if (result >= Models->size())
 	{
 		Models->clear();
 		return true;
@@ -84,6 +85,7 @@ bool Unit::Battleshock()
 	{
 		Models->pop_back();
 	}
+	return false;
 }
 
 void Unit::NewTurn()

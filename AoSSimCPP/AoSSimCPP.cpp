@@ -119,8 +119,13 @@ int main()
 
 	while (1)
 	{
-		Unit *SideA;
-		Unit *SideB;
+		Unit *SideA = new Unit(FacTable->GetModel("Saurus Warriors (Clubs)", "Seraphon"), 10);
+		Unit *SideB = new Unit(FacTable->GetModel("Liberators"), 5);
+		Battle b(SideA, SideB, 10);
+		b.Fight();
+
+		delete (SideA);
+		delete (SideB);
 
 		for (int i = 0; i < 8; i++) args[i] = "";
 		ss.clear();

@@ -28,8 +28,13 @@ void Battle::Fight()
 
 	while(1)
 	{
+
+		std::cout << firstSide->GetName() << ": " << firstSide->LiveCount() << " remaining." << std::endl;
+		std::cout << secondSide->GetName() << ": " << secondSide->LiveCount() << " remaining." << std::endl;
+
 		//Combat
 		int w = firstSide->MeleeAttack(secondSide, Frontage);
+		std::cout << firstSide->GetName() << " does " << w << " wounds." << std::endl;
 		if (secondSide->TakeWounds(w))
 		{
 			Winner = firstSide;
@@ -37,6 +42,7 @@ void Battle::Fight()
 		}
 
 		w = secondSide->MeleeAttack(firstSide, Frontage);
+		std::cout << secondSide->GetName() << " does " << w << " wounds." << std::endl;
 		if (firstSide->TakeWounds(w))
 		{
 			Winner = secondSide;

@@ -1,6 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  AoSSimCPP.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(123): warning C4101: 'SideB': unreferenced local variable
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  Unit.cpp
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(74): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(78): warning C4018: '>=': signed/unsigned mismatch
   AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.exe
   AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.pdb (Partial PDB)
 c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
