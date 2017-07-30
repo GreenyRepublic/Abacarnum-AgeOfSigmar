@@ -11,11 +11,12 @@
 #include "FactionTable.h"
 #include "Unit.h"
 #include "Battle.h"
+#include <ctime>
 
 #include "./PugiXML/pugixml.hpp"
 #include "./PugiXML/pugiconfig.hpp"
 
-#define version 0.1
+#define version 0.4
 
 //Parse model and weapon profiles into their databases
 void ParseData(FactionTable *table)
@@ -40,27 +41,6 @@ void ParseData(FactionTable *table)
 	else std::cout << "Could not find /data/faction_list.xml! Aborting data parse." << std::endl;
 
 	std::cout << "Successfully loaded " << table->GetCount() << " factions. Type 'list' for more details." << std::endl;
-}
-
-
-void PrintHelp()
-{
-	std::cout << "Available commands:" << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "help" << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "stats [name]" << std::endl; 
-	std::cout << std::endl;
-
-	std::cout << "list [name]" << std::endl;
-	std::cout << "- Lists all loaded weapon and model profiles for an entered faction name. Lists all factions if no name is entered." << std::endl;
-	std::cout << "  NOTE: Faction names must be entered all lower case with spaces removed. E.g. 'Stormcast Eternals' becomes 'stormcasteternals'" << std::endl;
-
-	std::cout << std::endl;
-
-	std::cout << "exit" << std::endl;
 }
 
 void List(const std::string name, FactionTable *ft)
@@ -104,6 +84,70 @@ Unit* SetSide(std::string input, FactionTable *fac)
 	return new Unit(fac->GetModel(mod), num);
 }
 
+//Crunches battle stats and shits out a file.
+void Numberwang(std::vector<BattleStats>* stats, int battlenum)
+{
+	float AWins = 0;
+
+	for (auto a = stats->begin(); a != stats->end(); a++)
+	{
+		AWins += (*a).winner;
+	}
+	AWins = (100 * AWins) / battlenum;
+	float BWins = 100 - AWins;
+
+	std::string AName = (*stats)[0].sideA;
+	std::string BName = (*stats)[0].sideB;
+
+	std::cout << AName << " won: " << AWins << "%" << std::endl;
+	std::cout << BName << " won: " << BWins << "%" << std::endl;
+
+	std::string Winner = (AWins > BWins) ? AName : BName;
+	int WinNum = (AWins > BWins) ? AWins : BWins;
+
+	//Write data to file.
+	time_t temp = time(0);
+	struct tm *Time = localtime(&temp);
+
+	std::stringstream ss; 
+	ss << "records/" << AName << "_vs_" << BName << "_" << (Time->tm_mday);
+	if (Time->tm_mon < 10) ss << 0; 
+	ss << (Time->tm_mon) << (Time->tm_year + 1900) << "_" << (Time->tm_sec) << (Time->tm_min);
+	ss << (Time->tm_hour) << ".txt";
+
+	std::string filename;
+	ss >> filename;
+
+	std::ofstream file;
+	file.open(filename);
+
+	file << AName << " versus " << BName << "\n";
+	file << stats->size() << " Battles Run\n";
+	file << "Most Wins: " << Winner << "(" << WinNum << " | " << (100*WinNum/stats->size()) << "%)";
+	
+	file.close();
+}
+
+enum MenuOption
+{
+	FightSingle,
+	FightBatch,
+	Encyclopaedia,
+	Exit
+};
+
+std::vector<std::string> MenuStrings{"Fight Single Battle", "Fight Batch Battles", "Encyclopaedia", "Exit"};
+
+void MainMenu()
+{
+	int j = 1;
+	for (auto i = MenuStrings.begin(); i != MenuStrings.end(); i++)
+	{
+		std::cout << j << ": " << (*i) << std::endl;
+		j++;
+	}
+}
+
 int main()
 {
 	std::cout << ToUpper("Welcome to the Age of Sigmar Fight-O-Matic v") << version << std::endl;
@@ -111,40 +155,37 @@ int main()
 	//Initialisation
 	FactionTable *FacTable = new FactionTable();
 	ParseData(FacTable);
+	std::wstring dir;
+
+	CreateDirectoryA("records", NULL);
 
 	//Begin console loop
 	std::string args[8];
 	std::string input;
 	std::stringstream ss;
-
+	
+	int battlenum = 100;
+	std::vector<BattleStats> battles;
 	while (1)
 	{
-		Unit *SideA = new Unit(FacTable->GetModel("Saurus Warriors (Clubs)", "Seraphon"), 10);
-		Unit *SideB = new Unit(FacTable->GetModel("Liberators"), 5);
-		Battle b(SideA, SideB, 10);
-		b.Fight();
-
-		delete (SideA);
-		delete (SideB);
-
-		for (int i = 0; i < 8; i++) args[i] = "";
-		ss.clear();
-
-		std::cout << "> ";
-		std::getline(std::cin, input);
-		ss << input;
-
-		for (int i = 0; i < 8; i++) { ss >> args[i]; }
+		MainMenu();
 		
-		if (args[0] == "help") { PrintHelp(); }
-		else if (args[0] == "list") { List(args[1], FacTable); }
-		else if (args[0] == "stats") { Stats(args[1] + args[2] + args[3] + args[4] + args[5] + args[6] + args[7], FacTable); }
-		else if (args[0] == "setA") { SideA = SetSide(args[1] + args[2] + args[3] + args[4] + args[5] + args[6] + args[7], FacTable); }
+		Unit* SideA = new Unit(FacTable->GetModel("Kroxigor", "Seraphon"), 3);
+		Unit* SideB = new Unit(FacTable->GetModel("Liberators"), 10);
+		
+		for (int i = 1; i < battlenum + 1; i++)
+		{
+			Unit* SideA = new Unit(FacTable->GetModel("Kroxigor", "Seraphon"), 3);
+			Unit* SideB = new Unit(FacTable->GetModel("Liberators"), 10);
+			std::cout << "Battle: " << i << "/" << battlenum << std::endl;
+			battles.push_back(Battle(SideA, SideB, 5));
+		}
 
-		else if (input == "exit") { break; }
-
-		else { std::cout << "Unrecognised Command! For a list type 'help'." << std::endl; }
+		Numberwang(&battles, battlenum);
+		break;
 	}
 
+	char s;
+	std::cin >> s;
     return 0;
 }

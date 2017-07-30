@@ -73,7 +73,7 @@ bool Unit::Battleshock()
 	int roll = Roll();
 	int bonus = floor(Models->size()/10);
 	int result = max(0, (roll + Losses) - (TypeModel->GetBravery() + bonus));
-	std::cout << "Battleshock - " << Name << " loses " << result << " models!" << std::endl;
+	//std::cout << "Battleshock - " << Name << " loses " << result << " models!" << std::endl;
 
 	if (result >= Models->size())
 	{

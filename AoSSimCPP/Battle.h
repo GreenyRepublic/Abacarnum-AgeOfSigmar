@@ -1,25 +1,13 @@
 #pragma once
-#include "stdafx.h"
 #include "Unit.h"
 
-class Battle
+typedef struct BattleStats
 {
-private:
-	Unit* Winner;
-	int Survivors;
+	bool winner;
+	std::string sideA;
+	std::string sideB;
+	int survivors;
+	int turns;
+} BattleStats;
 
-	int Frontage;
-	Unit* UnitA;
-	Unit* UnitB;
-	
-
-public:
-	Battle(Unit*, Unit*, int);
-	~Battle();
-
-	void Fight();
-
-	int GetSurvivors() { return Survivors; }
-	Unit* GetWinner() { return Winner; }
-};
-
+BattleStats Battle(Unit*, Unit*, int);
