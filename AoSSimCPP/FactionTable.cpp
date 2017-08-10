@@ -147,7 +147,6 @@ Model * FactionTable::GetModel(std::string name, std::string faction)
 				std::cout << "Cannot find model " << name << "! (" << ")" << std::endl;
 				return nullptr;
 			}
-			else continue;
 		}		
 	}
 }

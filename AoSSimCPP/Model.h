@@ -22,8 +22,8 @@ private:
 	std::string Faction;
 
 	//Weapon Lists
-	std::vector<Weapon*> *MeleeWeapons;
-	std::vector<Weapon*> *RangedWeapons;
+	std::vector<Weapon*> MeleeWeapons;
+	std::vector<Weapon*> RangedWeapons;
 
 public:
 	Model(std::string, int, int, int, int, int, int, std::string);

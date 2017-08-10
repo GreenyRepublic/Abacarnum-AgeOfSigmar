@@ -7,9 +7,9 @@
 
 Unit::Unit(Model* model, int number)
 {
-	Models = new std::vector<Model*>;
 	TypeModel = model;
-	for (int i = 0; i < number; i++) { Models->push_back(new Model(model)); }
+
+	for (int i = 0; i < number; i++) { Models.push_back(new Model(model)); }
 
 	Mult = ceil(number / model->GetSize());
 	PointsValue = Mult * model->GetCost();
@@ -19,8 +19,6 @@ Unit::Unit(Model* model, int number)
 
 Unit::~Unit()
 {
-	for (auto m = Models->begin(); m != Models->end(); m++)	delete(*m);
-	delete(Models);
 }
 
 //Attack a target.
@@ -30,10 +28,10 @@ int Unit::MeleeAttack(Unit* target, int frontage)
 	Model* type = target->TypeModel;
 	int wounds = 0;
 	int i = 0;
-	for (auto m = Models->begin(); m != Models->end(); m++)
+	for (auto m = Models.begin(); m != Models.end(); m++)
 	{
 		if (i == frontage) break;
-		wounds += (*m)->MeleeAttack(type);
+		wounds += (*m).MeleeAttack(type);
 		i++;
 	}
 	//std::cout << "Generate: " << wounds << " wounds!" << std::endl;
@@ -43,26 +41,26 @@ int Unit::MeleeAttack(Unit* target, int frontage)
 //Allocates wounds and returns whether or not the unit has been wiped out.
 bool Unit::TakeWounds(int count)
 {
-	while(Models->size() > 0)
+	while(Models.size() > 0)
 	{
-		//std::cout << Models->size() << std::endl;
-		Model *m = Models->at(Models->size()-1);
+		//std::cout << Models.size() << std::endl;
+		Model m = Models.at(Models.size()-1);
 
-		if (m->GetWounds() > count)
+		if (m.GetWounds() > count)
 		{
-			m->TakeWounds(count); 
+			m.TakeWounds(count); 
 			return false;
 		}
 
 		else 
 		{ 
-			count -= m->GetWounds();
-			Models->pop_back();
+			count -= m.GetWounds();
+			Models.pop_back();
 			Losses++;
 			//std::cout << count << std::endl;
 		}
 	}
-	//std::cout << "DING " << Models->size() << std::endl;
+	//std::cout << "DING " << Models.size() << std::endl;
 	return true;
 }
 
@@ -71,19 +69,19 @@ bool Unit::Battleshock()
 {
 	//Calculate losses.
 	int roll = Roll();
-	int bonus = floor(Models->size()/10);
+	int bonus = floor(Models.size()/10);
 	int result = max(0, (roll + Losses) - (TypeModel->GetBravery() + bonus));
 	//std::cout << "Battleshock - " << Name << " loses " << result << " models!" << std::endl;
 
-	if (result >= Models->size())
+	if (result >= Models.size())
 	{
-		Models->clear();
+		Models.clear();
 		return true;
 	}
 	
 	for (int i = 0; i < result; i++)
 	{
-		Models->pop_back();
+		Models.pop_back();
 	}
 	return false;
 }

@@ -40,19 +40,7 @@ void ParseData(FactionTable *table)
 	}
 	else std::cout << "Could not find /data/faction_list.xml! Aborting data parse." << std::endl;
 
-	std::cout << "Successfully loaded " << table->GetCount() << " factions. Type 'list' for more details." << std::endl;
-}
-
-void List(const std::string name, FactionTable *ft)
-{
-	if (!name.empty())
-	{
-		ft->ListFaction(name);
-	}
-	else
-	{
-		ft->ListAll();
-	}
+	std::cout << "Successfully loaded " << table->GetCount() << " factions. View the Encyclopaedia for more details." << std::endl;
 }
 
 void Stats(const std::string name, FactionTable *ft)
@@ -61,38 +49,24 @@ void Stats(const std::string name, FactionTable *ft)
 	if (mod != nullptr) mod->PrintStats();
 }
 
-Unit* SetSide(std::string input, FactionTable *fac)
-{
-	std::stringstream ss;
-	ss << input;
-	char temp[64];
-	std::string mod;
-	int num;
-	while (ss.getline(temp, 64, ' '))
-	{
-		try
-		{
-			num = std::stoi(temp);
-			break;
-		}
-		catch (std::exception _Xinvalid_argument)
-		{
-			mod += temp;
-		}
-	}
-	
-	return new Unit(fac->GetModel(mod), num);
-}
 
-//Crunches battle stats and shits out a file.
-void Numberwang(std::vector<BattleStats>* stats, int battlenum)
+//Crunches battle stats and poops out a file.
+void Numberwang(std::vector<BattleStats>* stats)
 {
 	float AWins = 0;
+	float ASurvivors = 0;
+	float BSurvivors = 0;
+	int battlenum = stats->size();
 
-	for (auto a = stats->begin(); a != stats->end(); a++)
+	for (auto i = stats->begin(); i != stats->end(); i++)
 	{
-		AWins += (*a).winner;
+		AWins += (*i).winner;
+		if ((*i).winner) ASurvivors += (*i).survivors;
+		else BSurvivors += (*i).survivors;
 	}
+	ASurvivors /= battlenum;
+	BSurvivors /= battlenum;
+
 	AWins = (100 * AWins) / battlenum;
 	float BWins = 100 - AWins;
 
@@ -117,28 +91,86 @@ void Numberwang(std::vector<BattleStats>* stats, int battlenum)
 
 	std::string filename;
 	ss >> filename;
-
 	std::ofstream file;
 	file.open(filename);
 
 	file << AName << " versus " << BName << "\n";
 	file << stats->size() << " Battles Run\n";
-	file << "Most Wins: " << Winner << "(" << WinNum << " | " << (100*WinNum/stats->size()) << "%)";
+	file << "Most Wins: " << Winner << "(" << WinNum << " | " << (100*WinNum/stats->size()) << "%)\n";
+	file << "Avg. Survivors/Win (" << AName << "): " << ASurvivors << "\n";
+	file << "Avg. Survivors/Win (" << BName << "): " << BSurvivors << "\n";
 	
 	file.close();
 }
 
-enum MenuOption
+void SingleBattle(){}
+
+	
+void BatchBattle(FactionTable *factable)
 {
-	FightSingle,
-	FightBatch,
-	Encyclopaedia,
-	Exit
+	using namespace std;
+
+	vector<BattleStats> battles;
+	stringstream ss;
+	string buffer;
+	string ModelA;
+	string ModelB;
+	int numA;
+	int numB;
+	int frontage;
+	int reps;
+
+
+	cout << "Please enter a model for Unit A: " << endl;
+	cin.ignore();
+	getline(cin, ModelA, '\n');
+	cout << "How many?" << endl;
+	cin >> buffer;
+	numA = stoi(buffer);
+		
+	std::cout << std::endl;
+
+	cout << "Please enter a model for Unit B: " << endl;
+	cin.ignore();
+	getline(cin, ModelB, '\n');
+	cout << "How many?" << endl;
+	cin >> buffer;
+	numB = stoi(buffer);
+
+	std::cout << std::endl;
+
+	//cout << "Please enter a battle width: " << endl;
+	//cin >> buffer;
+	//frontage = stoi(buffer);
+
+	cout << "Fight how many battles?" << endl;
+	cin >> buffer;
+	reps = stoi(buffer);
+
+	Model* A = factable->GetModel(ModelA);
+	Model* B = factable->GetModel(ModelB);
+
+	for (int i = 0; i < reps; i++)
+	{
+		Unit* SideA = new Unit(A, numA);
+		Unit* SideB = new Unit(B, numB);
+		battles.push_back(Battle(SideA, SideB, 10));
+		delete(SideA);
+		delete(SideB);
+	}
+	Numberwang(&battles);
+	std::cout << std::endl;
+}
+
+
+std::vector<std::string> MenuStrings{
+	"Fight Single Battle", 
+	"Fight Batch Battles", 
+	"Encyclopaedia", 
+	"Exit"
 };
 
-std::vector<std::string> MenuStrings{"Fight Single Battle", "Fight Batch Battles", "Encyclopaedia", "Exit"};
-
-void MainMenu()
+void PrintMainMenu()
 {
 	int j = 1;
 	for (auto i = MenuStrings.begin(); i != MenuStrings.end(); i++)
@@ -147,6 +179,16 @@ void MainMenu()
 		j++;
 	}
 }
+
+enum MenuOption
+{
+	FightSingle = 1,
+	FightBatch,
+	Encyclopaedia,
+	Exit
+};
+
+
 
 int main()
 {
@@ -159,33 +201,35 @@ int main()
 
 	CreateDirectoryA("records", NULL);
 
-	//Begin console loop
-	std::string args[8];
+	//Begin menu loop.
 	std::string input;
 	std::stringstream ss;
+	int opt;
 	
-	int battlenum = 100;
-	std::vector<BattleStats> battles;
 	while (1)
 	{
-		MainMenu();
-		
-		Unit* SideA = new Unit(FacTable->GetModel("Kroxigor", "Seraphon"), 3);
-		Unit* SideB = new Unit(FacTable->GetModel("Liberators"), 10);
-		
-		for (int i = 1; i < battlenum + 1; i++)
+		input.clear();
+		PrintMainMenu();
+
+		std::cin >> input;
+		opt = std::stoi(input);
+		switch ((MenuOption)opt)
 		{
-			Unit* SideA = new Unit(FacTable->GetModel("Kroxigor", "Seraphon"), 3);
-			Unit* SideB = new Unit(FacTable->GetModel("Liberators"), 10);
-			std::cout << "Battle: " << i << "/" << battlenum << std::endl;
-			battles.push_back(Battle(SideA, SideB, 5));
+		case(FightSingle):
+			std::cout << "Sorry this ain't available yet." << std::endl;
+			break;
+		case(FightBatch):
+			BatchBattle(FacTable);
+			break;
+		case(Encyclopaedia):
+			FacTable->ListAll();
+			break;
+		case (Exit):
+			exit(EXIT_SUCCESS);
+		default:
+			std::cout << "Invalid Entry!" << std::endl;
+			break;
 		}
-
-		Numberwang(&battles, battlenum);
-		break;
 	}
-
-	char s;
-	std::cin >> s;
-    return 0;
+    return EXIT_SUCCESS;
 }

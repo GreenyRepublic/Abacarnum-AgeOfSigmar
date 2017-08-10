@@ -6,7 +6,7 @@
 class Unit
 {
 private:
-	std::vector<Model*> *Models;
+	std::vector<Model> Models;
 	int PointsValue;
 	int Mult;
 	int Losses;
@@ -26,7 +26,7 @@ public:
 	bool Battleshock();
 
 	void NewTurn();
-	int LiveCount() { return Models->size(); }
+	int LiveCount() { return Models.size(); }
 	std::string GetName() { return Name; }
 	int GetLosses() { return Losses; }
 };
