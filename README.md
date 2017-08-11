@@ -12,6 +12,6 @@ Weapon and model definitions are defined in XML files in /data, a small number o
 
 
 ## Planned Features
-[ ] Basic special abilities.
-[ ] Ranged Combat.
-[ ] Refine UX a bit
+- [ ] Basic special abilities.
+- [ ] Ranged Combat.
+- [ ] Refine UX a bit
