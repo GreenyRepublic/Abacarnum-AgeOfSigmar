@@ -8,7 +8,7 @@ Weapon and model definitions are defined in XML files in /data, a small number o
 
 ## Features
 - Simulates melee combat between two units until one side is entirely destroyed.
-- Can fight batch combats and numher-cruncht the results to an output file.
+- Can fight batch combats and numher-crunch the results to an output file.
 
 
 ## Planned Features
