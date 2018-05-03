@@ -11,8 +11,8 @@ Unit::Unit(Model* model, int number)
 
 	for (int i = 0; i < number; i++) { Models.push_back(new Model(model)); }
 
-	Mult = ceil(number / model->GetSize());
-	PointsValue = Mult * model->GetCost();
+	modelsPerBatch = ceil(number / model->GetSize());
+	pointValue = modelsPerBatch * model->GetCost();
 	Losses = 0;
 	Name = model->GetName(false);
 }

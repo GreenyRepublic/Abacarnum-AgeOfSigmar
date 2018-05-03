@@ -1,15 +1,28 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  stdafx.cpp
   AoSSimCPP.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(80): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(84): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(80): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(84): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\time.h(505): note: see declaration of 'localtime'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(120): warning C4101: 'frontage': unreferenced local variable
-  AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.exe
-  AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.pdb (Partial PDB)
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.
-s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
-s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8151): warning C6384: Dividing sizeof a pointer by another value.
-s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8540): warning C6384: Dividing sizeof a pointer by another value.
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.cpp(14): warning C6001: Using uninitialized memory 'time'.
+s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(120): warning C4101: 'frontage': unreferenced local variable
+  Battle.cpp
+  Faction.cpp
+  FactionTable.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(169): warning C4101: 'fac': unreferenced local variable
+  Die.cpp
+  GameEntity.cpp
+  Model.cpp
+  Unit.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(71): error C3861: 'Roll': identifier not found
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(72): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(76): warning C4018: '>=': signed/unsigned mismatch
+  Weapon.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(43): error C3861: 'Roll': identifier not found
+s:\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(48): error C3861: 'Roll': identifier not found
+s:\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(60): error C3861: 'Roll': identifier not found
+  Compiling...
+  Generating Code...
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(112): warning C4715: 'FactionTable::GetFaction': not all control paths return a value
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(125): warning C4715: 'FactionTable::GetWeapon': not all control paths return a value
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(152): warning C4715: 'FactionTable::GetModel': not all control paths return a value

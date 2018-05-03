@@ -4,25 +4,28 @@
 
 #include "GameEntity.h"
 
-//Header for Weapon.cpp
+/*
+* Weapon: Encapsulates a weapon profile in AoS.
+* Contains stats/data as well as methods for resolving hit and wound rolls.
+*/
+
 class Weapon : public GameEntity
 {
 private:
 	
 	//Stats
-	int Range;
-	int Attacks;
-	int ToHit;
-	int ToWound;
-	int8_t Rend;
-	int Damage;
+	uint8_t Range,
+		Attacks,
+		toHit,
+		toWound,
+		Rend,
+		Damage;
 
 public:
-	Weapon(std::string, int, int, int, int, int, int);
+	Weapon(std::string, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t);
 	~Weapon();
 
 	void PrintStats();
-
 	bool HitRoll();
 	bool WoundRoll();
 

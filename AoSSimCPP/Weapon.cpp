@@ -5,36 +5,30 @@
 #include "Model.h"
 #include "GameEntity.h"
 
-/*
-* Weapon.cpp: Defines the weapon class.
-* Weapon: Encapsulates a weapon profile in AoS.
-* Contains stats/data as well as methods for resolving hit and wound rolls.
-*/
 
-Weapon::Weapon(std::string name, int range, int attacks, int tohit, int towound, int rend, int damage) : GameEntity(name)
+
+Weapon::Weapon(std::string name, uint8_t range, uint8_t attacks, uint8_t tohit, uint8_t towound, uint8_t rend, uint8_t damage) : GameEntity(name)
 {
 	Range = range;
 	Attacks = attacks;
-	ToHit = tohit;
-	ToWound = towound;
+	toHit = tohit;
+	toWound = towound;
 	Rend = rend;
 	Damage = damage;
-	//std::cout << "Weapon profile " << Name << " created!" << std::endl;
 }
 
 Weapon::~Weapon()
 {
-	//std::cout << "Weapon profile " << Name << " deleted!" << std::endl;
 }
 
 void Weapon::PrintStats()
 {
-	std::cout << "   |- " << "Ra: " << (int)Range << '"'
-			  << " | A: " << (int)Attacks 
-			  << " | H: " << (int)ToHit << "+"
-			  << " | W: " << (int)ToWound << "+"
-			  << " | Re: " << (int)Rend 
-			  << " | D: " << (int)Damage 
+	std::cout << " |- " << "Ra: " << Range << '"'
+			  << " | A: " << Attacks 
+			  << " | H: " << ToHit << "+"
+			  << " | W: " << ToWound << "+"
+			  << " | Re: " << Rend 
+			  << " | D: " << Damage 
 			  << std::endl;
 }
 

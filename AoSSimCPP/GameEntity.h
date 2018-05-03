@@ -2,7 +2,11 @@
 
 #include "stdafx.h"
 
-//Header for GameEntity.cpp
+/* 
+* GameEntity: Abstract class
+* Defines anything that has a name and belongs to some faction and can be stored in some database
+*/
+
 class GameEntity
 {
 protected:
@@ -13,8 +17,9 @@ protected:
 public:
 	GameEntity();
 	GameEntity(std::string);
-	~GameEntity();
+	virtual ~GameEntity();
 
+	virtual void PrintStats() = 0;
 	std::string GetName(bool);
 };
 

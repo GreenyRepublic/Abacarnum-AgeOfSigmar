@@ -1,20 +1,31 @@
 #pragma once
 #include "stdafx.h"
-
 #include "Model.h"
 
+
+/* Unit: Represents a unit as defined by a Warscroll
+ * A unit consists of one or more models (as defined by the warscroll). 
+ * A unit attacks as a unit, takes casualties as a unit, and takes battleshock tests as a unit
+ * Within the scope of this program no other data (position, etc) is needed
+ */
 class Unit
 {
 private:
 	std::vector<Model> Models;
-	int PointsValue;
-	int Mult;
-	int Losses;
+	uint8_t pointValue,
+		modelsPerBatch,
+		maxBatches, 
+		Losses;
+
 
 	//Since units in AoS are homogenuous (for now), we can store a reference to a 'type' model.
 	Model* TypeModel;
 
 	std::string Name;
+	std::vector<std::string> Keywords;
+
+	//For later
+	//std::vector<Ability> Abilities;
 
 
 public:
