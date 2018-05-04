@@ -55,7 +55,7 @@ BattleStats Battle(Unit* unita, Unit* unitb, int frontage)
 		std::swap(firstSide, secondSide);
 	}
 
-	survivors = Winner->LiveCount();
+	survivors = Winner->GetLive();
 	bool win = (Winner == unita) ? true : false;
 	//std::cout << "Winner: " << Winner->GetName() << " with " << survivors << " models remaining!" << std::endl;
 

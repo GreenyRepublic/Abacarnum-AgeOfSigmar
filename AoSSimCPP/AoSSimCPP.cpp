@@ -18,8 +18,8 @@
 
 #define version 0.4
 
-//Parse model and weapon profiles into their databases
-void ParseData(FactionTable *table)
+//Parse model and weapon profiles into their databases. Returns false if parsing fails for whatever reason.
+bool ParseData(FactionTable& table)
 {
 	using namespace pugi;
 
@@ -38,9 +38,14 @@ void ParseData(FactionTable *table)
 			//fac->PrintStats();
 		}
 	}
-	else std::cout << "Could not find /data/faction_list.xml! Aborting data parse." << std::endl;
+	else
+	{
+		std::cout << "Could not find /data/faction_list.xml! Aborting data parse." << std::endl;
+		return false;
+	}
 
 	std::cout << "Successfully loaded " << table->GetCount() << " factions. View the Encyclopaedia for more details." << std::endl;
+	return true;
 }
 
 void Stats(const std::string name, FactionTable *ft)
@@ -51,7 +56,7 @@ void Stats(const std::string name, FactionTable *ft)
 
 
 //Crunches battle stats and poops out a file.
-void Numberwang(std::vector<BattleStats>* stats)
+void Numberwang(std::vector<BattleStats>& stats)
 {
 	float AWins = 0;
 	float ASurvivors = 0;
@@ -106,7 +111,7 @@ void Numberwang(std::vector<BattleStats>* stats)
 void SingleBattle(){}
 
 	
-void BatchBattle(FactionTable *factable)
+void BatchBattle(FactionTable& factable)
 {
 	using namespace std;
 
@@ -170,16 +175,6 @@ std::vector<std::string> MenuStrings{
 	"Exit"
 };
 
-void PrintMainMenu()
-{
-	int j = 1;
-	for (auto i = MenuStrings.begin(); i != MenuStrings.end(); i++)
-	{
-		std::cout << j << ": " << (*i) << std::endl;
-		j++;
-	}
-}
-
 enum MenuOption
 {
 	FightSingle = 1,
@@ -187,6 +182,17 @@ enum MenuOption
 	Encyclopaedia,
 	Exit
 };
+
+void PrintMainMenu()
+{
+	int j = 1;
+	for (auto s : MenuStrings)
+	{
+		std::cout << j << ": " << s << std::endl;
+		j++;
+	}
+}
+
 
 
 
@@ -196,7 +202,8 @@ int main()
 
 	//Initialisation
 	FactionTable *FacTable = new FactionTable();
-	ParseData(FacTable);
+	bool parse = ParseData(FacTable);
+	if (!parse) return EXIT_FAILURE;
 	std::wstring dir;
 
 	CreateDirectoryA("records", NULL);
@@ -225,7 +232,7 @@ int main()
 			FacTable->ListAll();
 			break;
 		case (Exit):
-			exit(EXIT_SUCCESS);
+			break;
 		default:
 			std::cout << "Invalid Entry!" << std::endl;
 			break;

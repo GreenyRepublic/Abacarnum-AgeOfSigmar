@@ -1,50 +1,37 @@
-#include "stdafx.h"
-
 #include "FactionTable.h"
 
 
-//FactionTable.cpp: Root table of the faction databases.
-//Maps all faction names to their corresponding data tables.
-
 FactionTable::FactionTable()
-{
-	Factions = new std::map<std::string, Faction*>;
-}
+{}
 
 FactionTable::~FactionTable()
-{
-	delete Factions;
-}
+{}
 
 void FactionTable::AddFaction(std::string facname)
 {
-	Faction *faction = new Faction(facname);
+	Faction faction(facname);
 
 	std::string fileName;
 	pugi::xml_document facFile;
 
-	//Weapons first < IMPORTANT, MODELS NEED WEAPON REFERENCES
+	//Models need weapons, so we parse weapons first
 	fileName += "data/" + facname + "_weapons.xml";
-	//std::cout << fileName << std::endl;
 	pugi::xml_parse_result result = facFile.load_file(fileName.c_str());
 	if (result)
 	{
 		for (pugi::xml_node node = facFile.child("faction").child("weapon"); node; node = node.next_sibling("weapon"))
 		{
 			std::string name = node.attribute("name").value();
-			int range = std::stoi(node.child("range").child_value());
-			int attacks = std::stoi(node.child("attacks").child_value());
-			int tohit = std::stoi(node.child("tohit").child_value());
-			int towound = std::stoi(node.child("towound").child_value());
-			int rend = std::stoi(node.child("rend").child_value());
-			int damage = std::stoi(node.child("damage").child_value());
+			uint16_t range = std::stoi(node.child("range").child_value());
+			uint16_t attacks = std::stoi(node.child("attacks").child_value());
+			uint16_t tohit = std::stoi(node.child("tohit").child_value());
+			uint16_t towound = std::stoi(node.child("towound").child_value());
+			uint16_t rend = std::stoi(node.child("rend").child_value());
+			uint16_t damage = std::stoi(node.child("damage").child_value());
 
-			Weapon *weapon = new Weapon(name, range, attacks, tohit, towound, rend, damage);
-			faction->AddWeapon(weapon);
-			
-			//std::cout << "Added weapon " << name << " to faction " << facname << "." << std::endl;
+			Weapon weapon(name, range, attacks, tohit, towound, rend, damage);
+			faction.AddWeapon(weapon);
 		}
-
 	}
 
 	//Now load models.
@@ -56,10 +43,10 @@ void FactionTable::AddFaction(std::string facname)
 	{
 		for (pugi::xml_node node = facFile.child("faction").child("model"); node; node = node.next_sibling("model"))
 		{
-			int move;
-			int save;
-			int bravery;
-			int wounds;
+			uint16_t move;
+			uint16_t save;
+			uint16_t bravery;
+			uint16_t wounds;
 
 			std::string name = node.attribute("name").value();
 			
@@ -80,7 +67,7 @@ void FactionTable::AddFaction(std::string facname)
 			for (pugi::xml_node weapons = node.child("weapons").first_child(); weapons; weapons = weapons.next_sibling())
 			{
 				Weapon* weap;
-				weap = faction->GetWeapon(weapons.child_value());
+				weap = faction.GetWeapon(weapons.child_value());
 				if (weap == nullptr)
 				{
 					bad = 1;
@@ -93,11 +80,11 @@ void FactionTable::AddFaction(std::string facname)
 				else { model->AddWeapon(false, weap); }
 			}
 			if (bad) continue;
-			faction->AddModel(model);
+			faction.AddModel(model);
 			//std::cout << "Added model " << name << " to faction " << facname << "." << std::endl;
 		}
 		
-		Factions->insert(std::pair<std::string, Faction*>(facname, faction));
+		Factions.insert(std::pair<std::string, Faction*>(facname, faction));
 	}
 	//std::cout << "Successfully loaded " << Factions->size() << " factions" << std::endl;
 }

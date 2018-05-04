@@ -89,4 +89,5 @@ bool Unit::Battleshock()
 void Unit::NewTurn()
 {
 	Losses = 0;
+	for (auto model : Models) model.EndTurn();
 }

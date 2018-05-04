@@ -1,15 +1,12 @@
 #include "stdafx.h"
 
 #include "Weapon.h"
-#include "Die.h"
-#include "Model.h"
-#include "GameEntity.h"
 
 
 
 Weapon::Weapon(std::string name, uint8_t range, uint8_t attacks, uint8_t tohit, uint8_t towound, uint8_t rend, uint8_t damage) : GameEntity(name)
 {
-	Range = range;
+	Range = range; // This isn't really used right now.
 	Attacks = attacks;
 	toHit = tohit;
 	toWound = towound;
@@ -25,33 +22,32 @@ void Weapon::PrintStats()
 {
 	std::cout << " |- " << "Ra: " << Range << '"'
 			  << " | A: " << Attacks 
-			  << " | H: " << ToHit << "+"
-			  << " | W: " << ToWound << "+"
+			  << " | H: " << toHit << "+"
+			  << " | W: " << toWound << "+"
 			  << " | Re: " << Rend 
 			  << " | D: " << Damage 
 			  << std::endl;
 }
 
-bool Weapon::HitRoll()
+int Weapon::MakeRoll(uint8_t target)
 {
-	return (Roll() >= ToHit);
-}
-
-bool Weapon::WoundRoll()
-{
-	return (Roll() >= ToWound);
+	int target;
+	if (mods.tohit.first == Add) target = toHit + mods.hit.second;
+	if (mods.tohit.first == Divide) target = toHit / mods.hit.second;
+	if (mods.tohit.first == Multiply) target = toHit * mods.hit.second;
+	return (Die::Roll() >= target);
 }
 
 //This is longer than it needs to be right now, as I need it to be clean for possible expansion when I add abilities etc.
-int Weapon::GenerateWounds(int save)
+uint8_t Weapon::GenerateWounds(uint8_t save, Modifiers mods)
 {
 	int hits = 0;
 	int wounds = 0;
 	int saves = 0;
 
-	for (int i = 0; i < Attacks; i++) hits += (int)HitRoll();
-	for (int i = 0; i < hits; i++) wounds += (int)WoundRoll();
-	for (int i = 0; i < wounds; i++) saves += (int)((Roll() + Rend) >= save);
+	for (int i = 0; i < Attacks; i++) hits += MakeRoll(mods, toHit);
+	for (int i = 0; i < hits; i++) wounds += MakeRoll(mods, toWound);
+	for (int i = 0; i < wounds; i++) saves += ((Die::Roll() + Rend) >= save);
 
-	return (int) max(0, (wounds - saves) * Damage);
+	return (uint8_t) max(0, (wounds - saves) * Damage);
 }

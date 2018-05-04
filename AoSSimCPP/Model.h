@@ -1,7 +1,7 @@
 #pragma once
 #include "Weapon.h"
 #include "GameEntity.h"
-
+#include "Modifiers.h"
 #include <string>
 #include <vector>
 
@@ -10,6 +10,8 @@
 class Model : public GameEntity
 {
 private:
+	std::string Faction;
+
 	//Core Stats
 	uint16_t Move,
 		maxWounds,
@@ -24,10 +26,10 @@ private:
 	//Metadata
 	uint16_t unitSize,
 			 Cost;
-	std::string Faction;
 
 
 public:
+	Model(Model&);
 	Model(std::string, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, std::string);
 	~Model();
 
@@ -38,6 +40,7 @@ public:
 	int MeleeAttack(Model&);
 	int RangedAttack(Model&);
 	void TakeWounds(int);
+	void EndTurn();
 
 	int GetSave() { return Save; }
 	std::string GetFaction() { return Faction; }
