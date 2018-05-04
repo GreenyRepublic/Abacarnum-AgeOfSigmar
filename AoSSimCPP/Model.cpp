@@ -14,34 +14,23 @@
 
 //Initialise using raw stat values.
 //Used for reading from the model databases.
-Model::Model(std::string name, int move, int wounds, int bravery, int save, int unitsize, int cost, std::string faction) : GameEntity(name)
+Model::Model(std::string name, 
+	uint16_t move, 
+	uint16_t wounds, 
+	uint16_t bravery, 
+	uint16_t save, 
+	uint16_t unitsize, 
+	uint16_t cost, 
+	std::string faction) : GameEntity(name)
 {
 	Move = move;
-	MaxWounds = Wounds = wounds;
+	maxWounds = Wounds = wounds;
 	Bravery = bravery;
 	Save = save;
 	
-	UnitSize = unitsize;
+	unitSize = unitsize;
 	Cost = cost;
 	Faction = faction;
-}
-
-//Initialise using another model as a template.
-//Used for creating units by referencing the model database.
-Model::Model(Model *model) : GameEntity(model->Name)
-{
-	Move = model-> Move;
-	MaxWounds = Wounds = model-> Wounds;
-	Bravery = model-> Bravery;
-	Save = model-> Save;
-	
-	UnitSize = model-> UnitSize;
-	Cost = model-> Cost;
-
-	for (auto w = model->MeleeWeapons.begin(); w != model->MeleeWeapons.end(); w++){ AddWeapon(true, *w); }
-	for (auto w = model->RangedWeapons.begin(); w != model->RangedWeapons.end(); w++) { AddWeapon(false, *w); }
-
-	//std::cout << "Model profile " << Name << " created!" << std::endl;
 }
 
 Model::~Model()
@@ -62,33 +51,33 @@ void Model::PrintStats()
 	
 	std::cout << std::endl;
 	std::cout << "|==| MELEE WEAPONS |==|" << std::endl;
-	for (auto w = MeleeWeapons.begin(); w != MeleeWeapons.end(); w++)
+	for (auto w : meleeWeapons)
 	{
-		std::cout << " |o| " << (*w)->GetName(false) <<  std::endl;
-		(*w)->PrintStats();
+		std::cout << " |o| " << w.GetName(false) << std::endl;
+		w.PrintStats();
 	}
 
 	std::cout << std::endl;
 	std::cout << "|==| RANGED WEAPONS |==|" << std::endl;
-	for (auto w = RangedWeapons.begin(); w != RangedWeapons.end(); w++)
+	for (auto w : rangedWeapons)
 	{
-		std::cout << " |o| " << (*w)->GetName(false) << std::endl;
+		std::cout << " |o| " << w.GetName(false) << std::endl;
 	}
 	std::cout << std::endl;
 
 	std::cout << "|==| METADATA |==|" << std::endl;
-	std::cout << " |o| Unit Size: " << (int)UnitSize << std::endl;
+	std::cout << " |o| Unit Size: " << (int)unitSize << std::endl;
 	std::cout << " |o| Points Cost: " << (int)Cost << std::endl;
 	std::cout << " |o| Army Role: " << std::endl;
 }
 
 
-int Model::MeleeAttack(Model* target)
+int Model::MeleeAttack(Model& target)
 {
 	int wounds = 0;
-	for (auto w = MeleeWeapons.begin(); w != MeleeWeapons.end(); w++)
+	for (auto w : meleeWeapons)
 	{
-		wounds += (*w)->GenerateWounds(target->GetSave());
+		wounds += w.GenerateWounds(target.GetSave());
 	}
 	return wounds;
 }
@@ -98,8 +87,8 @@ void Model::TakeWounds(int count)
 	Wounds -= count;
 }
 
-void Model::AddWeapon(bool melee, Weapon* weapon)
+void Model::AddWeapon(bool melee, Weapon& weapon)
 {
-	if (melee) MeleeWeapons.push_back(weapon);
-	else RangedWeapons.push_back(weapon);
+	if (melee) meleeWeapons.push_back(weapon);
+	else rangedWeapons.push_back(weapon);
 }
