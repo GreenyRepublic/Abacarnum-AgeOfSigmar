@@ -1,11 +1,13 @@
 #pragma once
-#include <string>
-#include <vector>
-
+#include "stdafx.h"
 #include "GameEntity.h"
 #include "Die.h"
 #include "Model.h"
-#include "Modifiers.h"
+#include "Stats.h"
+
+#include <string>
+#include <vector>
+
 
 /*
 * Weapon: Encapsulates a weapon profile in AoS.
@@ -16,17 +18,12 @@ class Weapon : public GameEntity
 private:
 	
 	//Stats
-	uint8_t Range,
-		Attacks,
-		toHit,
-		toWound,
-		Rend,
-		Damage;
+	WeaponStats myStats;
 
 	//To be added
 	//std::vector<Ability> Abilities;
 
-	int MakeRoll(Modifiers, uint8_t);
+	int MakeRoll(uint8_t);
 
 public:
 	Weapon(std::string, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t);
@@ -35,6 +32,6 @@ public:
 	void PrintStats();
 	void EndTurn();
 
-	uint8_t GenerateWounds(uint8_t, Modifiers);
+	uint8_t GenerateWounds(uint8_t);
 };
 

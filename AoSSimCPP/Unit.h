@@ -14,9 +14,6 @@ private:
 		modelsPerBatch,
 		maxBatches, 
 		Losses;
-
-	//Since units in AoS are homogenuous (for now), we can store a reference to a 'type' model.
-	Model* TypeModel;
 	std::vector<Model> Models;
 
 	std::string Name;
@@ -30,7 +27,7 @@ public:
 	Unit(Model&, int);
 	~Unit();
 
-	int MeleeAttack(Unit* target, int frontage);
+	void MeleeAttack(Unit& target, int frontage);
 	bool TakeWounds(int count);
 	bool Battleshock();
 

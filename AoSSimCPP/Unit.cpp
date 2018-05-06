@@ -5,16 +5,13 @@
 #include "Die.h"
 
 
-Unit::Unit(Model* model, int number)
+Unit::Unit(Model& model, int count)
 {
-	TypeModel = model;
+	for (int i = 0; i < count; i++) { Models.push_back(Model(model)); }
 
-	for (int i = 0; i < number; i++) { Models.push_back(new Model(model)); }
-
-	modelsPerBatch = ceil(number / model->GetSize());
-	pointValue = modelsPerBatch * model->GetCost();
+	modelsPerBatch = ceil(count / model.GetSize());
+	pointValue = modelsPerBatch * model.GetCost();
 	Losses = 0;
-	Name = model->GetName(false);
 }
 
 Unit::~Unit()
@@ -22,20 +19,20 @@ Unit::~Unit()
 }
 
 //Attack a target.
-//Takes the profile model of the enemy unit, tests against it to generate wounds and returns those wounds.
-int Unit::MeleeAttack(Unit* target, int frontage)
+//Takes the profile model of the enemy unit, tests against it to generate wounds and slaps them on the enemy unit.
+void Unit::MeleeAttack(Unit& target, int frontage)
 {
-	Model* type = target->TypeModel;
+	Model& type = target.Models.front;
 	int wounds = 0;
 	int i = 0;
-	for (auto m = Models.begin(); m != Models.end(); m++)
+	for (auto m : Models)
 	{
 		if (i == frontage) break;
-		wounds += (*m).MeleeAttack(type);
+		wounds += m.MeleeAttack(type);
 		i++;
 	}
 	//std::cout << "Generate: " << wounds << " wounds!" << std::endl;
-	return wounds;
+	
 }
 
 //Allocates wounds and returns whether or not the unit has been wiped out.

@@ -5,15 +5,8 @@
 #include "Die.h"
 #include "GameEntity.h"
 
-/*
-* Model.cpp: Defines the model class.
-* Model: Encapsulates a single type of model in Age of Sigmar.
-* Contains core stats, pointers to weapons and abilities, and functions for taking actions relevant to a single model.
-* E.g Attacking with weapons, taking saving rolls.
-*/ 
-
 //Initialise using raw stat values.
-//Used for reading from the model databases.
+//Used for reading from the model database files.
 Model::Model(std::string name, 
 	uint16_t move, 
 	uint16_t wounds, 
@@ -21,21 +14,30 @@ Model::Model(std::string name,
 	uint16_t save, 
 	uint16_t unitsize, 
 	uint16_t cost, 
-	std::string faction) : GameEntity(name)
+	std::string faction) : GameEntity(name, faction)
 {
-	Move = move;
-	maxWounds = Wounds = wounds;
-	Bravery = bravery;
-	Save = save;
+	myStats.move = move;
+	myStats.wounds = myStats.currentWounds = wounds;
+	myStats.bravery = bravery;
+	myStats.save = save;
 	
 	unitSize = unitsize;
-	Cost = cost;
+	unitCost = cost;
 	Faction = faction;
 }
 
+//Copy an existing model
+
+/*Model::Model(const Model& reference)
+{
+	myStats = reference.myStats;
+	unitSize = reference.unitSize;
+	unitCost = reference.unitCost;
+	Faction = reference.Faction;
+}*/
+
 Model::~Model()
 {
-	//std::cout << "Model profile " << Name << " deleted!" << std::endl;
 }
 
 void Model::PrintStats()
@@ -44,30 +46,23 @@ void Model::PrintStats()
 	std::cout << "  || " << Faction << " ||  " << std::endl;
 	std::cout << std::endl;
 	std::cout << "|==| STATS |==|" << std::endl;
-	std::cout << " |o| Move: " << (int)Move << '"' << std::endl;
-	std::cout << " |o| Wounds: " << (int)Wounds << std::endl;
-	std::cout << " |o| Bravery: " << (int)Bravery << std::endl;
-	std::cout << " |o| Save: " << (int)Save << "+" << std::endl;
+	std::cout << " |o| Move: " << (int)myStats.move << '"' << std::endl;
+	std::cout << " |o| Wounds: " << (int)myStats.wounds << std::endl;
+	std::cout << " |o| Bravery: " << (int)myStats.bravery << std::endl;
+	std::cout << " |o| Save: " << (int)myStats.save << "+" << std::endl;
 	
 	std::cout << std::endl;
 	std::cout << "|==| MELEE WEAPONS |==|" << std::endl;
-	for (auto w : meleeWeapons)
-	{
-		std::cout << " |o| " << w.GetName(false) << std::endl;
-		w.PrintStats();
-	}
+	for (auto w : meleeWeapons) w.PrintStats();
 
 	std::cout << std::endl;
 	std::cout << "|==| RANGED WEAPONS |==|" << std::endl;
-	for (auto w : rangedWeapons)
-	{
-		std::cout << " |o| " << w.GetName(false) << std::endl;
-	}
-	std::cout << std::endl;
+	for (auto w : rangedWeapons) w.PrintStats();
 
+	std::cout << std::endl;
 	std::cout << "|==| METADATA |==|" << std::endl;
 	std::cout << " |o| Unit Size: " << (int)unitSize << std::endl;
-	std::cout << " |o| Points Cost: " << (int)Cost << std::endl;
+	std::cout << " |o| Points Cost: " << (int)unitCost << std::endl;
 	std::cout << " |o| Army Role: " << std::endl;
 }
 
@@ -75,16 +70,13 @@ void Model::PrintStats()
 int Model::MeleeAttack(Model& target)
 {
 	int wounds = 0;
-	for (auto w : meleeWeapons)
-	{
-		wounds += w.GenerateWounds(target.GetSave());
-	}
+	for (auto w : meleeWeapons) wounds += w.GenerateWounds(target.myStats.save);
 	return wounds;
 }
 
 void Model::TakeWounds(int count)
 {
-	Wounds -= count;
+	myStats.wounds -= count;
 }
 
 void Model::AddWeapon(bool melee, Weapon& weapon)

@@ -1,23 +1,23 @@
 #pragma once
 #include "Weapon.h"
 #include "GameEntity.h"
-#include "Modifiers.h"
+#include "Stats.h"
 #include <string>
 #include <vector>
 
-/*Model: 
+/*
+* Model: Encapsulates a single type of model in Age of Sigmar.
+* Contains core stats, weapons and abilities, and functions for taking actions relevant to a single model.
+* E.g Attacking with weapons, taking saving rolls.
 */
+
 class Model : public GameEntity
 {
 private:
 	std::string Faction;
 
 	//Core Stats
-	uint16_t Move,
-		maxWounds,
-		Wounds,
-		Bravery,
-		Save;
+	ModelStats myStats;
 
 	//Weapons
 	std::vector<Weapon&> meleeWeapons,
@@ -25,29 +25,27 @@ private:
 
 	//Metadata
 	uint16_t unitSize,
-			 Cost;
+			unitCost;
 
 
 public:
-	Model(Model&);
-	Model(std::string, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, std::string);
+	Model(const Model&);
+	Model(const std::string, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const std::string);
 	~Model();
 
 	void AddWeapon(bool, Weapon&);
 	void PrintStats();
 
-	//Combat rolls and stuff	
+	//Combat rolls	
 	int MeleeAttack(Model&);
 	int RangedAttack(Model&);
 	void TakeWounds(int);
 	void EndTurn();
 
-	int GetSave() { return Save; }
 	std::string GetFaction() { return Faction; }
 	int GetSize() { return unitSize; }
-	int GetCost() { return Cost; }
-	int GetWounds() { return Wounds; }
-	int GetBravery() { return Bravery; }
+	int GetCost() { return unitCost; }
+	ModelStats& getStats() { return myStats; }
 };
 
 

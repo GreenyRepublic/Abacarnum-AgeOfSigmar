@@ -6,7 +6,8 @@
 
 /* 
 * GameEntity: Abstract class
-* Defines anything that has a name and belongs to some faction and can be stored in some database
+* Defines any entity that exists 'on the table' in a game, whether literal or abstract.
+* Examples include units, models, weapons, and abilities.
 */
 
 class GameEntity
@@ -22,8 +23,8 @@ public:
 	
 	std::string GetName() { return Name; }
 	std::string GetFaction() { return Faction; }
-	virtual void EndTurn() = 0; //Triggers end-turn updates
-	virtual void PrintStats() = 0; 
+	virtual void EndTurn() = 0; //Resolve end-turn updates
+	virtual void PrintStats() = 0; //Prints information to the console
 
 	bool operator ==(const GameEntity&); //Case-insensitive equality operator
 };
