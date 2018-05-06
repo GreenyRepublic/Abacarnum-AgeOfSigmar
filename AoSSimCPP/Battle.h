@@ -5,9 +5,8 @@
 
 struct BattleStats
 {
-	bool winner;
-	std::string sideA;
-	std::string sideB;
+	std::string Winner;
+	std::string Loser;
 	int survivors;
 	int turns;
 };

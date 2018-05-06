@@ -26,6 +26,6 @@ public:
 	virtual void EndTurn() = 0; //Resolve end-turn updates
 	virtual void PrintStats() = 0; //Prints information to the console
 
-	bool operator ==(const GameEntity&); //Case-insensitive equality operator
+	bool operator ==(const GameEntity&); //Case-insensitive name comparison operator
 };
 

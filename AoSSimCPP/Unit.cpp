@@ -8,7 +8,7 @@
 Unit::Unit(Model& model, int count)
 {
 	for (int i = 0; i < count; i++) { Models.push_back(Model(model)); }
-
+	Name = model.GetName();
 	modelsPerBatch = ceil(count / model.GetSize());
 	pointValue = modelsPerBatch * model.GetCost();
 	Losses = 0;
@@ -31,59 +31,42 @@ void Unit::MeleeAttack(Unit& target, int frontage)
 		wounds += m.MeleeAttack(type);
 		i++;
 	}
-	//std::cout << "Generate: " << wounds << " wounds!" << std::endl;
-	
+	target.TakeWounds(wounds);
 }
 
-//Allocates wounds and returns whether or not the unit has been wiped out.
-bool Unit::TakeWounds(int count)
+//Allocates wounds and deletes if the unit has been wiped out.
+void Unit::TakeWounds(int count)
 {
 	while(Models.size() > 0)
 	{
 		//std::cout << Models.size() << std::endl;
-		Model m = Models.at(Models.size()-1);
+		Model m = Models.back;
 
-		if (m.GetWounds() > count)
-		{
-			m.TakeWounds(count); 
-			return false;
-		}
+		if (m.getStats().currentWounds > count)	m.TakeWounds(count); 
 
 		else 
 		{ 
-			count -= m.GetWounds();
+			count -= m.getStats().currentWounds;
 			Models.pop_back();
 			Losses++;
-			//std::cout << count << std::endl;
 		}
 	}
-	//std::cout << "DING " << Models.size() << std::endl;
-	return true;
 }
 
 //Resolves battleshock, with a bool returning if the unit has been wiped out or not.
-bool Unit::Battleshock()
+void Unit::Battleshock()
 {
 	//Calculate losses.
-	int roll = Roll();
-	int bonus = floor(Models.size()/10);
-	int result = max(0, (roll + Losses) - (TypeModel->GetBravery() + bonus));
+	int roll = Die::Roll();
+	int numbersBonus = floor(Models.size()/10);
+	int result = max(0, (roll + Losses) - (Models.front + numbersBonus));
 	//std::cout << "Battleshock - " << Name << " loses " << result << " models!" << std::endl;
 
-	if (result >= Models.size())
-	{
-		Models.clear();
-		return true;
-	}
-	
-	for (int i = 0; i < result; i++)
-	{
-		Models.pop_back();
-	}
-	return false;
+	if (result >= Models.size()) Models.clear();
+	for (int i = 0; i < result; i++) Models.pop_back();
 }
 
-void Unit::NewTurn()
+void Unit::EndTurn()
 {
 	Losses = 0;
 	for (auto model : Models) model.EndTurn();

@@ -31,10 +31,10 @@ bool ParseData(FactionTable& table)
 		for (xml_node node = factionDoc.child("factions").child("faction"); node; node = node.next_sibling("faction"))
 		{
 			//When a faction has been found parse out its individual data files.
-			table->AddFaction(node.child_value());
+			table.AddFaction(node.child_value());
 
 			//std::cout << "Found " << node.attribute("allegiance").value() << " faction " << node.child_value() << std::endl;
-			Faction* fac = table->GetFaction(node.child_value());
+			Faction* fac = table.GetFaction(node.child_value());
 			//fac->PrintStats();
 		}
 	}
@@ -44,13 +44,13 @@ bool ParseData(FactionTable& table)
 		return false;
 	}
 
-	std::cout << "Successfully loaded " << table->GetCount() << " factions. View the Encyclopaedia for more details." << std::endl;
+	std::cout << "Successfully loaded " << table.GetCount() << " factions. View the Encyclopaedia for more details." << std::endl;
 	return true;
 }
 
-void Stats(const std::string name, FactionTable *ft)
+void Stats(const std::string name, FactionTable& ft)
 {
-	Model* mod = ft->GetModel(name);
+	Model* mod = ft.GetModel(name);
 	if (mod != nullptr) mod->PrintStats();
 }
 

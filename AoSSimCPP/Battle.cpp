@@ -2,12 +2,12 @@
 #include "Battle.h"
 
 //Fight turn-by-turn until one side is wiped out.
-BattleStats Battle(Unit* unita, Unit* unitb, int frontage)
+BattleStats Battle(Unit& unita, Unit& unitb, int frontage)
 {
-	Unit* firstSide = unita;
-	Unit* secondSide = unitb;
-	Unit* Winner;
-
+	Unit& SideA = unita;
+	Unit& SideB = unitb;
+	std::string Winner;
+	std::string Loser;
 	int survivors;
 	int turns = 0;
 
@@ -15,49 +15,45 @@ BattleStats Battle(Unit* unita, Unit* unitb, int frontage)
 	//std::cout << firstSide->GetName() << std::endl;
 	//std::cout << secondSide->GetName() << std::endl;
 
-
-	Unit* mostLosses;
-
 	while(1)
 	{
-		turns++;
 		//std::cout << firstSide->GetName() << ": " << firstSide->LiveCount() << " remaining." << std::endl;
 		//std::cout << secondSide->GetName() << ": " << secondSide->LiveCount() << " remaining." << std::endl;
 
 		//Combat
-		int w = firstSide->MeleeAttack(secondSide, frontage);
-		//std::cout << firstSide->GetName() << " does " << w << " wounds." << std::endl;
-		if (secondSide->TakeWounds(w))
+		if (turns % 2 == 0)
 		{
-			Winner = firstSide;
-			break;
+			SideA.MeleeAttack(SideB, frontage);
+			SideB.MeleeAttack(SideA, frontage);
 		}
-
-		w = secondSide->MeleeAttack(firstSide, frontage);
-		//std::cout << secondSide->GetName() << " does " << w << " wounds." << std::endl;
-		if (firstSide->TakeWounds(w))
+		else
 		{
-			Winner = secondSide;
-			break;
+			SideB.MeleeAttack(SideA, frontage);
+			SideA.MeleeAttack(SideB, frontage);
 		}
-
+		
 		//Battleshock
-		mostLosses = (firstSide->GetLosses() > secondSide->GetLosses()) ? firstSide : secondSide;
-		if (mostLosses->Battleshock())
+		if (SideA.GetLosses() > SideB.GetLosses()) SideA.Battleshock();
+		else if (SideA.GetLosses() < SideB.GetLosses()) SideB.Battleshock();
+
+		if (SideA.GetLive() == 0)
 		{
-			Winner = (mostLosses == firstSide) ? secondSide : firstSide;
+			Winner = SideB.GetName;
+			Loser = SideA.GetName;
+			survivors = SideB.GetLive();
 			break;
 		}
 
-		firstSide->NewTurn();
-		secondSide->NewTurn();
+		else if (SideB.GetLive() == 0)
+		{
+			Winner = SideA.GetName;
+			Loser = SideB.GetName;
+			survivors = SideA.GetLive();
+			break;
+		}
 
-		std::swap(firstSide, secondSide);
+		turns++;
 	}
 
-	survivors = Winner->GetLive();
-	bool win = (Winner == unita) ? true : false;
-	//std::cout << "Winner: " << Winner->GetName() << " with " << survivors << " models remaining!" << std::endl;
-
-	return BattleStats{ win, unita->GetName(), unitb->GetName(), survivors, turns };
+	return BattleStats{ Winner, Loser, survivors, turns };
 }

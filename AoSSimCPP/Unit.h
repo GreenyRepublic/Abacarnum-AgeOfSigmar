@@ -28,10 +28,10 @@ public:
 	~Unit();
 
 	void MeleeAttack(Unit& target, int frontage);
-	bool TakeWounds(int count);
-	bool Battleshock();
+	void TakeWounds(int count);
+	void Battleshock();
 
-	void NewTurn();
+	void EndTurn();
 	int GetLive() { return Models.size(); }
 	int GetLosses() { return Losses; }	
 };
