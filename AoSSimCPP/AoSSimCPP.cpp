@@ -47,7 +47,7 @@ bool ParseData(FactionTable& table)
 	std::cout << "Successfully loaded " << table.GetCount() << " factions. View the Encyclopaedia for more details." << std::endl;
 	return true;
 }
-
+/*
 void Stats(const std::string name, FactionTable& ft)
 {
 	Model* mod = ft.GetModel(name);
@@ -165,7 +165,7 @@ void BatchBattle(FactionTable& factable)
 	}
 	Numberwang(&battles);
 	std::cout << std::endl;
-}
+}*/
 
 
 std::vector<std::string> MenuStrings{
@@ -201,7 +201,7 @@ int main()
 	std::cout << ToUpper("Welcome to the Age of Sigmar Fight-O-Matic v") << version << std::endl;
 
 	//Initialisation
-	FactionTable *FacTable = new FactionTable();
+	FactionTable FacTable;
 	bool parse = ParseData(FacTable);
 	if (!parse) return EXIT_FAILURE;
 	std::wstring dir;
@@ -226,10 +226,10 @@ int main()
 			std::cout << "Sorry this ain't available yet." << std::endl;
 			break;
 		case(FightBatch):
-			BatchBattle(FacTable);
+			//BatchBattle(FacTable);
 			break;
 		case(Encyclopaedia):
-			FacTable->ListAll();
+			FacTable.ListAll();
 			break;
 		case (Exit):
 			break;

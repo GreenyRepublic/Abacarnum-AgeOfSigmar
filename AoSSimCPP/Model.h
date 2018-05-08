@@ -2,6 +2,7 @@
 #include "Weapon.h"
 #include "GameEntity.h"
 #include "Stats.h"
+
 #include <string>
 #include <vector>
 
@@ -20,7 +21,7 @@ private:
 	ModelStats myStats;
 
 	//Weapons
-	std::vector<Weapon&> meleeWeapons,
+	std::vector<Weapon*> meleeWeapons,
 						rangedWeapons;
 
 	//Metadata
@@ -33,7 +34,7 @@ public:
 	Model(const std::string, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const std::string);
 	~Model();
 
-	void AddWeapon(bool, Weapon&);
+	void AddWeapon(bool, Weapon*);
 	void PrintStats();
 
 	//Combat rolls	

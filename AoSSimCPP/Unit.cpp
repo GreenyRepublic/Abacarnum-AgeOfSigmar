@@ -7,7 +7,7 @@
 
 Unit::Unit(Model& model, int count)
 {
-	for (int i = 0; i < count; i++) { Models.push_back(Model(model)); }
+	for (int i = 0; i < count; i++) { Models.push_back(new Model(model)); }
 	Name = model.GetName();
 	modelsPerBatch = ceil(count / model.GetSize());
 	pointValue = modelsPerBatch * model.GetCost();
@@ -28,7 +28,7 @@ void Unit::MeleeAttack(Unit& target, int frontage)
 	for (auto m : Models)
 	{
 		if (i == frontage) break;
-		wounds += m.MeleeAttack(type);
+		wounds += m->MeleeAttack(type);
 		i++;
 	}
 	target.TakeWounds(wounds);
@@ -69,5 +69,5 @@ void Unit::Battleshock()
 void Unit::EndTurn()
 {
 	Losses = 0;
-	for (auto model : Models) model.EndTurn();
+	for (auto model : Models) model->EndTurn();
 }

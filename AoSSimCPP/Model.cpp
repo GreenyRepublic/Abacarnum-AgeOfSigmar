@@ -53,11 +53,11 @@ void Model::PrintStats()
 	
 	std::cout << std::endl;
 	std::cout << "|==| MELEE WEAPONS |==|" << std::endl;
-	for (auto w : meleeWeapons) w.PrintStats();
+	for (auto w : meleeWeapons) w->PrintStats();
 
 	std::cout << std::endl;
 	std::cout << "|==| RANGED WEAPONS |==|" << std::endl;
-	for (auto w : rangedWeapons) w.PrintStats();
+	for (auto w : rangedWeapons) w->PrintStats();
 
 	std::cout << std::endl;
 	std::cout << "|==| METADATA |==|" << std::endl;
@@ -70,7 +70,7 @@ void Model::PrintStats()
 int Model::MeleeAttack(Model& target)
 {
 	int wounds = 0;
-	for (auto w : meleeWeapons) wounds += w.GenerateWounds(target.myStats.save);
+	for (auto w : meleeWeapons) wounds += w->GenerateWounds(target.myStats.save);
 	return wounds;
 }
 
@@ -79,7 +79,7 @@ void Model::TakeWounds(int count)
 	myStats.wounds -= count;
 }
 
-void Model::AddWeapon(bool melee, Weapon& weapon)
+void Model::AddWeapon(bool melee, Weapon* weapon)
 {
 	if (melee) meleeWeapons.push_back(weapon);
 	else rangedWeapons.push_back(weapon);

@@ -23,16 +23,6 @@ struct Modifier : GameEntity
 	void EndTurn();
 };
 
-struct WeaponModifier : Modifier, WeaponStats
-{
-	WeaponStats operator+(WeaponStats&); //Convolve a modifier with a base stat set
-};
-
-struct UnitModifier : Modifier, ModelStats
-{
-	ModelStats operator+(ModelStats&); //Convolve a modifier with a base stat set
-};
-
 struct WeaponStats
 {
 	//Weapon Stats
@@ -52,4 +42,15 @@ struct ModelStats
 		bravery,
 		wounds,
 		currentWounds;
+};
+
+
+struct WeaponModifier : Modifier, WeaponStats
+{
+	WeaponStats operator+(WeaponStats&); //Convolve a modifier with a base stat set
+};
+
+struct UnitModifier : Modifier, ModelStats
+{
+	ModelStats operator+(ModelStats&); //Convolve a modifier with a base stat set
 };

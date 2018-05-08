@@ -25,9 +25,9 @@ public:
 	int GetCount() { return Factions.size(); }
 
 	//Get data.
-	Faction& GetFaction(std::string);
-	Weapon& GetWeapon(std::string, std::string);
-	Model& GetModel(std::string, std::string);
+	Faction* GetFaction(std::string);
+	Weapon* GetWeapon(std::string, std::string);
+	Model* GetModel(std::string, std::string);
 
 	void ListAll();
 	void ListFaction(std::string facname);

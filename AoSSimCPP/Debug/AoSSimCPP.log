@@ -1,602 +1,208 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
-  stdafx.cpp
   AoSSimCPP.cpp
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(989): error C2528: 'pointer': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(941): note: see reference to class template instantiation 'std::allocator<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(408): note: see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(453): note: see reference to class template instantiation 'std::_Vec_base_types<_Ty,_Alloc>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(663): note: see reference to class template instantiation 'std::_Vector_alloc<std::_Vec_base_types<_Ty,_Alloc>>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): note: see reference to class template instantiation 'std::vector<Weapon &,std::allocator<_Ty>>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(990): error C2528: 'const_pointer': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1008): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1013): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1027): error C2528: '_Ptr': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1034): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1040): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(878): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(943): note: see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(879): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(898): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(904): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(411): note: see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Weapon &> >' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xtr1common(97): error C2528: '<template-parameter>': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): note: see reference to variable template 'const bool is_same_v< ?? *const volatile __based() * *>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(419): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(972): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(459): note: see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(973): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(995): error C2535: 'void std::vector<Weapon &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(989): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::push_back'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1078): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1072): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::insert'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1679): error C2528: 'data': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1684): error C2528: 'data': pointer to reference is illegal
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(80): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(84): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\time.h(505): note: see declaration of 'localtime'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2065: 'Weapon': undeclared identifier
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2059: syntax error: '>'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(662): note: see declaration of 'std::vector'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(37): error C2061: syntax error: identifier 'Weapon'
   Battle.cpp
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(989): error C2528: 'pointer': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(941): note: see reference to class template instantiation 'std::allocator<_Ty>' being compiled
+s:\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(41): error C2247: 'GameEntity::GetName' not accessible because 'Unit' uses 'private' to inherit from 'GameEntity'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(24): note: see declaration of 'GameEntity::GetName'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.h(10): note: see declaration of 'Unit'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(14): note: see declaration of 'GameEntity'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(41): error C3867: 'GameEntity::GetName': non-standard syntax; use '&' to create a pointer to member
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(41): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2464): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
           with
           [
-              _Ty=Weapon &
+              _Elem=char
           ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(408): note: see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2459): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
           with
           [
-              _Alloc=std::allocator<Weapon &>
+              _Elem=char
           ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(453): note: see reference to class template instantiation 'std::_Vec_base_types<_Ty,_Alloc>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2430): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2391): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
           with
           [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
+              _Elem=char
           ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(663): note: see reference to class template instantiation 'std::_Vector_alloc<std::_Vec_base_types<_Ty,_Alloc>>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2266): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(41): note: while trying to match the argument list '(std::string, overloaded-function)'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(42): error C2247: 'GameEntity::GetName' not accessible because 'Unit' uses 'private' to inherit from 'GameEntity'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(24): note: see declaration of 'GameEntity::GetName'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.h(10): note: see declaration of 'Unit'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(14): note: see declaration of 'GameEntity'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(42): error C3867: 'GameEntity::GetName': non-standard syntax; use '&' to create a pointer to member
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(42): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2464): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
           with
           [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
+              _Elem=char
           ]
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): note: see reference to class template instantiation 'std::vector<Weapon &,std::allocator<_Ty>>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2459): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
           with
           [
-              _Ty=Weapon &
+              _Elem=char
           ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(990): error C2528: 'const_pointer': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1008): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1013): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1027): error C2528: '_Ptr': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1034): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1040): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(878): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(943): note: see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2430): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2391): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
           with
           [
-              _Alloc=std::allocator<Weapon &>
+              _Elem=char
           ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(879): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(898): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(904): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(411): note: see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Weapon &> >' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xtr1common(97): error C2528: '<template-parameter>': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): note: see reference to variable template 'const bool is_same_v< ?? *const volatile __based() * *>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(419): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(972): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(459): note: see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2266): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(42): note: while trying to match the argument list '(std::string, overloaded-function)'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(49): error C2247: 'GameEntity::GetName' not accessible because 'Unit' uses 'private' to inherit from 'GameEntity'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(24): note: see declaration of 'GameEntity::GetName'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.h(10): note: see declaration of 'Unit'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(14): note: see declaration of 'GameEntity'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(49): error C3867: 'GameEntity::GetName': non-standard syntax; use '&' to create a pointer to member
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(49): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2464): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
           with
           [
-              _Ty=Weapon &
+              _Elem=char
           ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(973): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(995): error C2535: 'void std::vector<Weapon &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2459): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
           with
           [
-              _Ty=Weapon &
+              _Elem=char
           ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(989): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::push_back'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2430): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2391): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
           with
           [
-              _Ty=Weapon &
+              _Elem=char
           ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1078): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2266): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(49): note: while trying to match the argument list '(std::string, overloaded-function)'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(50): error C2247: 'GameEntity::GetName' not accessible because 'Unit' uses 'private' to inherit from 'GameEntity'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(24): note: see declaration of 'GameEntity::GetName'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.h(10): note: see declaration of 'Unit'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(14): note: see declaration of 'GameEntity'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(50): error C3867: 'GameEntity::GetName': non-standard syntax; use '&' to create a pointer to member
+s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(50): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2464): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
           with
           [
-              _Ty=Weapon &
+              _Elem=char
           ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1072): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::insert'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2459): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
           with
           [
-              _Ty=Weapon &
+              _Elem=char
           ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1679): error C2528: 'data': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1684): error C2528: 'data': pointer to reference is illegal
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2430): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2391): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
+          with
+          [
+              _Elem=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(2266): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(50): note: while trying to match the argument list '(std::string, overloaded-function)'
   Faction.cpp
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(989): error C2528: 'pointer': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(941): note: see reference to class template instantiation 'std::allocator<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(408): note: see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(453): note: see reference to class template instantiation 'std::_Vec_base_types<_Ty,_Alloc>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(663): note: see reference to class template instantiation 'std::_Vector_alloc<std::_Vec_base_types<_Ty,_Alloc>>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): note: see reference to class template instantiation 'std::vector<Weapon &,std::allocator<_Ty>>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(990): error C2528: 'const_pointer': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1008): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1013): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1027): error C2528: '_Ptr': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1034): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1040): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(878): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(943): note: see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(879): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(898): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(904): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(411): note: see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Weapon &> >' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xtr1common(97): error C2528: '<template-parameter>': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): note: see reference to variable template 'const bool is_same_v< ?? *const volatile __based() * *>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(419): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(972): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(459): note: see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(973): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(995): error C2535: 'void std::vector<Weapon &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(989): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::push_back'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1078): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1072): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::insert'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1679): error C2528: 'data': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1684): error C2528: 'data': pointer to reference is illegal
+s:\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2065: 'Weapon': undeclared identifier
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2059: syntax error: '>'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(24): error C2976: 'std::vector': too few template arguments
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(662): note: see declaration of 'std::vector'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(37): error C2061: syntax error: identifier 'Weapon'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\faction.cpp(30): error C2247: 'GameEntity::GetName' not accessible because 'Weapon' uses 'private' to inherit from 'GameEntity'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(24): note: see declaration of 'GameEntity::GetName'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\weapon.h(16): note: see declaration of 'Weapon'
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.h(14): note: see declaration of 'GameEntity'
   FactionTable.cpp
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(989): error C2528: 'pointer': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(941): note: see reference to class template instantiation 'std::allocator<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(408): note: see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(453): note: see reference to class template instantiation 'std::_Vec_base_types<_Ty,_Alloc>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(663): note: see reference to class template instantiation 'std::_Vector_alloc<std::_Vec_base_types<_Ty,_Alloc>>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): note: see reference to class template instantiation 'std::vector<Weapon &,std::allocator<_Ty>>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(990): error C2528: 'const_pointer': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1008): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1013): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1027): error C2528: '_Ptr': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1034): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1040): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(878): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(943): note: see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(879): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(898): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(904): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(411): note: see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Weapon &> >' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xtr1common(97): error C2528: '<template-parameter>': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): note: see reference to variable template 'const bool is_same_v< ?? *const volatile __based() * *>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(419): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(972): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(459): note: see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(973): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(995): error C2535: 'void std::vector<Weapon &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(989): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::push_back'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1078): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1072): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::insert'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1679): error C2528: 'data': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1684): error C2528: 'data': pointer to reference is illegal
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(92): error C2664: 'void Model::AddWeapon(bool,Weapon &)': cannot convert argument 2 from 'Weapon *' to 'Weapon &'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(93): error C2664: 'void Model::AddWeapon(bool,Weapon &)': cannot convert argument 2 from 'Weapon *' to 'Weapon &'
-  Die.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(157): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
   GameEntity.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(23): error C3867: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::begin': non-standard syntax; use '&' to create a pointer to member
+s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(23): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(1685): note: could be 'std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>> &std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>>::operator =(std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>> &&)'
+          with
+          [
+              _Ty=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(1685): note: or       'std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>> &std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>>::operator =(const std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>> &)'
+          with
+          [
+              _Ty=char
+          ]
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(23): note: while trying to match the argument list '(std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>>, overloaded-function)'
+          with
+          [
+              _Ty=char
+          ]
+s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(24): error C3867: 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>::end': non-standard syntax; use '&' to create a pointer to member
+s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(24): error C2678: binary '!=': no operator found which takes a left-hand operand of type 'std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>>' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=char
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(1527): note: could be 'bool std::_String_const_iterator<std::_String_val<std::_Simple_types<_Ty>>>::operator !=(const std::_String_const_iterator<std::_String_val<std::_Simple_types<_Ty>>> &) const'
+          with
+          [
+              _Ty=char
+          ]
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\shared\guiddef.h(197): note: or       'bool operator !=(const GUID &,const GUID &)'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\exception(334): note: or       'bool std::operator !=(const std::exception_ptr &,const std::exception_ptr &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\exception(339): note: or       'bool std::operator !=(std::nullptr_t,const std::exception_ptr &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\exception(344): note: or       'bool std::operator !=(const std::exception_ptr &,std::nullptr_t) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\system_error(377): note: or       'bool std::operator !=(const std::error_code &,const std::error_code &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\system_error(382): note: or       'bool std::operator !=(const std::error_code &,const std::error_condition &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\system_error(387): note: or       'bool std::operator !=(const std::error_condition &,const std::error_code &) noexcept' [found using argument-dependent lookup]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\system_error(392): note: or       'bool std::operator !=(const std::error_condition &,const std::error_condition &) noexcept' [found using argument-dependent lookup]
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(24): note: while trying to match the argument list '(std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>>, overloaded-function)'
+          with
+          [
+              _Ty=char
+          ]
+s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(24): error C2568: '!=': unable to resolve function overload
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(24): note: could be 'std::_String_const_iterator<std::_String_val<std::_Simple_types<_Ty>>> std::basic_string<char,std::char_traits<char>,std::allocator<_Ty>>::end(void) noexcept const'
+          with
+          [
+              _Ty=char
+          ]
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(24): note: or       'std::_String_iterator<std::_String_val<std::_Simple_types<_Ty>>> std::basic_string<char,std::char_traits<char>,std::allocator<_Ty>>::end(void) noexcept'
+          with
+          [
+              _Ty=char
+          ]
   Model.cpp
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(989): error C2528: 'pointer': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(941): note: see reference to class template instantiation 'std::allocator<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(408): note: see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(453): note: see reference to class template instantiation 'std::_Vec_base_types<_Ty,_Alloc>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(663): note: see reference to class template instantiation 'std::_Vector_alloc<std::_Vec_base_types<_Ty,_Alloc>>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): note: see reference to class template instantiation 'std::vector<Weapon &,std::allocator<_Ty>>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(990): error C2528: 'const_pointer': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1008): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1013): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1027): error C2528: '_Ptr': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1034): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1040): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(878): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(943): note: see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(879): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(898): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(904): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(411): note: see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Weapon &> >' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xtr1common(97): error C2528: '<template-parameter>': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): note: see reference to variable template 'const bool is_same_v< ?? *const volatile __based() * *>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(419): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(972): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(459): note: see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(973): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(995): error C2535: 'void std::vector<Weapon &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(989): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::push_back'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1078): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1072): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::insert'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1679): error C2528: 'data': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1684): error C2528: 'data': pointer to reference is illegal
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(54): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(62): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(78): error C2528: '<template-parameter>': pointer to reference is illegal
+s:\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(19): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(20): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(21): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(22): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
+  Stats.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\stats.cpp(32): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
   Unit.cpp
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(989): error C2528: 'pointer': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(941): note: see reference to class template instantiation 'std::allocator<_Ty>' being compiled
+s:\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(12): warning C4244: '=': conversion from 'double' to 'uint8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(25): error C3867: 'std::vector<Model *,std::allocator<_Ty>>::front': non-standard syntax; use '&' to create a pointer to member
           with
           [
-              _Ty=Weapon &
+              _Ty=Model *
           ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(408): note: see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(25): error C2530: 'type': references must be initialized
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(43): error C3867: 'std::vector<Model *,std::allocator<_Ty>>::back': non-standard syntax; use '&' to create a pointer to member
           with
           [
-              _Alloc=std::allocator<Weapon &>
+              _Ty=Model *
           ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(453): note: see reference to class template instantiation 'std::_Vec_base_types<_Ty,_Alloc>' being compiled
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(43): error C2512: 'Model': no appropriate default constructor available
+  s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(15): note: see declaration of 'Model'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(61): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(62): error C3867: 'std::vector<Model *,std::allocator<_Ty>>::front': non-standard syntax; use '&' to create a pointer to member
           with
           [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
+              _Ty=Model *
           ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(663): note: see reference to class template instantiation 'std::_Vector_alloc<std::_Vec_base_types<_Ty,_Alloc>>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): note: see reference to class template instantiation 'std::vector<Weapon &,std::allocator<_Ty>>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(990): error C2528: 'const_pointer': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1008): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1013): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1027): error C2528: '_Ptr': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1034): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1040): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(878): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(943): note: see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(879): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(898): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(904): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(411): note: see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Weapon &> >' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xtr1common(97): error C2528: '<template-parameter>': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): note: see reference to variable template 'const bool is_same_v< ?? *const volatile __based() * *>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(419): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(972): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(459): note: see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(973): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(995): error C2535: 'void std::vector<Weapon &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(989): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::push_back'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1078): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1072): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::insert'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1679): error C2528: 'data': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1684): error C2528: 'data': pointer to reference is illegal
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(12): error C2664: 'Model::Model(const Model &)': cannot convert argument 1 from 'Model *' to 'const Model &'
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(12): note: Reason: cannot convert from 'Model *' to 'const Model'
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(12): note: No constructor could take the source type, or constructor overload resolution was ambiguous
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(14): warning C4244: '=': conversion from 'double' to 'uint8_t', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(34): error C2664: 'int Model::MeleeAttack(Model &)': cannot convert argument 1 from 'Model *' to 'Model &'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(71): error C3861: 'Roll': identifier not found
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(72): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(76): warning C4018: '>=': signed/unsigned mismatch
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(65): warning C4018: '>=': signed/unsigned mismatch
   Weapon.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(989): error C2528: 'pointer': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(941): note: see reference to class template instantiation 'std::allocator<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(408): note: see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(453): note: see reference to class template instantiation 'std::_Vec_base_types<_Ty,_Alloc>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(663): note: see reference to class template instantiation 'std::_Vector_alloc<std::_Vec_base_types<_Ty,_Alloc>>' being compiled
-          with
-          [
-              _Ty=Weapon &,
-              _Alloc=std::allocator<Weapon &>
-          ]
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): note: see reference to class template instantiation 'std::vector<Weapon &,std::allocator<_Ty>>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(990): error C2528: 'const_pointer': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1008): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1013): error C2528: 'address': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1027): error C2528: '_Ptr': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1034): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(1040): error C2528: 'allocate': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(878): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(943): note: see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
-          with
-          [
-              _Alloc=std::allocator<Weapon &>
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(879): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(898): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(904): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(411): note: see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Weapon &> >' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xtr1common(97): error C2528: '<template-parameter>': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(961): note: see reference to variable template 'const bool is_same_v< ?? *const volatile __based() * *>' being compiled
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(962): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(419): error C2528: '<template-parameter>': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(972): error C2528: 'abstract declarator': pointer to reference is illegal
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(459): note: see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xmemory0(973): error C2528: 'abstract declarator': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(995): error C2535: 'void std::vector<Weapon &,std::allocator<_Ty>>::push_back(_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(989): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::push_back'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1078): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
-          with
-          [
-              _Ty=Weapon &
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1072): note: see declaration of 'std::vector<Weapon &,std::allocator<_Ty>>::insert'
-          with
-          [
-              _Ty=Weapon &
-          ]
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1679): error C2528: 'data': pointer to reference is illegal
-c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\vector(1684): error C2528: 'data': pointer to reference is illegal
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(28): error C2065: 'ToHit': undeclared identifier
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(29): error C2065: 'ToWound': undeclared identifier
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(37): error C3861: 'Roll': identifier not found
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(37): error C2065: 'ToHit': undeclared identifier
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(42): error C3861: 'Roll': identifier not found
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(42): error C2065: 'ToWound': undeclared identifier
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(54): error C3861: 'Roll': identifier not found
+s:\benfclark\documents\github\aossimcpp\aossimcpp\weapon.cpp(47): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
   Compiling...
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
+s:\benfclark\documents\github\aossimcpp\aossimcpp\die.h(15): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
   Generating Code...
