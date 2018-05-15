@@ -14,4 +14,18 @@
     <FUNCLINE>5</FUNCLINE>
     <PATH></PATH>
   </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>die.cpp</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>5</COLUMN>
+    </SFA>
+    <DEFECTCODE>26439</DEFECTCODE>
+    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>Die::{ctor}</FUNCTION>
+    <DECORATED>??0Die@@QAE@H@Z</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
 </DEFECTS>
