@@ -1,5 +1,4 @@
 #pragma once
-#include "stdafx.h"
 #include "GameEntity.h"
 
 /* Stats: Container structure for weapon and unit stats, and means to manipulate them

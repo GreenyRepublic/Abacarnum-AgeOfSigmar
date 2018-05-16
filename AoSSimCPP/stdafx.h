@@ -24,7 +24,9 @@
 #include <exception>
 #include <map>
 #include <vector>
+#include <random>
 #include <windows.h>
+#include <cstdlib>
 
 #include <ctype.h>
 

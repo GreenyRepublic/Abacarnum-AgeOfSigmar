@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 #include "Weapon.h"
 #include "Model.h"
 #include "Faction.h"

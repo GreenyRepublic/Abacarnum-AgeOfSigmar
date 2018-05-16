@@ -19,19 +19,14 @@ GameEntity::~GameEntity()
 
 bool GameEntity::operator==(const GameEntity& other)
 {
-	std::string::iterator myName, otherName;
-	for (myName = Name.begin, otherName = other.Name.begin;
-		myName != Name.end, otherName != other.Name.end;
-		myName, otherName++)
+	auto myName = Name.begin();
+	auto otherName = other.Name.begin();
+
+	while (myName != Name.end() && otherName != other.Name.end())
 	{
-		try
-		{
-			if (tolower(*myName) != tolower(*otherName)) return false;
-		}
-		catch (std::exception e)
-		{
-			return false;
-		}
+		try { if (tolower(*myName) != tolower(*otherName)) return false; }
+		catch (std::exception e) { return false; }
+		myName, otherName++;
 	}
 	return true;
 }

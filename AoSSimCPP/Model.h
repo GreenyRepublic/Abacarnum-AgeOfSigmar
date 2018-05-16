@@ -3,9 +3,6 @@
 #include "GameEntity.h"
 #include "Stats.h"
 
-#include <string>
-#include <vector>
-
 /*
 * Model: Encapsulates a single type of model in Age of Sigmar.
 * Contains core stats, weapons and abilities, and functions for taking actions relevant to a single model.
@@ -46,7 +43,7 @@ public:
 	std::string GetFaction() { return Faction; }
 	int GetSize() { return unitSize; }
 	int GetCost() { return unitCost; }
-	ModelStats& getStats() { return myStats; }
+	ModelStats& GetStats() { return myStats; }
 };
 
 

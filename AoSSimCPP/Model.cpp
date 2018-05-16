@@ -1,9 +1,5 @@
 #include "stdafx.h"
-
 #include "Model.h"
-#include "Weapon.h"
-#include "Die.h"
-#include "GameEntity.h"
 
 //Initialise using raw stat values.
 //Used for reading from the model database files.

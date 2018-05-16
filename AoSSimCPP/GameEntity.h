@@ -1,9 +1,5 @@
 #pragma once
 
-#include "stdafx.h"
-#include <algorithm>
-#include <string> 
-
 /* 
 * GameEntity: Abstract class
 * Defines any entity that exists 'on the table' in a game, whether literal or abstract.

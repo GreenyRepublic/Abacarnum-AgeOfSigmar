@@ -1,9 +1,9 @@
+#include "stdafx.h"
 #include "Weapon.h"
 
-
-
-Weapon::Weapon(std::string name, uint8_t range, uint8_t attacks, uint8_t tohit, uint8_t towound, uint8_t rend, uint8_t damage) : GameEntity(name)
+Weapon::Weapon(std::string name, uint8_t range, uint8_t attacks, uint8_t tohit, uint8_t towound, uint8_t rend, uint8_t damage)
 {
+	Name = name;
 	myStats.range = range; // This isn't really used right now.
 	myStats.attacks = attacks;
 	myStats.tohit = tohit;

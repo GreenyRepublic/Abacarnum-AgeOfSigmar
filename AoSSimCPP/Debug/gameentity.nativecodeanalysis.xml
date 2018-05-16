@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>gameentity.cpp</FILENAME>
+      <LINE>8</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>26439</DEFECTCODE>
+    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>GameEntity::{ctor}</FUNCTION>
+    <DECORATED>??0GameEntity@@QAE@XZ</DECORATED>
+    <FUNCLINE>8</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>gameentity.cpp</FILENAME>
+      <LINE>29</LINE>
+      <COLUMN>19</COLUMN>
+    </SFA>
+    <DEFECTCODE>26444</DEFECTCODE>
+    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
+    <FUNCTION>GameEntity::==</FUNCTION>
+    <DECORATED>??8GameEntity@@QAE_NABV0@@Z</DECORATED>
+    <FUNCLINE>20</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

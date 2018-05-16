@@ -1,7 +1,4 @@
 #pragma once
-#include <random>
-#include <iostream>
-#include <cstdlib>
 
 static class Die {
 public:

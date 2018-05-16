@@ -1,8 +1,5 @@
 #include "stdafx.h"
-
 #include "Unit.h"
-#include "Model.h"
-#include "Die.h"
 
 
 Unit::Unit(Model& model, int count)
@@ -22,7 +19,7 @@ Unit::~Unit()
 //Takes the profile model of the enemy unit, tests against it to generate wounds and slaps them on the enemy unit.
 void Unit::MeleeAttack(Unit& target, int frontage)
 {
-	Model& type = target.Models.front;
+	Model& type = *target.Models.back();
 	int wounds = 0;
 	int i = 0;
 	for (auto m : Models)
@@ -40,13 +37,13 @@ void Unit::TakeWounds(int count)
 	while(Models.size() > 0)
 	{
 		//std::cout << Models.size() << std::endl;
-		Model m = Models.back;
+		Model m = *Models.back();
 
-		if (m.getStats().currentWounds > count)	m.TakeWounds(count); 
+		if (m.GetStats().currentWounds > count)	m.TakeWounds(count); 
 
 		else 
 		{ 
-			count -= m.getStats().currentWounds;
+			count -= m.GetStats().currentWounds;
 			Models.pop_back();
 			Losses++;
 		}
@@ -59,7 +56,7 @@ void Unit::Battleshock()
 	//Calculate losses.
 	int roll = Die::Roll();
 	int numbersBonus = floor(Models.size()/10);
-	int result = max(0, (roll + Losses) - (Models.front + numbersBonus));
+	int result = max(0, (roll + Losses) - (Models.front()->GetStats().bravery + numbersBonus));
 	//std::cout << "Battleshock - " << Name << " loses " << result << " models!" << std::endl;
 
 	if (result >= Models.size()) Models.clear();
