@@ -23,14 +23,13 @@ Model::Model(std::string name,
 }
 
 //Copy an existing model
-
-/*Model::Model(const Model& reference)
+Model::Model(const Model& reference)
 {
 	myStats = reference.myStats;
 	unitSize = reference.unitSize;
 	unitCost = reference.unitCost;
 	Faction = reference.Faction;
-}*/
+}
 
 Model::~Model()
 {
@@ -38,30 +37,35 @@ Model::~Model()
 
 void Model::PrintStats()
 {
-	std::cout << "|<>| " << ToUpper(Name) << " |<>|" << std::endl;
-	std::cout << "  || " << Faction << " ||  " << std::endl;
 	std::cout << std::endl;
-	std::cout << "|==| STATS |==|" << std::endl;
-	std::cout << " |o| Move: " << (int)myStats.move << '"' << std::endl;
-	std::cout << " |o| Wounds: " << (int)myStats.wounds << std::endl;
-	std::cout << " |o| Bravery: " << (int)myStats.bravery << std::endl;
-	std::cout << " |o| Save: " << (int)myStats.save << "+" << std::endl;
+	std::cout << "|<>| " << ToUpper(Name) << " |<>|" << std::endl;
+	std::cout << std::endl;
+	std::cout << "	|==| STATS |==|" << std::endl;
+	std::cout << "	 |o| Move: " << (int)myStats.move << '"' << std::endl;
+	std::cout << "	 |o| Wounds: " << (int)myStats.wounds << std::endl;
+	std::cout << "	 |o| Bravery: " << (int)myStats.bravery << std::endl;
+	std::cout << "	 |o| Save: " << (int)myStats.save << "+" << std::endl;
 	
 	std::cout << std::endl;
-	std::cout << "|==| MELEE WEAPONS |==|" << std::endl;
+	std::cout << "	|==| MELEE WEAPONS |==|" << std::endl;
 	for (auto w : meleeWeapons) w->PrintStats();
 
 	std::cout << std::endl;
-	std::cout << "|==| RANGED WEAPONS |==|" << std::endl;
+	std::cout << "	|==| RANGED WEAPONS |==|" << std::endl;
 	for (auto w : rangedWeapons) w->PrintStats();
 
 	std::cout << std::endl;
-	std::cout << "|==| METADATA |==|" << std::endl;
-	std::cout << " |o| Unit Size: " << (int)unitSize << std::endl;
-	std::cout << " |o| Points Cost: " << (int)unitCost << std::endl;
-	std::cout << " |o| Army Role: " << std::endl;
+	std::cout << "	|==| METADATA |==|" << std::endl;
+	std::cout << "	 |o| Unit Size: " << (int)unitSize << std::endl;
+	std::cout << "	 |o| Points Cost: " << (int)unitCost << std::endl;
+	std::cout << "	 |o| Keywords: " << std::endl;
+	std::cout << std::endl;
 }
 
+void Model::EndTurn()
+{
+
+}
 
 int Model::MeleeAttack(Model& target)
 {

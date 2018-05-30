@@ -6,8 +6,7 @@ BattleStats Battle(Unit& unita, Unit& unitb, int frontage)
 {
 	Unit& SideA = unita;
 	Unit& SideB = unitb;
-	std::string Winner;
-	std::string Loser;
+	Side Winner;
 	int survivors;
 	int turns = 0;
 
@@ -38,16 +37,14 @@ BattleStats Battle(Unit& unita, Unit& unitb, int frontage)
 
 		if (SideA.GetLive() == 0)
 		{
-			Winner = SideB.GetName;
-			Loser = SideA.GetName;
+			Winner = Side::SideB;
 			survivors = SideB.GetLive();
 			break;
 		}
 
 		else if (SideB.GetLive() == 0)
 		{
-			Winner = SideA.GetName;
-			Loser = SideB.GetName;
+			Winner = Side::SideA;
 			survivors = SideA.GetLive();
 			break;
 		}
@@ -55,5 +52,5 @@ BattleStats Battle(Unit& unita, Unit& unitb, int frontage)
 		turns++;
 	}
 
-	return BattleStats{ Winner, Loser, survivors, turns };
+	return BattleStats{Winner, survivors, turns };
 }

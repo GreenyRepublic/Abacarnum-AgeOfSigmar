@@ -1,13 +1,10 @@
 #pragma once
+//Standard 6-sided die, basically a helper/macro for the <random> lib
 
-static class Die {
-public:
-	Die(int s = 6);
-	~Die();
-	static int Roll(int mods = 0);
-
-private:
+namespace Die {
+	static std::uniform_int_distribution<int> distribution;
 	static std::default_random_engine generator;
-	static std::uniform_int_distribution<int> dist;
-};
 
+	int Roll(int = 0);
+	void initDie();
+}

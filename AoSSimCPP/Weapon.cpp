@@ -18,14 +18,19 @@ Weapon::~Weapon()
 
 void Weapon::PrintStats()
 {
-	std::cout << " |o| " << this->Name << " "
-			  << " |- " << "Ra: " << myStats.range << '"'
-			  << " | A: " << myStats.attacks
-			  << " | H: " << myStats.tohit << "+"
-			  << " | W: " << myStats.towound << "+"
-			  << " | Re: " << myStats.rend
-			  << " | D: " << myStats.damage
+	std::cout << "	 |o| " << Name << " "
+			  << " |- " << "Range: " << (int)myStats.range << '"'
+			  << " | Attacks: " << (int)myStats.attacks
+			  << " | To Hit: " << (int)myStats.tohit << "+"
+			  << " | To Wound: " << (int)myStats.towound << "+"
+			  << " | Rend: " << (int)myStats.rend
+			  << " | Damage: " << (int)myStats.damage
 			  << std::endl;
+}
+
+void Weapon::EndTurn()
+{
+
 }
 
 int Weapon::MakeRoll(uint8_t target)

@@ -142,9 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
+    <ClInclude Include="Die.h" />
     <ClInclude Include="Faction.h" />
     <ClInclude Include="FactionTable.h" />
-    <ClInclude Include="Die.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Stats.h" />
@@ -156,9 +156,9 @@
   <ItemGroup>
     <ClCompile Include="AoSSimCPP.cpp" />
     <ClCompile Include="Battle.cpp" />
+    <ClCompile Include="Die.cpp" />
     <ClCompile Include="Faction.cpp" />
     <ClCompile Include="FactionTable.cpp" />
-    <ClCompile Include="Die.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Stats.cpp" />

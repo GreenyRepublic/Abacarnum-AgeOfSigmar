@@ -1,8 +1,7 @@
 #pragma once
-#include "Die.h"
-#include "Model.h"
 #include "GameEntity.h"
 #include "Stats.h"
+#include "Die.h"
 
 
 /*

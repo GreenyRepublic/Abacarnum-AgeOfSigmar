@@ -3,12 +3,16 @@
 
 //HAPPY NOW GARY? >:(
 
+
+enum Side {
+	SideA = 0,
+	SideB
+};
 struct BattleStats
 {
-	std::string Winner;
-	std::string Loser;
+	Side Winner;
 	int survivors;
 	int turns;
 };
 
-BattleStats Battle(Unit*, Unit*, int);
+BattleStats Battle(Unit&, Unit&, int);

@@ -10,7 +10,6 @@
 #include <tchar.h>
 
 
-
 // TODO: reference additional headers your program requires here
 
 #include <Windows.h>
@@ -27,7 +26,8 @@
 #include <random>
 #include <windows.h>
 #include <cstdlib>
-
+#include <ctime>
+#include <sstream>
 #include <ctype.h>
 
 void PrintHeader(std::string, int);

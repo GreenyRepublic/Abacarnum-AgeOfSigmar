@@ -1,14 +1,13 @@
 #include "stdafx.h"
 #include "Die.h"
 
-
-Die::Die(int s)
+void Die::initDie()
 {
-	generator = std::default_random_engine(GetTickCount());
-	dist = std::uniform_int_distribution<int>(1, s);
+	Die::distribution = std::uniform_int_distribution<int>(1, 6);
+	Die::generator = std::default_random_engine();
 }
 
-int Die::Roll(int mods)
+int Die::Roll(int modifier)
 {
-	return max(dist(generator) + mods, 0);	
+	return Die::distribution(generator) + modifier;
 }

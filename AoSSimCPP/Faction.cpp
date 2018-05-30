@@ -20,9 +20,9 @@ void Faction::PrintStats()
 	std::pair<std::string, Model*> p;
 	for (auto i : modelData)
 	{
-		Model* m = i.second;
-		std::cout << "|<>| " << m->GetName() << std::endl;
+		i.second->PrintStats();
 	}
+	std::cout << std::endl;
 }
 
 void Faction::AddWeapon(Weapon* weapon)

@@ -68,3 +68,5 @@ void Unit::EndTurn()
 	Losses = 0;
 	for (auto model : Models) model->EndTurn();
 }
+
+void Unit::PrintStats() { }

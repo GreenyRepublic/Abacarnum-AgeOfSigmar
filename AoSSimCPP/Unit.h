@@ -1,6 +1,5 @@
 #pragma once
 #include "Model.h"
-#include "Die.h"
 
 /* Unit: As defined by a Warscroll
  * A unit consists of one or more models (as defined by the warscroll). 
@@ -32,6 +31,8 @@ public:
 	void Battleshock();
 
 	void EndTurn();
+	void PrintStats();
+
 	int GetLive() { return Models.size(); }
 	int GetLosses() { return Losses; }	
 };

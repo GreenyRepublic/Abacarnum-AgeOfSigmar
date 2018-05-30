@@ -2,21 +2,17 @@
 //
 
 #include "stdafx.h"
-
-#include <sstream>
-
+#include "Die.h"
 #include "Weapon.h"
 #include "Model.h"
-#include "Die.h"
 #include "FactionTable.h"
 #include "Unit.h"
 #include "Battle.h"
-#include <ctime>
 
 #include "./PugiXML/pugixml.hpp"
 #include "./PugiXML/pugiconfig.hpp"
 
-#define version 0.4
+#define version 0.55
 
 //Parse model and weapon profiles into their databases. Returns false if parsing fails for whatever reason.
 bool ParseData(FactionTable& table)
@@ -34,7 +30,7 @@ bool ParseData(FactionTable& table)
 			table.AddFaction(node.child_value());
 
 			//std::cout << "Found " << node.attribute("allegiance").value() << " faction " << node.child_value() << std::endl;
-			Faction* fac = table.GetFaction(node.child_value());
+			//Faction* fac = table.GetFaction(node.child_value());
 			//fac->PrintStats();
 		}
 	}
@@ -47,36 +43,32 @@ bool ParseData(FactionTable& table)
 	std::cout << "Successfully loaded " << table.GetCount() << " factions. View the Encyclopaedia for more details." << std::endl;
 	return true;
 }
-/*
+
 void Stats(const std::string name, FactionTable& ft)
 {
 	Model* mod = ft.GetModel(name);
 	if (mod != nullptr) mod->PrintStats();
 }
 
-
 //Crunches battle stats and poops out a file.
-void Numberwang(std::vector<BattleStats>& stats)
+void Numberwang(std::vector<BattleStats>& stats, std::string& AName, std::string& BName)
 {
 	float AWins = 0;
 	float ASurvivors = 0;
 	float BSurvivors = 0;
-	int battlenum = stats->size();
+	int battlenum = stats.size();
 
-	for (auto i = stats->begin(); i != stats->end(); i++)
+	for (auto i : stats)
 	{
-		AWins += (*i).winner;
-		if ((*i).winner) ASurvivors += (*i).survivors;
-		else BSurvivors += (*i).survivors;
+		AWins += (i.Winner == Side::SideA);
+		if (i.Winner == Side::SideA) ASurvivors += i.survivors;
+		else BSurvivors += i.survivors;
 	}
 	ASurvivors /= battlenum;
 	BSurvivors /= battlenum;
 
 	AWins = (100 * AWins) / battlenum;
 	float BWins = 100 - AWins;
-
-	std::string AName = (*stats)[0].sideA;
-	std::string BName = (*stats)[0].sideB;
 
 	std::cout << AName << " won: " << AWins << "%" << std::endl;
 	std::cout << BName << " won: " << BWins << "%" << std::endl;
@@ -100,8 +92,8 @@ void Numberwang(std::vector<BattleStats>& stats)
 	file.open(filename);
 
 	file << AName << " versus " << BName << "\n";
-	file << stats->size() << " Battles Run\n";
-	file << "Most Wins: " << Winner << "(" << WinNum << " | " << (100*WinNum/stats->size()) << "%)\n";
+	file << stats.size() << " Battles Run\n";
+	file << "Most Wins: " << Winner << "(" << WinNum << " | " << (100*WinNum/stats.size()) << "%)\n";
 	file << "Avg. Survivors/Win (" << AName << "): " << ASurvivors << "\n";
 	file << "Avg. Survivors/Win (" << BName << "): " << BSurvivors << "\n";
 	
@@ -110,21 +102,14 @@ void Numberwang(std::vector<BattleStats>& stats)
 
 void SingleBattle(){}
 
-	
 void BatchBattle(FactionTable& factable)
 {
 	using namespace std;
 
 	vector<BattleStats> battles;
 	stringstream ss;
-	string buffer;
-	string ModelA;
-	string ModelB;
-	int numA;
-	int numB;
-	int frontage;
-	int reps;
-
+	string buffer, ModelA, ModelB;
+	int numA, numB, frontage, reps;
 
 	cout << "Please enter a model for Unit A: " << endl;
 	cin.ignore();
@@ -132,6 +117,10 @@ void BatchBattle(FactionTable& factable)
 	cout << "How many?" << endl;
 	cin >> buffer;
 	numA = stoi(buffer);
+
+	Model* A = factable.GetModel(ModelA); 
+	
+	
 		
 	std::cout << std::endl;
 
@@ -142,40 +131,36 @@ void BatchBattle(FactionTable& factable)
 	cin >> buffer;
 	numB = stoi(buffer);
 
-	std::cout << std::endl;
+	Model* B = factable.GetModel(ModelB);
 
 	//cout << "Please enter a battle width: " << endl;
 	//cin >> buffer;
 	//frontage = stoi(buffer);
 
-	cout << "Fight how many battles?" << endl;
+	cout << std::endl << "Fight how many battles?" << endl;
 	cin >> buffer;
 	reps = stoi(buffer);
 
-	Model* A = factable->GetModel(ModelA);
-	Model* B = factable->GetModel(ModelB);
 
 	for (int i = 0; i < reps; i++)
 	{
-		Unit* SideA = new Unit(A, numA);
-		Unit* SideB = new Unit(B, numB);
+		Unit SideA(*A, numA);
+		Unit SideB(*B, numB);
 		battles.push_back(Battle(SideA, SideB, 10));
-		delete(SideA);
-		delete(SideB);
 	}
-	Numberwang(&battles);
+	Numberwang(battles, A->GetName(), A->GetName());
 	std::cout << std::endl;
-}*/
+}
 
 
-std::vector<std::string> MenuStrings{
+std::vector<std::string> TopMenuStrings{
 	"Fight Single Battle", 
 	"Fight Batch Battles", 
 	"Encyclopaedia", 
 	"Exit"
 };
 
-enum MenuOption
+enum TopMenuOptions
 {
 	FightSingle = 1,
 	FightBatch,
@@ -186,32 +171,44 @@ enum MenuOption
 void PrintMainMenu()
 {
 	int j = 1;
-	for (auto s : MenuStrings)
+	for (auto s : TopMenuStrings)
 	{
 		std::cout << j << ": " << s << std::endl;
 		j++;
 	}
 }
 
+//Options for navigating encyclopedia entries
+void Encyclopedia(FactionTable& table)
+{
+	std::string input;
+	unsigned int opt;
+	while (1)
+	{
+		table.ListAll(true);
+		std::cout << "Enter a faction number or name for a full list of models, or enter '0' to return to the main menu." << std::endl;
+		std::cin >> input;
+		opt = std::stoi(input);
 
-
+		if (opt == 0) break;
+		else (table.ListFaction(opt));
+	}
+}
 
 int main()
 {
-	std::cout << ToUpper("Welcome to the Age of Sigmar Fight-O-Matic v") << version << std::endl;
+	std::cout << ToUpper("Welcome to the Age of Sigmar BattleSim v") << version << std::endl;
 
 	//Initialisation
+	Die::initDie();
 	FactionTable FacTable;
 	bool parse = ParseData(FacTable);
 	if (!parse) return EXIT_FAILURE;
-	std::wstring dir;
-
 	CreateDirectoryA("records", NULL);
 
 	//Begin menu loop.
 	std::string input;
-	std::stringstream ss;
-	int opt;
+	unsigned int opt;
 	
 	while (1)
 	{
@@ -220,18 +217,19 @@ int main()
 
 		std::cin >> input;
 		opt = std::stoi(input);
-		switch ((MenuOption)opt)
+		switch ((TopMenuOptions)opt)
 		{
 		case(FightSingle):
 			std::cout << "Sorry this ain't available yet." << std::endl;
 			break;
 		case(FightBatch):
-			//BatchBattle(FacTable);
+			BatchBattle(FacTable);
 			break;
 		case(Encyclopaedia):
-			FacTable.ListAll();
+			Encyclopedia(FacTable);
 			break;
 		case (Exit):
+			return EXIT_SUCCESS;
 			break;
 		default:
 			std::cout << "Invalid Entry!" << std::endl;

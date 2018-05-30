@@ -2,6 +2,7 @@
 #include "Weapon.h"
 #include "GameEntity.h"
 #include "Stats.h"
+#include "Die.h"
 
 /*
 * Model: Encapsulates a single type of model in Age of Sigmar.

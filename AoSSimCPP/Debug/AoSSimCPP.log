@@ -1,131 +1,75 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
   AoSSimCPP.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2065: 'Weapon': undeclared identifier
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2059: syntax error: '>'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2976: 'std::vector': too few template arguments
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(674): note: see declaration of 'std::vector'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(34): error C2061: syntax error: identifier 'Weapon'
-  Battle.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(41): error C3867: 'GameEntity::GetName': non-standard syntax; use '&' to create a pointer to member
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(41): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2483): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2478): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2447): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2408): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2283): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept'
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(41): note: while trying to match the argument list '(std::string, overloaded-function)'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(42): error C3867: 'GameEntity::GetName': non-standard syntax; use '&' to create a pointer to member
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(42): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2483): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2478): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2447): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2408): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2283): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept'
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(42): note: while trying to match the argument list '(std::string, overloaded-function)'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(49): error C3867: 'GameEntity::GetName': non-standard syntax; use '&' to create a pointer to member
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(49): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2483): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2478): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2447): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2408): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2283): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept'
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(49): note: while trying to match the argument list '(std::string, overloaded-function)'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(50): error C3867: 'GameEntity::GetName': non-standard syntax; use '&' to create a pointer to member
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(50): error C2679: binary '=': no operator found which takes a right-hand operand of type 'overloaded-function' (or there is no acceptable conversion)
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2483): note: could be 'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2478): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const _Elem *const )'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2447): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)'
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2408): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::initializer_list<_Elem>)'
-          with
-          [
-              _Elem=char
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\xstring(2283): note: or       'std::basic_string<char,std::char_traits<char>,std::allocator<char>> &std::basic_string<char,std::char_traits<char>,std::allocator<char>>::operator =(std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&) noexcept'
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\battle.cpp(50): note: while trying to match the argument list '(std::string, overloaded-function)'
-  Faction.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2065: 'Weapon': undeclared identifier
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2059: syntax error: '>'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2976: 'std::vector': too few template arguments
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(674): note: see declaration of 'std::vector'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(34): error C2061: syntax error: identifier 'Weapon'
-  FactionTable.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2065: 'Weapon': undeclared identifier
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2059: syntax error: '>'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2976: 'std::vector': too few template arguments
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(674): note: see declaration of 'std::vector'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(34): error C2061: syntax error: identifier 'Weapon'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(33): warning C4244: 'argument': conversion from 'uint16_t' to 'uint8_t', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(79): error C2660: 'Model::AddWeapon': function does not take 2 arguments
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(34): note: see declaration of 'Model::AddWeapon'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(80): error C2660: 'Model::AddWeapon': function does not take 2 arguments
-  c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(34): note: see declaration of 'Model::AddWeapon'
-  Model.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(15): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(16): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(17): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(18): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
-  Unit.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(9): warning C4244: '=': conversion from 'double' to 'uint8_t', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(58): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(62): warning C4018: '>=': signed/unsigned mismatch
-  Weapon.cpp
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2065: 'Weapon': undeclared identifier
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2059: syntax error: '>'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(21): error C2976: 'std::vector': too few template arguments
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.14.26428\include\vector(674): note: see declaration of 'std::vector'
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\model.h(34): error C2061: syntax error: identifier 'Weapon'
-  Compiling...
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-c:\users\benfclark\documents\github\aossimcpp\aossimcpp\die.h(12): warning C4091: 'static ': ignored on left of 'Die' when no variable is declared
-  Generating Code...
+s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(77): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(81): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\time.h(505): note: see declaration of 'localtime'
+s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(112): warning C4101: 'frontage': unreferenced local variable
+  AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.exe
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(44): warning C26434: Function 'Model::GetFaction' hides a non-virtual function 'GameEntity::GetFaction' (c.128).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(2396): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(3685): warning C26495: Variable 'pugi::impl::xml_buffered_writer::buffer' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(4440): warning C28182: Dereferencing NULL pointer. 'dit' contains the same NULL value as 'copy' did. 
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(5058): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(5081): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(5363): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(6347): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(6586): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(6647): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(6708): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(6778): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(6818): warning C26495: Variable 'pugi::xml_document::_memory' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(6818): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(7505): warning C26495: Variable 'pugi::impl::xpath_stack_data::blocks' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(7505): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(7571): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8050): warning C6054: String 'mantissa_buffer' might not be zero-terminated.
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8381): warning C26495: Variable 'pugi::impl::xpath_variable_boolean::name' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8381): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8391): warning C26495: Variable 'pugi::impl::xpath_variable_number::name' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8391): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8401): warning C26495: Variable 'pugi::impl::xpath_variable_string::name' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8401): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8416): warning C26495: Variable 'pugi::impl::xpath_variable_node_set::name' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8416): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8631): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8793): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8814): warning C26495: Variable 'pugi::impl::xpath_lexer::_cur_lexeme_pos' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(9999): warning C26495: Variable 'pugi::impl::xpath_ast_node::_data' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(10011): warning C26495: Variable 'pugi::impl::xpath_ast_node::_data' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(10484): warning C26451: Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(10489): warning C26451: Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(10460): warning C26451: Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(11595): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(11714): warning C26495: Variable 'pugi::impl::xpath_parser::_scratch' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(11757): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(11808): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(11929): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(11959): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(11964): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12018): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12129): warning C26495: Variable 'pugi::xpath_variable_set::_data' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12129): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12141): warning C26495: Variable 'pugi::xpath_variable_set::_data' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12159): warning C26495: Variable 'pugi::xpath_variable_set::_data' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12159): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12168): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12351): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12362): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(12370): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(4490): warning C26451: Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(4492): warning C26451: Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(4492): warning C26451: Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(4514): warning C26451: Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(4820): warning C26495: Variable 'pugi::impl::xml_stream_chunk<wchar_t>::data' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(4820): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\faction.cpp(31): warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\faction.cpp(37): warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(6): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(88): warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(158): warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(177): warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(8): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\gameentity.cpp(29): warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\stdafx.cpp(20): warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\stdafx.cpp(26): warning C26444: Avoid unnamed objects with custom construction and destruction (es.84).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(5): warning C26495: Variable 'Unit::maxBatches' is uninitialized. Always initialize a member variable (type.6).

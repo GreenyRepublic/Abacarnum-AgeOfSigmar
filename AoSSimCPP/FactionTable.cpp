@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "FactionTable.h"
+#include <regex>
 
 
 FactionTable::FactionTable()
@@ -135,16 +136,31 @@ Model * FactionTable::GetModel(std::string name, std::string faction)
 			}
 			catch (std::out_of_range o) { continue; }
 		}		
-		std::cout << "Cannot find model " << name << "! (" << ")" << std::endl;
+		std::cout << "Cannot find model " << name << "!" << std::endl;
 		return nullptr;
 	}
 }
-void FactionTable::ListAll()
+
+void FactionTable::ListAll(const bool numbered)
 {
+	int i = 1;
+	std::regex expr("([a-z]+)|([A-Z][a-z]+)");;
+	
 	for (auto fac : Factions)
 	{
-		std::cout << fac.first << std::endl;
+		auto facname = fac.first;
+		std::regex_token_iterator<std::string::iterator> stringSplit(facname.begin(), facname.end(), expr);
+		std::regex_token_iterator<std::string::iterator> end;
+		if (numbered) std::cout << i << ": ";
+		while (stringSplit != end)
+		{
+			std::cout << stringSplit->str() << " ";
+			stringSplit++;
+		}
+		std::cout << std::endl;
+		i++;
 	}
+	std::cout << std::endl;
 }
 
 void FactionTable::ListFaction(std::string facname)
@@ -155,3 +171,9 @@ void FactionTable::ListFaction(std::string facname)
 	fac->PrintStats();
 }
 
+void FactionTable::ListFaction(unsigned int index)
+{
+	auto iter = Factions.begin();
+	for (int i = 0; i < index-1; i++) iter++;
+	ListFaction(iter->first);
+}
