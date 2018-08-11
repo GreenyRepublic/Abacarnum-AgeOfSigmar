@@ -5,8 +5,8 @@
 class Faction
 {
 private:
-	std::map<std::string, Weapon*> weaponData;
-	std::map<std::string, Model*> modelData;
+	std::unordered_map<std::string, Weapon*> weaponData;
+	std::unordered_map<std::string, Model*> modelData;
 	std::string Name;
 
 public:

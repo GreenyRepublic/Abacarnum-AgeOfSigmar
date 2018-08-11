@@ -12,7 +12,7 @@
 class FactionTable
 {
 private:
-	std::map<std::string, Faction> Factions;
+	std::unordered_map<std::string, Faction> Factions;
 
 public:
 	FactionTable();

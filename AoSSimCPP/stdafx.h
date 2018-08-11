@@ -22,6 +22,7 @@
 #include <string>
 #include <exception>
 #include <map>
+#include <unordered_map>
 #include <vector>
 #include <random>
 #include <windows.h>
