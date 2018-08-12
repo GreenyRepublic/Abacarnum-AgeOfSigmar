@@ -41,6 +41,7 @@ struct ModelStats
 		bravery,
 		wounds,
 		currentWounds;
+	ModelStats(int8_t m, int8_t s, int8_t b, int8_t w) : move(m), save(s), bravery(b), wounds(w), currentWounds(w){};
 };
 
 

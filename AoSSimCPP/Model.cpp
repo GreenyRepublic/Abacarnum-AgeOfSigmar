@@ -3,33 +3,14 @@
 
 //Initialise using raw stat values.
 //Used for reading from the model database files.
-Model::Model(std::string name, 
-	uint16_t move, 
-	uint16_t wounds, 
-	uint16_t bravery, 
-	uint16_t save, 
-	uint16_t unitsize, 
-	uint16_t cost, 
-	std::string faction) : GameEntity(name, faction)
-{
-	myStats.move = move;
-	myStats.wounds = myStats.currentWounds = wounds;
-	myStats.bravery = bravery;
-	myStats.save = save;
-	
-	unitSize = unitsize;
-	unitCost = cost;
-	Faction = faction;
-}
-
-//Copy an existing model
-Model::Model(const Model& reference)
-{
-	myStats = reference.myStats;
-	unitSize = reference.unitSize;
-	unitCost = reference.unitCost;
-	Faction = reference.Faction;
-}
+Model::Model(std::string name,
+	uint16_t move,
+	uint16_t wounds,
+	uint16_t bravery,
+	uint16_t save,
+	uint16_t unitsize,
+	uint16_t cost,
+	std::string faction) : GameEntity(name, faction), myStats(move, save, wounds, bravery), unitSize(unitsize), unitCost(cost), Faction(faction){}
 
 Model::~Model()
 {
@@ -67,9 +48,9 @@ void Model::EndTurn()
 
 }
 
-int Model::MeleeAttack(Model& target)
+size_t Model::MeleeAttack(Model& target)
 {
-	int wounds = 0;
+	size_t wounds = 0;
 	for (auto w : meleeWeapons) wounds += w->GenerateWounds(target.myStats.save);
 	return wounds;
 }
@@ -79,7 +60,7 @@ void Model::TakeWounds(int count)
 	myStats.wounds -= count;
 }
 
-void Model::AddWeapon(bool melee, Weapon* weapon)
+void Model::AddWeapon(bool melee, Weapon& weapon)
 {
 	if (melee) meleeWeapons.push_back(weapon);
 	else rangedWeapons.push_back(weapon);

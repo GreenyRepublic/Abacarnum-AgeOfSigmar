@@ -592,7 +592,7 @@
       <COLUMN>2</COLUMN>
     </SFA>
     <DEFECTCODE>26495</DEFECTCODE>
-    <DESCRIPTION>Variable 'pugi::impl::xpath_lexer::_cur_lexeme_pos' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <DESCRIPTION>Variable 'pugi::impl::xpath_lexer::_cur_lexeme' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
     <FUNCTION>pugi::impl::xpath_lexer::{ctor}</FUNCTION>
     <DECORATED>??0xpath_lexer@impl@pugi@@QAE@PBD@Z</DECORATED>
     <FUNCLINE>8814</FUNCLINE>

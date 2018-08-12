@@ -1,9 +1,32 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  stdafx.cpp
   AoSSimCPP.cpp
 s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(77): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(81): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.15063.0\ucrt\time.h(505): note: see declaration of 'localtime'
 s:\benfclark\documents\github\aossimcpp\aossimcpp\aossimcpp.cpp(112): warning C4101: 'frontage': unreferenced local variable
+  Battle.cpp
+  Die.cpp
+  Faction.cpp
+  FactionTable.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(34): warning C4244: 'argument': conversion from 'uint16_t' to 'uint8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(177): warning C4018: '<': signed/unsigned mismatch
+  GameEntity.cpp
+  Model.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(15): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(16): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(17): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\model.cpp(18): warning C4244: '=': conversion from 'uint16_t' to 'int8_t', possible loss of data
+  Stats.cpp
+  Unit.cpp
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(9): warning C4244: '=': conversion from 'double' to 'uint8_t', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(58): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+s:\benfclark\documents\github\aossimcpp\aossimcpp\unit.cpp(62): warning C4018: '>=': signed/unsigned mismatch
+  Weapon.cpp
+  Compiling...
+  Generating Code...
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(100): warning C4715: 'FactionTable::GetFaction': not all control paths return a value
+s:\benfclark\documents\github\aossimcpp\aossimcpp\factiontable.cpp(113): warning C4715: 'FactionTable::GetWeapon': not all control paths return a value
   AoSSimCPP.vcxproj -> C:\AoSSimCPP_Debug\AoSSimCPP.exe
 s:\benfclark\documents\github\aossimcpp\aossimcpp\model.h(44): warning C26434: Function 'Model::GetFaction' hides a non-virtual function 'GameEntity::GetFaction' (c.128).
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(2396): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
@@ -33,7 +56,7 @@ s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8416): war
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8416): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8631): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8793): warning C26439: This kind of function may not throw. Declare it 'noexcept' (f.6).
-s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8814): warning C26495: Variable 'pugi::impl::xpath_lexer::_cur_lexeme_pos' is uninitialized. Always initialize a member variable (type.6).
+s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(8814): warning C26495: Variable 'pugi::impl::xpath_lexer::_cur_lexeme' is uninitialized. Always initialize a member variable (type.6).
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(9999): warning C26495: Variable 'pugi::impl::xpath_ast_node::_data' is uninitialized. Always initialize a member variable (type.6).
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(10011): warning C26495: Variable 'pugi::impl::xpath_ast_node::_data' is uninitialized. Always initialize a member variable (type.6).
 s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\pugixml.cpp(10484): warning C26451: Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).

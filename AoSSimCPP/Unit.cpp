@@ -13,6 +13,9 @@ Unit::Unit(Model& model, int count)
 
 Unit::~Unit()
 {
+	for (auto m : Models)
+		delete(m);
+	
 }
 
 //Attack a target.

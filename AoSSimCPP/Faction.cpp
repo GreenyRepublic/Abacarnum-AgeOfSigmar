@@ -1,11 +1,6 @@
 #include "stdafx.h"
 #include "Faction.h"
 
-
-Faction::Faction(std::string name)
-{
-}
-
 Faction::~Faction()
 {
 }
@@ -20,31 +15,29 @@ void Faction::PrintStats()
 	std::pair<std::string, Model*> p;
 	for (auto i : modelData)
 	{
-		i.second->PrintStats();
+		i.second.PrintStats();
 	}
 	std::cout << std::endl;
 }
 
-void Faction::AddWeapon(Weapon* weapon)
+void Faction::AddWeapon(Weapon weapon)
 {
-	std::pair<std::string, Weapon*> entry(weapon->GetName(), weapon);
+	std::pair<std::string, Weapon> entry(weapon.GetName(), weapon);
 	weaponData.insert(entry);
 }
 
-void Faction::AddModel(Model* model)
+void Faction::AddModel(Model model)
 {
-	std::pair<std::string, Model*> entry(model->GetName(), model);
+	std::pair<std::string, Model> entry(model.GetName(), model);
 	modelData.insert(entry);
 }
 
-Weapon * Faction::GetWeapon(std::string name)
+Weapon& Faction::GetWeapon(std::string name)
 {
-	try { return weaponData.at(name); }
-	catch (std::out_of_range e) { return nullptr; }
+	return weaponData.at(name);
 }
 
-Model * Faction::GetModel(std::string name)
+Model& Faction::GetModel(std::string name)
 {
-	try { return modelData.at(name); }
-	catch (std::out_of_range e) { return nullptr; }
+	return modelData.at(name);
 }
