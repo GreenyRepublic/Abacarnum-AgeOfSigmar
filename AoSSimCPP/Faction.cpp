@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Faction.h"
 
+Faction::Faction(std::string name) : Name(name){}
+
 Faction::~Faction()
 {
 }
@@ -32,12 +34,25 @@ void Faction::AddModel(Model model)
 	modelData.insert(entry);
 }
 
-Weapon& Faction::GetWeapon(std::string name)
+Weapon* Faction::GetWeapon(std::string name)
 {
-	return weaponData.at(name);
+	try {
+		return &(weaponData.at(name));
+	}
+	catch (std::out_of_range e)
+	{
+		return nullptr;
+	}
 }
 
-Model& Faction::GetModel(std::string name)
+Model* Faction::GetModel(std::string name)
 {
-	return modelData.at(name);
+	try
+	{
+		return &(modelData.at(name));
+	}
+	catch (std::out_of_range e)
+	{
+		return nullptr;
+	}
 }

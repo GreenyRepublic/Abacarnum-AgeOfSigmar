@@ -19,7 +19,7 @@ public:
 	void PrintStats();
 
 	//Get model/weapon profiles by name.
-	Weapon& GetWeapon(std::string);
-	Model& GetModel(std::string);
+	Weapon* GetWeapon(std::string);
+	Model* GetModel(std::string);
 };
 

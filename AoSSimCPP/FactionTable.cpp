@@ -31,8 +31,7 @@ void FactionTable::AddFaction(std::string facname)
 			uint16_t rend = std::stoi(node.child("rend").child_value());
 			uint16_t damage = std::stoi(node.child("damage").child_value());
 
-			Weapon* weapon = new Weapon(name, range, attacks, tohit, towound, rend, damage);
-			faction.AddWeapon(weapon);
+			faction.AddWeapon(Weapon(name, range, attacks, tohit, towound, rend, damage));
 		}
 	}
 
@@ -63,28 +62,23 @@ void FactionTable::AddFaction(std::string facname)
 			int size = std::stoi(node.child("size").child_value());
 			int cost = std::stoi(node.child("cost").child_value());
 
-			Model* model = new Model(name, move, wounds, bravery, save, size, cost, facname);
-			bool bad = 0;
+			Model model(name, move, wounds, bravery, save, size, cost, facname);
 
 			for (pugi::xml_node weapons = node.child("weapons").first_child(); weapons; weapons = weapons.next_sibling())
 			{
 				Weapon* weap = faction.GetWeapon(weapons.child_value());
 				if (weap == nullptr)
 				{
-					bad = 1;
-					break;
+					std::cout << "DING" << std::endl;
+					continue;
 				}
-
 				//std::cout << weapons.child_value() << std::endl;
 				//std::cout << weapons.attribute("type").value() << std::endl;
-				if ((std::string)weapons.attribute("type").value() == "melee") { model->AddWeapon(true, weap); }
-				else { model->AddWeapon(false, weap); }
+				model.AddWeapon((std::string)weapons.attribute("type").value() == "melee", weap);
 			}
-			if (bad) continue;
 			faction.AddModel(model);
 			//std::cout << "Added model " << name << " to faction " << facname << "." << std::endl;
 		}
-		
 		Factions.insert(std::pair<std::string, Faction>(facname, faction));
 	}
 	//std::cout << "Successfully loaded " << Factions->size() << " factions" << std::endl;
@@ -96,7 +90,10 @@ Faction* FactionTable::GetFaction(std::string name)
 	{
 		return &Factions.at(name);
 	}
-	catch (std::out_of_range o) { std::cout << "Cannot find faction " << name << "! (" << o.what() << ")" << std::endl; }
+	catch (std::out_of_range o) 
+	{ 
+		std::cout << "Cannot find faction " << name << "! (" << o.what() << ")" << std::endl; 
+	}
 }
 
 Weapon* FactionTable::GetWeapon(std::string name, std::string faction = nullptr)
@@ -108,7 +105,10 @@ Weapon* FactionTable::GetWeapon(std::string name, std::string faction = nullptr)
 			Faction* fac = GetFaction(faction);
 			return (fac->GetWeapon(name));
 		}
-		catch (std::out_of_range o) { std::cout << "Cannot find weapon " << name << "! (" << o.what() << ")" << std::endl; }
+		catch (std::out_of_range o)
+		{
+			std::cout << "Cannot find weapon " << name << "! (" << o.what() << ")" << std::endl;
+		}
 	}
 }
 
@@ -121,7 +121,10 @@ Model * FactionTable::GetModel(std::string name, std::string faction)
 			Faction* fac = GetFaction(faction);
 			return (fac->GetModel(name));
 		}
-		catch (std::out_of_range o) { std::cout << "Cannot find model " << name << "! (" << o.what() << ")" << std::endl; }
+		catch (std::out_of_range o) 
+		{ 
+			std::cout << "Cannot find model " << name << "! (" << o.what() << ")" << std::endl; 
+		}
 		return nullptr;
 	}
 

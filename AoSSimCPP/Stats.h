@@ -8,7 +8,7 @@
 //using modifier = std::pair<int8_t, ModType>;
 
 enum ModType {
-	Add = 0,
+	Sum = 0,
 	Multiply,
 	Divide
 };
@@ -18,6 +18,7 @@ enum ModType {
 struct Modifier : GameEntity
 {
 	int duration = 0;
+	ModType type;
 	void PrintStats();
 	void EndTurn();
 };
@@ -31,6 +32,9 @@ struct WeaponStats
 		towound,
 		rend,
 		damage;
+	WeaponStats();
+	WeaponStats(int8_t r, int8_t a, int8_t h, int8_t w, int8_t n, int8_t d) : 
+		range(r), attacks(a), tohit(h), towound(w), rend(n), damage(d) {};
 };
 
 struct ModelStats
@@ -41,16 +45,18 @@ struct ModelStats
 		bravery,
 		wounds,
 		currentWounds;
-	ModelStats(int8_t m, int8_t s, int8_t b, int8_t w) : move(m), save(s), bravery(b), wounds(w), currentWounds(w){};
+	ModelStats();
+	ModelStats(int8_t m, int8_t s, int8_t b, int8_t w) : 
+		move(m), save(s), bravery(b), wounds(w), currentWounds(w){};
 };
 
 
 struct WeaponModifier : Modifier, WeaponStats
 {
-	WeaponStats operator+(WeaponStats&); //Convolve a modifier with a base stat set
+	WeaponStats operator+(const WeaponStats&); //Convolve a modifier with a base stat set
 };
 
 struct UnitModifier : Modifier, ModelStats
 {
-	ModelStats operator+(ModelStats&); //Convolve a modifier with a base stat set
+	ModelStats operator+(const ModelStats&); //Convolve a modifier with a base stat set
 };

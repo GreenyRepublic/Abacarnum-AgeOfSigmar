@@ -1,2 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<DEFECTS></DEFECTS>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>stats.cpp</FILENAME>
+      <LINE>28</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>26439</DEFECTCODE>
+    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>WeaponStats::{ctor}</FUNCTION>
+    <DECORATED>??0WeaponStats@@QAE@XZ</DECORATED>
+    <FUNCLINE>28</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>stats.cpp</FILENAME>
+      <LINE>32</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'ModelStats::currentWounds' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>ModelStats::{ctor}</FUNCTION>
+    <DECORATED>??0ModelStats@@QAE@XZ</DECORATED>
+    <FUNCLINE>32</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>stats.cpp</FILENAME>
+      <LINE>32</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>26439</DEFECTCODE>
+    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
+    <FUNCTION>ModelStats::{ctor}</FUNCTION>
+    <DECORATED>??0ModelStats@@QAE@XZ</DECORATED>
+    <FUNCLINE>32</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

@@ -2,21 +2,21 @@
 <DEFECTS>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
       <FILENAME>model.h</FILENAME>
-      <LINE>44</LINE>
+      <LINE>45</LINE>
       <COLUMN>13</COLUMN>
     </SFA>
     <DEFECTCODE>26434</DEFECTCODE>
     <DESCRIPTION>Function 'Model::GetFaction' hides a non-virtual function 'GameEntity::GetFaction' (c.128).</DESCRIPTION>
     <FUNCTION>Model::GetFaction</FUNCTION>
     <DECORATED>?GetFaction@Model@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ</DECORATED>
-    <FUNCLINE>44</FUNCLINE>
+    <FUNCLINE>45</FUNCLINE>
     <PATH></PATH>
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
       <FILENAME>unit.cpp</FILENAME>
       <LINE>5</LINE>
       <COLUMN>6</COLUMN>

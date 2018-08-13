@@ -60,7 +60,7 @@ void Model::TakeWounds(int count)
 	myStats.wounds -= count;
 }
 
-void Model::AddWeapon(bool melee, Weapon& weapon)
+void Model::AddWeapon(bool melee, Weapon* weapon)
 {
 	if (melee) meleeWeapons.push_back(weapon);
 	else rangedWeapons.push_back(weapon);

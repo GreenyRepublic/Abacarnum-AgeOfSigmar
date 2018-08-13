@@ -7,26 +7,28 @@ void Modifier::EndTurn() {
 	if (duration == 0) delete(this);
 }
 
-WeaponStats WeaponModifier::operator+(WeaponStats& stats)
+WeaponStats WeaponModifier::operator+(const WeaponStats& rhs)
 {
-	WeaponStats newStats;
-	newStats.attacks = stats.attacks + this->attacks;
-	newStats.damage = stats.damage + this->damage;
-	newStats.range = stats.range + this->range;
-	newStats.rend = stats.rend + this->rend;
-	newStats.tohit = stats.tohit + this->tohit;
-	newStats.towound = stats.towound + this->towound;
-
-	return newStats;
+	return WeaponStats(rhs.range + this->range, 
+		rhs.attacks + this->attacks, 
+		rhs.tohit + this->tohit, 
+		rhs.towound + this->towound, 
+		rhs.rend + this->rend, 
+		rhs.damage + this->damage);
 }
 
-ModelStats UnitModifier::operator+(ModelStats& stats)
+ModelStats UnitModifier::operator+(const ModelStats& rhs)
 {
-	ModelStats newStats;
-	newStats.wounds = stats.wounds + this->wounds;
-	newStats.move = stats.move + this->move;
-	newStats.bravery = stats.bravery + this->bravery;
-	newStats.save = stats.save + this->save;
+	return ModelStats(rhs.move + this->move, 
+		rhs.save + this->save, 
+		rhs.bravery + this->bravery, 
+		rhs.wounds + this->wounds);
+}
 
-	return newStats;
+WeaponStats::WeaponStats() : range(0), attacks(0), tohit(0), towound(0), rend(0), damage(0)
+{
+}
+
+ModelStats::ModelStats() : move(0), save(0), bravery(0), wounds(0)
+{
 }

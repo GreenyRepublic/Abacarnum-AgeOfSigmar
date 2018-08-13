@@ -19,22 +19,21 @@ private:
 	ModelStats myStats;
 
 	//Weapons
-	std::vector<Weapon&> meleeWeapons,
+	std::vector<Weapon*> meleeWeapons,
 						rangedWeapons;
 	//Metadata
 	uint16_t unitSize,
-			unitCost;
+			 unitCost;
 
 	//Add later
 	//std::vector<Abilities&>
 
 
 public:
-	Model(const Model&);
 	Model(const std::string, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const std::string);
 	~Model();
 
-	void AddWeapon(bool, Weapon);
+	void AddWeapon(bool, Weapon*);
 	void PrintStats();
 
 	//Combat rolls	
