@@ -1,13 +1,10 @@
 #include "stdafx.h"
 #include "Die.h"
 
-void Die::initDie()
-{
-	Die::distribution = std::uniform_int_distribution<int>(1, 6);
-	Die::generator = std::default_random_engine();
-}
+static std::uniform_int_distribution<int> distribution(1,6);
+static std::default_random_engine generator;
 
 int Die::Roll(int modifier)
 {
-	return Die::distribution(generator) + modifier;
+	return distribution(generator) + modifier;
 }

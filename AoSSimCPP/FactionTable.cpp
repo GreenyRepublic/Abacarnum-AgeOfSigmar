@@ -69,16 +69,17 @@ void FactionTable::AddFaction(std::string facname)
 				Weapon* weap = faction.GetWeapon(weapons.child_value());
 				if (weap == nullptr)
 				{
-					std::cout << "DING" << std::endl;
 					continue;
 				}
 				//std::cout << weapons.child_value() << std::endl;
 				//std::cout << weapons.attribute("type").value() << std::endl;
-				model.AddWeapon((std::string)weapons.attribute("type").value() == "melee", weap);
+				model.AddWeapon(static_cast<std::string>(weapons.attribute("type").value()) == "melee", weap);
 			}
+
 			faction.AddModel(model);
 			//std::cout << "Added model " << name << " to faction " << facname << "." << std::endl;
 		}
+
 		Factions.insert(std::pair<std::string, Faction>(facname, faction));
 	}
 	//std::cout << "Successfully loaded " << Factions->size() << " factions" << std::endl;
@@ -108,6 +109,7 @@ Weapon* FactionTable::GetWeapon(std::string name, std::string faction = nullptr)
 		catch (std::out_of_range o)
 		{
 			std::cout << "Cannot find weapon " << name << "! (" << o.what() << ")" << std::endl;
+			return nullptr;
 		}
 	}
 }
@@ -123,9 +125,9 @@ Model * FactionTable::GetModel(std::string name, std::string faction)
 		}
 		catch (std::out_of_range o) 
 		{ 
-			std::cout << "Cannot find model " << name << "! (" << o.what() << ")" << std::endl; 
+			std::cout << "Cannot find model " << name << "! (" << o.what() << ")" << std::endl;
+			return nullptr;
 		}
-		return nullptr;
 	}
 
 	else

@@ -13,7 +13,7 @@ private:
 		modelsPerBatch,
 		maxBatches, 
 		Losses;
-	std::vector<Model*> Models;
+	std::vector<Model> Models;
 
 	std::string Name;
 	std::vector<std::string> Keywords;

@@ -13,13 +13,11 @@
 class Model : public GameEntity
 {
 private:
-	std::string Faction;
-
 	//Core Stats
 	ModelStats myStats;
 
 	//Weapons
-	std::vector<Weapon*> meleeWeapons,
+	std::vector<std::string> meleeWeapons,
 						rangedWeapons;
 	//Metadata
 	uint16_t unitSize,
@@ -33,7 +31,7 @@ public:
 	Model(const std::string, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const std::string);
 	~Model();
 
-	void AddWeapon(bool, Weapon*);
+	void AddWeapon(bool, std::string);
 	void PrintStats();
 
 	//Combat rolls	

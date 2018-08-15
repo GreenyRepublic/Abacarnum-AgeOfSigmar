@@ -119,9 +119,7 @@ void BatchBattle(FactionTable& factable)
 	numA = stoi(buffer);
 
 	Model* A = factable.GetModel(ModelA); 
-	
-	
-		
+
 	std::cout << std::endl;
 
 	cout << "Please enter a model for Unit B: " << endl;
@@ -190,7 +188,7 @@ void Encyclopedia(FactionTable& table)
 		std::cin >> input;
 		opt = std::stoi(input);
 
-		if (opt == 0) break;
+		if (opt == 0) return;
 		else (table.ListFaction(opt));
 	}
 }
@@ -200,7 +198,6 @@ int main()
 	std::cout << ToUpper("Welcome to the Age of Sigmar BattleSim v") << version << std::endl;
 
 	//Initialisation
-	Die::initDie();
 	FactionTable FacTable;
 	bool parse = ParseData(FacTable);
 	if (!parse) return EXIT_FAILURE;
@@ -208,7 +205,6 @@ int main()
 
 	//Begin menu loop.
 	std::string input;
-	unsigned int opt;
 	
 	while (1)
 	{
@@ -216,8 +212,7 @@ int main()
 		PrintMainMenu();
 
 		std::cin >> input;
-		opt = std::stoi(input);
-		switch ((TopMenuOptions)opt)
+		switch (static_cast<TopMenuOptions>(std::stoi(input)))
 		{
 		case(FightSingle):
 			std::cout << "Sorry this ain't available yet." << std::endl;

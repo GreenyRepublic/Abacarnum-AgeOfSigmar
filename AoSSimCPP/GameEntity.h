@@ -1,4 +1,5 @@
 #pragma once
+#include "Faction.h"
 
 /* 
 * GameEntity: Abstract class
@@ -10,7 +11,7 @@ class GameEntity
 {
 protected:
 	std::string Name;
-	std::string Faction;
+	Faction& Faction;
 
 public:
 	GameEntity();
@@ -18,7 +19,7 @@ public:
 	virtual ~GameEntity();
 	
 	std::string GetName() { return Name; }
-	std::string GetFaction() { return Faction; }
+	//std::string GetFaction() { return Faction; }
 	virtual void EndTurn() = 0; //Resolve end-turn updates
 	virtual void PrintStats() = 0; //Prints information to the console
 

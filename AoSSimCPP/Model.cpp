@@ -10,7 +10,7 @@ Model::Model(std::string name,
 	uint16_t save,
 	uint16_t unitsize,
 	uint16_t cost,
-	std::string faction) : GameEntity(name, faction), myStats(move, save, wounds, bravery), unitSize(unitsize), unitCost(cost), Faction(faction){}
+	std::string faction) : GameEntity(name, faction), myStats(move, save, wounds, bravery), unitSize(unitsize), unitCost(cost){}
 
 Model::~Model()
 {
