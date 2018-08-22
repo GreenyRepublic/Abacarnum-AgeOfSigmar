@@ -3,15 +3,15 @@
   <DEFECT>
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>model.h</FILENAME>
-      <LINE>43</LINE>
-      <COLUMN>13</COLUMN>
+      <FILENAME>model.cpp</FILENAME>
+      <LINE>17</LINE>
+      <COLUMN>6</COLUMN>
     </SFA>
-    <DEFECTCODE>26434</DEFECTCODE>
-    <DESCRIPTION>Function 'Model::GetFaction' hides a non-virtual function 'GameEntity::GetFaction' (c.128).</DESCRIPTION>
-    <FUNCTION>Model::GetFaction</FUNCTION>
-    <DECORATED>?GetFaction@Model@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ</DECORATED>
-    <FUNCLINE>43</FUNCLINE>
+    <DEFECTCODE>26444</DEFECTCODE>
+    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
+    <FUNCTION>Model::{ctor}</FUNCTION>
+    <DECORATED>??0Model@@QAE@ABV0@@Z</DECORATED>
+    <FUNCLINE>15</FUNCLINE>
     <PATH></PATH>
   </DEFECT>
 </DEFECTS>

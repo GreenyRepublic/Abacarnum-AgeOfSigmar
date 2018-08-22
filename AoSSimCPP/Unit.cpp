@@ -4,6 +4,7 @@
 
 Unit::Unit(Model& model, int count)
 {
+
 	for (int i = 0; i < count; i++) { Models.push_back(Model(model)); }
 	Name = model.GetName();
 	modelsPerBatch = ceil(count / model.GetSize());
@@ -32,26 +33,16 @@ void Unit::MeleeAttack(Unit& target, int frontage)
 }
 
 //Allocates wounds and deletes if the unit has been wiped out.
-void Unit::TakeWounds(int count)
+void Unit::TakeWounds(int wounds)
 {
-	while(Models.size() > 0)
+	while (wounds > 0)
 	{
-		//std::cout << Models.size() << std::endl;
-		Model m = Models.back();
-
-		if (m.GetStats().currentWounds > count)	m.TakeWounds(count); 
-
-		else 
-		{ 
-			count -= m.GetStats().currentWounds;
-			Models.pop_back();
-			Losses++;
-		}
+		wounds = Models.back().TakeWounds(wounds);
 	}
 }
 
 //Resolves battleshock, with a bool returning if the unit has been wiped out or not.
-void Unit::Battleshock()
+void Unit::TakeBattleshock()
 {
 	//Calculate losses.
 	int roll = Die::Roll();

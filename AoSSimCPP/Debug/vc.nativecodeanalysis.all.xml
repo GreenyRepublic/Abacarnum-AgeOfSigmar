@@ -1,31 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>model.h</FILENAME>
-      <LINE>43</LINE>
-      <COLUMN>13</COLUMN>
-    </SFA>
-    <DEFECTCODE>26434</DEFECTCODE>
-    <DESCRIPTION>Function 'Model::GetFaction' hides a non-virtual function 'GameEntity::GetFaction' (c.128).</DESCRIPTION>
-    <FUNCTION>Model::GetFaction</FUNCTION>
-    <DECORATED>?GetFaction@Model@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ</DECORATED>
-    <FUNCLINE>43</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>2396</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::gap::{ctor}</FUNCTION>
-    <DECORATED>??0gap@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>2396</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>3685</LINE>
@@ -198,110 +172,6 @@
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>5058</LINE>
-      <COLUMN>27</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_tree_walker::{ctor}</FUNCTION>
-    <DECORATED>??0xml_tree_walker@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>5058</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>5081</LINE>
-      <COLUMN>25</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_attribute::{ctor}</FUNCTION>
-    <DECORATED>??0xml_attribute@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>5081</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>5363</LINE>
-      <COLUMN>20</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_node::{ctor}</FUNCTION>
-    <DECORATED>??0xml_node@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>5363</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>6347</LINE>
-      <COLUMN>20</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_text::{ctor}</FUNCTION>
-    <DECORATED>??0xml_text@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>6347</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>6586</LINE>
-      <COLUMN>29</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_node_iterator::{ctor}</FUNCTION>
-    <DECORATED>??0xml_node_iterator@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>6586</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>6647</LINE>
-      <COLUMN>34</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_attribute_iterator::{ctor}</FUNCTION>
-    <DECORATED>??0xml_attribute_iterator@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>6647</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>6708</LINE>
-      <COLUMN>35</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_named_node_iterator::{ctor}</FUNCTION>
-    <DECORATED>??0xml_named_node_iterator@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>6708</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>6778</LINE>
-      <COLUMN>28</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_parse_result::{ctor}</FUNCTION>
-    <DECORATED>??0xml_parse_result@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>6778</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
       <LINE>6818</LINE>
       <COLUMN>24</COLUMN>
     </SFA>
@@ -310,58 +180,6 @@
     <FUNCTION>pugi::xml_document::{ctor}</FUNCTION>
     <DECORATED>??0xml_document@pugi@@QAE@XZ</DECORATED>
     <FUNCLINE>6818</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>6818</LINE>
-      <COLUMN>24</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xml_document::{ctor}</FUNCTION>
-    <DECORATED>??0xml_document@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>6818</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>7505</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26495</DEFECTCODE>
-    <DESCRIPTION>Variable 'pugi::impl::xpath_stack_data::blocks' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_stack_data::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_stack_data@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>7505</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>7505</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_stack_data::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_stack_data@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>7505</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>7571</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_string::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_string@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>7571</FUNCLINE>
     <PATH></PATH>
   </DEFECT><DEFECT>
     <SFA>
@@ -471,37 +289,11 @@
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>8381</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_variable_boolean::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_variable_boolean@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>8381</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8391</LINE>
       <COLUMN>2</COLUMN>
     </SFA>
     <DEFECTCODE>26495</DEFECTCODE>
     <DESCRIPTION>Variable 'pugi::impl::xpath_variable_number::name' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_variable_number::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_variable_number@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>8391</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>8391</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
     <FUNCTION>pugi::impl::xpath_variable_number::{ctor}</FUNCTION>
     <DECORATED>??0xpath_variable_number@impl@pugi@@QAE@XZ</DECORATED>
     <FUNCLINE>8391</FUNCLINE>
@@ -523,19 +315,6 @@
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>8401</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_variable_string::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_variable_string@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>8401</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8416</LINE>
       <COLUMN>2</COLUMN>
     </SFA>
@@ -549,50 +328,11 @@
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>8416</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_variable_node_set::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_variable_node_set@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>8416</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>8631</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_node_set_raw::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_node_set_raw@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>8631</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>8793</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_lexer_string::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_lexer_string@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>8793</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8814</LINE>
       <COLUMN>2</COLUMN>
     </SFA>
     <DEFECTCODE>26495</DEFECTCODE>
-    <DESCRIPTION>Variable 'pugi::impl::xpath_lexer::_cur_lexeme_pos' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <DESCRIPTION>Variable 'pugi::impl::xpath_lexer::_cur_lexeme' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
     <FUNCTION>pugi::impl::xpath_lexer::{ctor}</FUNCTION>
     <DECORATED>??0xpath_lexer@impl@pugi@@QAE@PBD@Z</DECORATED>
     <FUNCLINE>8814</FUNCLINE>
@@ -666,19 +406,6 @@
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>11595</LINE>
-      <COLUMN>3</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_parser::binary_op_t::{ctor}</FUNCTION>
-    <DECORATED>??0binary_op_t@xpath_parser@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>11595</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
       <LINE>11714</LINE>
       <COLUMN>2</COLUMN>
     </SFA>
@@ -691,41 +418,15 @@
   </DEFECT><DEFECT>
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>11757</LINE>
-      <COLUMN>2</COLUMN>
+      <FILENAME>pugixml.hpp</FILENAME>
+      <LINE>1242</LINE>
+      <COLUMN>1</COLUMN>
     </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xpath_query_impl::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_query_impl@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>11757</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>11808</LINE>
-      <COLUMN>22</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xpath_node::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_node@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>11808</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>11929</LINE>
-      <COLUMN>26</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xpath_node_set::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_node_set@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>11929</FUNCLINE>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'pugi::xpath_exception::_result' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>pugi::xpath_exception::{ctor}</FUNCTION>
+    <DECORATED>??0xpath_exception@pugi@@QAE@ABV01@@Z</DECORATED>
+    <FUNCLINE>1242</FUNCLINE>
     <PATH></PATH>
   </DEFECT><DEFECT>
     <SFA>
@@ -757,37 +458,11 @@
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>12018</LINE>
-      <COLUMN>30</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xpath_parse_result::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_parse_result@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>12018</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12129</LINE>
       <COLUMN>30</COLUMN>
     </SFA>
     <DEFECTCODE>26495</DEFECTCODE>
     <DESCRIPTION>Variable 'pugi::xpath_variable_set::_data' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
-    <FUNCTION>pugi::xpath_variable_set::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_variable_set@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>12129</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>12129</LINE>
-      <COLUMN>30</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
     <FUNCTION>pugi::xpath_variable_set::{ctor}</FUNCTION>
     <DECORATED>??0xpath_variable_set@pugi@@QAE@XZ</DECORATED>
     <FUNCLINE>12129</FUNCLINE>
@@ -848,19 +523,6 @@
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>12351</LINE>
-      <COLUMN>23</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::xpath_query::{ctor}</FUNCTION>
-    <DECORATED>??0xpath_query@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>12351</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12362</LINE>
       <COLUMN>23</COLUMN>
     </SFA>
@@ -882,6 +544,19 @@
     <FUNCTION>pugi::xpath_query::=</FUNCTION>
     <DECORATED>??4xpath_query@pugi@@QAEAAV01@$$QAV01@@Z</DECORATED>
     <FUNCLINE>12370</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>battle.h</FILENAME>
+      <LINE>12</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'BattleStats::survivors' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>BattleStats::{ctor}</FUNCTION>
+    <DECORATED>??0BattleStats@@QAE@ABU0@@Z</DECORATED>
+    <FUNCLINE>12</FUNCLINE>
     <PATH></PATH>
   </DEFECT><DEFECT>
     <SFA>
@@ -950,146 +625,29 @@
     <PATH></PATH>
   </DEFECT><DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>4820</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xml_stream_chunk&lt;wchar_t&gt;::{ctor}</FUNCTION>
-    <DECORATED>??0?$xml_stream_chunk@_W@impl@pugi@@QAE@XZ</DECORATED>
-    <FUNCLINE>4820</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>faction.cpp</FILENAME>
-      <LINE>28</LINE>
-      <COLUMN>11</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>Faction::AddWeapon</FUNCTION>
-    <DECORATED>?AddWeapon@Faction@@QAEXVWeapon@@@Z</DECORATED>
-    <FUNCLINE>25</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>faction.cpp</FILENAME>
-      <LINE>34</LINE>
-      <COLUMN>10</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>Faction::AddModel</FUNCTION>
-    <DECORATED>?AddModel@Faction@@QAEXVModel@@@Z</DECORATED>
-    <FUNCLINE>31</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>factiontable.cpp</FILENAME>
-      <LINE>6</LINE>
-      <COLUMN>14</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>FactionTable::{ctor}</FUNCTION>
-    <DECORATED>??0FactionTable@@QAE@XZ</DECORATED>
-    <FUNCLINE>6</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>factiontable.cpp</FILENAME>
-      <LINE>83</LINE>
-      <COLUMN>10</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>FactionTable::AddFaction</FUNCTION>
-    <DECORATED>?AddFaction@FactionTable@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z</DECORATED>
-    <FUNCLINE>12</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>factiontable.cpp</FILENAME>
-      <LINE>163</LINE>
-      <COLUMN>14</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>FactionTable::ListAll</FUNCTION>
-    <DECORATED>?ListAll@FactionTable@@QAEX_N@Z</DECORATED>
-    <FUNCLINE>149</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>factiontable.cpp</FILENAME>
-      <LINE>182</LINE>
-      <COLUMN>39</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>FactionTable::ListFaction</FUNCTION>
-    <DECORATED>?ListFaction@FactionTable@@QAEXI@Z</DECORATED>
-    <FUNCLINE>179</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>gameentity.cpp</FILENAME>
-      <LINE>8</LINE>
-      <COLUMN>12</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>GameEntity::{ctor}</FUNCTION>
-    <DECORATED>??0GameEntity@@QAE@XZ</DECORATED>
-    <FUNCLINE>8</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>gameentity.cpp</FILENAME>
-      <LINE>29</LINE>
-      <COLUMN>19</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>GameEntity::==</FUNCTION>
-    <DECORATED>??8GameEntity@@QAE_NABV0@@Z</DECORATED>
-    <FUNCLINE>20</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>stats.cpp</FILENAME>
-      <LINE>28</LINE>
-      <COLUMN>13</COLUMN>
-    </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>WeaponStats::{ctor}</FUNCTION>
-    <DECORATED>??0WeaponStats@@QAE@XZ</DECORATED>
-    <FUNCLINE>28</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>stats.cpp</FILENAME>
+      <FILENAME>weapon.h</FILENAME>
       <LINE>32</LINE>
-      <COLUMN>12</COLUMN>
+      <COLUMN>0</COLUMN>
     </SFA>
-    <DEFECTCODE>26439</DEFECTCODE>
-    <DESCRIPTION>This kind of function may not throw. Declare it 'noexcept' (f.6).</DESCRIPTION>
-    <FUNCTION>ModelStats::{ctor}</FUNCTION>
-    <DECORATED>??0ModelStats@@QAE@XZ</DECORATED>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Weapon::myStats' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Weapon::{ctor}</FUNCTION>
+    <DECORATED>??0Weapon@@QAE@ABV0@@Z</DECORATED>
     <FUNCLINE>32</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>model.cpp</FILENAME>
+      <LINE>17</LINE>
+      <COLUMN>6</COLUMN>
+    </SFA>
+    <DEFECTCODE>26444</DEFECTCODE>
+    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
+    <FUNCTION>Model::{ctor}</FUNCTION>
+    <DECORATED>??0Model@@QAE@ABV0@@Z</DECORATED>
+    <FUNCLINE>15</FUNCLINE>
     <PATH></PATH>
   </DEFECT><DEFECT>
     <SFA>
@@ -1103,32 +661,6 @@
     <FUNCTION>ModelStats::{ctor}</FUNCTION>
     <DECORATED>??0ModelStats@@QAE@XZ</DECORATED>
     <FUNCLINE>32</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>stdafx.cpp</FILENAME>
-      <LINE>20</LINE>
-      <COLUMN>50</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>PrintHeader</FUNCTION>
-    <DECORATED>?PrintHeader@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z</DECORATED>
-    <FUNCLINE>15</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT><DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>stdafx.cpp</FILENAME>
-      <LINE>26</LINE>
-      <COLUMN>50</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>PrintHeader</FUNCTION>
-    <DECORATED>?PrintHeader@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z</DECORATED>
-    <FUNCLINE>15</FUNCLINE>
     <PATH></PATH>
   </DEFECT><DEFECT>
     <SFA>

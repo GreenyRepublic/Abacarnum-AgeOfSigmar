@@ -11,7 +11,7 @@ FactionTable::~FactionTable()
 
 void FactionTable::AddFaction(std::string facname)
 {
-	Faction faction(facname);
+	Faction* faction = new Faction(facname);
 
 	std::string fileName;
 	pugi::xml_document facFile;
@@ -24,14 +24,14 @@ void FactionTable::AddFaction(std::string facname)
 		for (pugi::xml_node node = facFile.child("faction").child("weapon"); node; node = node.next_sibling("weapon"))
 		{
 			std::string name = node.attribute("name").value();
-			uint16_t range = std::stoi(node.child("range").child_value());
-			uint16_t attacks = std::stoi(node.child("attacks").child_value());
-			uint16_t tohit = std::stoi(node.child("tohit").child_value());
-			uint16_t towound = std::stoi(node.child("towound").child_value());
-			uint16_t rend = std::stoi(node.child("rend").child_value());
-			uint16_t damage = std::stoi(node.child("damage").child_value());
+			size_t range = std::stoi(node.child("range").child_value());
+			size_t attacks = std::stoi(node.child("attacks").child_value());
+			size_t tohit = std::stoi(node.child("tohit").child_value());
+			size_t towound = std::stoi(node.child("towound").child_value());
+			size_t rend = std::stoi(node.child("rend").child_value());
+			size_t damage = std::stoi(node.child("damage").child_value());
 
-			faction.AddWeapon(Weapon(name, range, attacks, tohit, towound, rend, damage));
+			faction->AddWeapon(Weapon(name, range, attacks, tohit, towound, rend, damage));
 		}
 	}
 
@@ -44,10 +44,10 @@ void FactionTable::AddFaction(std::string facname)
 	{
 		for (pugi::xml_node node = facFile.child("faction").child("model"); node; node = node.next_sibling("model"))
 		{
-			uint16_t move;
-			uint16_t save;
-			uint16_t bravery;
-			uint16_t wounds;
+			size_t move;
+			size_t save;
+			size_t bravery;
+			size_t wounds;
 
 			std::string name = node.attribute("name").value();
 			
@@ -66,7 +66,7 @@ void FactionTable::AddFaction(std::string facname)
 
 			for (pugi::xml_node weapons = node.child("weapons").first_child(); weapons; weapons = weapons.next_sibling())
 			{
-				Weapon* weap = faction.GetWeapon(weapons.child_value());
+				Weapon* weap = faction->GetWeapon(weapons.child_value());
 				if (weap == nullptr)
 				{
 					continue;
@@ -76,11 +76,11 @@ void FactionTable::AddFaction(std::string facname)
 				model.AddWeapon(static_cast<std::string>(weapons.attribute("type").value()) == "melee", weap);
 			}
 
-			faction.AddModel(model);
+			faction->AddModel(model);
 			//std::cout << "Added model " << name << " to faction " << facname << "." << std::endl;
 		}
 
-		Factions.insert(std::pair<std::string, Faction>(facname, faction));
+		Factions.insert(std::pair<std::string, Faction*>(facname, faction));
 	}
 	//std::cout << "Successfully loaded " << Factions->size() << " factions" << std::endl;
 }
@@ -89,7 +89,7 @@ Faction* FactionTable::GetFaction(std::string name)
 {
 	try
 	{
-		return &Factions.at(name);
+		return Factions.at(name);
 	}
 	catch (std::out_of_range o) 
 	{ 
@@ -97,7 +97,7 @@ Faction* FactionTable::GetFaction(std::string name)
 	}
 }
 
-Weapon* FactionTable::GetWeapon(std::string name, std::string faction = nullptr)
+Weapon* FactionTable::GetWeapon(std::string name, std::string faction)
 {
 	if (!faction.empty())
 	{
@@ -114,7 +114,7 @@ Weapon* FactionTable::GetWeapon(std::string name, std::string faction = nullptr)
 	}
 }
 
-Model * FactionTable::GetModel(std::string name, std::string faction)
+Model* FactionTable::GetModel(std::string name, std::string faction)
 {
 	if (!faction.empty())
 	{
@@ -134,12 +134,8 @@ Model * FactionTable::GetModel(std::string name, std::string faction)
 	{
 		for (auto f : Factions)
 		{
-			try 
-			{
-				Faction fac = f.second;
-				return fac.GetModel(name);
-			}
-			catch (std::out_of_range o) { continue; }
+			Faction* fac = f.second;
+			if (fac->GetModel(name) != nullptr) return fac->GetModel(name);
 		}		
 		std::cout << "Cannot find model " << name << "!" << std::endl;
 		return nullptr;
@@ -153,16 +149,8 @@ void FactionTable::ListAll(const bool numbered)
 	
 	for (auto fac : Factions)
 	{
-		auto facname = fac.first;
-		std::regex_token_iterator<std::string::iterator> stringSplit(facname.begin(), facname.end(), expr);
-		std::regex_token_iterator<std::string::iterator> end;
-		if (numbered) std::cout << i << ": ";
-		while (stringSplit != end)
-		{
-			std::cout << stringSplit->str() << " ";
-			stringSplit++;
-		}
-		std::cout << std::endl;
+		std::string facname = fac.first;
+		std::cout << i << ": " << facname << std::endl;
 		i++;
 	}
 	std::cout << std::endl;

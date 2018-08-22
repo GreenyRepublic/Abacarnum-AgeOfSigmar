@@ -3,43 +3,15 @@
   <DEFECT>
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>model.h</FILENAME>
-      <LINE>43</LINE>
-      <COLUMN>13</COLUMN>
+      <FILENAME>weapon.h</FILENAME>
+      <LINE>32</LINE>
+      <COLUMN>0</COLUMN>
     </SFA>
-    <DEFECTCODE>26434</DEFECTCODE>
-    <DESCRIPTION>Function 'Model::GetFaction' hides a non-virtual function 'GameEntity::GetFaction' (c.128).</DESCRIPTION>
-    <FUNCTION>Model::GetFaction</FUNCTION>
-    <DECORATED>?GetFaction@Model@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ</DECORATED>
-    <FUNCLINE>43</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>faction.cpp</FILENAME>
-      <LINE>28</LINE>
-      <COLUMN>11</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>Faction::AddWeapon</FUNCTION>
-    <DECORATED>?AddWeapon@Faction@@QAEXVWeapon@@@Z</DECORATED>
-    <FUNCLINE>25</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>faction.cpp</FILENAME>
-      <LINE>34</LINE>
-      <COLUMN>10</COLUMN>
-    </SFA>
-    <DEFECTCODE>26444</DEFECTCODE>
-    <DESCRIPTION>Avoid unnamed objects with custom construction and destruction (es.84).</DESCRIPTION>
-    <FUNCTION>Faction::AddModel</FUNCTION>
-    <DECORATED>?AddModel@Faction@@QAEXVModel@@@Z</DECORATED>
-    <FUNCLINE>31</FUNCLINE>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'Weapon::myStats' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>Weapon::{ctor}</FUNCTION>
+    <DECORATED>??0Weapon@@QAE@ABV0@@Z</DECORATED>
+    <FUNCLINE>32</FUNCLINE>
     <PATH></PATH>
   </DEFECT>
 </DEFECTS>

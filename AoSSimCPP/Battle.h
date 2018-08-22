@@ -1,16 +1,12 @@
 #pragma once
+#include "stdafx.h"
 #include "Unit.h"
 
 //HAPPY NOW GARY? >:(
 
-
-enum Side {
-	SideA = 0,
-	SideB
-};
 struct BattleStats
 {
-	Side Winner;
+	std::string Winner;
 	int survivors;
 	int turns;
 };

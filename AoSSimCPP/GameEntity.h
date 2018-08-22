@@ -1,5 +1,5 @@
 #pragma once
-#include "Faction.h"
+#include "stdafx.h"
 
 /* 
 * GameEntity: Abstract class
@@ -10,8 +10,8 @@
 class GameEntity
 {
 protected:
-	std::string Name;
-	Faction& Faction;
+	std::string Name,
+				Faction;
 
 public:
 	GameEntity();
@@ -19,9 +19,8 @@ public:
 	virtual ~GameEntity();
 	
 	std::string GetName() { return Name; }
-	//std::string GetFaction() { return Faction; }
+	std::string GetFaction() { return Faction; }
 	virtual void EndTurn() = 0; //Resolve end-turn updates
-	virtual void PrintStats() = 0; //Prints information to the console
 
 	bool operator ==(const GameEntity&); //Case-insensitive name comparison operator
 };

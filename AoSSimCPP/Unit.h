@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 #include "Model.h"
 
 /* Unit: As defined by a Warscroll
@@ -6,10 +7,10 @@
  * A unit attacks as a unit, takes casualties as a unit, and takes battleshock tests as a unit
  * Within the scope of this program no other data (position, etc) is needed
  */
-class Unit : public GameEntity
+class Unit : public GameEntity, Printable
 {
 private:
-	uint8_t pointValue,
+	size_t pointValue,
 		modelsPerBatch,
 		maxBatches, 
 		Losses;
@@ -28,7 +29,7 @@ public:
 
 	void MeleeAttack(Unit& target, int frontage);
 	void TakeWounds(int count);
-	void Battleshock();
+	void TakeBattleshock();
 
 	void EndTurn();
 	void PrintStats();

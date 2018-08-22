@@ -8,11 +8,12 @@
 #include "FactionTable.h"
 #include "Unit.h"
 #include "Battle.h"
+#include "Printable.h"
 
 #include "./PugiXML/pugixml.hpp"
 #include "./PugiXML/pugiconfig.hpp"
 
-#define version 0.55
+static const float version = 0.55;
 
 //Parse model and weapon profiles into their databases. Returns false if parsing fails for whatever reason.
 bool ParseData(FactionTable& table)
@@ -51,37 +52,32 @@ void Stats(const std::string name, FactionTable& ft)
 }
 
 //Crunches battle stats and poops out a file.
-void Numberwang(std::vector<BattleStats>& stats, std::string& AName, std::string& BName)
+void Numberwang(std::vector<BattleStats>& stats, std::string& aname, std::string& bname)
 {
-	float AWins = 0;
-	float ASurvivors = 0;
-	float BSurvivors = 0;
+	std::unordered_map<std::string, int> wins, survivors;
 	int battlenum = stats.size();
 
-	for (auto i : stats)
+	for (auto stat : stats)
 	{
-		AWins += (i.Winner == Side::SideA);
-		if (i.Winner == Side::SideA) ASurvivors += i.survivors;
-		else BSurvivors += i.survivors;
+		wins[stat.Winner] += 1;
+		survivors[stat.Winner] += stat.survivors;
 	}
-	ASurvivors /= battlenum;
-	BSurvivors /= battlenum;
 
-	AWins = (100 * AWins) / battlenum;
-	float BWins = 100 - AWins;
+	survivors[aname] /= battlenum;
+	survivors[bname] /= battlenum;
 
-	std::cout << AName << " won: " << AWins << "%" << std::endl;
-	std::cout << BName << " won: " << BWins << "%" << std::endl;
+	std::cout << aname << " won: " << ((100 * wins[aname])/battlenum) << "%" << std::endl;
+	std::cout << bname << " won: " << ((100 * wins[bname])/battlenum) << "%" << std::endl;
 
-	std::string Winner = (AWins > BWins) ? AName : BName;
-	int WinNum = (AWins > BWins) ? AWins : BWins;
+	std::string Winner = (wins[aname] > wins[bname]) ? aname : bname;
+	int WinNum = wins[Winner];
 
 	//Write data to file.
 	time_t temp = time(0);
 	struct tm *Time = localtime(&temp);
 
 	std::stringstream ss; 
-	ss << "records/" << AName << "_vs_" << BName << "_" << (Time->tm_mday);
+	ss << "records/" << aname << "_vs_" << bname << "_" << (Time->tm_mday);
 	if (Time->tm_mon < 10) ss << 0; 
 	ss << (Time->tm_mon) << (Time->tm_year + 1900) << "_" << (Time->tm_sec) << (Time->tm_min);
 	ss << (Time->tm_hour) << ".txt";
@@ -91,11 +87,11 @@ void Numberwang(std::vector<BattleStats>& stats, std::string& AName, std::string
 	std::ofstream file;
 	file.open(filename);
 
-	file << AName << " versus " << BName << "\n";
+	file << aname << " versus " << bname << "\n";
 	file << stats.size() << " Battles Run\n";
 	file << "Most Wins: " << Winner << "(" << WinNum << " | " << (100*WinNum/stats.size()) << "%)\n";
-	file << "Avg. Survivors/Win (" << AName << "): " << ASurvivors << "\n";
-	file << "Avg. Survivors/Win (" << BName << "): " << BSurvivors << "\n";
+	file << "Avg. Survivors/Win (" << aname << "): " << survivors[aname] << "\n";
+	file << "Avg. Survivors/Win (" << bname << "): " << survivors[bname] << "\n";
 	
 	file.close();
 }
@@ -107,29 +103,42 @@ void BatchBattle(FactionTable& factable)
 	using namespace std;
 
 	vector<BattleStats> battles;
-	stringstream ss;
 	string buffer, ModelA, ModelB;
-	int numA, numB, frontage, reps;
+	Model* A = nullptr;
+	Model* B = nullptr;
+	int numA, numB, 
+		frontage, 
+		reps = 10;
 
 	cout << "Please enter a model for Unit A: " << endl;
 	cin.ignore();
 	getline(cin, ModelA, '\n');
+	while ((A = factable.GetModel(ModelA)) == nullptr)
+	{
+		std::cout << "Model" << ModelA << " not found, please try again." << std::endl;
+		cin.ignore();
+		getline(cin, ModelA, '\n');
+	}
 	cout << "How many?" << endl;
 	cin >> buffer;
 	numA = stoi(buffer);
-
-	Model* A = factable.GetModel(ModelA); 
 
 	std::cout << std::endl;
 
 	cout << "Please enter a model for Unit B: " << endl;
 	cin.ignore();
 	getline(cin, ModelB, '\n');
+
+	while ((B = factable.GetModel(ModelB)) == nullptr)
+	{
+		std::cout << "Model" << ModelB << " not found, please try again." << std::endl;
+		cin.ignore();
+		getline(cin, ModelB, '\n');
+	}
+
 	cout << "How many?" << endl;
 	cin >> buffer;
 	numB = stoi(buffer);
-
-	Model* B = factable.GetModel(ModelB);
 
 	//cout << "Please enter a battle width: " << endl;
 	//cin >> buffer;
@@ -139,14 +148,15 @@ void BatchBattle(FactionTable& factable)
 	cin >> buffer;
 	reps = stoi(buffer);
 
-
 	for (int i = 0; i < reps; i++)
 	{
-		Unit SideA(*A, numA);
-		Unit SideB(*B, numB);
-		battles.push_back(Battle(SideA, SideB, 10));
+		
+		battles.push_back(Battle(Unit(*A, numA),
+								Unit(*B, numB), 
+								10));
+
 	}
-	Numberwang(battles, A->GetName(), A->GetName());
+	Numberwang(battles, A->GetName(), B->GetName());
 	std::cout << std::endl;
 }
 
@@ -195,7 +205,7 @@ void Encyclopedia(FactionTable& table)
 
 int main()
 {
-	std::cout << ToUpper("Welcome to the Age of Sigmar BattleSim v") << version << std::endl;
+	Printable::PrintHeader("Welcome to the Age of Sigmar BattleSim v" + std::to_string(version), 0);
 
 	//Initialisation
 	FactionTable FacTable;

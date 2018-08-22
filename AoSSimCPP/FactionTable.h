@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Weapon.h"
 #include "Model.h"
 #include "Faction.h"
@@ -12,7 +13,7 @@
 class FactionTable
 {
 private:
-	std::unordered_map<std::string, Faction> Factions;
+	std::unordered_map<std::string, Faction*> Factions;
 
 public:
 	FactionTable();
@@ -24,7 +25,7 @@ public:
 
 	//Get data.
 	Faction* GetFaction(std::string);
-	Weapon* GetWeapon(std::string, std::string);
+	Weapon* GetWeapon(std::string, std::string = "");
 	Model* GetModel(std::string, std::string = "");
 
 	void ListAll(bool = true);

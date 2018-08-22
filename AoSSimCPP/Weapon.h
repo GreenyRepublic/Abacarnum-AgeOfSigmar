@@ -1,14 +1,15 @@
 #pragma once
+#include "stdafx.h"
 #include "GameEntity.h"
 #include "Stats.h"
+#include "Printable.h"
 #include "Die.h"
-
 
 /*
 * Weapon: Encapsulates a weapon profile in AoS.
 * Contains stats/data as well as methods for resolving hit and wound rolls.
 */
-class Weapon : public GameEntity
+class Weapon : public GameEntity, Printable
 {
 private:
 	
@@ -18,15 +19,15 @@ private:
 	//To be added
 	//std::vector<Ability> Abilities;
 
-	int MakeRoll(uint8_t);
+	int MakeRoll(size_t);
 
 public:
-	Weapon(std::string, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t);
+	Weapon(std::string, size_t, size_t, size_t, size_t, size_t, size_t);
 	~Weapon();
 
 	void PrintStats();
 	void EndTurn();
 
-	uint8_t GenerateWounds(uint8_t);
+	size_t GenerateWounds(size_t);
 };
 

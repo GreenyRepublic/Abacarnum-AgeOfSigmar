@@ -4,9 +4,7 @@
 //Fight turn-by-turn until one side is wiped out.
 BattleStats Battle(Unit& unita, Unit& unitb, int frontage)
 {
-	Unit& SideA = unita;
-	Unit& SideB = unitb;
-	Side Winner;
+	std::string winner;
 	int survivors;
 	int turns = 0;
 
@@ -22,35 +20,32 @@ BattleStats Battle(Unit& unita, Unit& unitb, int frontage)
 		//Combat
 		if (turns % 2 == 0)
 		{
-			SideA.MeleeAttack(SideB, frontage);
-			SideB.MeleeAttack(SideA, frontage);
+			unita.MeleeAttack(unitb, frontage);
+			unitb.MeleeAttack(unita, frontage);
 		}
 		else
 		{
-			SideB.MeleeAttack(SideA, frontage);
-			SideA.MeleeAttack(SideB, frontage);
+			unitb.MeleeAttack(unita, frontage);
+			unita.MeleeAttack(unitb, frontage);
 		}
 		
 		//Battleshock
-		if (SideA.GetLosses() > SideB.GetLosses()) SideA.Battleshock();
-		else if (SideA.GetLosses() < SideB.GetLosses()) SideB.Battleshock();
+		if (unita.GetLosses() > unitb.GetLosses()) unita.TakeBattleshock();
+		else if (unita.GetLosses() < unitb.GetLosses()) unitb.TakeBattleshock();
 
-		if (SideA.GetLive() == 0)
+		if (unita.GetLive() == 0)
 		{
-			Winner = Side::SideB;
-			survivors = SideB.GetLive();
-			break;
+			winner = unitb.GetName();
+			survivors = unitb.GetLive();
+			return BattleStats{ winner, survivors, turns };
 		}
 
-		else if (SideB.GetLive() == 0)
+		else if (unitb.GetLive() == 0)
 		{
-			Winner = Side::SideA;
-			survivors = SideA.GetLive();
-			break;
+			winner = unita.GetName();
+			survivors = unita.GetLive();
+			return BattleStats{ winner, survivors, turns };
 		}
-
 		turns++;
 	}
-
-	return BattleStats{Winner, survivors, turns };
 }

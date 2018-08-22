@@ -3,15 +3,29 @@
   <DEFECT>
     <SFA>
       <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>model.h</FILENAME>
-      <LINE>43</LINE>
-      <COLUMN>13</COLUMN>
+      <FILENAME>battle.h</FILENAME>
+      <LINE>12</LINE>
+      <COLUMN>0</COLUMN>
     </SFA>
-    <DEFECTCODE>26434</DEFECTCODE>
-    <DESCRIPTION>Function 'Model::GetFaction' hides a non-virtual function 'GameEntity::GetFaction' (c.128).</DESCRIPTION>
-    <FUNCTION>Model::GetFaction</FUNCTION>
-    <DECORATED>?GetFaction@Model@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ</DECORATED>
-    <FUNCLINE>43</FUNCLINE>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'BattleStats::turns' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>BattleStats::{ctor}</FUNCTION>
+    <DECORATED>??0BattleStats@@QAE@$$QAU0@@Z</DECORATED>
+    <FUNCLINE>12</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>battle.h</FILENAME>
+      <LINE>12</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'BattleStats::survivors' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>BattleStats::{ctor}</FUNCTION>
+    <DECORATED>??0BattleStats@@QAE@$$QAU0@@Z</DECORATED>
+    <FUNCLINE>12</FUNCLINE>
     <PATH></PATH>
   </DEFECT>
 </DEFECTS>

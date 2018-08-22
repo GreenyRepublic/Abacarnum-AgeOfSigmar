@@ -4,13 +4,25 @@
 //Initialise using raw stat values.
 //Used for reading from the model database files.
 Model::Model(std::string name,
-	uint16_t move,
-	uint16_t wounds,
-	uint16_t bravery,
-	uint16_t save,
-	uint16_t unitsize,
-	uint16_t cost,
+	size_t move,
+	size_t wounds,
+	size_t bravery,
+	size_t save,
+	size_t unitsize,
+	size_t cost,
 	std::string faction) : GameEntity(name, faction), myStats(move, save, wounds, bravery), unitSize(unitsize), unitCost(cost){}
+
+Model::Model(const Model& ref)
+{
+	Model(ref.Name,
+		ref.myStats.move,
+		ref.myStats.wounds,
+		ref.myStats.bravery,
+		ref.myStats.save,
+		ref.unitSize,
+		ref.unitCost,
+		ref.Faction);
+}
 
 Model::~Model()
 {
@@ -55,9 +67,11 @@ size_t Model::MeleeAttack(Model& target)
 	return wounds;
 }
 
-void Model::TakeWounds(int count)
+int Model::TakeWounds(int count)
 {
-	myStats.wounds -= count;
+	int taken = min(myStats.currentWounds, count);
+	if ((myStats.currentWounds -= taken) == 0) delete(this); 
+	return count - taken;
 }
 
 void Model::AddWeapon(bool melee, Weapon* weapon)

@@ -1,7 +1,9 @@
 #pragma once
+#include "stdafx.h"
 #include "Weapon.h"
 #include "GameEntity.h"
 #include "Stats.h"
+#include "Printable.h"
 #include "Die.h"
 
 /*
@@ -10,17 +12,17 @@
 * E.g Attacking with weapons, taking saving rolls.
 */
 
-class Model : public GameEntity
+class Model : public GameEntity, Printable
 {
 private:
 	//Core Stats
 	ModelStats myStats;
 
 	//Weapons
-	std::vector<std::string> meleeWeapons,
-						rangedWeapons;
+	std::vector<Weapon*> meleeWeapons,
+						 rangedWeapons;
 	//Metadata
-	uint16_t unitSize,
+	size_t unitSize,
 			 unitCost;
 
 	//Add later
@@ -28,17 +30,18 @@ private:
 
 
 public:
-	Model(const std::string, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const uint16_t, const std::string);
+	Model(const std::string, const size_t, const size_t, const size_t, const size_t, const size_t, const size_t, const std::string);
+	Model(const Model&);
 	~Model();
 
-	void AddWeapon(bool, std::string);
+	void AddWeapon(bool, Weapon*);
 	void PrintStats();
+	void EndTurn();
 
 	//Combat rolls	
 	size_t MeleeAttack(Model&);
 	size_t RangedAttack(Model&);
-	void TakeWounds(int);
-	void EndTurn();
+	int TakeWounds(int);
 
 	std::string GetFaction() { return Faction; }
 	int GetSize() { return unitSize; }
