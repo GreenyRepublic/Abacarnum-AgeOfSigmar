@@ -19,7 +19,7 @@ private:
 	ModelStats myStats;
 
 	//Weapons
-	std::vector<Weapon*> meleeWeapons,
+	std::vector<std::shared_ptr<Weapon>> meleeWeapons,
 						 rangedWeapons;
 	//Metadata
 	size_t unitSize,
@@ -34,14 +34,16 @@ public:
 	Model(const Model&);
 	~Model();
 
-	void AddWeapon(bool, Weapon*);
+	Model& operator=(const Model&);
+
+	void AddWeapon(bool, std::shared_ptr<Weapon>);
 	void PrintStats();
 	void EndTurn();
 
 	//Combat rolls	
 	size_t MeleeAttack(Model&);
 	size_t RangedAttack(Model&);
-	int TakeWounds(int);
+	size_t TakeWounds(size_t);
 
 	std::string GetFaction() { return Faction; }
 	int GetSize() { return unitSize; }

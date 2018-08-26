@@ -21,7 +21,7 @@ public:
 	void AddModel(Model);
 
 	//Get model/weapon profiles by name.
-	Weapon* GetWeapon(std::string);
-	Model* GetModel(std::string);
+	Weapon& GetWeapon(std::string);
+	Model& GetModel(std::string);
 };
 

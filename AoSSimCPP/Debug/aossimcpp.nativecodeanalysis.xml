@@ -2,21 +2,7 @@
 <DEFECTS>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
-      <FILENAME>pugixml.cpp</FILENAME>
-      <LINE>3685</LINE>
-      <COLUMN>2</COLUMN>
-    </SFA>
-    <DEFECTCODE>26495</DEFECTCODE>
-    <DESCRIPTION>Variable 'pugi::impl::xml_buffered_writer::scratch' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
-    <FUNCTION>pugi::impl::xml_buffered_writer::{ctor}</FUNCTION>
-    <DECORATED>??0xml_buffered_writer@impl@pugi@@QAE@AAVxml_writer@2@W4xml_encoding@2@@Z</DECORATED>
-    <FUNCLINE>3685</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>3685</LINE>
       <COLUMN>2</COLUMN>
@@ -30,7 +16,21 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILENAME>pugixml.cpp</FILENAME>
+      <LINE>3685</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'pugi::impl::xml_buffered_writer::scratch' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>pugi::impl::xml_buffered_writer::{ctor}</FUNCTION>
+    <DECORATED>??0xml_buffered_writer@impl@pugi@@QAE@AAVxml_writer@2@W4xml_encoding@2@@Z</DECORATED>
+    <FUNCLINE>3685</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>4440</LINE>
       <COLUMN>8</COLUMN>
@@ -47,103 +47,103 @@
     </CATEGORY>
     <PATH>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4403</LINE>
         <COLUMN>15</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4404</LINE>
         <COLUMN>15</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4406</LINE>
         <COLUMN>20</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4408</LINE>
         <COLUMN>17</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4409</LINE>
         <COLUMN>17</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4411</LINE>
         <COLUMN>13</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4413</LINE>
         <COLUMN>11</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4415</LINE>
         <COLUMN>19</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4417</LINE>
         <COLUMN>8</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4419</LINE>
         <COLUMN>23</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4421</LINE>
         <COLUMN>12</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4423</LINE>
         <COLUMN>10</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4424</LINE>
         <COLUMN>10</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4411</LINE>
         <COLUMN>13</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4413</LINE>
         <COLUMN>11</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4415</LINE>
         <COLUMN>19</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4417</LINE>
         <COLUMN>8</COLUMN>
@@ -155,7 +155,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4433</LINE>
         <COLUMN>11</COLUMN>
@@ -167,13 +167,13 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4439</LINE>
         <COLUMN>8</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>4440</LINE>
         <COLUMN>8</COLUMN>
@@ -188,7 +188,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>6818</LINE>
       <COLUMN>24</COLUMN>
@@ -202,7 +202,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8050</LINE>
       <COLUMN>9</COLUMN>
@@ -219,19 +219,19 @@
     </CATEGORY>
     <PATH>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>8039</LINE>
         <COLUMN>14</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>8040</LINE>
         <COLUMN>6</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>8043</LINE>
         <COLUMN>7</COLUMN>
@@ -243,19 +243,19 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>8045</LINE>
         <COLUMN>8</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>8046</LINE>
         <COLUMN>6</COLUMN>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>8047</LINE>
         <COLUMN>37</COLUMN>
@@ -267,7 +267,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>8050</LINE>
         <COLUMN>9</COLUMN>
@@ -279,7 +279,7 @@
         </KEYEVENT>
       </SFA>
       <SFA>
-        <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+        <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
         <FILENAME>pugixml.cpp</FILENAME>
         <LINE>8050</LINE>
         <COLUMN>9</COLUMN>
@@ -294,7 +294,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8381</LINE>
       <COLUMN>2</COLUMN>
@@ -308,7 +308,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8391</LINE>
       <COLUMN>2</COLUMN>
@@ -322,7 +322,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8401</LINE>
       <COLUMN>2</COLUMN>
@@ -336,7 +336,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8416</LINE>
       <COLUMN>2</COLUMN>
@@ -350,7 +350,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8814</LINE>
       <COLUMN>2</COLUMN>
@@ -364,7 +364,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>8814</LINE>
       <COLUMN>2</COLUMN>
@@ -378,7 +378,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>9999</LINE>
       <COLUMN>2</COLUMN>
@@ -392,7 +392,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>10011</LINE>
       <COLUMN>2</COLUMN>
@@ -406,7 +406,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>10484</LINE>
       <COLUMN>31</COLUMN>
@@ -420,7 +420,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>10489</LINE>
       <COLUMN>34</COLUMN>
@@ -434,7 +434,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>10460</LINE>
       <COLUMN>31</COLUMN>
@@ -448,7 +448,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>11714</LINE>
       <COLUMN>2</COLUMN>
@@ -462,7 +462,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.hpp</FILENAME>
       <LINE>1242</LINE>
       <COLUMN>1</COLUMN>
@@ -476,7 +476,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>11959</LINE>
       <COLUMN>26</COLUMN>
@@ -490,7 +490,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>11964</LINE>
       <COLUMN>42</COLUMN>
@@ -504,7 +504,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12129</LINE>
       <COLUMN>30</COLUMN>
@@ -518,7 +518,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12141</LINE>
       <COLUMN>30</COLUMN>
@@ -532,7 +532,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12159</LINE>
       <COLUMN>30</COLUMN>
@@ -546,7 +546,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12159</LINE>
       <COLUMN>30</COLUMN>
@@ -560,7 +560,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12168</LINE>
       <COLUMN>50</COLUMN>
@@ -574,7 +574,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12362</LINE>
       <COLUMN>23</COLUMN>
@@ -588,7 +588,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>12370</LINE>
       <COLUMN>36</COLUMN>
@@ -602,21 +602,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>battle.h</FILENAME>
-      <LINE>12</LINE>
-      <COLUMN>0</COLUMN>
-    </SFA>
-    <DEFECTCODE>26495</DEFECTCODE>
-    <DESCRIPTION>Variable 'BattleStats::survivors' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
-    <FUNCTION>BattleStats::{ctor}</FUNCTION>
-    <DECORATED>??0BattleStats@@QAE@ABU0@@Z</DECORATED>
-    <FUNCLINE>12</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
       <FILENAME>battle.h</FILENAME>
       <LINE>12</LINE>
       <COLUMN>0</COLUMN>
@@ -630,7 +616,21 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>battle.h</FILENAME>
+      <LINE>12</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'BattleStats::survivors' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>BattleStats::{ctor}</FUNCTION>
+    <DECORATED>??0BattleStats@@QAE@ABU0@@Z</DECORATED>
+    <FUNCLINE>12</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>4490</LINE>
       <COLUMN>32</COLUMN>
@@ -644,7 +644,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>4492</LINE>
       <COLUMN>46</COLUMN>
@@ -658,7 +658,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>4492</LINE>
       <COLUMN>40</COLUMN>
@@ -672,7 +672,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>4514</LINE>
       <COLUMN>32</COLUMN>
@@ -686,21 +686,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
-      <FILENAME>battle.h</FILENAME>
-      <LINE>12</LINE>
-      <COLUMN>0</COLUMN>
-    </SFA>
-    <DEFECTCODE>26495</DEFECTCODE>
-    <DESCRIPTION>Variable 'BattleStats::survivors' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
-    <FUNCTION>BattleStats::{ctor}</FUNCTION>
-    <DECORATED>??0BattleStats@@QAE@$$QAU0@@Z</DECORATED>
-    <FUNCLINE>12</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
       <FILENAME>battle.h</FILENAME>
       <LINE>12</LINE>
       <COLUMN>0</COLUMN>
@@ -714,7 +700,21 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\</FILEPATH>
+      <FILENAME>battle.h</FILENAME>
+      <LINE>12</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'BattleStats::survivors' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>BattleStats::{ctor}</FUNCTION>
+    <DECORATED>??0BattleStats@@QAE@$$QAU0@@Z</DECORATED>
+    <FUNCLINE>12</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>4820</LINE>
       <COLUMN>2</COLUMN>
@@ -728,7 +728,7 @@
   </DEFECT>
   <DEFECT>
     <SFA>
-      <FILEPATH>s:\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
+      <FILEPATH>c:\users\benfclark\documents\github\aossimcpp\aossimcpp\pugixml\</FILEPATH>
       <FILENAME>pugixml.cpp</FILENAME>
       <LINE>4820</LINE>
       <COLUMN>2</COLUMN>

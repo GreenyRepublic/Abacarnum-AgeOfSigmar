@@ -34,25 +34,12 @@ void Faction::AddModel(Model model)
 	modelData.insert(entry);
 }
 
-Weapon* Faction::GetWeapon(std::string name)
+Weapon& Faction::GetWeapon(std::string name)
 {
-	try {
-		return &(weaponData.at(name));
-	}
-	catch (std::out_of_range e)
-	{
-		return nullptr;
-	}
+	return weaponData.at(name);
 }
 
-Model* Faction::GetModel(std::string name)
+Model& Faction::GetModel(std::string name)
 {
-	try
-	{
-		return &(modelData.at(name));
-	}
-	catch (std::out_of_range e)
-	{
-		return nullptr;
-	}
+	return modelData.at(name);
 }
