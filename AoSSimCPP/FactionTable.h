@@ -13,22 +13,22 @@
 class FactionTable
 {
 private:
-	std::unordered_map<std::string, Faction> Factions;
+	std::unordered_map<std::string, Faction*> Factions;
 
 public:
 	FactionTable();
 	~FactionTable();
 	
-	//Populate with data
+	//Populate with all data pertaining to a faction found in the factions_list.xml file via main();
 	void AddFaction(std::string);
-	int GetFactionCount() { return Factions.size(); }
+	int GetCount() { return Factions.size(); }
 
-	//Get references to data
-	Faction& GetFaction(std::string);
-	Weapon& GetWeapon(std::string, std::string = "");
-	Model& GetModel(std::string, std::string = "");
+	//Get data.
+	Faction* GetFaction(std::string);
+	Weapon* GetWeapon(std::string, std::string = "");
+	Model* GetModel(std::string, std::string = "");
 
 	void ListAll(bool = true);
-	void PrintFaction(std::string);
-	void PrintFaction(size_t);
+	void ListFaction(std::string);
+	void ListFaction(unsigned int);
 };

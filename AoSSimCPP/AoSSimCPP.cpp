@@ -41,13 +41,18 @@ bool ParseData(FactionTable& table)
 		return false;
 	}
 
-	std::cout << "Successfully loaded " << table.GetFactionCount() << " factions. View the Encyclopaedia for more details." << std::endl;
+	std::cout << "Successfully loaded " << table.GetCount() << " factions. View the Encyclopaedia for more details." << std::endl;
 	return true;
 }
 
+void Stats(const std::string name, FactionTable& ft)
+{
+	Model* mod = ft.GetModel(name);
+	if (mod != nullptr) mod->PrintStats();
+}
 
-//Crunches battle stats and writes to file.
-void WriteStats(std::vector<BattleStats>& stats, std::string& aname, std::string& bname)
+//Crunches battle stats and poops out a file.
+void Numberwang(std::vector<BattleStats>& stats, std::string& aname, std::string& bname)
 {
 	std::unordered_map<std::string, int> wins, survivors;
 	int battlenum = stats.size();
@@ -99,8 +104,8 @@ void BatchBattle(FactionTable& factable)
 
 	vector<BattleStats> battles;
 	string buffer, ModelA, ModelB;
-	Model* A, *B;
-	A = B = nullptr;
+	Model* A = nullptr;
+	Model* B = nullptr;
 	int numA, numB, 
 		frontage, 
 		reps = 10;
@@ -108,19 +113,11 @@ void BatchBattle(FactionTable& factable)
 	cout << "Please enter a model for Unit A: " << endl;
 	cin.ignore();
 	getline(cin, ModelA, '\n');
-	while (true)
+	while ((A = factable.GetModel(ModelA)) == nullptr)
 	{
-		try
-		{
-			A = &factable.GetModel(ModelA);
-			break;
-		}
-		catch (std::out_of_range e)
-		{
-			std::cout << "Model" << ModelA << " not found, please try again." << std::endl;
-			cin.ignore();
-			getline(cin, ModelA, '\n');
-		}
+		std::cout << "Model" << ModelA << " not found, please try again." << std::endl;
+		cin.ignore();
+		getline(cin, ModelA, '\n');
 	}
 	cout << "How many?" << endl;
 	cin >> buffer;
@@ -132,19 +129,11 @@ void BatchBattle(FactionTable& factable)
 	cin.ignore();
 	getline(cin, ModelB, '\n');
 
-	while (true)
+	while ((B = factable.GetModel(ModelB)) == nullptr)
 	{
-		try
-		{
-			B = &factable.GetModel(ModelB);
-			break;
-		}
-		catch (std::out_of_range e)
-		{
-			std::cout << "Model" << ModelA << " not found, please try again." << std::endl;
-			cin.ignore();
-			getline(cin, ModelB, '\n');
-		}
+		std::cout << "Model" << ModelB << " not found, please try again." << std::endl;
+		cin.ignore();
+		getline(cin, ModelB, '\n');
 	}
 
 	cout << "How many?" << endl;
@@ -167,7 +156,7 @@ void BatchBattle(FactionTable& factable)
 								10));
 
 	}
-	WriteStats(battles, A->GetName(), B->GetName());
+	Numberwang(battles, A->GetName(), B->GetName());
 	std::cout << std::endl;
 }
 
@@ -210,7 +199,7 @@ void Encyclopedia(FactionTable& table)
 		opt = std::stoi(input);
 
 		if (opt == 0) return;
-		else (table.PrintFaction(opt));
+		else (table.ListFaction(opt));
 	}
 }
 

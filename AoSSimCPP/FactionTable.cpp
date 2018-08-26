@@ -11,7 +11,7 @@ FactionTable::~FactionTable()
 
 void FactionTable::AddFaction(std::string facname)
 {
-	Faction faction(facname);
+	Faction* faction = new Faction(facname);
 
 	std::string fileName;
 	pugi::xml_document facFile;
@@ -31,15 +31,16 @@ void FactionTable::AddFaction(std::string facname)
 			size_t rend = std::stoi(node.child("rend").child_value());
 			size_t damage = std::stoi(node.child("damage").child_value());
 
-			faction.AddWeapon(Weapon(name, range, attacks, tohit, towound, rend, damage));
+			faction->AddWeapon(Weapon(name, range, attacks, tohit, towound, rend, damage));
 		}
 	}
 
 	//Now load models.
 	fileName = "data/" + facname + "_models.xml";
 	//std::cout << fileName << std::endl;
+	result = facFile.load_file(fileName.c_str());
 
-	if (facFile.load_file(fileName.c_str()))
+	if (result)
 	{
 		for (pugi::xml_node node = facFile.child("faction").child("model"); node; node = node.next_sibling("model"))
 		{
@@ -65,89 +66,107 @@ void FactionTable::AddFaction(std::string facname)
 
 			for (pugi::xml_node weapons = node.child("weapons").first_child(); weapons; weapons = weapons.next_sibling())
 			{
-				try {
-					Weapon& weap = faction.GetWeapon(weapons.child_value());
-					model.AddWeapon(static_cast<std::string>(weapons.attribute("type").value()) == "melee", std::shared_ptr<Weapon>(&weap));
-				}
-				catch(std::out_of_range e)
+				Weapon* weap = faction->GetWeapon(weapons.child_value());
+				if (weap == nullptr)
 				{
 					continue;
 				}
+				//std::cout << weapons.child_value() << std::endl;
+				//std::cout << weapons.attribute("type").value() << std::endl;
+				model.AddWeapon(static_cast<std::string>(weapons.attribute("type").value()) == "melee", weap);
 			}
 
-			faction.AddModel(model);
+			faction->AddModel(model);
 			//std::cout << "Added model " << name << " to faction " << facname << "." << std::endl;
 		}
 
-		Factions.insert(std::pair<std::string, Faction>(facname, std::move(faction)));
+		Factions.insert(std::pair<std::string, Faction*>(facname, faction));
 	}
 	//std::cout << "Successfully loaded " << Factions->size() << " factions" << std::endl;
 }
 
-Faction& FactionTable::GetFaction(std::string name)
+Faction* FactionTable::GetFaction(std::string name)
 {
-	return Factions.at(name);
+	try
+	{
+		return Factions.at(name);
+	}
+	catch (std::out_of_range o) 
+	{ 
+		std::cout << "Cannot find faction " << name << "! (" << o.what() << ")" << std::endl; 
+	}
 }
 
-Weapon& FactionTable::GetWeapon(std::string name, std::string faction)
-{
-	return (GetFaction(faction).GetWeapon(name));
-}
-
-Model& FactionTable::GetModel(std::string name, std::string faction)
+Weapon* FactionTable::GetWeapon(std::string name, std::string faction)
 {
 	if (!faction.empty())
 	{
-		return (GetFaction(faction).GetModel(name));
+		try
+		{
+			Faction* fac = GetFaction(faction);
+			return (fac->GetWeapon(name));
+		}
+		catch (std::out_of_range o)
+		{
+			std::cout << "Cannot find weapon " << name << "! (" << o.what() << ")" << std::endl;
+			return nullptr;
+		}
+	}
+}
+
+Model* FactionTable::GetModel(std::string name, std::string faction)
+{
+	if (!faction.empty())
+	{
+		try
+		{
+			Faction* fac = GetFaction(faction);
+			return (fac->GetModel(name));
+		}
+		catch (std::out_of_range o) 
+		{ 
+			std::cout << "Cannot find model " << name << "! (" << o.what() << ")" << std::endl;
+			return nullptr;
+		}
 	}
 
 	else
 	{
 		for (auto f : Factions)
 		{
-			try { 
-				Faction& fac = f.second;
-				return fac.GetModel(name);
-			}
-			catch (std::out_of_range e)
-			{
-				continue;
-			}
-		}
-		throw std::out_of_range("Could not find model in any faction.");
+			Faction* fac = f.second;
+			if (fac->GetModel(name) != nullptr) return fac->GetModel(name);
+		}		
+		std::cout << "Cannot find model " << name << "!" << std::endl;
+		return nullptr;
 	}
 }
 
 void FactionTable::ListAll(const bool numbered)
 {
-	int label = 1;
+	int i = 1;
 	std::regex expr("([a-z]+)|([A-Z][a-z]+)");;
 	
 	for (auto fac : Factions)
 	{
 		std::string facname = fac.first;
-		std::cout << label << ": " << facname << std::endl;
-		label++;
+		std::cout << i << ": " << facname << std::endl;
+		i++;
 	}
 	std::cout << std::endl;
 }
 
-void FactionTable::PrintFaction(std::string facname)
+void FactionTable::ListFaction(std::string facname)
 {
-	try 
-	{ 
-		GetFaction(facname).PrintStats();
-	}
-	catch (std::out_of_range o) 
-	{ 
-		std::cout << "Faction " << facname << " doesn't appear to exist, has a profile been made for it? (" << o.what() << ")" << std::endl; 
-		return; 
-	}
+	Faction* fac;
+	try { fac = GetFaction(facname); }
+	catch (std::out_of_range o) { std::cout << "Faction " << facname << " doesn't appear to exist, has a profile been made for it? (" << o.what() << ")" << std::endl; return; }
+	fac->PrintStats();
 }
 
-void FactionTable::PrintFaction(size_t index)
+void FactionTable::ListFaction(unsigned int index)
 {
 	auto iter = Factions.begin();
 	for (int i = 0; i < index-1; i++) iter++;
-	PrintFaction(iter->first);
+	ListFaction(iter->first);
 }

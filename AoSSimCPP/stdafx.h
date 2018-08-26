@@ -30,7 +30,6 @@
 #include <ctime>
 #include <sstream>
 #include <ctype.h>
-#include <memory>
 
 void PrintHeader(std::string, int);
 std::string ToUpper(std::string);

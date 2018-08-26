@@ -10,4 +10,5 @@ class Printable
 	public:
 		virtual void PrintStats() = 0;
 		static void PrintHeader(std::string, int);
+
 };
