@@ -7,8 +7,8 @@
 class Faction : Printable
 {
 private:
-	std::unordered_map<std::string, Weapon> weaponData;
-	std::unordered_map<std::string, Model> modelData;
+	std::unordered_map<std::string, std::shared_ptr<Weapon>> weaponData;
+	std::unordered_map<std::string, std::shared_ptr<Model>> modelData;
 	std::string Name;
 
 public:
@@ -17,11 +17,11 @@ public:
 
 	void PrintStats();
 
-	void AddWeapon(Weapon);
-	void AddModel(Model);
+	void AddWeapon(std::shared_ptr<Weapon>);
+	void AddModel(std::shared_ptr<Model>);
 
 	//Get model/weapon profiles by name.
-	Weapon& GetWeapon(std::string);
-	Model& GetModel(std::string);
+	std::shared_ptr<Weapon> GetWeapon(std::string);
+	std::shared_ptr<Model> GetModel(std::string);
 };
 

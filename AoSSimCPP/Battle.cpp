@@ -2,7 +2,7 @@
 #include "Battle.h"
 
 //Fight turn-by-turn until one side is wiped out.
-BattleStats Battle(Unit& unita, Unit& unitb, int frontage)
+BattleStats Battle(Unit unita, Unit unitb, int frontage)
 {
 	std::string winner;
 	int survivors;

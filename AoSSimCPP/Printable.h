@@ -1,7 +1,9 @@
 #pragma once
 #include "stdafx.h"
 
-//Provides abstract interface for anything that has printable stats, as well as static methods for printing nice shit.
+
+
+//Provides abstract interface for anything that has printable stats
 class Printable
 {
 	protected:

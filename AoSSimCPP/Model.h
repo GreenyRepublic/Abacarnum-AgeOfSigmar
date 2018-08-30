@@ -32,6 +32,7 @@ private:
 public:
 	Model(const std::string, const size_t, const size_t, const size_t, const size_t, const size_t, const size_t, const std::string);
 	Model(const Model&);
+	Model();
 	~Model();
 
 	Model& operator=(const Model&);

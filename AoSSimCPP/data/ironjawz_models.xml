@@ -26,7 +26,7 @@ Unit Size
 </model>
 <-->
 
-<ironjawz>
+<faction name = "Ironjawz">
     <model name = "Orruk Megaboss">
         <stats>
             <move>4</move>
@@ -141,4 +141,4 @@ Unit Size
         <upgrades></upgrades>
         <abilities></abilities>
     </model>
-</ironjawz>
+</faction>

@@ -10,7 +10,7 @@ Model::Model(std::string name,
 	size_t save,
 	size_t unitsize,
 	size_t cost,
-	std::string faction) : GameEntity(name, faction), myStats(move, save, wounds, bravery), unitSize(unitsize), unitCost(cost){}
+	std::string faction) : GameEntity(name, faction), myStats(move, save, bravery, wounds), unitSize(unitsize), unitCost(cost){}
 
 Model::Model(const Model& ref)
 {
@@ -24,7 +24,7 @@ Model::Model(const Model& ref)
 		ref.Faction);
 }
 
-Model::~Model()
+Model::Model()
 {
 }
 
@@ -33,16 +33,21 @@ Model& Model::operator=(const Model & rhs)
 	return Model(rhs);
 }
 
+Model::~Model()
+{
+	std::cout << Name << " dstr" << std::endl;
+}
+
 void Model::PrintStats()
 {
 	std::cout << std::endl;
 	std::cout << "|<>| " << ToUpper(Name) << " |<>|" << std::endl;
 	std::cout << std::endl;
 	std::cout << "	|==| STATS |==|" << std::endl;
-	std::cout << "	 |o| Move: " << myStats.move << '"' << std::endl;
-	std::cout << "	 |o| Wounds: " << myStats.wounds << std::endl;
-	std::cout << "	 |o| Bravery: " << myStats.bravery << std::endl;
-	std::cout << "	 |o| Save: " << myStats.save << "+" << std::endl;
+	std::cout << "	 |o| Move: " << (int)myStats.move << '"' << std::endl;
+	std::cout << "	 |o| Wounds: " << (int)myStats.wounds << std::endl;
+	std::cout << "	 |o| Bravery: " << (int)myStats.bravery << std::endl;
+	std::cout << "	 |o| Save: " << (int)myStats.save << "+" << std::endl;
 	
 	std::cout << std::endl;
 	std::cout << "	|==| MELEE WEAPONS |==|" << std::endl;
@@ -54,8 +59,8 @@ void Model::PrintStats()
 
 	std::cout << std::endl;
 	std::cout << "	|==| METADATA |==|" << std::endl;
-	std::cout << "	 |o| Unit Size: " << unitSize << std::endl;
-	std::cout << "	 |o| Points Cost: " << unitCost << std::endl;
+	std::cout << "	 |o| Unit Size: " << (int)unitSize << std::endl;
+	std::cout << "	 |o| Points Cost: " << (int)unitCost << std::endl;
 	std::cout << "	 |o| Keywords: " << std::endl;
 	std::cout << std::endl;
 }
@@ -74,7 +79,6 @@ size_t Model::MeleeAttack(Model& target)
 size_t Model::TakeWounds(size_t count)
 {
 	int taken = min(myStats.currentWounds, count);
-	if ((myStats.currentWounds -= taken) == 0) delete(this); 
 	return count - taken;
 }
 

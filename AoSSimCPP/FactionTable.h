@@ -25,8 +25,8 @@ public:
 
 	//Get references to data
 	Faction& GetFaction(std::string);
-	Weapon& GetWeapon(std::string, std::string = "");
-	Model& GetModel(std::string, std::string = "");
+	std::shared_ptr<Weapon> GetWeapon(std::string, std::string = "");
+	std::shared_ptr<Model> GetModel(std::string, std::string = "");
 
 	void ListAll(bool = true);
 	void PrintFaction(std::string);

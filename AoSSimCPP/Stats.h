@@ -27,27 +27,27 @@ struct Modifier : GameEntity
 struct WeaponStats
 {
 	//Weapon Stats
-	int8_t range,
+	size_t range,
 		attacks,
 		tohit,
 		towound,
 		rend,
 		damage;
 	WeaponStats();
-	WeaponStats(int8_t r, int8_t a, int8_t h, int8_t w, int8_t n, int8_t d) : 
+	WeaponStats(size_t r, size_t a, size_t h, size_t w, size_t n, size_t d) :
 		range(r), attacks(a), tohit(h), towound(w), rend(n), damage(d) {};
 };
 
 struct ModelStats
 {
 	//Unit Stats
-	int8_t move,
+	size_t move,
 		save,
 		bravery,
 		wounds,
 		currentWounds;
 	ModelStats();
-	ModelStats(int8_t m, int8_t s, int8_t b, int8_t w) : 
+	ModelStats(size_t m, size_t s, size_t b, size_t w) :
 		move(m), save(s), bravery(b), wounds(w), currentWounds(w){};
 };
 

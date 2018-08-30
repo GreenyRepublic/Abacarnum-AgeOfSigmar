@@ -11,4 +11,4 @@ struct BattleStats
 	int turns;
 };
 
-BattleStats Battle(Unit&, Unit&, int);
+BattleStats Battle(Unit, Unit, int);

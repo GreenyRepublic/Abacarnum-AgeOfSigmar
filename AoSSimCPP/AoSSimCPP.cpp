@@ -99,8 +99,7 @@ void BatchBattle(FactionTable& factable)
 
 	vector<BattleStats> battles;
 	string buffer, ModelA, ModelB;
-	Model* A, *B;
-	A = B = nullptr;
+	std::shared_ptr<Model> A, B;
 	int numA, numB, 
 		frontage, 
 		reps = 10;
@@ -112,7 +111,7 @@ void BatchBattle(FactionTable& factable)
 	{
 		try
 		{
-			A = &factable.GetModel(ModelA);
+			A = factable.GetModel(ModelA);
 			break;
 		}
 		catch (std::out_of_range e)
@@ -122,6 +121,7 @@ void BatchBattle(FactionTable& factable)
 			getline(cin, ModelA, '\n');
 		}
 	}
+
 	cout << "How many?" << endl;
 	cin >> buffer;
 	numA = stoi(buffer);
@@ -136,7 +136,7 @@ void BatchBattle(FactionTable& factable)
 	{
 		try
 		{
-			B = &factable.GetModel(ModelB);
+			B = factable.GetModel(ModelB);
 			break;
 		}
 		catch (std::out_of_range e)
@@ -161,11 +161,9 @@ void BatchBattle(FactionTable& factable)
 
 	for (int i = 0; i < reps; i++)
 	{
-		
 		battles.push_back(Battle(Unit(*A, numA),
 								Unit(*B, numB), 
 								10));
-
 	}
 	WriteStats(battles, A->GetName(), B->GetName());
 	std::cout << std::endl;

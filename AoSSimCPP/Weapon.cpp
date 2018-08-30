@@ -18,12 +18,12 @@ Weapon::~Weapon()
 void Weapon::PrintStats()
 {
 	std::cout << "	 |o| " << Name << " "
-			  << " |- " << "Range: " << myStats.range << '"'
-			  << " | Attacks: " << myStats.attacks
-			  << " | To Hit: " << myStats.tohit << "+"
-			  << " | To Wound: " << myStats.towound << "+"
-			  << " | Rend: " << myStats.rend
-			  << " | Damage: " << myStats.damage
+			  << " |- " << "Range: " << (int)myStats.range << '"'
+			  << " | Attacks: " << (int)myStats.attacks
+			  << " | To Hit: " << (int)myStats.tohit << "+"
+			  << " | To Wound: " << (int)myStats.towound << "+"
+			  << " | Rend: " << (int)myStats.rend
+			  << " | Damage: " << (int)myStats.damage
 			  << std::endl;
 }
 

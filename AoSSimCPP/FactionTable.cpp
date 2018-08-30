@@ -24,14 +24,14 @@ void FactionTable::AddFaction(std::string facname)
 		for (pugi::xml_node node = facFile.child("faction").child("weapon"); node; node = node.next_sibling("weapon"))
 		{
 			std::string name = node.attribute("name").value();
-			size_t range = std::stoi(node.child("range").child_value());
-			size_t attacks = std::stoi(node.child("attacks").child_value());
-			size_t tohit = std::stoi(node.child("tohit").child_value());
-			size_t towound = std::stoi(node.child("towound").child_value());
-			size_t rend = std::stoi(node.child("rend").child_value());
-			size_t damage = std::stoi(node.child("damage").child_value());
+			size_t range = std::stoi(node.child("range").child_value()),
+				attacks = std::stoi(node.child("attacks").child_value()),
+				tohit = std::stoi(node.child("tohit").child_value()),
+				towound = std::stoi(node.child("towound").child_value()),
+				rend = std::stoi(node.child("rend").child_value()),
+				damage = std::stoi(node.child("damage").child_value());
 
-			faction.AddWeapon(Weapon(name, range, attacks, tohit, towound, rend, damage));
+			faction.AddWeapon(std::make_shared<Weapon>(name, range, attacks, tohit, towound, rend, damage));
 		}
 	}
 
@@ -43,38 +43,30 @@ void FactionTable::AddFaction(std::string facname)
 	{
 		for (pugi::xml_node node = facFile.child("faction").child("model"); node; node = node.next_sibling("model"))
 		{
-			size_t move;
-			size_t save;
-			size_t bravery;
-			size_t wounds;
 
 			std::string name = node.attribute("name").value();
-			
 			pugi::xml_node stats = node.child("stats");
 			
-			
-			move = std::stoi(stats.child("move").child_value());
-			save = std::stoi(stats.child("save").child_value());
-			bravery = std::stoi(stats.child("bravery").child_value());
-			wounds = std::stoi(stats.child("wounds").child_value());
+			size_t move = std::stoi(stats.child("move").child_value()),
+				save = std::stoi(stats.child("save").child_value()),
+				bravery = std::stoi(stats.child("bravery").child_value()),
+				wounds = std::stoi(stats.child("wounds").child_value()),
+				size = std::stoi(node.child("size").child_value()),
+				cost = std::stoi(node.child("cost").child_value());
 
-			int size = std::stoi(node.child("size").child_value());
-			int cost = std::stoi(node.child("cost").child_value());
-
-			Model model(name, move, wounds, bravery, save, size, cost, facname);
+			auto model = std::make_shared<Model>(name, move, wounds, bravery, save, size, cost, facname);
 
 			for (pugi::xml_node weapons = node.child("weapons").first_child(); weapons; weapons = weapons.next_sibling())
 			{
 				try {
-					Weapon& weap = faction.GetWeapon(weapons.child_value());
-					model.AddWeapon(static_cast<std::string>(weapons.attribute("type").value()) == "melee", std::shared_ptr<Weapon>(&weap));
+					auto weap = faction.GetWeapon(weapons.child_value());
+					model->AddWeapon(static_cast<std::string>(weapons.attribute("type").value()) == "melee", weap);
 				}
 				catch(std::out_of_range e)
 				{
 					continue;
 				}
 			}
-
 			faction.AddModel(model);
 			//std::cout << "Added model " << name << " to faction " << facname << "." << std::endl;
 		}
@@ -89,12 +81,12 @@ Faction& FactionTable::GetFaction(std::string name)
 	return Factions.at(name);
 }
 
-Weapon& FactionTable::GetWeapon(std::string name, std::string faction)
+std::shared_ptr<Weapon> FactionTable::GetWeapon(std::string name, std::string faction)
 {
 	return (GetFaction(faction).GetWeapon(name));
 }
 
-Model& FactionTable::GetModel(std::string name, std::string faction)
+std::shared_ptr<Model> FactionTable::GetModel(std::string name, std::string faction)
 {
 	if (!faction.empty())
 	{

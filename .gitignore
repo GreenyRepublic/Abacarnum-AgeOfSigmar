@@ -49,3 +49,8 @@ Temporary Items
 # Build directories
 ./AoSSimCPP/Debug/*
 ./AoSSimCPP/Release/*
+.\AoSSimCPP\Debug\*
+.\AoSSimCPP\Release\*
+
+# Intermediate build files
+*.obj

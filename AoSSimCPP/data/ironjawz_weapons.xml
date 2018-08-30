@@ -17,7 +17,7 @@ Integers: Range
     <damage>/<damage>
 </weapon><-->
 
-<ironjawz>
+<faction name = "Ironjawz">
     <weapon name = "Boss Choppa">
       <range>1</range>
       <attacks>6</attacks>
@@ -89,13 +89,4 @@ Integers: Range
       <rend>0</rend>
       <damage>1</damage>
     </weapon>
-
-<weapon name = "Ardboy Choppa">
-      <range>1</range>
-      <attacks>2</attacks>
-      <tohit>4</tohit>
-      <towound>3</towound>
-      <rend>0</rend>
-      <damage>1</damage>
-    </weapon>
-</ironjawz>
+</faction>
