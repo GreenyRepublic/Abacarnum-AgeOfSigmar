@@ -7,7 +7,7 @@
  * A unit attacks as a unit, takes casualties as a unit, and takes battleshock tests as a unit
  * Within the scope of this program no other data (position, etc) is needed
  */
-class Unit : public GameEntity, Printable
+class Unit : public GameEntity
 {
 private:
 	size_t pointValue,
@@ -15,7 +15,7 @@ private:
 		maxBatches, 
 		Losses;
 
-	std::vector<Model*> Models;
+	std::vector<Model> Models;
 
 	std::string Name;
 	std::vector<std::string> Keywords;
@@ -25,7 +25,7 @@ private:
 
 
 public:
-	Unit(Model&, int);
+	Unit(const std::shared_ptr<Model>, size_t);
 	~Unit();
 
 	void MeleeAttack(Unit& target, int frontage);

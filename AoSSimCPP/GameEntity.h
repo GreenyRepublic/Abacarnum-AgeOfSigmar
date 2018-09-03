@@ -14,12 +14,11 @@ protected:
 				Faction;
 
 public:
-	GameEntity();
 	GameEntity(std::string, std::string);
 	virtual ~GameEntity();
 	
-	std::string GetName() { return Name; }
-	std::string GetFaction() { return Faction; }
+	std::string GetName() const { return Name; }
+	std::string GetFaction() const { return Faction; }
 	virtual void EndTurn() = 0; //Resolve end-turn updates
 
 	bool operator ==(const GameEntity&); //Case-insensitive name comparison operator

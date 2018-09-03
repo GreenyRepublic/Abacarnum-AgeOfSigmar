@@ -9,7 +9,7 @@ Faction::~Faction()
 
 void Faction::PrintStats()
 {
-	PrintHeader(ToUpper(Name), 0);
+	Printable::PrintHeader(Name, 0);
 
 	//Print models
 	std::cout << "|| MODELS ||" << std::endl;

@@ -5,10 +5,6 @@
 * GameEntity.cpp: Contains anything common to game entities, e.g. models, weapons.
 */
 
-GameEntity::GameEntity()
-{
-}
-
 GameEntity::GameEntity(std::string name, std::string faction) : Name(name), Faction(faction)
 {
 }

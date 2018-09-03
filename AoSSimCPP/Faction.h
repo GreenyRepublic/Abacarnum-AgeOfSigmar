@@ -4,7 +4,7 @@
 #include "Model.h"
 #include "Printable.h"
 
-class Faction : Printable
+class Faction
 {
 private:
 	std::unordered_map<std::string, std::shared_ptr<Weapon>> weaponData;

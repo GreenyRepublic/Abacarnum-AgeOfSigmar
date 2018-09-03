@@ -9,7 +9,7 @@
 * Weapon: Encapsulates a weapon profile in AoS.
 * Contains stats/data as well as methods for resolving hit and wound rolls.
 */
-class Weapon : public GameEntity, Printable
+class Weapon : public GameEntity
 {
 private:
 	

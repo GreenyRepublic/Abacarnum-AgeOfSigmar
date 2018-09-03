@@ -161,9 +161,9 @@ void BatchBattle(FactionTable& factable)
 
 	for (int i = 0; i < reps; i++)
 	{
-		battles.push_back(Battle(Unit(*A, numA),
-								Unit(*B, numB), 
-								10));
+		auto a = Unit(A, numA);
+		auto b = Unit(B, numB);
+		battles.push_back(Battle(a, b, 10));
 	}
 	WriteStats(battles, A->GetName(), B->GetName());
 	std::cout << std::endl;

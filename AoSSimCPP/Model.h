@@ -12,7 +12,7 @@
 * E.g Attacking with weapons, taking saving rolls.
 */
 
-class Model : public GameEntity, Printable
+class Model : public GameEntity
 {
 private:
 	//Core Stats
@@ -32,7 +32,6 @@ private:
 public:
 	Model(const std::string, const size_t, const size_t, const size_t, const size_t, const size_t, const size_t, const std::string);
 	Model(const Model&);
-	Model();
 	~Model();
 
 	Model& operator=(const Model&);
@@ -46,9 +45,9 @@ public:
 	size_t RangedAttack(Model&);
 	size_t TakeWounds(size_t);
 
-	std::string GetFaction() { return Faction; }
-	int GetSize() { return unitSize; }
-	int GetCost() { return unitCost; }
+	std::string GetFaction() const { return Faction; }
+	int GetSize() const { return unitSize; }
+	int GetCost() const { return unitCost; }
 	ModelStats& GetStats() { return myStats; }
 };
 

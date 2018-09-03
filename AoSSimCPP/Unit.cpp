@@ -2,24 +2,21 @@
 #include "Unit.h"
 
 
-Unit::Unit(Model& model, int count)
+Unit::Unit(const std::shared_ptr<Model> model, size_t count) : GameEntity(model->GetName(), model->GetFaction())
 {
-
 	for (int i = 0; i < count; i++) 
 	{ 
-		Models.push_back(new Model(model)); 
+		Models.push_back(*model);
 	}
 
-	Name = model.GetName();
-	modelsPerBatch = ceil(count / model.GetSize());
-	pointValue = modelsPerBatch * model.GetCost();
+	Name = model->GetName();
+	modelsPerBatch = ceil(count / model->GetSize());
+	pointValue = modelsPerBatch * model->GetCost();
 	Losses = 0;
 }
 
 Unit::~Unit()
 {
-	std::cout << "destroying unit:" << std::endl;
-	for (auto m : Models) delete(m);
 }
 
 //Attack a target.
@@ -32,7 +29,7 @@ void Unit::MeleeAttack(Unit& target, int frontage)
 	for (auto& m : Models)
 	{
 		if (i == frontage) break;
-		wounds += m->MeleeAttack(*type);
+		wounds += m.MeleeAttack(type);
 		i++;
 	}
 	target.TakeWounds(wounds);
@@ -41,9 +38,9 @@ void Unit::MeleeAttack(Unit& target, int frontage)
 //Allocates wounds and deletes if the unit has been wiped out.
 void Unit::TakeWounds(int wounds)
 {
-	while (wounds > 0)
+	while (wounds > 0 && Models.size() > 0)
 	{
-		wounds = Models.back()->TakeWounds(wounds);
+		wounds = Models.back().TakeWounds(wounds);
 		if (wounds > 0) Models.pop_back();
 	}
 }
@@ -54,7 +51,7 @@ void Unit::TakeBattleshock()
 	//Calculate losses.
 	int roll = Die::Roll();
 	int numbersBonus = floor(Models.size()/10);
-	int result = max(0, (roll + Losses) - (Models.front()->GetStats().bravery + numbersBonus));
+	int result = max(0, (roll + Losses) - (Models.front().GetStats().bravery + numbersBonus));
 	//std::cout << "Battleshock - " << Name << " loses " << result << " models!" << std::endl;
 
 	if (result >= Models.size()) Models.clear();
@@ -64,12 +61,12 @@ void Unit::TakeBattleshock()
 void Unit::EndTurn()
 {
 	Losses = 0;
-	for (auto& model : Models) model->EndTurn();
+	for (auto& model : Models) model.EndTurn();
 }
 
 void Unit::PrintStats() 
 {
-	PrintHeader("Unit: " + Name, 1);
-	PrintHeader("Type Model", 2);
-	Models.at(0)->PrintStats();
+	Printable::PrintHeader("Unit: " + Name, 1);
+	Printable::PrintHeader("Type Model", 2);
+	Models.at(0).PrintStats();
 }
