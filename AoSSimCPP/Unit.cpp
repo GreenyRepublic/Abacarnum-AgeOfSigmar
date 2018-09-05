@@ -24,8 +24,8 @@ Unit::~Unit()
 void Unit::MeleeAttack(Unit& target, int frontage)
 {
 	auto type = target.Models.back();
-	int wounds = 0;
-	int i = 0;
+	size_t wounds = 0,
+		i = 0;
 	for (auto& m : Models)
 	{
 		if (i == frontage) break;
@@ -35,8 +35,8 @@ void Unit::MeleeAttack(Unit& target, int frontage)
 	target.TakeWounds(wounds);
 }
 
-//Allocates wounds and deletes if the unit has been wiped out.
-void Unit::TakeWounds(int wounds)
+//Allocates wounds.
+void Unit::TakeWounds(size_t wounds)
 {
 	while (wounds > 0 && Models.size() > 0)
 	{

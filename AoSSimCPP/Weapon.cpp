@@ -38,7 +38,7 @@ int Weapon::MakeRoll(size_t target)
 }
 
 //This is longer than it needs to be right now, as I need it to be clean for possible expansion when I add abilities etc.
-size_t Weapon::GenerateWounds(size_t save)
+size_t Weapon::AttackRoll(size_t save)
 {
 	int hits, wounds, saves;
 	hits = wounds = saves = 0;
@@ -46,5 +46,5 @@ size_t Weapon::GenerateWounds(size_t save)
 	for (int i = 0; i < hits; i++) wounds += MakeRoll(myStats.towound);
 	for (int i = 0; i < wounds; i++) saves += ((Die::Roll() + myStats.rend) >= save);
 
-	return (size_t) max(0, (wounds - saves) * myStats.damage);
+	return max(0, (wounds - saves) * myStats.damage);
 }

@@ -14,8 +14,8 @@ BattleStats Battle(Unit unita, Unit unitb, int frontage)
 
 	while(1)
 	{
-		//std::cout << firstSide->GetName() << ": " << firstSide->LiveCount() << " remaining." << std::endl;
-		//std::cout << secondSide->GetName() << ": " << secondSide->LiveCount() << " remaining." << std::endl;
+		//std::cout << unita.GetName() << ": " << unita.GetLive() << " remaining." << std::endl;
+		//std::cout << unitb.GetName() << ": " << unitb.GetLive() << " remaining." << std::endl;
 
 		//Combat
 		if (turns % 2 == 0)

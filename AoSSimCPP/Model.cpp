@@ -12,7 +12,6 @@ Model::Model(std::string name,
 	size_t cost,
 	std::string faction) : GameEntity(name, faction), myStats(move, save, bravery, wounds), unitSize(unitsize), unitCost(cost)
 {
-	std::cout << name << " constructed" << std::endl;
 }
 
 Model::Model(const Model& ref) : GameEntity(ref.Name, ref.Faction), myStats(ref.myStats), unitSize(ref.unitSize), unitCost(ref.unitCost)
@@ -65,7 +64,7 @@ void Model::EndTurn()
 size_t Model::MeleeAttack(Model& target)
 {
 	size_t wounds = 0;
-	for (auto w : meleeWeapons) wounds += w->GenerateWounds(target.myStats.save);
+	for (auto w : meleeWeapons) wounds += w->AttackRoll(target.myStats.save);
 	return wounds;
 }
 

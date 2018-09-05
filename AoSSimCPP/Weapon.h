@@ -28,6 +28,6 @@ public:
 	void PrintStats();
 	void EndTurn();
 
-	size_t GenerateWounds(size_t);
+	size_t AttackRoll(size_t);
 };
 

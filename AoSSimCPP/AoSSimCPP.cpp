@@ -50,14 +50,17 @@ bool ParseData(FactionTable& table)
 void WriteStats(std::vector<BattleStats>& stats, std::string& aname, std::string& bname)
 {
 	std::unordered_map<std::string, int> wins, survivors;
-	int battlenum = stats.size();
+	size_t battlenum = stats.size();
+	float turns = 0;
 
 	for (auto stat : stats)
 	{
+		turns += stat.turns;
 		wins[stat.Winner] += 1;
 		survivors[stat.Winner] += stat.survivors;
 	}
 
+	turns /= battlenum;
 	survivors[aname] /= battlenum;
 	survivors[bname] /= battlenum;
 
@@ -73,13 +76,14 @@ void WriteStats(std::vector<BattleStats>& stats, std::string& aname, std::string
 
 	std::stringstream ss; 
 	ss << "records/" << aname << "_vs_" << bname << "_" << (Time->tm_mday);
-	if (Time->tm_mon < 10) ss << 0; 
+	if (Time->tm_mon < 10) { ss << 0; }
 	ss << (Time->tm_mon) << (Time->tm_year + 1900) << "_" << (Time->tm_sec) << (Time->tm_min);
 	ss << (Time->tm_hour) << ".txt";
 
 	std::string filename;
-	ss >> filename;
+	filename = ss.str();
 	std::ofstream file;
+
 	file.open(filename);
 
 	file << aname << " versus " << bname << "\n";
@@ -87,6 +91,7 @@ void WriteStats(std::vector<BattleStats>& stats, std::string& aname, std::string
 	file << "Most Wins: " << Winner << "(" << WinNum << " | " << (100*WinNum/stats.size()) << "%)\n";
 	file << "Avg. Survivors/Win (" << aname << "): " << survivors[aname] << "\n";
 	file << "Avg. Survivors/Win (" << bname << "): " << survivors[bname] << "\n";
+	file << "Avg. Turns/Battle: " << turns << "\n";
 	
 	file.close();
 }
@@ -116,8 +121,7 @@ void BatchBattle(FactionTable& factable)
 		}
 		catch (std::out_of_range e)
 		{
-			std::cout << "Model" << ModelA << " not found, please try again." << std::endl;
-			cin.ignore();
+			std::cout << "Model " << ModelA << " not found, please try again." << std::endl;
 			getline(cin, ModelA, '\n');
 		}
 	}
@@ -141,12 +145,11 @@ void BatchBattle(FactionTable& factable)
 		}
 		catch (std::out_of_range e)
 		{
-			std::cout << "Model" << ModelA << " not found, please try again." << std::endl;
-			cin.ignore();
+			std::cout << "Model " << ModelB << " not found, please try again." << std::endl;
 			getline(cin, ModelB, '\n');
 		}
 	}
-
+	
 	cout << "How many?" << endl;
 	cin >> buffer;
 	numB = stoi(buffer);

@@ -29,7 +29,8 @@ public:
 	~Unit();
 
 	void MeleeAttack(Unit& target, int frontage);
-	void TakeWounds(int count);
+	void RangedAttack(Unit& target);
+	void TakeWounds(size_t count);
 	void TakeBattleshock();
 
 	void EndTurn();
