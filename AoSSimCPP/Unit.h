@@ -11,7 +11,6 @@ class Unit : public GameEntity
 {
 private:
 	size_t pointValue,
-		modelsPerBatch,
 		maxBatches, 
 		Losses;
 

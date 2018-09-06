@@ -75,16 +75,13 @@ void WriteStats(std::vector<BattleStats>& stats, std::string& aname, std::string
 	struct tm *Time = localtime(&temp);
 
 	std::stringstream ss; 
-	ss << "records/" << aname << "_vs_" << bname << "_" << (Time->tm_mday);
-	if (Time->tm_mon < 10) { ss << 0; }
-	ss << (Time->tm_mon) << (Time->tm_year + 1900) << "_" << (Time->tm_sec) << (Time->tm_min);
-	ss << (Time->tm_hour) << ".txt";
+	ss << "records/" << aname << " vs " << bname << " " << (Time->tm_mday);
+	if (Time->tm_mon < 9) { ss << 0; }
+	ss << (Time->tm_mon + 1) << (Time->tm_year + 1900) << "_" << (Time->tm_sec) << (Time->tm_min) << (Time->tm_hour) << ".txt";
 
 	std::string filename;
 	filename = ss.str();
-	std::ofstream file;
-
-	file.open(filename);
+	std::ofstream file(filename);
 
 	file << aname << " versus " << bname << "\n";
 	file << stats.size() << " Battles Run\n";

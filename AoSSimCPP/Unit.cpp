@@ -10,8 +10,7 @@ Unit::Unit(const std::shared_ptr<Model> model, size_t count) : GameEntity(model-
 	}
 
 	Name = model->GetName();
-	modelsPerBatch = ceil(count / model->GetSize());
-	pointValue = modelsPerBatch * model->GetCost();
+	pointValue = model->GetCost() * (count/model->GetSize());
 	Losses = 0;
 }
 
@@ -24,8 +23,7 @@ Unit::~Unit()
 void Unit::MeleeAttack(Unit& target, int frontage)
 {
 	auto type = target.Models.back();
-	size_t wounds = 0,
-		i = 0;
+	size_t wounds = 0, i = 0;
 	for (auto& m : Models)
 	{
 		if (i == frontage) break;
