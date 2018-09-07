@@ -6,6 +6,11 @@ Input should be self-explanatory, though bear in mind that this is at a minimum 
 
 Weapon and model definitions are defined in XML files in /data, a small number of incomplete factions are currently available, however please feel free to write/contribute your own. 
 
+## How-To
+- Build the application, or simply download the provided .exe and factiondata folder
+- Place AoSSim.exe and factiondata/ in a folder together
+- Run, and enjoy!
+
 ## Features
 - Simulates melee combat between two units until one side is entirely destroyed.
 - Can fight batch combats and number-crunch the results to an output file.
