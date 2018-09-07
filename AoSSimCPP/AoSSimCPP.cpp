@@ -77,18 +77,16 @@ void WriteStats(std::vector<BattleStats>& stats, std::string& aname, std::string
 	std::stringstream ss; 
 	ss << "records/" << aname << " vs " << bname << " " << (Time->tm_mday);
 	if (Time->tm_mon < 9) { ss << 0; }
-	ss << (Time->tm_mon + 1) << (Time->tm_year + 1900) << "_" << (Time->tm_sec) << (Time->tm_min) << (Time->tm_hour) << ".txt";
+	ss << (Time->tm_mon + 1) << (Time->tm_year + 1900) << "_" << (Time->tm_sec) << (Time->tm_min) << (Time->tm_hour) << ".csv";
 
 	std::string filename;
 	filename = ss.str();
 	std::ofstream file(filename);
 
-	file << aname << " versus " << bname << "\n";
-	file << stats.size() << " Battles Run\n";
-	file << "Most Wins: " << Winner << "(" << WinNum << " | " << (100*WinNum/stats.size()) << "%)\n";
-	file << "Avg. Survivors/Win (" << aname << "): " << survivors[aname] << "\n";
-	file << "Avg. Survivors/Win (" << bname << "): " << survivors[bname] << "\n";
-	file << "Avg. Turns/Battle: " << turns << "\n";
+	file << "unit,winCount,winRate,avgSurvivorsPerWin,avgTurnsPerBattle\n";
+	file << ",,,," << turns << "\n";
+	file << aname << ',' << WinNum << ',' << (100 * WinNum / stats.size()) << '%,' << survivors[aname] << '\n';
+	file << bname << ',' << battlenum - WinNum << ',' << (100.0 - (100 * WinNum / stats.size())) << '%,' << survivors[bname];
 	
 	file.close();
 }
