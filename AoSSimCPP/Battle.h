@@ -7,8 +7,8 @@
 struct BattleStats
 {
 	std::string Winner;
-	int survivors;
-	int turns;
+	size_t survivors,
+		turns;
 };
 
 BattleStats Battle(Unit, Unit, int);

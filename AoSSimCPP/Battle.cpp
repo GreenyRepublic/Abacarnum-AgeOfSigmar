@@ -5,8 +5,8 @@
 BattleStats Battle(Unit unita, Unit unitb, int frontage)
 {
 	std::string winner;
-	int survivors;
-	int turns = 0;
+	size_t survivors, 
+		turns = 0;
 
 	//std::cout << "COMBAT" << std::endl;
 	//std::cout << firstSide->GetName() << std::endl;

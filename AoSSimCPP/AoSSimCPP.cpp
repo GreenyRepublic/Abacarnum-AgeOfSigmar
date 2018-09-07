@@ -22,7 +22,7 @@ bool ParseData(FactionTable& table)
 
 	//First load factions file.
 	xml_document factionDoc;
-	xml_parse_result result = factionDoc.load_file("data/faction_list.xml");
+	xml_parse_result result = factionDoc.load_file("factiondata/faction_list.xml");
 	if (result)
 	{
 		for (xml_node node = factionDoc.child("factions").child("faction"); node; node = node.next_sibling("faction"))
@@ -37,7 +37,7 @@ bool ParseData(FactionTable& table)
 	}
 	else
 	{
-		std::cout << "Could not find /data/faction_list.xml! Aborting data parse." << std::endl;
+		std::cout << "Could not find /factiondata/faction_list.xml! Aborting data parse." << std::endl;
 		return false;
 	}
 
@@ -47,7 +47,7 @@ bool ParseData(FactionTable& table)
 
 
 //Crunches battle stats and writes to file.
-void WriteStats(std::vector<BattleStats>& stats, std::string& aname, std::string& bname)
+void WriteStats(std::vector<BattleStats>& stats, std::string aname, std::string bname, size_t amodels, size_t bmodels)
 {
 	std::unordered_map<std::string, int> wins, survivors;
 	size_t battlenum = stats.size();
@@ -83,10 +83,10 @@ void WriteStats(std::vector<BattleStats>& stats, std::string& aname, std::string
 	filename = ss.str();
 	std::ofstream file(filename);
 
-	file << "unit,winCount,winRate,avgSurvivorsPerWin,avgTurnsPerBattle\n";
-	file << ",,,," << turns << "\n";
-	file << aname << ',' << WinNum << ',' << (100 * WinNum / stats.size()) << '%,' << survivors[aname] << '\n';
-	file << bname << ',' << battlenum - WinNum << ',' << (100.0 - (100 * WinNum / stats.size())) << '%,' << survivors[bname];
+	file << "unit,noOfModels,winCount,winRate,avgSurvivorsPerWin,avgTurnsPerBattle\n";
+	file << ",,,,," << turns << "\n";
+	file << aname << ',' << amodels << ',' << WinNum << ',' << (100 * WinNum / stats.size()) << "%," << survivors[aname] << '\n';
+	file << bname << ',' << bmodels << ',' << battlenum - WinNum << ',' << (100.0 - (100 * WinNum / stats.size())) << "%," << survivors[bname];
 	
 	file.close();
 }
@@ -156,14 +156,15 @@ void BatchBattle(FactionTable& factable)
 	cout << std::endl << "Fight how many battles?" << endl;
 	cin >> buffer;
 	reps = stoi(buffer);
-
+	
 	for (int i = 0; i < reps; i++)
 	{
 		auto a = Unit(A, numA);
 		auto b = Unit(B, numB);
 		battles.push_back(Battle(a, b, 10));
 	}
-	WriteStats(battles, A->GetName(), B->GetName());
+	if (reps > 0) 
+		WriteStats(battles, A->GetName(), B->GetName(), numA, numB);
 	std::cout << std::endl;
 }
 
@@ -175,7 +176,7 @@ std::vector<std::string> TopMenuStrings{
 	"Exit"
 };
 
-enum TopMenuOptions
+enum TopMenuOption
 {
 	FightSingle = 1,
 	FightBatch,
@@ -229,7 +230,16 @@ int main()
 		PrintMainMenu();
 
 		std::cin >> input;
-		switch (static_cast<TopMenuOptions>(std::stoi(input)))
+		TopMenuOption opt;
+		try
+		{
+			opt = static_cast<TopMenuOption>(std::stoi(input));
+		}
+		catch (std::invalid_argument e)
+		{
+			std::cout << "Invalid entry!" << std::endl;
+		}
+		switch (opt)
 		{
 		case(FightSingle):
 			std::cout << "Sorry this ain't available yet." << std::endl;
