@@ -61,16 +61,20 @@ void Model::EndTurn()
 {
 }
 
-size_t Model::MeleeAttack(Model& target)
+size_t Model::MeleeAttack(Model&)
 {
 	size_t wounds = 0;
-	for (auto w : meleeWeapons) wounds += w->AttackRoll(target.myStats.save);
+	for (auto w : meleeWeapons) wounds += w->AttackRoll();
 	return wounds;
 }
 
-size_t Model::TakeWounds(size_t count)
+size_t Model::TakeWounds(size_t count, size_t rend)
 {
-	int taken = min(myStats.currentWounds, count);
+	size_t saved = 0;
+	for (int i = 0; i < count; i++)
+		if (Die::Roll() > rend + myStats.save) saved++;
+	
+	size_t taken = max(count - saved, 0);
 	return count - taken;
 }
 

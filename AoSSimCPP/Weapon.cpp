@@ -29,22 +29,15 @@ void Weapon::PrintStats()
 
 void Weapon::EndTurn()
 {
-
 }
 
-int Weapon::MakeRoll(size_t target)
-{
-	return (Die::Roll() >= target);
-}
 
 //This is longer than it needs to be right now, as I need it to be clean for possible expansion when I add abilities etc.
-size_t Weapon::AttackRoll(size_t save)
+size_t Weapon::AttackRoll()
 {
-	int hits, wounds, saves;
-	hits = wounds = saves = 0;
-	for (int i = 0; i < myStats.attacks; i++) hits += MakeRoll(myStats.tohit);
-	for (int i = 0; i < hits; i++) wounds += MakeRoll(myStats.towound);
-	for (int i = 0; i < wounds; i++) saves += ((Die::Roll() + myStats.rend) >= save);
-
-	return max(0, (wounds - saves) * myStats.damage);
+	int hits, wounds;
+	hits = wounds = 0;
+	for (int i = 0; i < myStats.attacks; i++) hits += (Die::Roll() >= myStats.tohit);
+	for (int i = 0; i < hits; i++) wounds += (Die::Roll() >= myStats.tohit);
+	return max(0, wounds);
 }

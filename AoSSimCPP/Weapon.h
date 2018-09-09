@@ -19,8 +19,6 @@ private:
 	//To be added
 	//std::vector<Ability> Abilities;
 
-	int MakeRoll(size_t);
-
 public:
 	Weapon(std::string, size_t, size_t, size_t, size_t, size_t, size_t);
 	~Weapon();
@@ -28,6 +26,6 @@ public:
 	void PrintStats();
 	void EndTurn();
 
-	size_t AttackRoll(size_t);
+	size_t AttackRoll();
 };
 

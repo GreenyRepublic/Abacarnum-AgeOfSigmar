@@ -26,7 +26,7 @@ private:
 			 unitCost;
 
 	//Add later
-	//std::vector<Abilities&>
+	//std::vector<Ability&> Abilities;
 
 
 public:
@@ -43,7 +43,7 @@ public:
 	//Combat rolls	
 	size_t MeleeAttack(Model&);
 	size_t RangedAttack(Model&);
-	size_t TakeWounds(size_t);
+	size_t TakeWounds(size_t, size_t);
 
 	std::string GetFaction() const { return Faction; }
 	int GetSize() const { return unitSize; }

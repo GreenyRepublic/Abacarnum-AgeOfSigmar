@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ability.h" />
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Die.h" />
     <ClInclude Include="Faction.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ability.cpp" />
     <ClCompile Include="AoSSimCPP.cpp" />
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Die.cpp" />

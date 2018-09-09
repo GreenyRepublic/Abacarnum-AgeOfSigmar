@@ -34,11 +34,11 @@ void Unit::MeleeAttack(Unit& target, int frontage)
 }
 
 //Allocates wounds.
-void Unit::TakeWounds(size_t wounds)
+void Unit::TakeWounds(size_t wounds, size_t rend)
 {
 	while (wounds > 0 && Models.size() > 0)
 	{
-		wounds = Models.back().TakeWounds(wounds);
+		wounds = Models.back().TakeWounds(wounds, rend);
 		if (wounds > 0) Models.pop_back();
 	}
 }

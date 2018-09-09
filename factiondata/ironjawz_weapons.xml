@@ -4,8 +4,8 @@
 Attributes: Name
 Integers: Range
           Attacks
-          To tohit
-          To towound
+          To Hit
+          To Wound
           Rend
           Damage
 <weapon name = "">
@@ -15,7 +15,8 @@ Integers: Range
     <towound></towound>
     <rend></rend>
     <damage>/<damage>
-</weapon><-->
+</weapon>
+<-->
 
 <faction name = "Ironjawz">
     <weapon name = "Boss Choppa">
