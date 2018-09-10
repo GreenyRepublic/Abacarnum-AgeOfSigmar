@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "GameEntity.h"
+#include "Ability.h"
 #include "Stats.h"
 #include "Printable.h"
 #include "Die.h"
@@ -26,6 +27,7 @@ public:
 	void PrintStats();
 	void EndTurn();
 
-	size_t AttackRoll();
+	Attack AttackRoll();
+	WeaponStats& GetStats() { return myStats; }
 };
 

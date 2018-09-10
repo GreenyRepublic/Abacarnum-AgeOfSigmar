@@ -22,7 +22,7 @@ bool ParseData(FactionTable& table)
 
 	//First load factions file.
 	xml_document factionDoc;
-	xml_parse_result result = factionDoc.load_file("factiondata/faction_list.xml");
+	xml_parse_result result = factionDoc.load_file("./factiondata/faction_list.xml");
 	if (result)
 	{
 		for (xml_node node = factionDoc.child("factions").child("faction"); node; node = node.next_sibling("faction"))
@@ -223,7 +223,7 @@ int main()
 
 	//Begin menu loop.
 	std::string input;
-	
+
 	while (1)
 	{
 		input.clear();

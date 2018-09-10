@@ -22,7 +22,7 @@ void Weapon::PrintStats()
 			  << " | Attacks: " << (int)myStats.attacks
 			  << " | To Hit: " << (int)myStats.tohit << "+"
 			  << " | To Wound: " << (int)myStats.towound << "+"
-			  << " | Rend: " << (int)myStats.rend
+			  << " | Rend: " << -((int)myStats.rend)
 			  << " | Damage: " << (int)myStats.damage
 			  << std::endl;
 }
@@ -31,13 +31,11 @@ void Weapon::EndTurn()
 {
 }
 
-
-//This is longer than it needs to be right now, as I need it to be clean for possible expansion when I add abilities etc.
-size_t Weapon::AttackRoll()
+Attack Weapon::AttackRoll()
 {
-	int hits, wounds;
+	size_t hits, wounds;
 	hits = wounds = 0;
-	for (int i = 0; i < myStats.attacks; i++) hits += (Die::Roll() >= myStats.tohit);
-	for (int i = 0; i < hits; i++) wounds += (Die::Roll() >= myStats.tohit);
-	return max(0, wounds);
+	for (size_t i = 0; i < myStats.attacks; i++) hits += (Die::Roll() >= myStats.tohit);
+	for (size_t i = 0; i < hits; i++) wounds += (Die::Roll() >= myStats.towound);
+	return Attack(wounds, myStats.rend, myStats.damage);	
 }

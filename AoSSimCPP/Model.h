@@ -5,6 +5,7 @@
 #include "Stats.h"
 #include "Printable.h"
 #include "Die.h"
+#include "Ability.h"
 
 /*
 * Model: Encapsulates a single type of model in Age of Sigmar.
@@ -41,9 +42,9 @@ public:
 	void EndTurn();
 
 	//Combat rolls	
-	size_t MeleeAttack(Model&);
-	size_t RangedAttack(Model&);
-	size_t TakeWounds(size_t, size_t);
+	std::vector<Attack> MeleeAttack(Model&);
+	std::vector<Attack> RangedAttack(Model&);
+	size_t TakeWounds(size_t);
 
 	std::string GetFaction() const { return Faction; }
 	int GetSize() const { return unitSize; }

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-->
+Template for a model profile
+
+Attributes: Name
+
+Integers:
+Move (Inches)
+Save
+Bravery
+Wounds
+Unit Size
+
+<model name = "">
+  <stats>
+    <move></move>
+    <save></save>
+    <bravery></bravery>
+    <wounds></wounds>
+  </stats>
+  <size></size>
+  <weapons></weapons>
+  <upgrades></upgrades>
+  <abilities></abilities>
+</model>
+<-->
+
+<faction name = "Seraphon">
+    <model name = "Saurus Warriors (Spears)">
+        <stats>
+            <move>5</move>
+            <save>5</save>
+            <bravery>10</bravery>
+            <wounds>1</wounds>
+        </stats>
+        <size>10</size>
+        <cost>100</cost>
+      <weapons>
+        <weapon type ="melee">Celestite Spear</weapon>
+        <weapon type ="melee">Powerful Jaws and Stardrake Shield</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+    <model name = "Saurus Warriors (Clubs)">
+        <stats>
+            <move>5</move>
+            <save>5</save>
+            <bravery>10</bravery>
+            <wounds>1</wounds>
+        </stats>
+        <size>10</size>
+        <cost>100</cost>
+      <weapons>
+        <weapon type ="melee">Celestite Club</weapon>
+        <weapon type ="melee">Powerful Jaws and Stardrake Shield</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+
+    <model name = "Saurus Guard">
+        <stats>
+            <move>5</move>
+            <save>4</save>
+            <bravery>10</bravery>
+            <wounds>1</wounds>
+        </stats>
+        <size>5</size>
+        <cost>100</cost>
+      <weapons>
+        <weapon type ="melee">Celestite Polearm</weapon>
+        <weapon type ="melee">Powerful Jaws and Stardrake Shield</weapon>
+      </weapons>
+        <upgrades></upgrades>
+        <abilities></abilities>
+    </model>
+  
+    <model name = "Skinks (Javelins)">
+      <stats>
+        <move>8</move>
+        <save>6</save>
+        <bravery>10</bravery>
+        <wounds>1</wounds>
+      </stats>
+      <size>10</size>
+      <cost>80</cost>
+      <weapons>
+        <weapon type ="ranged">Meteoric Javelin</weapon>
+        <weapon type ="ranged">Boltspitter</weapon>
+        <weapon type ="melee">Meteoric Javelin (M)</weapon>
+        <!--weapon type ="melee">Boltspitter (M)</weapon-->
+        <!--weapon type ="melee">Moonstone Club</weapon-->
+      </weapons>
+      <upgrades></upgrades>
+      <abilities></abilities>
+    </model>
+
+    <model name = "Skinks (Boltspitters)">
+      <stats>
+        <move>8</move>
+        <save>6</save>
+        <bravery>10</bravery>
+        <wounds>1</wounds>
+      </stats>
+      <size>10</size>
+      <cost>80</cost>
+      <weapons>
+        <weapon type ="ranged">Boltspitter</weapon>
+        <weapon type ="melee">Boltspitter (M)</weapon>
+        <!--weapon type ="melee">Moonstone Club</weapon-->
+      </weapons>
+      <upgrades></upgrades>
+      <abilities></abilities>
+    </model>
+    
+    <model name = "Kroxigor">
+      <stats>
+        <move>8</move>
+        <save>4</save>
+        <bravery>10</bravery>
+        <wounds>4</wounds>
+      </stats>
+      <size>3</size>
+      <cost>180</cost>
+      <weapons>
+        <weapon type ="melee">Drakebite Maul</weapon>
+        <weapon type ="melee">Vice-Like Jaws</weapon>
+      </weapons>
+      <upgrades></upgrades>
+      <abilities></abilities>
+    </model>
+</faction>

@@ -15,6 +15,7 @@ private:
 		Losses;
 
 	std::vector<Model> Models;
+	std::shared_ptr<Model> typeModel;
 
 	std::string Name;
 	std::vector<std::string> Keywords;
@@ -27,9 +28,9 @@ public:
 	Unit(const std::shared_ptr<Model>, size_t);
 	~Unit();
 
-	void MeleeAttack(Unit& target, int frontage);
-	void RangedAttack(Unit& target);
-	void TakeWounds(size_t count);
+	void MeleeAttack(Unit&, int);
+	void RangedAttack(Unit&);
+	void ResolveHits(std::vector<Attack>);
 	void TakeBattleshock();
 
 	void EndTurn();

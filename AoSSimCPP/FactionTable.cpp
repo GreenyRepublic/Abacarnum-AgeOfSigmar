@@ -17,7 +17,7 @@ void FactionTable::AddFaction(std::string facname)
 	pugi::xml_document facFile;
 
 	//Models need weapons, so we parse weapons first
-	fileName += "data/" + facname + "_weapons.xml";
+	fileName += "./factiondata/" + facname + "_weapons.xml";
 	pugi::xml_parse_result result = facFile.load_file(fileName.c_str());
 	if (result)
 	{
@@ -28,7 +28,7 @@ void FactionTable::AddFaction(std::string facname)
 				attacks = std::stoi(node.child("attacks").child_value()),
 				tohit = std::stoi(node.child("tohit").child_value()),
 				towound = std::stoi(node.child("towound").child_value()),
-				rend = std::stoi(node.child("rend").child_value()),
+				rend = (-std::stoi(node.child("rend").child_value())),
 				damage = std::stoi(node.child("damage").child_value());
 
 			faction.AddWeapon(std::make_shared<Weapon>(name, range, attacks, tohit, towound, rend, damage));
@@ -36,7 +36,7 @@ void FactionTable::AddFaction(std::string facname)
 	}
 
 	//Now load models.
-	fileName = "data/" + facname + "_models.xml";
+	fileName = "./factiondata/" + facname + "_models.xml";
 	//std::cout << fileName << std::endl;
 
 	if (facFile.load_file(fileName.c_str()))

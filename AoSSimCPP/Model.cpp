@@ -25,9 +25,33 @@ Model& Model::operator=(const Model & rhs)
 	return Model(rhs);
 }
 
-
 Model::~Model()
 {
+}
+
+void Model::AddWeapon(bool melee, std::shared_ptr<Weapon> weapon)
+{
+	if (melee) meleeWeapons.push_back(weapon);
+	else rangedWeapons.push_back(weapon);
+}
+
+void Model::EndTurn()
+{
+}
+
+std::vector<Attack> Model::MeleeAttack(Model& target)
+{
+	std::vector<Attack> attacks;
+	for (auto w : meleeWeapons)
+		attacks.push_back(w->AttackRoll());
+	return attacks;
+}
+
+size_t Model::TakeWounds(size_t count)
+{
+	size_t taken = min(count, myStats.currentWounds);
+	myStats.currentWounds -= taken;
+	return count - taken;
 }
 
 void Model::PrintStats()
@@ -40,7 +64,7 @@ void Model::PrintStats()
 	std::cout << "	 |o| Wounds: " << (int)myStats.wounds << std::endl;
 	std::cout << "	 |o| Bravery: " << (int)myStats.bravery << std::endl;
 	std::cout << "	 |o| Save: " << (int)myStats.save << "+" << std::endl;
-	
+
 	std::cout << std::endl;
 	std::cout << "	|==| MELEE WEAPONS |==|" << std::endl;
 	for (auto w : meleeWeapons) w->PrintStats();
@@ -55,31 +79,4 @@ void Model::PrintStats()
 	std::cout << "	 |o| Points Cost: " << (int)unitCost << std::endl;
 	std::cout << "	 |o| Keywords: " << std::endl;
 	std::cout << std::endl;
-}
-
-void Model::EndTurn()
-{
-}
-
-size_t Model::MeleeAttack(Model&)
-{
-	size_t wounds = 0;
-	for (auto w : meleeWeapons) wounds += w->AttackRoll();
-	return wounds;
-}
-
-size_t Model::TakeWounds(size_t count, size_t rend)
-{
-	size_t saved = 0;
-	for (int i = 0; i < count; i++)
-		if (Die::Roll() > rend + myStats.save) saved++;
-	
-	size_t taken = max(count - saved, 0);
-	return count - taken;
-}
-
-void Model::AddWeapon(bool melee, std::shared_ptr<Weapon> weapon)
-{
-	if (melee) meleeWeapons.push_back(weapon);
-	else rangedWeapons.push_back(weapon);
 }
