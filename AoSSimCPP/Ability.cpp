@@ -1,12 +1,9 @@
 #include "stdafx.h"
 #include "Ability.h"
 
-
-Ability::Ability()
+template <typename T>
+void Ability<T>::EndTurn()
 {
-}
-
-
-Ability::~Ability()
-{
+	if (Duration == 1) delete(this);
+	Duration--;
 }

@@ -7,9 +7,9 @@ Weapon::Weapon(std::string name,
 	size_t tohit, 
 	size_t towound, 
 	size_t rend, 
-	size_t damage) : GameEntity(name, ""), myStats(range, attacks, tohit, towound, rend, damage)
-{
-}
+	size_t damage,
+	AttackType type) : GameEntity(name, ""), myStats(range, attacks, tohit, towound, rend, damage), attackType(type)
+{}
 
 Weapon::~Weapon()
 {
@@ -37,5 +37,5 @@ Attack Weapon::AttackRoll()
 	hits = wounds = 0;
 	for (size_t i = 0; i < myStats.attacks; i++) hits += (Die::Roll() >= myStats.tohit);
 	for (size_t i = 0; i < hits; i++) wounds += (Die::Roll() >= myStats.towound);
-	return Attack(wounds, myStats.rend, myStats.damage);	
+	return Attack(wounds, myStats.rend, myStats.damage, attackType);	
 }

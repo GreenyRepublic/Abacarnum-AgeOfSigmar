@@ -40,9 +40,9 @@ void Unit::ResolveHits(std::vector<Attack> attacks)
 	for (auto atk : attacks)
 	{
 		size_t damage = 0;
-		for (size_t i = 0; i < atk.wounds; i++)
+		for (size_t i = 0; i < atk.Wounds; i++)
 		{
-			damage += (Die::Roll(-atk.rend) > typeModel->GetStats().save) * atk.damage;
+			damage += (Die::Roll(-atk.Rend) > typeModel->GetStats().save) * atk.Damage;
 		}
 		while (damage > 0 && Models.size() > 0)
 		{

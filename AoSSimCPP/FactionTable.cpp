@@ -60,6 +60,8 @@ void FactionTable::AddFaction(std::string facname)
 			{
 				try {
 					auto weap = faction.GetWeapon(weapons.child_value());
+					AttackType type = ((weapons.attribute("type").value()) == "melee") ? Melee : Ranged;
+					weap->SetType(type);
 					model->AddWeapon(static_cast<std::string>(weapons.attribute("type").value()) == "melee", weap);
 				}
 				catch(std::out_of_range e)
