@@ -7,3 +7,8 @@ void Ability<T>::EndTurn()
 	if (Duration == 1) delete(this);
 	Duration--;
 }
+
+void DefensiveAbility::operator()(Attack& attackin)
+{
+	
+}

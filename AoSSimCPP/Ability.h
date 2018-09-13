@@ -5,9 +5,7 @@
 
 enum ModOperation {
 	Sum,
-	Multiply,
-	Divide,
-	Assign
+	Product
 };
 
 enum AttackType
@@ -58,6 +56,8 @@ class Ability : public GameEntity
 private:
 	size_t Duration;
 	ModOperation Operation;
+	T Modifier;
+	Predicate<T> Predicate;
 
 public:
 	virtual void operator()(T&) = 0;
@@ -66,6 +66,7 @@ public:
 
 class DefensiveAbility : Ability<Attack>
 {
+
 public:
 	void operator()(Attack&);
 };
