@@ -26,8 +26,11 @@ private:
 	size_t unitSize,
 			 unitCost;
 
-	//Add later
+	
 	//std::vector<Ability&> Abilities;
+	std::vector<DefensiveAbility> defensiveAbilities;
+	//std::vector<OffensiveAbility> defensiveAbilities;
+	//std::vector<BattleshockAbility> defensiveAbilities;
 
 
 public:

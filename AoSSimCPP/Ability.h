@@ -3,6 +3,13 @@
 
 //Stuff to help with special abilities
 
+enum PredicateType
+{
+	GreaterThan,
+	LessThan,
+	Equal
+};
+
 enum ModOperation {
 	Sum,
 	Product
@@ -25,7 +32,7 @@ struct Modifier : GameEntity
 	void EndTurn();
 };
 
-struct Attack
+class Attack
 {
 	AttackType Type;
 	size_t Wounds,
@@ -35,18 +42,20 @@ struct Attack
 	Attack(size_t w, size_t r, size_t d, AttackType t) : Wounds(w), Rend(r), Damage(d), Type(t) {};
 };
 
-struct Battleshock
+class Battleshock
 {
 	size_t Losses;
+
 	Battleshock(size_t l) : Losses(l) {};
 };
 
 template <typename T>
 struct Predicate
 {
-	bool operator()(T lhs, T rhs, std::binary_function<T, T, bool> func)
+	T comparator;
+	bool operator()(T lhs, std::binary_function<T, T, bool> func)
 	{
-		return func(lhs, rhs);
+		return func(lhs);
 	}
 };
 
@@ -66,9 +75,6 @@ public:
 
 class DefensiveAbility : Ability<Attack>
 {
-
-public:
-	void operator()(Attack&);
 };
 class OffensiveAbility : Ability<Attack>
 {

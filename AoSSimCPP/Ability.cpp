@@ -8,7 +8,8 @@ void Ability<T>::EndTurn()
 	Duration--;
 }
 
-void DefensiveAbility::operator()(Attack& attackin)
+template <typename T>
+void Ability<T>::operator()(T&)
 {
-	
+	if (Predicate())
 }
