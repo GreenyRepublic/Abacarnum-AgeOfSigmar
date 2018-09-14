@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-->
+Template for an ability profile
+
+Attributes: Name, Type (Passive/Acive)
+
+Properties:
+
+<ability name = "", type = "", context = "">
+  <duration></duration>
+  <predicate>
+    <booleanOp></booleanOp>
+    <firstoperand></firstoperand>
+    <secondoperand></secondoperand>
+  </predicate>
+  <effects>
+    <operator></operator>
+    <firstoperand></firstoperand>
+    <secondoperand></secondoperand>
+  </effects>
+</ability>
+<-->
+
+<faction name = "Seraphon">
+  <ability name = "Stardrake Shield", type = "Passive", context = "Defending">
+    <duration>0</duration>
+    <predicate>
+      <booleanOp>EQUALS</booleanOp>
+      <firstoperand>ATTACK.REND</firstoperand>
+      <secondoperand>1</secondoperand>
+    </predicate>
+    <effects>
+     <operator>SUM</operator>
+      <firstoperand>ATTACK.REND</firstoperand>
+      <secondoperand>-1</secondoperand>
+    </effects>
+  </ability>
+</faction>

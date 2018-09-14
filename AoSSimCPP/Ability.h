@@ -65,7 +65,7 @@ class Ability : public GameEntity
 private:
 	size_t Duration;
 	ModOperation Operation;
-	T Modifier;
+	std::vector<T> Modifiers;
 	Predicate<T> Predicate;
 
 public:
