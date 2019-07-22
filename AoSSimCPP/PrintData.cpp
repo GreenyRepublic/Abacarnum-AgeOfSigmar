@@ -1,38 +1,37 @@
 #include "stdafx.h"
-#include "Printable.h"
+#include "PrintData.h"
 
 //Pretty ascii art for titles and whatnot.
-//Levels: 1 = Box header 
-//		  2 = Top-level Line header
-//		  3 = Low-level line header
-//		  4 = 
-void Printable::PrintHeader(std::string title, int level)
+
+
+void PrintData::PrintHeader(std::string title, HeaderLevel level)
 {
-	if (level == 1)
+	switch (level)
 	{
+	case BoxHeader:
 		std::cout << "==-";
 		for (auto c = title.begin(); c != title.end(); c++)	std::cout << "-";
 		std::cout << "-==" << std::endl;
-
 		std::cout << "|| " << title << " ||" << std::endl;
-
 		std::cout << "==-";
 		for (auto c = title.begin(); c != title.end(); c++)	std::cout << "-";
 		std::cout << "-==" << std::endl;
-	}
+		break;
 
-	else if (level == 2)
-	{
+	case TopLine:
 		std::cout << "|<>| " << title << " |<>|" << std::endl;
-	}
+		break;
 
-	else if (level == 3)
-	{
+	case LowLevel:
 		std::cout << "|==| " << title << " |==|" << std::endl;
+		break;
+
+	default:
+		break;
 	}
 }
 
-std::string Printable::ToUpper(std::string in)
+std::string PrintData::ToUpper(std::string in)
 {
 	if (in.empty()) return  "";
 	else

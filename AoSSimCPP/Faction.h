@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Weapon.h"
 #include "Model.h"
-#include "Printable.h"
+#include "PrintData.h"
 
 class Faction
 {

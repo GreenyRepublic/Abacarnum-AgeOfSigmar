@@ -7,6 +7,15 @@
  * A unit attacks as a unit, takes casualties as a unit, and takes battleshock tests as a unit
  * Within the scope of this program no other data (position, etc) is needed
  */
+
+
+struct Battleshock
+{
+	size_t Losses;
+
+	Battleshock(size_t l) : Losses(l) {};
+};
+
 class Unit : public GameEntity
 {
 private:

@@ -32,5 +32,12 @@
 #include <ctype.h>
 #include <memory>
 
-void PrintHeader(std::string, int);
+extern "C" {
+# include "lua_5_3_5/lua.h"
+# include "lua_5_3_5/lauxlib.h"
+# include "lua_5_3_5/lualib.h"
+}
+
+#include "luabridge/LuaBridge.h"
+
 std::string ToUpper(std::string);

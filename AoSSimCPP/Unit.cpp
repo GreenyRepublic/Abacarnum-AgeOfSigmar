@@ -42,7 +42,7 @@ void Unit::ResolveHits(std::vector<Attack> attacks)
 		size_t damage = 0;
 		for (size_t i = 0; i < atk.Wounds; i++)
 		{
-			damage += (Die::Roll(-atk.Rend) > typeModel->GetStats().save) * atk.Damage;
+			damage += (Die::RollD6() - atk.Rend > typeModel->GetStats().save) * atk.Damage;
 		}
 		while (damage > 0 && Models.size() > 0)
 		{
@@ -59,7 +59,7 @@ void Unit::TakeBattleshock()
 {
 	if (this->GetLive() == 0) return;
 	//Calculate losses.
-	int roll = Die::Roll();
+	int roll = Die::RollD6();
 	int numbersBonus = floor(Models.size()/10);
 	int result = max(0, (roll + Losses) - (Models.front().GetStats().bravery + numbersBonus));
 	//std::cout << "Battleshock - " << Name << " loses " << result << " models!" << std::endl;
@@ -76,7 +76,7 @@ void Unit::EndTurn()
 
 void Unit::PrintStats() 
 {
-	Printable::PrintHeader("Unit: " + Name, 1);
-	Printable::PrintHeader("Type Model", 2);
+	PrintData::PrintHeader("Unit: " + Name, HeaderLevel::TopLine);
+	PrintData::PrintHeader("Type Model", HeaderLevel::LowLevel);
 	Models.at(0).PrintStats();
 }

@@ -8,43 +8,11 @@
 #include "FactionTable.h"
 #include "Unit.h"
 #include "Battle.h"
-#include "Printable.h"
+#include "PrintData.h"
 
-#include "./PugiXML/pugixml.hpp"
-#include "./PugiXML/pugiconfig.hpp"
 
-static const float version = 0.55;
 
-//Parse model and weapon profiles into their databases. Returns false if parsing fails for whatever reason.
-bool ParseData(FactionTable& table)
-{
-	using namespace pugi;
-
-	//First load factions file.
-	xml_document factionDoc;
-	xml_parse_result result = factionDoc.load_file("./factiondata/faction_list.xml");
-	if (result)
-	{
-		for (xml_node node = factionDoc.child("factions").child("faction"); node; node = node.next_sibling("faction"))
-		{
-			//When a faction has been found parse out its individual data files.
-			table.AddFaction(node.child_value());
-
-			//std::cout << "Found " << node.attribute("allegiance").value() << " faction " << node.child_value() << std::endl;
-			//Faction* fac = table.GetFaction(node.child_value());
-			//fac->PrintStats();
-		}
-	}
-	else
-	{
-		std::cout << "Could not find /factiondata/faction_list.xml! Aborting data parse." << std::endl;
-		return false;
-	}
-
-	std::cout << "Successfully loaded " << table.GetFactionCount() << " factions. View the Encyclopaedia for more details." << std::endl;
-	return true;
-}
-
+static constexpr char * version = "0.55";
 
 //Crunches battle stats and writes to file.
 void WriteStats(std::vector<BattleStats>& stats, std::string aname, std::string bname, size_t amodels, size_t bmodels)
@@ -213,18 +181,32 @@ void Encyclopedia(FactionTable& table)
 
 int main()
 {
-	Printable::PrintHeader("Welcome to the Age of Sigmar BattleSim v" + std::to_string(version), 0);
+	PrintData::PrintHeader("Welcome to the Age of Sigmar BattleSim v" + std::string(version), HeaderLevel::BoxHeader);
+	
+	/*//Lua test
+	lua_State* L = luaL_newstate();
+	int loadResult = luaL_dofile(L, "./AoSSimLuaTest.lua");
+	
+	luaL_openlibs(L);
+	int callResult = lua_pcall(L, 0, 0, 0);
+
+	auto test = luabridge::getGlobal(L, "faction");
+	if (test.isTable())
+	{
+		std::cout << test["name"].tostring() << std::endl;
+	}*/
 
 	//Initialisation
 	FactionTable FacTable;
-	bool parse = ParseData(FacTable);
-	if (!parse) return EXIT_FAILURE;
+	FacTable.InitialiseTableFromFiles();
+
 	CreateDirectoryA("records", NULL);
 
 	//Begin menu loop.
 	std::string input;
+	bool exit = false;
 
-	while (1)
+	while (!exit)
 	{
 		input.clear();
 		PrintMainMenu();
@@ -251,7 +233,7 @@ int main()
 			Encyclopedia(FacTable);
 			break;
 		case (Exit):
-			return EXIT_SUCCESS;
+			exit = true;
 			break;
 		default:
 			std::cout << "Invalid Entry!" << std::endl;

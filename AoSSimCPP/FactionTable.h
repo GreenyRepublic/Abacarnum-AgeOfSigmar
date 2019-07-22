@@ -3,8 +3,8 @@
 #include "Model.h"
 #include "Faction.h"
 
-#include "./PugiXML/pugixml.hpp"
-#include "./PugiXML/pugiconfig.hpp"
+#include <regex>
+#include <filesystem>
 
 /*
 * FactionTable: Root table of the faction databases.
@@ -13,19 +13,19 @@
 class FactionTable
 {
 private:
-	std::unordered_map<std::string, Faction> Factions;
+	std::unordered_map<std::string, Faction*> Factions;
+	bool LoadFaction( std::experimental::filesystem::directory_entry file );
 
 public:
 	FactionTable();
 	~FactionTable();
 	
 	//Populate with data
-	void AddFaction(std::string);
+	void InitialiseTableFromFiles( std::string directory = "./factiondata" );
 	int GetFactionCount() { return Factions.size(); }
 
 	//Get references to data
-	Faction& GetFaction(std::string);
-	std::shared_ptr<Weapon> GetWeapon(std::string, std::string = "");
+	Faction& GetFaction(std::string faction);
 	std::shared_ptr<Model> GetModel(std::string, std::string = "");
 
 	void ListAll(bool = true);

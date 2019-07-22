@@ -1,91 +1,114 @@
 #include "stdafx.h"
 #include "FactionTable.h"
-#include <regex>
-
 
 FactionTable::FactionTable()
 {}
 
 FactionTable::~FactionTable()
-{}
-
-void FactionTable::AddFaction(std::string facname)
 {
-	Faction faction(facname);
-
-	std::string fileName;
-	pugi::xml_document facFile;
-
-	//Models need weapons, so we parse weapons first
-	fileName += "./factiondata/" + facname + "_weapons.xml";
-	pugi::xml_parse_result result = facFile.load_file(fileName.c_str());
-	if (result)
+	for (auto& pair : Factions)
 	{
-		for (pugi::xml_node node = facFile.child("faction").child("weapon"); node; node = node.next_sibling("weapon"))
-		{
-			std::string name = node.attribute("name").value();
-			size_t range = std::stoi(node.child("range").child_value()),
-				attacks = std::stoi(node.child("attacks").child_value()),
-				tohit = std::stoi(node.child("tohit").child_value()),
-				towound = std::stoi(node.child("towound").child_value()),
-				rend = (-std::stoi(node.child("rend").child_value())),
-				damage = std::stoi(node.child("damage").child_value());
+		delete pair.second;
+	}
+}
 
-			faction.AddWeapon(std::make_shared<Weapon>(name, range, attacks, tohit, towound, rend, damage));
-		}
+//Parse faction data from Lua files into their databases.
+void FactionTable::InitialiseTableFromFiles( std::string directory )
+{
+	std::experimental::filesystem::directory_iterator directoryIterator("factiondata");
+	for ( auto& file : directoryIterator )
+	{
+		LoadFaction(file);
+	}
+	std::cout << "Successfully loaded " << GetFactionCount() << " factions. View the Encyclopaedia for more details." << std::endl;
+}
+
+
+bool FactionTable::LoadFaction( std::experimental::filesystem::directory_entry file )
+{
+	lua_State* L = luaL_newstate();
+	auto filepath = file.path().string();
+	int loadResult = luaL_dofile(L, filepath.c_str() );
+
+	if (loadResult != 0)
+	{
+		return false;
 	}
 
-	//Now load models.
-	fileName = "./factiondata/" + facname + "_models.xml";
-	//std::cout << fileName << std::endl;
-
-	if (facFile.load_file(fileName.c_str()))
+	luaL_openlibs(L);
+	int callResult = lua_pcall(L, 0, 0, 0);
+	
+	luabridge::LuaRef factionLuaTable = luabridge::getGlobal(L, "faction");
+	std::string facName = factionLuaTable["name"].tostring();
+	
+	Faction* faction = new Faction( facName );
+	for (auto&& modelEntry : luabridge::pairs(factionLuaTable["models"]))
 	{
-		for (pugi::xml_node node = facFile.child("faction").child("model"); node; node = node.next_sibling("model"))
-		{
-
-			std::string name = node.attribute("name").value();
-			pugi::xml_node stats = node.child("stats");
-			
-			size_t move = std::stoi(stats.child("move").child_value()),
-				save = std::stoi(stats.child("save").child_value()),
-				bravery = std::stoi(stats.child("bravery").child_value()),
-				wounds = std::stoi(stats.child("wounds").child_value()),
-				size = std::stoi(node.child("size").child_value()),
-				cost = std::stoi(node.child("cost").child_value());
-
-			auto model = std::make_shared<Model>(name, move, wounds, bravery, save, size, cost, facname);
-
-			for (pugi::xml_node weapons = node.child("weapons").first_child(); weapons; weapons = weapons.next_sibling())
+		//Core stats
+		std::shared_ptr<Model> model = std::make_shared<Model>(
+			modelEntry.second["name"].tostring(),
+			modelEntry.second["stats"]["move"],
+			modelEntry.second["stats"]["save"],
+			modelEntry.second["stats"]["bravery"],
+			modelEntry.second["stats"]["wounds"],
+			modelEntry.second["matchedData"]["unitSize"],
+			modelEntry.second["matchedData"]["unitCost"],
+			facName);
+		
+		//Melee weapons
+		if (!modelEntry.second["meleeWeapons"].isNil())
+		{ 
+			for (auto&& weaponEntry : luabridge::pairs(modelEntry.second["meleeWeapons"]))
 			{
-				try {
-					auto weap = faction.GetWeapon(weapons.child_value());
-					AttackType type = ((weapons.attribute("type").value()) == "melee") ? Melee : Ranged;
-					weap->SetType(type);
-					model->AddWeapon(static_cast<std::string>(weapons.attribute("type").value()) == "melee", weap);
-				}
-				catch(std::out_of_range e)
-				{
-					continue;
-				}
+				std::shared_ptr<Weapon> weapon = std::make_shared<Weapon>(
+					weaponEntry.second["name"].tostring(),
+					weaponEntry.second["range"],
+					weaponEntry.second["attacks"],
+					weaponEntry.second["toHit"],
+					weaponEntry.second["toWound"],
+					weaponEntry.second["rend"],
+					weaponEntry.second["damage"],
+					WeaponType::Melee
+					);
+				model->AddWeapon(weapon);
 			}
-			faction.AddModel(model);
-			//std::cout << "Added model " << name << " to faction " << facname << "." << std::endl;
 		}
 
-		Factions.insert(std::pair<std::string, Faction>(facname, std::move(faction)));
+		//Ranged weapons
+		if (!modelEntry.second["rangedWeapons"].isNil())
+		{
+			for (auto&& weaponEntry : luabridge::pairs(modelEntry.second["rangedWeapons"]))
+			{
+				std::shared_ptr<Weapon> weapon = std::make_shared<Weapon>(
+					weaponEntry.second["name"].tostring(),
+					weaponEntry.second["range"],
+					weaponEntry.second["attacks"],
+					weaponEntry.second["toHit"],
+					weaponEntry.second["toWound"],
+					weaponEntry.second["rend"],
+					weaponEntry.second["damage"],
+					WeaponType::Ranged
+					);
+				model->AddWeapon(weapon);
+			}
+		}
+
+		//Keywords
+		for (auto&& keyword : luabridge::pairs(modelEntry.second["keywords"]))
+		{
+			model->AddKeyword(keyword.second.tostring());
+		}
+
+		faction->AddModel(model);
 	}
-	//std::cout << "Successfully loaded " << Factions->size() << " factions" << std::endl;
+
+	Factions.insert(std::pair<std::string, Faction*>(facName, faction));
+	return true;
 }
 
 Faction& FactionTable::GetFaction(std::string name)
 {
-	return Factions.at(name);
-}
-
-std::shared_ptr<Weapon> FactionTable::GetWeapon(std::string name, std::string faction)
-{
-	return (GetFaction(faction).GetWeapon(name));
+	return *Factions.at(name);
 }
 
 std::shared_ptr<Model> FactionTable::GetModel(std::string name, std::string faction)
@@ -100,7 +123,7 @@ std::shared_ptr<Model> FactionTable::GetModel(std::string name, std::string fact
 		for (auto f : Factions)
 		{
 			try { 
-				Faction& fac = f.second;
+				Faction& fac = *f.second;
 				return fac.GetModel(name);
 			}
 			catch (std::out_of_range e)

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<factions>
-    <faction allegiance = "Order">Seraphon</faction>
-    <faction allegiance = "Order">StormcastEternals</faction>
-    <faction allegiance = "Chaos">Skaven</faction>
-    <faction allegiance = "Destruction">Ironjawz</faction>
- </factions>

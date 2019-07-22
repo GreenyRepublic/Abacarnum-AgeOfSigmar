@@ -8,7 +8,7 @@ Weapon::Weapon(std::string name,
 	size_t towound, 
 	size_t rend, 
 	size_t damage,
-	AttackType type) : GameEntity(name, ""), myStats(range, attacks, tohit, towound, rend, damage), attackType(type)
+	WeaponType type) : GameEntity(name, ""), weaponStats(range, attacks, tohit, towound, rend, damage), weaponType(type)
 {}
 
 Weapon::~Weapon()
@@ -18,12 +18,12 @@ Weapon::~Weapon()
 void Weapon::PrintStats()
 {
 	std::cout << "	 |o| " << Name << " "
-			  << " |- " << "Range: " << (int)myStats.range << '"'
-			  << " | Attacks: " << (int)myStats.attacks
-			  << " | To Hit: " << (int)myStats.tohit << "+"
-			  << " | To Wound: " << (int)myStats.towound << "+"
-			  << " | Rend: " << -((int)myStats.rend)
-			  << " | Damage: " << (int)myStats.damage
+			  << " |- " << "Range: " << (int)weaponStats.range << '"'
+			  << " | Attacks: " << (int)weaponStats.attacks
+			  << " | To Hit: " << (int)weaponStats.tohit << "+"
+			  << " | To Wound: " << (int)weaponStats.towound << "+"
+			  << " | Rend: " << -((int)weaponStats.rend)
+			  << " | Damage: " << (int)weaponStats.damage
 			  << std::endl;
 }
 
@@ -35,7 +35,7 @@ Attack Weapon::AttackRoll()
 {
 	size_t hits, wounds;
 	hits = wounds = 0;
-	for (size_t i = 0; i < myStats.attacks; i++) hits += (Die::Roll() >= myStats.tohit);
-	for (size_t i = 0; i < hits; i++) wounds += (Die::Roll() >= myStats.towound);
-	return Attack(wounds, myStats.rend, myStats.damage, attackType);	
+	for (size_t i = 0; i < weaponStats.attacks; i++) hits += (Die::RollD6() >= weaponStats.tohit);
+	for (size_t i = 0; i < hits; i++) wounds += (Die::RollD6() >= weaponStats.towound);
+	return Attack(wounds, weaponStats.rend, weaponStats.damage, weaponType);	
 }

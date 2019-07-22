@@ -1,10 +1,15 @@
 #include "stdafx.h"
 #include "Die.h"
 
-static std::uniform_int_distribution<int> distribution(1,6);
-static std::default_random_engine generator;
+std::uniform_int_distribution<unsigned int> Die::dieDistribution = std::uniform_int_distribution<unsigned int>(1,6);
+std::default_random_engine Die::dieGenerator;
 
-int Die::Roll(int modifier)
+int Die::RollD6()
 {
-	return distribution(generator) + modifier;
+	return dieDistribution(dieGenerator);
+}
+
+int Die::RollD3()
+{
+	return static_cast<int>(ceil(RollD6() * 0.5));
 }
