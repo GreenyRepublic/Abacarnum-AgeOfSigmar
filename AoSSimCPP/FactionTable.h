@@ -7,28 +7,32 @@
 #include <filesystem>
 
 /*
-* FactionTable: Root table of the faction databases.
-* Maps all faction names to their corresponding data tables.
+* FactionTable: Database of all factions and their data
+* Contains tools for querying the database for model data and displaying data.
 */
 class FactionTable
 {
-private:
-	std::unordered_map<std::string, Faction*> Factions;
-	bool LoadFaction( std::experimental::filesystem::directory_entry file );
-
 public:
-	FactionTable();
-	~FactionTable();
 	
+	//Singleton implementation
+	static FactionTable* GetInstance();
+
 	//Populate with data
-	void InitialiseTableFromFiles( std::string directory = "./factiondata" );
+	void InitialiseFactionTableFromFiles( std::string directory = "./factiondata" );
 	int GetFactionCount() { return Factions.size(); }
 
 	//Get references to data
 	Faction& GetFaction(std::string faction);
-	std::shared_ptr<Model> GetModel(std::string, std::string = "");
+	std::weak_ptr<Model> GetModel(std::string model, std::string faction = "");
 
-	void ListAll(bool = true);
-	void PrintFaction(std::string);
-	void PrintFaction(size_t);
+	void ListAllFactions( bool = true );
+	void PrintFactionData( std::string factionname );
+	void PrintFactionData( size_t factionid);
+
+private:
+	std::unordered_map<std::string, Faction*> Factions;
+	bool LoadFaction(std::experimental::filesystem::directory_entry file);
+	FactionTable();
+	~FactionTable();
+
 };

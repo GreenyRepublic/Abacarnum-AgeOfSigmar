@@ -89,6 +89,11 @@ void Model::PrintStats()
 	std::cout << "	|==| METADATA |==|" << std::endl;
 	std::cout << "	 |o| Unit Size: " << (int)unitSize << std::endl;
 	std::cout << "	 |o| Points Cost: " << (int)unitCost << std::endl;
-	std::cout << "	 |o| Keywords: " << std::endl;
+	std::cout << "	 |o| Keywords: ";
+	for (auto& keyword : keywords)
+	{
+		std::cout << keyword << ", ";
+	}
+	std::cout << std::endl;
 	std::cout << std::endl;
 }

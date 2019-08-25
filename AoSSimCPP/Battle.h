@@ -7,8 +7,16 @@
 struct BattleStats
 {
 	std::string Winner;
-	size_t survivors,
-		turns;
+	size_t Survivors;
+	size_t Turns;
 };
 
-BattleStats Battle(Unit, Unit, int);
+class Battle
+{
+public:
+	Battle();
+	~Battle();
+	BattleStats FightBattle(Unit unitA, Unit unitB, int frontage = 10);
+
+private:
+};

@@ -10,12 +10,10 @@
 #include "Battle.h"
 #include "PrintData.h"
 
-
-
-static constexpr char * version = "0.55";
+static constexpr char * version = "0.6";
 
 //Crunches battle stats and writes to file.
-void WriteStats(std::vector<BattleStats>& stats, std::string aname, std::string bname, size_t amodels, size_t bmodels)
+/*void WriteStats(std::vector<BattleStats>& stats, std::string aname, std::string bname, size_t amodels, size_t bmodels)
 {
 	std::unordered_map<std::string, int> wins, survivors;
 	size_t battlenum = stats.size();
@@ -57,85 +55,16 @@ void WriteStats(std::vector<BattleStats>& stats, std::string aname, std::string 
 	file << bname << ',' << bmodels << ',' << battlenum - WinNum << ',' << (100.0 - (100 * WinNum / stats.size())) << "%," << survivors[bname];
 	
 	file.close();
-}
+}*/
 
 void SingleBattle(){}
 
-void BatchBattle(FactionTable& factable)
+void BatchBattle(){}
+
+void Exit()
 {
-	using namespace std;
-
-	vector<BattleStats> battles;
-	string buffer, ModelA, ModelB;
-	std::shared_ptr<Model> A, B;
-	int numA, numB, 
-		frontage, 
-		reps = 10;
-
-	cout << "Please enter a model for Unit A: " << endl;
-	cin.ignore();
-	getline(cin, ModelA, '\n');
-	while (true)
-	{
-		try
-		{
-			A = factable.GetModel(ModelA);
-			break;
-		}
-		catch (std::out_of_range e)
-		{
-			std::cout << "Model " << ModelA << " not found, please try again." << std::endl;
-			getline(cin, ModelA, '\n');
-		}
-	}
-
-	cout << "How many?" << endl;
-	cin >> buffer;
-	numA = stoi(buffer);
-
-	std::cout << std::endl;
-
-	cout << "Please enter a model for Unit B: " << endl;
-	cin.ignore();
-	getline(cin, ModelB, '\n');
-
-	while (true)
-	{
-		try
-		{
-			B = factable.GetModel(ModelB);
-			break;
-		}
-		catch (std::out_of_range e)
-		{
-			std::cout << "Model " << ModelB << " not found, please try again." << std::endl;
-			getline(cin, ModelB, '\n');
-		}
-	}
-	
-	cout << "How many?" << endl;
-	cin >> buffer;
-	numB = stoi(buffer);
-
-	//cout << "Please enter a battle width: " << endl;
-	//cin >> buffer;
-	//frontage = stoi(buffer);
-
-	cout << std::endl << "Fight how many battles?" << endl;
-	cin >> buffer;
-	reps = stoi(buffer);
-	
-	for (int i = 0; i < reps; i++)
-	{
-		auto a = Unit(A, numA);
-		auto b = Unit(B, numB);
-		battles.push_back(Battle(a, b, 10));
-	}
-	if (reps > 0) 
-		WriteStats(battles, A->GetName(), B->GetName(), numA, numB);
-	std::cout << std::endl;
+	exit(1);
 }
-
 
 std::vector<std::string> TopMenuStrings{
 	"Fight Single Battle", 
@@ -146,10 +75,12 @@ std::vector<std::string> TopMenuStrings{
 
 enum TopMenuOption
 {
-	FightSingle = 1,
-	FightBatch,
-	Encyclopaedia,
-	Exit
+	MenuOptionFightSingle = 1,
+	MenuOptionFightBatch,
+	MenuOptionEncyclopedia,
+	MenuOptionExit,
+
+	TotalOptions
 };
 
 void PrintMainMenu()
@@ -163,50 +94,42 @@ void PrintMainMenu()
 }
 
 //Options for navigating encyclopedia entries
-void Encyclopedia(FactionTable& table)
+void Encyclopedia()
 {
 	std::string input;
 	unsigned int opt;
 	while (1)
 	{
-		table.ListAll(true);
+		FactionTable::GetInstance()->ListAllFactions(true);
 		std::cout << "Enter a faction number or name for a full list of models, or enter '0' to return to the main menu." << std::endl;
 		std::cin >> input;
 		opt = std::stoi(input);
 
 		if (opt == 0) return;
-		else (table.PrintFaction(opt));
+		else (FactionTable::GetInstance()->PrintFactionData(opt));
 	}
 }
+
+static std::map< TopMenuOption, void(*)(void) > MenuOptionsTable
+{
+	{ TopMenuOption::MenuOptionFightSingle, SingleBattle },
+	{ TopMenuOption::MenuOptionFightBatch, BatchBattle },
+	{ TopMenuOption::MenuOptionEncyclopedia, Encyclopedia },
+	{ TopMenuOption::MenuOptionExit, Exit }
+
+};
 
 int main()
 {
 	PrintData::PrintHeader("Welcome to the Age of Sigmar BattleSim v" + std::string(version), HeaderLevel::BoxHeader);
-	
-	/*//Lua test
-	lua_State* L = luaL_newstate();
-	int loadResult = luaL_dofile(L, "./AoSSimLuaTest.lua");
-	
-	luaL_openlibs(L);
-	int callResult = lua_pcall(L, 0, 0, 0);
-
-	auto test = luabridge::getGlobal(L, "faction");
-	if (test.isTable())
-	{
-		std::cout << test["name"].tostring() << std::endl;
-	}*/
 
 	//Initialisation
-	FactionTable FacTable;
-	FacTable.InitialiseTableFromFiles();
-
+	FactionTable::GetInstance()->InitialiseFactionTableFromFiles();
 	CreateDirectoryA("records", NULL);
 
 	//Begin menu loop.
 	std::string input;
-	bool exit = false;
-
-	while (!exit)
+	while (true)
 	{
 		input.clear();
 		PrintMainMenu();
@@ -221,24 +144,7 @@ int main()
 		{
 			std::cout << "Invalid entry!" << std::endl;
 		}
-		switch (opt)
-		{
-		case(FightSingle):
-			std::cout << "Sorry this ain't available yet." << std::endl;
-			break;
-		case(FightBatch):
-			BatchBattle(FacTable);
-			break;
-		case(Encyclopaedia):
-			Encyclopedia(FacTable);
-			break;
-		case (Exit):
-			exit = true;
-			break;
-		default:
-			std::cout << "Invalid Entry!" << std::endl;
-			break;
-		}
+		MenuOptionsTable[opt]();
 	}
     return EXIT_SUCCESS;
 }

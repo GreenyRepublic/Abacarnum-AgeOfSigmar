@@ -6,11 +6,6 @@
 
 class Faction
 {
-private:
-	std::unordered_map<std::string, std::shared_ptr<Weapon>> weaponData;
-	std::unordered_map<std::string, std::shared_ptr<Model>> modelData;
-	std::string Name;
-
 public:
 	Faction(std::string);
 	~Faction();
@@ -23,5 +18,13 @@ public:
 	//Get model/weapon profiles by name.
 	std::shared_ptr<Weapon> GetWeapon(std::string);
 	std::shared_ptr<Model> GetModel(std::string);
+
+	int operator<(const Faction& rhs) { return Name < rhs.Name; }
+
+private:
+	std::unordered_map<std::string, std::shared_ptr<Weapon>> weaponData;
+	std::unordered_map<std::string, std::shared_ptr<Model>> modelData;
+	std::string Name;
+
 };
 

@@ -1,19 +1,28 @@
 #include "stdafx.h"
 #include "FactionTable.h"
 
+
+FactionTable* FactionTable::GetInstance()
+{
+	static FactionTable* instance = new FactionTable();
+	return instance;
+}
+
 FactionTable::FactionTable()
-{}
+{
+	
+}
 
 FactionTable::~FactionTable()
 {
 	for (auto& pair : Factions)
 	{
-		delete pair.second;
+		delete pair.second; 
 	}
 }
 
 //Parse faction data from Lua files into their databases.
-void FactionTable::InitialiseTableFromFiles( std::string directory )
+void FactionTable::InitialiseFactionTableFromFiles( std::string directory )
 {
 	std::experimental::filesystem::directory_iterator directoryIterator("factiondata");
 	for ( auto& file : directoryIterator )
@@ -22,7 +31,6 @@ void FactionTable::InitialiseTableFromFiles( std::string directory )
 	}
 	std::cout << "Successfully loaded " << GetFactionCount() << " factions. View the Encyclopaedia for more details." << std::endl;
 }
-
 
 bool FactionTable::LoadFaction( std::experimental::filesystem::directory_entry file )
 {
@@ -111,7 +119,7 @@ Faction& FactionTable::GetFaction(std::string name)
 	return *Factions.at(name);
 }
 
-std::shared_ptr<Model> FactionTable::GetModel(std::string name, std::string faction)
+std::weak_ptr<Model> FactionTable::GetModel(std::string name, std::string faction)
 {
 	if (!faction.empty())
 	{
@@ -135,7 +143,7 @@ std::shared_ptr<Model> FactionTable::GetModel(std::string name, std::string fact
 	}
 }
 
-void FactionTable::ListAll(const bool numbered)
+void FactionTable::ListAllFactions(const bool numbered)
 {
 	int label = 1;
 	std::regex expr("([a-z]+)|([A-Z][a-z]+)");;
@@ -149,7 +157,7 @@ void FactionTable::ListAll(const bool numbered)
 	std::cout << std::endl;
 }
 
-void FactionTable::PrintFaction(std::string facname)
+void FactionTable::PrintFactionData(std::string facname)
 {
 	try 
 	{ 
@@ -162,9 +170,9 @@ void FactionTable::PrintFaction(std::string facname)
 	}
 }
 
-void FactionTable::PrintFaction(size_t index)
+void FactionTable::PrintFactionData(size_t index)
 {
 	auto iter = Factions.begin();
 	for (int i = 0; i < index-1; i++) iter++;
-	PrintFaction(iter->first);
+	PrintFactionData(iter->first);
 }

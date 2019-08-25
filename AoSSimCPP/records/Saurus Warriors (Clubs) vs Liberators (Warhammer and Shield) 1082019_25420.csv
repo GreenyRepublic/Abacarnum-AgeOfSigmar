@@ -1,0 +1,4 @@
+unit,noOfModels,winCount,winRate,avgSurvivorsPerWin,avgTurnsPerBattle
+,,,,,5.55
+Saurus Warriors (Clubs),5,99,99%,0
+Liberators (Warhammer and Shield),10,1,1%,8
