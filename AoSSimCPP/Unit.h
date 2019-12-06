@@ -18,34 +18,40 @@ struct Battleshock
 
 class Unit : public GameEntity
 {
+public:
+	Unit(const std::shared_ptr<Model> model, size_t size);
+	~Unit();
+
+	UnitAttacks MeleeAttack(Unit& target, int frontage = 10);
+	UnitAttacks RangedAttack(Unit& target);
+
+	void TakeAttacks(UnitAttacks attacks);
+	void TakeBattleshock();
+
+	void EndTurn();
+	void PrintStats();
+
+	size_t GetSurvivingModels() const { return Models.size(); }
+	size_t GetLosses() const { return Losses; }	
+	Model& GetTypeModel() const { return *TypeModel; }
+
 private:
-	size_t pointValue,
-		maxBatches, 
-		Losses;
+
+	friend class DataWriter;
+
+	bool MakeSave(WeaponAttack attack);
+
+	size_t PointValue;
+	size_t MaxBatches;
+	size_t Losses;
 
 	std::vector<Model> Models;
-	std::shared_ptr<Model> typeModel;
+	std::shared_ptr<Model> TypeModel;
 
 	std::string Name;
 	std::vector<std::string> Keywords;
 
 	//For later
 	//std::vector<Ability> Abilities;
-
-
-public:
-	Unit(const std::shared_ptr<Model>, size_t);
-	~Unit();
-
-	void MeleeAttack(Unit&, int);
-	void RangedAttack(Unit&);
-	void ResolveHits(std::vector<Attack>);
-	void TakeBattleshock();
-
-	void EndTurn();
-	void PrintStats();
-
-	int GetLive() { return Models.size(); }
-	int GetLosses() { return Losses; }	
 };
 

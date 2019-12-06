@@ -2,16 +2,17 @@
 #include "Unit.h"
 
 
-Unit::Unit(const std::shared_ptr<Model> model, size_t count) : GameEntity(model->GetName(), model->GetFaction())
+Unit::Unit(const std::shared_ptr<Model> model, size_t count) :
+	GameEntity(model->GetName(), model->GetFaction()),
+	TypeModel(model),
+	Name(model->GetName()),
+	PointValue(model->GetUnitCost()* (count / model->GetUnitSize())),
+	Losses(0)
 {
-	for (int i = 0; i < count; i++) 
+	for (size_t i = 0; i < count; i++) 
 	{ 
 		Models.push_back(*model);
 	}
-	typeModel = model;
-	Name = model->GetName();
-	pointValue = model->GetCost() * (count/model->GetSize());
-	Losses = 0;
 }
 
 Unit::~Unit()
@@ -20,44 +21,53 @@ Unit::~Unit()
 
 //Attack a target.
 //Takes the profile model of the enemy unit, tests against it to generate wounds and slaps them on the enemy unit.
-void Unit::MeleeAttack(Unit& target, int frontage)
+UnitAttacks Unit::MeleeAttack(Unit& target, int frontage)
 {
-	auto type = *target.typeModel;
+	UnitAttacks resultAttacks;
+
 	size_t i = 0;
-	for (auto& m : Models)
+	for (Model& model : Models)
 	{
-		if (i == frontage) break;
-		target.ResolveHits(m.MeleeAttack(type));
-		i++;
+		if (i++ == frontage) break;
+		for (WeaponAttack& atk : model.MeleeAttack(target.GetTypeModel()))
+		{
+			resultAttacks.WeaponAttacks.push_back(atk);
+		}
 	}
+	return resultAttacks;
 }
 
 //Allocates wounds.
-void Unit::ResolveHits(std::vector<Attack> attacks)
+void Unit::TakeAttacks(UnitAttacks attacks)
 {
+	
 	//TODO: Feed attack items through modifier stack
 	
-	for (auto atk : attacks)
+	for (auto attack : attacks.WeaponAttacks)
 	{
-		size_t damage = 0;
-		for (size_t i = 0; i < atk.Wounds; i++)
+		std::vector<Wound> wounds;
+		for (size_t i = 0; i < attack.Wounds.Count; i++)
 		{
-			damage += (Die::RollD6() - atk.Rend > typeModel->GetStats().save) * atk.Damage;
+			if (!MakeSave(attack))
+			{
+				Wound wound;
+				wound.Count = attack.WeaponProfile.damage;
+				wound.Type = Normal;
+				wounds.push_back(wound);
+			}
 		}
-		while (damage > 0 && Models.size() > 0)
+		while (!wounds.empty() && Models.size() > 0)
 		{
-			damage = Models.back().TakeWounds(damage);
-			if (damage > 0) Models.pop_back();
+			if ( Models.back().TakeDamage(wounds) > 0) Models.pop_back();
+			wounds.pop_back();
 		}
 	}
-
-	
 }
 
 //Resolves battleshock, with a bool returning if the unit has been wiped out or not.
 void Unit::TakeBattleshock()
 {
-	if (this->GetLive() == 0) return;
+	if (this->GetSurvivingModels() == 0) return;
 	//Calculate losses.
 	int roll = Die::RollD6();
 	int numbersBonus = floor(Models.size()/10);
@@ -74,9 +84,8 @@ void Unit::EndTurn()
 	for (auto& model : Models) model.EndTurn();
 }
 
-void Unit::PrintStats() 
+bool Unit::MakeSave(WeaponAttack attack)
 {
-	PrintData::PrintHeader("Unit: " + Name, HeaderLevel::TopLine);
-	PrintData::PrintHeader("Type Model", HeaderLevel::LowLevel);
-	Models.at(0).PrintStats();
+	//TODO: Abilities here
+	return (Die::RollD6() > TypeModel->GetStats().save + attack.WeaponProfile.rend);
 }

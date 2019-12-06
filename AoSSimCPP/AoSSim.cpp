@@ -8,9 +8,11 @@
 #include "FactionTable.h"
 #include "Unit.h"
 #include "Battle.h"
-#include "PrintData.h"
+#include "DataWriter.h"
+#include "MenuOptions.h"
+#include "AoSSim.h"
 
-static constexpr char * version = "0.6";
+static constexpr float version = 0.6;
 
 //Crunches battle stats and writes to file.
 /*void WriteStats(std::vector<BattleStats>& stats, std::string aname, std::string bname, size_t amodels, size_t bmodels)
@@ -57,94 +59,77 @@ static constexpr char * version = "0.6";
 	file.close();
 }*/
 
-void SingleBattle(){}
+aosSim* aosSim::getInstance()
+{
+	static aosSim* instance = nullptr;
+	if (!instance)
+	{
+		instance = new aosSim();
+	}
+	return instance;
+}
 
-void BatchBattle(){}
+void aosSim::SingleBattle( size_t arg )
+{
+	Battle battle;
 
-void Exit()
+	battle.SetUnit(FactionTable::GetInstance()->FindModel("Saurus Warriors (Clubs)"), 10, Attacker);
+	battle.SetUnit(FactionTable::GetInstance()->FindModel("Liberators (Warhammer and Shield)"), 20, Defender);
+
+	battle.SingleBattle();
+}
+
+void aosSim::BatchBattle( size_t arg )
+{
+	Battle battle;
+
+	battle.SetUnit(FactionTable::GetInstance()->FindModel("Saurus Warriors (Clubs)"), 10, Attacker);
+	battle.SetUnit(FactionTable::GetInstance()->FindModel("Liberators (Warhammer and Shield)"), 20, Defender);
+
+	battle.BatchBattle();
+}
+
+//Options for navigating encyclopedia entries
+void aosSim::Encyclopedia(size_t arg )
+{
+	FactionTable::GetInstance()->Encyclopedia();
+}
+
+void aosSim::Exit( size_t arg )
 {
 	exit(1);
 }
 
-std::vector<std::string> TopMenuStrings{
-	"Fight Single Battle", 
-	"Fight Batch Battles", 
-	"Encyclopaedia", 
-	"Exit"
-};
-
-enum TopMenuOption
+void aosSim::MenuLoop()
 {
-	MenuOptionFightSingle = 1,
-	MenuOptionFightBatch,
-	MenuOptionEncyclopedia,
-	MenuOptionExit,
+	DataWriter::PrintAppTitle(version);
 
-	TotalOptions
-};
-
-void PrintMainMenu()
-{
-	int j = 1;
-	for (auto s : TopMenuStrings)
-	{
-		std::cout << j << ": " << s << std::endl;
-		j++;
-	}
-}
-
-//Options for navigating encyclopedia entries
-void Encyclopedia()
-{
-	std::string input;
-	unsigned int opt;
-	while (1)
-	{
-		FactionTable::GetInstance()->ListAllFactions(true);
-		std::cout << "Enter a faction number or name for a full list of models, or enter '0' to return to the main menu." << std::endl;
-		std::cin >> input;
-		opt = std::stoi(input);
-
-		if (opt == 0) return;
-		else (FactionTable::GetInstance()->PrintFactionData(opt));
-	}
-}
-
-static std::map< TopMenuOption, void(*)(void) > MenuOptionsTable
-{
-	{ TopMenuOption::MenuOptionFightSingle, SingleBattle },
-	{ TopMenuOption::MenuOptionFightBatch, BatchBattle },
-	{ TopMenuOption::MenuOptionEncyclopedia, Encyclopedia },
-	{ TopMenuOption::MenuOptionExit, Exit }
-
-};
-
-int main()
-{
-	PrintData::PrintHeader("Welcome to the Age of Sigmar BattleSim v" + std::string(version), HeaderLevel::BoxHeader);
-
-	//Initialisation
+	//Initialise database
 	FactionTable::GetInstance()->InitialiseFactionTableFromFiles();
 	CreateDirectoryA("records", NULL);
-
+		
 	//Begin menu loop.
+	CREATE_NUMBERED_MENU(MainMenu, aosSim, size_t,
+		std::initializer_list<MenuOption>({
+			{ MenuOption(std::string("Fight Single Battle"), &aosSim::SingleBattle)},
+			{ MenuOption(std::string("Fight Batch Battle"),  &aosSim:: BatchBattle) },
+			{ MenuOption(std::string("Encyclopedia"),  &aosSim::Encyclopedia) },
+			{ MenuOption(std::string("Exit"),  &aosSim::Exit) }
+			}))
+
 	std::string input;
 	while (true)
 	{
-		input.clear();
-		PrintMainMenu();
+		MainMenu.PrintMenu();
 
+		input.clear();
 		std::cin >> input;
-		TopMenuOption opt;
-		try
-		{
-			opt = static_cast<TopMenuOption>(std::stoi(input));
-		}
-		catch (std::invalid_argument e)
-		{
-			std::cout << "Invalid entry!" << std::endl;
-		}
-		MenuOptionsTable[opt]();
+		MainMenu((size_t)std::stoi(input), 0);
 	}
-    return EXIT_SUCCESS;
+}
+
+int main()
+{
+	aosSim::getInstance()->MenuLoop();
+	return EXIT_SUCCESS;
 }

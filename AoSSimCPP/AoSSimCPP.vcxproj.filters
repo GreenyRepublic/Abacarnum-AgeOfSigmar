@@ -33,9 +33,6 @@
     <ClInclude Include="FactionTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Faction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,18 +45,27 @@
     <ClInclude Include="Die.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Singleton.h">
+    <ClInclude Include="CombatData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PrintData.h">
+    <ClInclude Include="Profiles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FactionData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuOptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AoSSim.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AoSSimCPP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
@@ -69,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FactionTable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Faction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
@@ -86,10 +89,13 @@
     <ClCompile Include="Die.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Singleton.cpp">
+    <ClCompile Include="DataWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PrintData.cpp">
+    <ClCompile Include="FactionData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AoSSim.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

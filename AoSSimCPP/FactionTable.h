@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Weapon.h"
 #include "Model.h"
-#include "Faction.h"
+#include "FactionData.h"
 
 #include <regex>
 #include <filesystem>
@@ -13,24 +13,25 @@
 class FactionTable
 {
 public:
-	
-	//Singleton implementation
 	static FactionTable* GetInstance();
 
 	//Populate with data
 	void InitialiseFactionTableFromFiles( std::string directory = "./factiondata" );
-	int GetFactionCount() { return Factions.size(); }
 
-	//Get references to data
-	Faction& GetFaction(std::string faction);
-	std::weak_ptr<Model> GetModel(std::string model, std::string faction = "");
+	FactionData& FindFaction(std::string faction);
+	std::shared_ptr<Model> FindModel(std::string model, std::string faction = "");
+	
+	//Select a model using a menu interface
+	std::shared_ptr<Model> QueryModel();
 
-	void ListAllFactions( bool = true );
-	void PrintFactionData( std::string factionname );
-	void PrintFactionData( size_t factionid);
+	//Data browser/encyclopedia
+	void Encyclopedia();
+
+	size_t GetFactionCount() const { return Factions.size(); }
+	void PrintFactionData( size_t factionindex);
 
 private:
-	std::unordered_map<std::string, Faction*> Factions;
+	std::unordered_map<std::string, FactionData*> Factions;
 	bool LoadFaction(std::experimental::filesystem::directory_entry file);
 	FactionTable();
 	~FactionTable();

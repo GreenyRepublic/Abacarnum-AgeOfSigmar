@@ -14,7 +14,11 @@ Model::Model(std::string name,
 {
 }
 
-Model::Model(const Model& ref) : GameEntity(ref.Name, ref.Faction), modelStats(ref.modelStats), unitSize(ref.unitSize), unitCost(ref.unitCost)
+Model::Model(const Model& ref) : 
+	GameEntity(ref.Name, ref.Faction), 
+	modelStats(ref.modelStats), 
+	unitSize(ref.unitSize), 
+	unitCost(ref.unitCost)
 {
 	meleeWeapons = ref.meleeWeapons;
 	rangedWeapons = ref.rangedWeapons;
@@ -51,49 +55,25 @@ void Model::EndTurn()
 {
 }
 
-std::vector<Attack> Model::MeleeAttack(Model& target)
+std::vector<WeaponAttack> Model::MeleeAttack(Model& target)
 {
-	std::vector<Attack> attacks;
-	for (auto w : meleeWeapons)
-		attacks.push_back(w->AttackRoll());
+	std::vector<WeaponAttack> attacks;
+	for (auto& weapon : meleeWeapons)
+	{
+		WeaponAttack atk = weapon->AttackRoll();
+		if (atk.Wounds.Count > 0)
+		{
+			attacks.push_back(atk);
+		}
+	}
 	return attacks;
 }
 
-size_t Model::TakeWounds(size_t count)
+size_t Model::TakeDamage(std::vector<Wound> wounds)
 {
-	size_t taken = min(count, modelStats.currentWounds);
-	modelStats.currentWounds -= taken;
-	return count - taken;
-}
-
-void Model::PrintStats()
-{
-	std::cout << std::endl;
-	std::cout << "|<>| " << PrintData::ToUpper(Name) << " |<>|" << std::endl;
-	std::cout << std::endl;
-	std::cout << "	|==| STATS |==|" << std::endl;
-	std::cout << "	 |o| Move: " << (int)modelStats.move << '"' << std::endl;
-	std::cout << "	 |o| Wounds: " << (int)modelStats.wounds << std::endl;
-	std::cout << "	 |o| Bravery: " << (int)modelStats.bravery << std::endl;
-	std::cout << "	 |o| Save: " << (int)modelStats.save << "+" << std::endl;
-
-	std::cout << std::endl;
-	std::cout << "	|==| MELEE WEAPONS |==|" << std::endl;
-	for (auto w : meleeWeapons) w->PrintStats();
-
-	std::cout << std::endl;
-	std::cout << "	|==| RANGED WEAPONS |==|" << std::endl;
-	for (auto w : rangedWeapons) w->PrintStats();
-
-	std::cout << std::endl;
-	std::cout << "	|==| METADATA |==|" << std::endl;
-	std::cout << "	 |o| Unit Size: " << (int)unitSize << std::endl;
-	std::cout << "	 |o| Points Cost: " << (int)unitCost << std::endl;
-	std::cout << "	 |o| Keywords: ";
-	for (auto& keyword : keywords)
+	for (auto& wound : wounds)
 	{
-		std::cout << keyword << ", ";
+		modelStats.currentWounds = max(0, modelStats.currentWounds - wound.Count);
 	}
-	std::cout << std::endl;
-	std::cout << std::endl;
+	return modelStats.currentWounds;
 }

@@ -1,51 +1,111 @@
 #include "stdafx.h"
 #include "Battle.h"
+#include "DataWriter.h"
 
-//Fight turn-by-turn until one side is wiped out.
-BattleStats Battle::FightBattle(Unit unita, Unit unitb, int frontage)
+Battle::Battle() :
+	PhaseFunctions(
+		{ { BattlePhase::Fight, &Battle::ResolveFight },
+		{ BattlePhase::Battleshock, &Battle::ResolveBattleshock } } ),
+	CurrentPhase( BattlePhase::Hero ),
+	TurnCount(0)
 {
-	std::string winner;
-	size_t survivors, 
-		turns = 0;
+}
 
-	//std::cout << "COMBAT" << std::endl;
-	//std::cout << firstSide->GetName() << std::endl;
-	//std::cout << secondSide->GetName() << std::endl;
-
-	while(1)
-	{
-		//std::cout << unita.GetName() << ": " << unita.GetLive() << " remaining." << std::endl;
-		//std::cout << unitb.GetName() << ": " << unitb.GetLive() << " remaining." << std::endl;
-
-		//Combat
-		if (turns % 2 == 0)
-		{
-			unita.MeleeAttack(unitb, frontage);
-			unitb.MeleeAttack(unita, frontage);
-		}
-		else
-		{
-			unitb.MeleeAttack(unita, frontage);
-			unita.MeleeAttack(unitb, frontage);
-		}
+Battle::~Battle()
+{
 		
-		//Battleshock
-		if (unita.GetLosses() > unitb.GetLosses()) unita.TakeBattleshock();
-		else if (unita.GetLosses() < unitb.GetLosses()) unitb.TakeBattleshock();
+}
 
-		if (unita.GetLive() == 0)
-		{
-			winner = unitb.GetName();
-			survivors = unitb.GetLive();
-			return BattleStats{ winner, survivors, turns };
-		}
+void Battle::SingleBattle(BattlePhase start)
+{
+	BattleStats stats = FightBattle(start);
 
-		else if (unitb.GetLive() == 0)
-		{
-			winner = unita.GetName();
-			survivors = unita.GetLive();
-			return BattleStats{ winner, survivors, turns };
-		}
-		turns++;
+	
+}
+
+void Battle::BatchBattle(BattlePhase start)
+{
+
+}
+
+Battle::BattleStats Battle::FightBattle( BattlePhase start )
+{
+	CurrentPhase = start;
+
+	while (CurrentPhase != BattlePhase::End)
+	{
+		CurrentPhase = (this->*PhaseFunctions[CurrentPhase])();
 	}
+
+	BattleStats stats;
+	if (AttackingUnit->GetSurvivingModels() > 0)
+	{
+		stats.Winner = AttackingUnit->GetName();
+		stats.Survivors = AttackingUnit->GetSurvivingModels();
+	}
+	else
+	{
+		stats.Winner = DefendingUnit->GetName();
+		stats.Survivors = DefendingUnit->GetSurvivingModels();
+	}
+
+	stats.Turns = TurnCount;
+	return stats;
+}
+
+void Battle::SetUnit(std::shared_ptr<Model> model, size_t count, Side side)
+{
+	switch (side)
+	{
+	case Attacker:
+		AttackingUnit = std::make_unique<Unit>(model, count);
+		break;
+	case Defender:
+		DefendingUnit = std::make_unique<Unit>(model, count);
+		break;
+	default:
+		break;
+	}
+}
+
+BattlePhase Battle::ResolveFight()
+{
+	TurnCount++;
+
+	UnitAttacks atk;
+	{
+		atk = AttackingUnit->MeleeAttack(*DefendingUnit, 10);
+		DefendingUnit->TakeAttacks(atk);
+	}
+	{
+		atk = DefendingUnit->MeleeAttack(*AttackingUnit, 10);
+		AttackingUnit->TakeAttacks(atk);
+	}
+
+	if (AttackingUnit->GetSurvivingModels() == 0 ||
+		DefendingUnit->GetSurvivingModels() == 0)
+	{
+		return BattlePhase::End;
+	}
+	return BattlePhase::Battleshock;
+}
+
+BattlePhase Battle::ResolveBattleshock()
+{
+	if (AttackingUnit->GetLosses() > 0)
+	{
+		AttackingUnit->TakeBattleshock();
+	}
+
+	if (DefendingUnit->GetLosses() > 0)
+	{
+		AttackingUnit->TakeBattleshock();
+	}
+
+	if (AttackingUnit->GetSurvivingModels() == 0 ||
+		DefendingUnit->GetSurvivingModels() == 0)
+	{
+		return BattlePhase::End;
+	}
+	return BattlePhase::Fight;
 }

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "FactionTable.h"
+//B#include "MenuOptions.h"
 
 
 FactionTable* FactionTable::GetInstance()
@@ -49,7 +50,7 @@ bool FactionTable::LoadFaction( std::experimental::filesystem::directory_entry f
 	luabridge::LuaRef factionLuaTable = luabridge::getGlobal(L, "faction");
 	std::string facName = factionLuaTable["name"].tostring();
 	
-	Faction* faction = new Faction( facName );
+	FactionData* faction = new FactionData( facName );
 	for (auto&& modelEntry : luabridge::pairs(factionLuaTable["models"]))
 	{
 		//Core stats
@@ -110,20 +111,20 @@ bool FactionTable::LoadFaction( std::experimental::filesystem::directory_entry f
 		faction->AddModel(model);
 	}
 
-	Factions.insert(std::pair<std::string, Faction*>(facName, faction));
+	Factions.insert(std::pair<std::string, FactionData*>(facName, faction));
 	return true;
 }
 
-Faction& FactionTable::GetFaction(std::string name)
+FactionData& FactionTable::FindFaction(std::string name)
 {
 	return *Factions.at(name);
 }
 
-std::weak_ptr<Model> FactionTable::GetModel(std::string name, std::string faction)
+std::shared_ptr<Model> FactionTable::FindModel(std::string name, std::string faction)
 {
 	if (!faction.empty())
 	{
-		return (GetFaction(faction).GetModel(name));
+		return (FindFaction(faction).GetModel(name));
 	}
 
 	else
@@ -131,7 +132,7 @@ std::weak_ptr<Model> FactionTable::GetModel(std::string name, std::string factio
 		for (auto f : Factions)
 		{
 			try { 
-				Faction& fac = *f.second;
+				FactionData& fac = *f.second;
 				return fac.GetModel(name);
 			}
 			catch (std::out_of_range e)
@@ -143,36 +144,38 @@ std::weak_ptr<Model> FactionTable::GetModel(std::string name, std::string factio
 	}
 }
 
-void FactionTable::ListAllFactions(const bool numbered)
+std::shared_ptr<Model> FactionTable::QueryModel()
 {
-	int label = 1;
-	std::regex expr("([a-z]+)|([A-Z][a-z]+)");;
-	
-	for (auto fac : Factions)
-	{
-		std::string facname = fac.first;
-		std::cout << label << ": " << facname << std::endl;
-		label++;
-	}
-	std::cout << std::endl;
+	return nullptr;
 }
 
-void FactionTable::PrintFactionData(std::string facname)
+void FactionTable::Encyclopedia()
 {
-	try 
-	{ 
-		GetFaction(facname).PrintStats();
+	/*CREATE_NUMBERED_MENU(EncyclopediaMenu, FactionTable, size_t)
+
+	for (auto fac : Factions)
+	{
+		EncyclopediaMenu.AddOption(MenuOption(fac.first, PrintFactionData));
 	}
-	catch (std::out_of_range o) 
-	{ 
-		std::cout << "Faction " << facname << " doesn't appear to exist, has a profile been made for it? (" << o.what() << ")" << std::endl; 
-		return; 
+
+	std::string input;
+	size_t option;
+	while (1)
+	{
+		std::cout << "Enter a faction number or name for a full list of models, or enter '0' to return to the main menu." << std::endl;
+		EncyclopediaMenu.PrintMenu();
+		std::cin >> input;
+		option = std::stoi(input);
+
+		if (option == 0) return;
+		else (EncyclopediaMenu(option));
 	}
+	auto test = PrintFactionData;*/
 }
 
 void FactionTable::PrintFactionData(size_t index)
 {
 	auto iter = Factions.begin();
-	for (int i = 0; i < index-1; i++) iter++;
-	PrintFactionData(iter->first);
+	for (int i = 0; i < index - 1; i++, iter++);
+	DataWriter::PrintData(*(iter->second));
 }
