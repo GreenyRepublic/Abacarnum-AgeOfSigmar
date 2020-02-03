@@ -25,7 +25,7 @@ FactionTable::~FactionTable()
 //Parse faction data from Lua files into their databases.
 void FactionTable::InitialiseFactionTableFromFiles( std::string directory )
 {
-	std::experimental::filesystem::directory_iterator directoryIterator("factiondata");
+	std::filesystem::directory_iterator directoryIterator("factiondata");
 	for ( auto& file : directoryIterator )
 	{
 		LoadFaction(file);
@@ -33,7 +33,7 @@ void FactionTable::InitialiseFactionTableFromFiles( std::string directory )
 	std::cout << "Successfully loaded " << GetFactionCount() << " factions. View the Encyclopaedia for more details." << std::endl;
 }
 
-bool FactionTable::LoadFaction( std::experimental::filesystem::directory_entry file )
+bool FactionTable::LoadFaction( std::filesystem::directory_entry file )
 {
 	lua_State* L = luaL_newstate();
 	auto filepath = file.path().string();

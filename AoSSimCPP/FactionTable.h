@@ -32,7 +32,7 @@ public:
 
 private:
 	std::unordered_map<std::string, FactionData*> Factions;
-	bool LoadFaction(std::experimental::filesystem::directory_entry file);
+	bool LoadFaction(std::filesystem::directory_entry);
 	FactionTable();
 	~FactionTable();
 
