@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 
-template<class T, typename ARG>
+template<class T>
 class NumberedMenu;
 
 class FactionData;

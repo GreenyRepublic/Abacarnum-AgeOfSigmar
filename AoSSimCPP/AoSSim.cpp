@@ -59,17 +59,8 @@ static constexpr float version = 0.6;
 	file.close();
 }*/
 
-aosSim* aosSim::getInstance()
-{
-	static aosSim* instance = nullptr;
-	if (!instance)
-	{
-		instance = new aosSim();
-	}
-	return instance;
-}
 
-void aosSim::SingleBattle( size_t arg )
+void AOSsim::SingleBattle()
 {
 	Battle battle;
 
@@ -79,7 +70,7 @@ void aosSim::SingleBattle( size_t arg )
 	battle.SingleBattle();
 }
 
-void aosSim::BatchBattle( size_t arg )
+void AOSsim::BatchBattle()
 {
 	Battle battle;
 
@@ -90,17 +81,17 @@ void aosSim::BatchBattle( size_t arg )
 }
 
 //Options for navigating encyclopedia entries
-void aosSim::Encyclopedia(size_t arg )
+void AOSsim::Encyclopedia()
 {
 	FactionTable::GetInstance()->Encyclopedia();
 }
 
-void aosSim::Exit( size_t arg )
+void AOSsim::Exit()
 {
 	exit(1);
 }
 
-void aosSim::MenuLoop()
+size_t AOSsim::MainLoop()
 {
 	DataWriter::PrintAppTitle(version);
 
@@ -109,12 +100,12 @@ void aosSim::MenuLoop()
 	CreateDirectoryA("records", NULL);
 		
 	//Begin menu loop.
-	CREATE_NUMBERED_MENU(MainMenu, aosSim, size_t,
+	CREATE_NUMBERED_MENU(MainMenu, AOSsim,
 		std::initializer_list<MenuOption>({
-			{ MenuOption(std::string("Fight Single Battle"), &aosSim::SingleBattle)},
-			{ MenuOption(std::string("Fight Batch Battle"),  &aosSim:: BatchBattle) },
-			{ MenuOption(std::string("Encyclopedia"),  &aosSim::Encyclopedia) },
-			{ MenuOption(std::string("Exit"),  &aosSim::Exit) }
+			{ MenuOption(std::string("Fight Single Battle"), &AOSsim::SingleBattle)},
+			{ MenuOption(std::string("Fight Batch Battle"),  &AOSsim:: BatchBattle) },
+			{ MenuOption(std::string("Encyclopedia"),  &AOSsim::Encyclopedia) },
+			{ MenuOption(std::string("Exit"),  &AOSsim::Exit) }
 			}))
 
 	std::string input;
@@ -126,10 +117,12 @@ void aosSim::MenuLoop()
 		std::cin >> input;
 		MainMenu((size_t)std::stoi(input), 0);
 	}
+
+	return EXIT_SUCCESS;
 }
 
 int main()
 {
-	aosSim::getInstance()->MenuLoop();
-	return EXIT_SUCCESS;
+	AOSsim sim;
+	return sim.MainLoop();
 }
