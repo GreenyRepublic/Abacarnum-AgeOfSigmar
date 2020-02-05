@@ -98,15 +98,15 @@ size_t AOSsim::MainLoop()
 	//Initialise database
 	FactionTable::GetInstance()->InitialiseFactionTableFromFiles();
 	CreateDirectoryA("records", NULL);
-		
+
 	//Begin menu loop.
-	CREATE_NUMBERED_MENU(MainMenu, AOSsim,
+	CREATE_NUMBERED_MENU(MainMenu, void,
 		std::initializer_list<MenuOption>({
-			{ MenuOption(std::string("Fight Single Battle"), &AOSsim::SingleBattle)},
-			{ MenuOption(std::string("Fight Batch Battle"),  &AOSsim:: BatchBattle) },
-			{ MenuOption(std::string("Encyclopedia"),  &AOSsim::Encyclopedia) },
-			{ MenuOption(std::string("Exit"),  &AOSsim::Exit) }
-			}))
+			{ MenuOption(std::string("Fight Single Battle"),	[=]() {this->SingleBattle(); })},
+			{ MenuOption(std::string("Fight Batch Battle"),		[=]() {this->BatchBattle(); }) },
+			{ MenuOption(std::string("Encyclopedia"),			[=]() {this->Encyclopedia(); } ) },
+			{ MenuOption(std::string("Exit"),					[=]() {this->Exit(); }) }
+			}));
 
 	std::string input;
 	while (true)
@@ -115,7 +115,7 @@ size_t AOSsim::MainLoop()
 
 		input.clear();
 		std::cin >> input;
-		MainMenu((size_t)std::stoi(input), 0);
+		MainMenu((int)std::stoi(input));
 	}
 
 	return EXIT_SUCCESS;

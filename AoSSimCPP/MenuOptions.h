@@ -6,13 +6,12 @@ template<class T>
 class NumberedMenu
 {
 public:
-	typedef std::pair <std::string, void(T::*)(void)> MenuOption;
+	typedef std::pair < std::string, std::function<T()>> MenuOption;
 
 	NumberedMenu() {};
-	NumberedMenu(std::initializer_list<MenuOption>& items) :
-		MenuData()
+	NumberedMenu(std::initializer_list<MenuOption> items) : MenuData()
 	{
-		for (auto& item = items.begin(); item != items.end(); ++item)
+		for (auto& item : items)
 		{
 			MenuData.push_back(item);
 		}
@@ -20,12 +19,13 @@ public:
 
 	~NumberedMenu() {};
 		
-	inline void operator()(size_t option, ArgType arg = ArgType())
+	inline T operator()(size_t option)
 	{
-		if (option <= MenuData.size())
+		int correctedOpt = option - 1;
+		if ( correctedOpt <= MenuData.size())
 		{
-			auto test = MenuData[option].second;
-			(*test)();
+			auto func = MenuData[correctedOpt].second;
+			return func();
 		}
 		else
 		{
@@ -50,7 +50,7 @@ private:
 	std::vector<MenuOption> MenuData;
 };
 
-#define CREATE_NUMBERED_MENU(NAME, PARENTTYPE) using NumberedMenu = NumberedMenu<PARENTTYPE>; using MenuOption = NumberedMenu::MenuOption; NumberedMenu NAME = NumberedMenu(); 
-#define CREATE_NUMBERED_MENU(NAME, PARENTTYPE, INITLIST) using NumberedMenu = NumberedMenu<PARENTTYPE>; using MenuOption = NumberedMenu::MenuOption; NumberedMenu NAME = NumberedMenu(INITLIST); 
+#define CREATE_NUMBERED_MENU(NAME, RETURNTYPE) using NumberedMenu = NumberedMenu<RETURNTYPE>; using MenuOption = NumberedMenu::MenuOption; NumberedMenu NAME = NumberedMenu(); 
+#define CREATE_NUMBERED_MENU(NAME, RETURNTYPE, INITLIST) using NumberedMenu = NumberedMenu<RETURNTYPE>; using MenuOption = NumberedMenu::MenuOption; NumberedMenu NAME = NumberedMenu(INITLIST); 
 
 #endif
