@@ -64,8 +64,8 @@ void AOSsim::SingleBattle()
 {
 	Battle battle;
 
-	battle.SetUnit(FactionTable::GetInstance()->FindModel("Saurus Warriors (Clubs)"), 10, Attacker);
-	battle.SetUnit(FactionTable::GetInstance()->FindModel("Liberators (Warhammer and Shield)"), 20, Defender);
+	battle.SetUnit(FactionTable::GetFactionTable()->GetModel("Saurus Warriors (Clubs)"), 10, Attacker);
+	battle.SetUnit(FactionTable::GetFactionTable()->GetModel("Liberators (Warhammer and Shield)"), 20, Defender);
 
 	battle.SingleBattle();
 }
@@ -74,8 +74,8 @@ void AOSsim::BatchBattle()
 {
 	Battle battle;
 
-	battle.SetUnit(FactionTable::GetInstance()->FindModel("Saurus Warriors (Clubs)"), 10, Attacker);
-	battle.SetUnit(FactionTable::GetInstance()->FindModel("Liberators (Warhammer and Shield)"), 20, Defender);
+	battle.SetUnit(FactionTable::GetFactionTable()->GetModel("Saurus Warriors (Clubs)"), 10, Attacker);
+	battle.SetUnit(FactionTable::GetFactionTable()->GetModel("Liberators (Warhammer and Shield)"), 20, Defender);
 
 	battle.BatchBattle();
 }
@@ -83,7 +83,7 @@ void AOSsim::BatchBattle()
 //Options for navigating encyclopedia entries
 void AOSsim::Encyclopedia()
 {
-	FactionTable::GetInstance()->Encyclopedia();
+	FactionTable::GetFactionTable()->StartEncyclopedia();
 }
 
 void AOSsim::Exit()
@@ -94,9 +94,8 @@ void AOSsim::Exit()
 size_t AOSsim::MainLoop()
 {
 	DataWriter::PrintAppTitle(version);
+	FactionTable::GetFactionTable();
 
-	//Initialise database
-	FactionTable::GetInstance()->InitialiseFactionTableFromFiles();
 	CreateDirectoryA("records", NULL);
 
 	//Begin menu loop.
@@ -115,7 +114,8 @@ size_t AOSsim::MainLoop()
 
 		input.clear();
 		std::cin >> input;
-		MainMenu((int)std::stoi(input));
+		int option = static_cast<int>(std::stoi(input));
+		MainMenu( option );
 	}
 
 	return EXIT_SUCCESS;

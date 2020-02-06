@@ -1,35 +1,40 @@
 #include "stdafx.h"
 #include "FactionTable.h"
-//B#include "MenuOptions.h"
 
 
-FactionTable* FactionTable::GetInstance()
+bool FactionTable::isInstantiated = false;
+
+std::shared_ptr<FactionTable> FactionTable::GetFactionTable()
 {
-	static FactionTable* instance = new FactionTable();
+	static std::shared_ptr<FactionTable> instance;
+	if (!isInstantiated)
+	{
+		auto ptr = new FactionTable();
+		instance = (std::shared_ptr<FactionTable>(ptr));
+		instance->InitialiseFactionTable();
+	}
 	return instance;
 }
 
-FactionTable::FactionTable()
+FactionTable::FactionTable() : FactionEntries()
 {
-	
 }
 
 FactionTable::~FactionTable()
 {
-	for (auto& pair : Factions)
-	{
-		delete pair.second; 
-	}
 }
 
 //Parse faction data from Lua files into their databases.
-void FactionTable::InitialiseFactionTableFromFiles( std::string directory )
+void FactionTable::InitialiseFactionTable()
 {
-	std::filesystem::directory_iterator directoryIterator("factiondata");
+	const std::string directory = "./factiondata";
+	const std::filesystem::directory_iterator directoryIterator("factiondata");
+
 	for ( auto& file : directoryIterator )
 	{
 		LoadFaction(file);
 	}
+
 	std::cout << "Successfully loaded " << GetFactionCount() << " factions. View the Encyclopaedia for more details." << std::endl;
 }
 
@@ -40,9 +45,7 @@ bool FactionTable::LoadFaction( std::filesystem::directory_entry file )
 	int loadResult = luaL_dofile(L, filepath.c_str() );
 
 	if (loadResult != 0)
-	{
 		return false;
-	}
 
 	luaL_openlibs(L);
 	int callResult = lua_pcall(L, 0, 0, 0);
@@ -111,45 +114,45 @@ bool FactionTable::LoadFaction( std::filesystem::directory_entry file )
 		faction->AddModel(model);
 	}
 
-	Factions.insert(std::pair<std::string, FactionData*>(facName, faction));
+	FactionEntries.insert(std::pair<std::string, FactionData*>(facName, faction));
 	return true;
 }
 
-FactionData& FactionTable::FindFaction(std::string name)
+std::shared_ptr<FactionData> FactionTable::GetFaction( const std::string factionName) const
 {
-	return *Factions.at(name);
+	return FactionEntries.at(factionName);
 }
 
-std::shared_ptr<Model> FactionTable::FindModel(std::string name, std::string faction)
+std::shared_ptr<Model> FactionTable::GetModel(const std::string modelName, const std::string factionName) const
 {
-	if (!faction.empty())
+	if (!factionName.empty())
 	{
-		return (FindFaction(faction).GetModel(name));
+		return (FactionEntries.at(factionName)->GetModel(modelName));
 	}
 
 	else
 	{
-		for (auto f : Factions)
+		for (auto& factionPair : FactionEntries)
 		{
 			try { 
-				FactionData& fac = *f.second;
-				return fac.GetModel(name);
+				auto& faction = factionPair.second;
+				return faction->GetModel(modelName);
 			}
-			catch (std::out_of_range e)
+			catch (std::out_of_range exception)
 			{
 				continue;
 			}
 		}
-		throw std::out_of_range("Could not find model in any faction.");
+		throw std::out_of_range("Could not find model '" + modelName + "' in any faction.");
 	}
 }
 
-std::shared_ptr<Model> FactionTable::QueryModel()
+std::shared_ptr<Model> FactionTable::GetModelUsingMenu()
 {
 	return nullptr;
 }
 
-void FactionTable::Encyclopedia()
+void FactionTable::StartEncyclopedia() const
 {
 	/*CREATE_NUMBERED_MENU(EncyclopediaMenu, FactionTable, size_t)
 
@@ -173,9 +176,9 @@ void FactionTable::Encyclopedia()
 	auto test = PrintFactionData;*/
 }
 
-void FactionTable::PrintFactionData(size_t index)
+void FactionTable::PrintFactionData(size_t factionIndex) const
 {
-	auto iter = Factions.begin();
-	for (int i = 0; i < index - 1; i++, iter++);
+	auto iter = FactionEntries.begin();
+	for (int i = 0; i < factionIndex - 1; i++, iter++);
 	DataWriter::PrintData(*(iter->second));
 }

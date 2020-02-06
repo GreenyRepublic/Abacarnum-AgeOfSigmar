@@ -13,27 +13,25 @@
 class FactionTable
 {
 public:
-	static FactionTable* GetInstance();
-
-	//Populate with data
-	void InitialiseFactionTableFromFiles( std::string directory = "./factiondata" );
-
-	FactionData& FindFaction(std::string faction);
-	std::shared_ptr<Model> FindModel(std::string model, std::string faction = "");
-	
-	//Select a model using a menu interface
-	std::shared_ptr<Model> QueryModel();
-
-	//Data browser/encyclopedia
-	void Encyclopedia();
-
-	size_t GetFactionCount() const { return Factions.size(); }
-	void PrintFactionData( size_t factionindex);
-
-private:
-	std::unordered_map<std::string, FactionData*> Factions;
-	bool LoadFaction(std::filesystem::directory_entry);
-	FactionTable();
 	~FactionTable();
 
+	static std::shared_ptr<FactionTable> GetFactionTable();
+
+	std::shared_ptr<FactionData> GetFaction(const std::string faction) const;
+	std::shared_ptr<Model> GetModel(const std::string model, const std::string faction = "") const;
+	std::shared_ptr<Model> GetModelUsingMenu();
+	size_t GetFactionCount() const { return FactionEntries.size(); }
+
+	void StartEncyclopedia() const;
+	void PrintFactionData( size_t factionindex) const;
+
+
+private:
+	FactionTable();
+
+	void InitialiseFactionTable();
+	bool LoadFaction(std::filesystem::directory_entry);
+
+	static bool isInstantiated;
+	std::unordered_map<std::string, std::shared_ptr<FactionData>> FactionEntries;
 };
