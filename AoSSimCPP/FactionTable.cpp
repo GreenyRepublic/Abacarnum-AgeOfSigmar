@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "FactionTable.h"
+#include "MenuOptions.h"
 
 
 bool FactionTable::isInstantiated = false;
@@ -12,6 +13,7 @@ std::shared_ptr<FactionTable> FactionTable::GetFactionTable()
 		auto ptr = new FactionTable();
 		instance = (std::shared_ptr<FactionTable>(ptr));
 		instance->InitialiseFactionTable();
+		isInstantiated = true;
 	}
 	return instance;
 }
@@ -152,17 +154,17 @@ std::shared_ptr<Model> FactionTable::GetModelUsingMenu()
 	return nullptr;
 }
 
-void FactionTable::StartEncyclopedia() const
+void FactionTable::StartEncyclopedia()
 {
-	/*CREATE_NUMBERED_MENU(EncyclopediaMenu, FactionTable, size_t)
+	CREATE_NUMBERED_MENU(EncyclopediaMenu, void)
 
-	for (auto fac : Factions)
+	for (auto& fac : FactionEntries)
 	{
-		EncyclopediaMenu.AddOption(MenuOption(fac.first, PrintFactionData));
+		EncyclopediaMenu.AddOption(MenuOption(fac.first, [=]() { this->PrintFactionData(this->currentEncycOption); }));
 	}
 
-	std::string input;
-	size_t option;
+	std::string input = "";
+	size_t option = 0;
 	while (1)
 	{
 		std::cout << "Enter a faction number or name for a full list of models, or enter '0' to return to the main menu." << std::endl;
@@ -170,15 +172,15 @@ void FactionTable::StartEncyclopedia() const
 		std::cin >> input;
 		option = std::stoi(input);
 
-		if (option == 0) return;
-		else (EncyclopediaMenu(option));
+		if (option == 0) break;
+		currentEncycOption = option;
+		EncyclopediaMenu(option);
 	}
-	auto test = PrintFactionData;*/
 }
 
 void FactionTable::PrintFactionData(size_t factionIndex) const
 {
 	auto iter = FactionEntries.begin();
-	for (int i = 0; i < factionIndex - 1; i++, iter++);
+	for (int i = 0; i < factionIndex - 1; ++i, ++iter);
 	DataWriter::PrintData(*(iter->second));
 }

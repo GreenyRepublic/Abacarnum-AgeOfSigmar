@@ -23,7 +23,7 @@ void DataWriter::PrintData(const FactionData& faction)
 
 void DataWriter::PrintData(const Weapon& weapon)
 {
-	std::cout << "	 |o| " << weapon.Name << " "
+	std::cout << "	 |o| " << weapon.mEntityName << " "
 		<< " |- " << "Range: " << (int)weapon.weaponProfile.range << '"'
 		<< " | Attacks: " << (int)weapon.weaponProfile.attacks
 		<< " | To Hit: " << (int)weapon.weaponProfile.tohit << "+"
@@ -36,26 +36,26 @@ void DataWriter::PrintData(const Weapon& weapon)
 void DataWriter::PrintData(const Model& model)
 {
 	std::cout << std::endl;
-	std::cout << "|<>| " << DataWriter::ToUpper(model.Name) << " |<>|" << std::endl;
+	std::cout << "|<>| " << DataWriter::ToUpper(model.mEntityName) << " |<>|" << std::endl;
 	std::cout << std::endl;
 	std::cout << "	|==| STATS |==|" << std::endl;
-	std::cout << "	 |o| Move: " << (int)model.modelStats.move << '"' << std::endl;
-	std::cout << "	 |o| Wounds: " << (int)model.modelStats.wounds << std::endl;
-	std::cout << "	 |o| Bravery: " << (int)model.modelStats.bravery << std::endl;
-	std::cout << "	 |o| Save: " << (int)model.modelStats.save << "+" << std::endl;
+	std::cout << "	 |o| Move: " << (int)model.mModelProfile.move << '"' << std::endl;
+	std::cout << "	 |o| Wounds: " << (int)model.mModelProfile.wounds << std::endl;
+	std::cout << "	 |o| Bravery: " << (int)model.mModelProfile.bravery << std::endl;
+	std::cout << "	 |o| Save: " << (int)model.mModelProfile.save << "+" << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "	|==| MELEE WEAPONS |==|" << std::endl;
-	for (auto& w : model.meleeWeapons) (PrintData(*w));
+	for (auto& w : model.mMeleeWeapons) (PrintData(*w));
 
 	std::cout << std::endl;
 	std::cout << "	|==| RANGED WEAPONS |==|" << std::endl;
-	for (auto& w : model.rangedWeapons) PrintData(*w);
+	for (auto& w : model.mRangedWeapos) PrintData(*w);
 
 	std::cout << std::endl;
 	std::cout << "	|==| METADATA |==|" << std::endl;
-	std::cout << "	 |o| Unit Size: " << (int)model.unitSize << std::endl;
-	std::cout << "	 |o| Points Cost: " << (int)model.unitCost << std::endl;
+	std::cout << "	 |o| Unit Size: " << (int)model.mMatchedUnitSize << std::endl;
+	std::cout << "	 |o| Points Cost: " << (int)model.mMatchedUnitCost << std::endl;
 	std::cout << "	 |o| Keywords: ";
 	for (auto& keyword : model.keywords)
 	{
@@ -67,7 +67,7 @@ void DataWriter::PrintData(const Model& model)
 
 void DataWriter::PrintData(const Unit& unit)
 {
-	DataWriter::PrintHeader("Unit: " + unit.Name, HeaderType::LevelOneHeader);
+	DataWriter::PrintHeader("Unit: " + unit.mEntityName, HeaderType::LevelOneHeader);
 	DataWriter::PrintHeader("Type Model", HeaderType::LevelTwoHeader);
 	PrintData(*unit.TypeModel);
 }

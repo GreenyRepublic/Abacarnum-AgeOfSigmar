@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Unit.h"
 
-enum Side
+enum class Side
 {
 	Attacker,
 	Defender
@@ -16,12 +16,16 @@ enum class BattlePhase
 	Charge,
 	Fight,
 	Battleshock,
-	End
+	EndTurn,
+	EndBattle
 };
 
 class Battle
 {
 public:
+
+	typedef std::pair < BattlePhase, std::function<BattlePhase>> PhaseFunction;
+
 	Battle();
 	~Battle();
 	void SingleBattle( BattlePhase start = BattlePhase::Fight );
@@ -32,10 +36,11 @@ public:
 	virtual BattlePhase ResolveMovement();
 	virtual BattlePhase ResolveShooting();
 	virtual BattlePhase ResolveCharge();*/
-	virtual BattlePhase ResolveFight();
-	virtual BattlePhase ResolveBattleshock();
+	BattlePhase ResolveFight();
+	BattlePhase ResolveBattleshock();
+	BattlePhase ResolveEndTurn();
 	
-	std::map<BattlePhase, BattlePhase(Battle::*)(void)> PhaseFunctions;
+	std::map<BattlePhase, std::function<BattlePhase(void)>> PhaseFunctions;
 	BattlePhase CurrentPhase;
 	size_t TurnCount;
 

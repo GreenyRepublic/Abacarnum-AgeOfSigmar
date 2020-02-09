@@ -156,10 +156,10 @@
     <ClInclude Include="AoSSim.h" />
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Die.h" />
+    <ClInclude Include="Encyclopedia.h" />
     <ClInclude Include="FactionData.h" />
     <ClInclude Include="FactionTable.h" />
     <ClInclude Include="GameEntity.h" />
-    <ClInclude Include="CombatData.h" />
     <ClInclude Include="DataWriter.h" />
     <ClInclude Include="MenuOptions.h" />
     <ClInclude Include="Model.h" />
@@ -173,6 +173,7 @@
     <ClCompile Include="AoSSim.cpp" />
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Die.cpp" />
+    <ClCompile Include="Encyclopedia.cpp" />
     <ClCompile Include="FactionData.cpp" />
     <ClCompile Include="FactionTable.cpp" />
     <ClCompile Include="GameEntity.cpp" />

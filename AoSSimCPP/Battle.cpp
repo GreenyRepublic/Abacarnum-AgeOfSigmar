@@ -3,12 +3,14 @@
 #include "DataWriter.h"
 
 Battle::Battle() :
-	PhaseFunctions(
-		{ { BattlePhase::Fight, &Battle::ResolveFight },
-		{ BattlePhase::Battleshock, &Battle::ResolveBattleshock } } ),
+	PhaseFunctions(),
 	CurrentPhase( BattlePhase::Hero ),
 	TurnCount(0)
 {
+	PhaseFunctions.insert({
+		{ BattlePhase::Fight,			[=]() { return this->Battle::ResolveFight(); } },
+		{ BattlePhase::Battleshock,		[=]() { return this->Battle::ResolveBattleshock(); } },
+		});
 }
 
 Battle::~Battle()
@@ -28,25 +30,25 @@ void Battle::BatchBattle(BattlePhase start)
 
 }
 
-Battle::BattleStats Battle::FightBattle( BattlePhase start )
+Battle::BattleStats Battle::FightBattle( BattlePhase startPhase )
 {
-	CurrentPhase = start;
+	CurrentPhase = startPhase;
 
-	while (CurrentPhase != BattlePhase::End)
+	while (CurrentPhase != BattlePhase::EndBattle)
 	{
-		CurrentPhase = (this->*PhaseFunctions[CurrentPhase])();
+		CurrentPhase = (PhaseFunctions[CurrentPhase])();
 	}
 
-	BattleStats stats;
-	if (AttackingUnit->GetSurvivingModels() > 0)
+	BattleStats stats; 
+	if (AttackingUnit->GetSurvivingModelsCount() > 0)
 	{
 		stats.Winner = AttackingUnit->GetName();
-		stats.Survivors = AttackingUnit->GetSurvivingModels();
+		stats.Survivors = AttackingUnit->GetSurvivingModelsCount();
 	}
 	else
 	{
 		stats.Winner = DefendingUnit->GetName();
-		stats.Survivors = DefendingUnit->GetSurvivingModels();
+		stats.Survivors = DefendingUnit->GetSurvivingModelsCount();
 	}
 
 	stats.Turns = TurnCount;
@@ -57,10 +59,10 @@ void Battle::SetUnit(std::shared_ptr<Model> model, size_t count, Side side)
 {
 	switch (side)
 	{
-	case Attacker:
+	case Side::Attacker:
 		AttackingUnit = std::make_unique<Unit>(model, count);
 		break;
-	case Defender:
+	case Side::Defender:
 		DefendingUnit = std::make_unique<Unit>(model, count);
 		break;
 	default:
@@ -70,22 +72,20 @@ void Battle::SetUnit(std::shared_ptr<Model> model, size_t count, Side side)
 
 BattlePhase Battle::ResolveFight()
 {
-	TurnCount++;
-
-	UnitAttacks atk;
+	UnitAttack atk;
 	{
-		atk = AttackingUnit->MeleeAttack(*DefendingUnit, 10);
+		atk = AttackingUnit->MakeMeleeAttack(*DefendingUnit, 10);
 		DefendingUnit->TakeAttacks(atk);
 	}
 	{
-		atk = DefendingUnit->MeleeAttack(*AttackingUnit, 10);
+		atk = DefendingUnit->MakeMeleeAttack(*AttackingUnit, 10);
 		AttackingUnit->TakeAttacks(atk);
 	}
 
-	if (AttackingUnit->GetSurvivingModels() == 0 ||
-		DefendingUnit->GetSurvivingModels() == 0)
+	if (AttackingUnit->GetSurvivingModelsCount() == 0 ||
+		DefendingUnit->GetSurvivingModelsCount() == 0)
 	{
-		return BattlePhase::End;
+		return BattlePhase::EndBattle;
 	}
 	return BattlePhase::Battleshock;
 }
@@ -102,10 +102,16 @@ BattlePhase Battle::ResolveBattleshock()
 		AttackingUnit->TakeBattleshock();
 	}
 
-	if (AttackingUnit->GetSurvivingModels() == 0 ||
-		DefendingUnit->GetSurvivingModels() == 0)
+	if (AttackingUnit->GetSurvivingModelsCount() == 0 ||
+		DefendingUnit->GetSurvivingModelsCount() == 0)
 	{
-		return BattlePhase::End;
+		return BattlePhase::EndBattle;
 	}
+	return BattlePhase::EndTurn;
+}
+
+BattlePhase Battle::ResolveEndTurn()
+{
+	TurnCount++;
 	return BattlePhase::Fight;
 }

@@ -10,11 +10,11 @@
 * Contains core stats, weapons and abilities, and functions for taking actions relevant to a single model.
 * E.g Attacking with weapons, taking saving rolls.
 */
-class Model : public GameEntity
+class Model
 {
 
 public:
-	Model(const std::string name, const size_t move, const size_t save, const size_t bravery, const size_t wounds, const size_t unitsize, const size_t cost, const std::string);
+	Model(const std::string name, const std::set<std::string> keywords, const size_t move, const size_t save, const size_t bravery, const size_t wounds, const size_t unitsize, const size_t cost);
 	Model(const Model&);
 	~Model();
 
@@ -27,35 +27,30 @@ public:
 	virtual void EndTurn();
 
 	//Combat rolls	
-	std::vector<WeaponAttack> MeleeAttack(Model&);
-	std::vector<WeaponAttack> RangedAttack(Model&);
-	size_t TakeDamage(std::vector<Wound> wounds);
+	std::vector<AttackProfile> MeleeAttack(ModelProfile& target);
+	std::vector<AttackProfile> RangedAttack(ModelProfile& target);
 
-	ModelProfile& GetStats() { return modelStats; }
-	std::string GetFaction() const { return Faction; }
-	int GetUnitSize() const { return unitSize; }
-	int GetUnitCost() const { return unitCost; }
-	bool HasKeyword( const std::string keyword ) const { return keywords.find(keyword) != keywords.end(); }
+	ModelProfile& GetProfile() { return mModelProfile; }
+	int GetBlockSize() const { return mMatchedPlayProfile.blockSize; }
+	int GetBlockCost() const { return mMatchedPlayProfile.blockCost; }
+	int GetMaxBlocksPerUnit() const { return mMatchedPlayProfile.maxBlocksPerUnit; }
+
+	bool HasKeyword( const std::string keyword ) const { return mModelProfile.keywords.count(keyword) > 0; }
 
 
 private:
 
 	friend class DataWriter;
 
-	//Core Stats
-	ModelProfile modelStats;
-	std::unordered_set<std::string> keywords;
+	ModelProfile mModelProfile;
+	MatchedPlayProfile mMatchedPlayProfile;
 
 	//Weapons
-	std::vector<std::shared_ptr<Weapon>> meleeWeapons;
-	std::vector<std::shared_ptr<Weapon>> rangedWeapons;
+	std::vector<std::shared_ptr<Weapon>> mMeleeWeapons;
+	std::vector<std::shared_ptr<Weapon>> mRangedWeapos;
 	
-	//Matched play data
-	size_t unitSize;
-	size_t unitCost;
 
 	//std::vector<Ability&> Abilities;
-
 };
 
 

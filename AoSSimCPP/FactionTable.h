@@ -16,22 +16,23 @@ public:
 	~FactionTable();
 
 	static std::shared_ptr<FactionTable> GetFactionTable();
+	void InitialiseFactionTable();
 
 	std::shared_ptr<FactionData> GetFaction(const std::string faction) const;
 	std::shared_ptr<Model> GetModel(const std::string model, const std::string faction = "") const;
 	std::shared_ptr<Model> GetModelUsingMenu();
 	size_t GetFactionCount() const { return FactionEntries.size(); }
 
-	void StartEncyclopedia() const;
+	void StartEncyclopedia();
 	void PrintFactionData( size_t factionindex) const;
 
 
 private:
 	FactionTable();
-
-	void InitialiseFactionTable();
 	bool LoadFaction(std::filesystem::directory_entry);
 
 	static bool isInstantiated;
 	std::unordered_map<std::string, std::shared_ptr<FactionData>> FactionEntries;
+
+	int currentEncycOption;
 };

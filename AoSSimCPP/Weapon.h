@@ -26,7 +26,7 @@ public:
 
 	WeaponType GetType () const { return weaponType; }
 
-	WeaponAttack AttackRoll();
+	AttackProfile AttackRoll();
 	WeaponProfile& GetProfile() { return weaponProfile; }
 
 private:

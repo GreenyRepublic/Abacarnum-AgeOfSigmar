@@ -3,25 +3,28 @@
 
 //Initialise using raw stat values.
 //Used for reading from the model database files.
-Model::Model(std::string name,
-	size_t move,
-	size_t save,
-	size_t bravery,
-	size_t wounds,
-	size_t unitsize,
-	size_t cost,
-	std::string faction) : GameEntity(name, faction), modelStats(move, save, bravery, wounds), unitSize(unitsize), unitCost(cost)
+
+
+Model::Model(
+	const std::string name,
+	const std::set<std::string> keywords,
+	const size_t move,
+	const size_t save,
+	const size_t bravery,
+	const size_t wounds,
+	const size_t unitsize,
+	const size_t cost) :
+	mModelProfile(name, move, save, bravery, wounds, keywords),
+	mMatchedPlayProfile(unitsize, 4, cost)
 {
 }
 
-Model::Model(const Model& ref) : 
-	GameEntity(ref.Name, ref.Faction), 
-	modelStats(ref.modelStats), 
-	unitSize(ref.unitSize), 
-	unitCost(ref.unitCost)
+Model::Model(const Model& ref) :
+	mModelProfile(ref.mModelProfile), 
+	mMatchedPlayProfile(ref.mMatchedPlayProfile),
+	mMeleeWeapons(ref.mMeleeWeapons),
+	mRangedWeapos(ref.mRangedWeapos)
 {
-	meleeWeapons = ref.meleeWeapons;
-	rangedWeapons = ref.rangedWeapons;
 }
 
 Model& Model::operator=(const Model & rhs)
@@ -38,29 +41,29 @@ void Model::AddWeapon(std::shared_ptr<Weapon> weapon)
 	switch (weapon->GetType())
 	{
 	case WeaponType::Melee:
-		meleeWeapons.push_back(weapon);
+		mMeleeWeapons.push_back(weapon);
 		break;
 	case WeaponType::Ranged:
-		rangedWeapons.push_back(weapon);
+		mRangedWeapos.push_back(weapon);
 		break;
 	}
 }
 
 void Model::AddKeyword(const std::string keyword)
 {
-	keywords.insert(keyword);
+	mModelProfile.keywords.insert(keyword);
 }
 
 void Model::EndTurn()
 {
 }
 
-std::vector<WeaponAttack> Model::MeleeAttack(Model& target)
+std::vector<AttackProfile> Model::MeleeAttack(ModelProfile& target)
 {
-	std::vector<WeaponAttack> attacks;
-	for (auto& weapon : meleeWeapons)
+	std::vector<AttackProfile> attacks;
+	for (auto& weapon : mMeleeWeapons)
 	{
-		WeaponAttack atk = weapon->AttackRoll();
+		 auto attack = weapon->AttackRoll();
 		if (atk.Wounds.Count > 0)
 		{
 			attacks.push_back(atk);
