@@ -27,22 +27,22 @@ public:
 	virtual void EndTurn();
 
 	//Combat rolls	
-	std::vector<AttackProfile> MeleeAttack(ModelProfile& target);
-	std::vector<AttackProfile> RangedAttack(ModelProfile& target);
+	std::vector<AttackProfile> MeleeAttack(Model& target);
+	std::vector<AttackProfile> RangedAttack(Model& target);
 
-	ModelProfile& GetProfile() { return mModelProfile; }
+	Model& GetProfile() { return mModel; }
 	int GetBlockSize() const { return mMatchedPlayProfile.blockSize; }
 	int GetBlockCost() const { return mMatchedPlayProfile.blockCost; }
 	int GetMaxBlocksPerUnit() const { return mMatchedPlayProfile.maxBlocksPerUnit; }
 
-	bool HasKeyword( const std::string keyword ) const { return mModelProfile.keywords.count(keyword) > 0; }
+	bool HasKeyword( const std::string keyword ) const { return mModel.keywords.count(keyword) > 0; }
 
 
 private:
 
 	friend class DataWriter;
 
-	ModelProfile mModelProfile;
+	ModelProfile mModel;
 	MatchedPlayProfile mMatchedPlayProfile;
 
 	//Weapons

@@ -1,6 +1,6 @@
 #pragma once
-
 #include <set>
+#include "stdafx.h"
 // Data containers for bundles of data that are generally owned and tied to behaviours, but also need to be thrown around into other processes
 // E.g. a weapon has a profile and behaviours (attack, etc), but we may need to reference the profile information elsewhere when resolving special abilities
 
@@ -64,43 +64,13 @@ struct WeaponProfile
 struct UnitProfile
 {
 	ModelProfile typeModel{ ModelProfile() };
-	size_t maxModelCount{ 0 };
+	size_t startingModelCount{ 0 };
 	std::set<size_t> currentModels{};
 
 	UnitProfile() {};
 	UnitProfile(const ModelProfile& typemodel, const size_t modelcount) :
 		typeModel(typemodel),
-		maxModelCount(modelcount),
+		startingModelCount(modelcount),
 		currentModels(modelcount, typeModel.wounds)
 	{};
-};
-
-struct BattleshockProfile
-{
-	size_t losses;
-	BattleshockProfile(size_t losses) : 
-		losses(losses) {};
-};
-
-struct AttackProfile
-{
-	WeaponProfile attackingWeapon{ WeaponProfile() };
-	ModelProfile attackingModel{ ModelProfile() };
-	ModelProfile defendingModel{ ModelProfile() };
-
-	size_t hits{ 0 };
-	size_t wounds{ 0 };
-	size_t mortalWounds{ 0 };
-
-	AttackProfile() {};
-	AttackProfile(WeaponProfile& weapon, ModelProfile& attackmodel, ModelProfile& defmodel, size_t hits, size_t wounds, size_t mortalwounds) :
-		attackingWeapon(weapon),
-		attackingModel(attackmodel),
-		defendingModel(defmodel) {};
-};
-
-struct UnitAttack
-{
-	UnitProfile UnitProfile;
-	std::vector<AttackProfile> AttackProfiles;
 };

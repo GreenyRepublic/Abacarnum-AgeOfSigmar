@@ -2,12 +2,8 @@
 #include "Unit.h"
 
 
-Unit::Unit(const std::shared_ptr<Model> model, size_t count) :
+Unit::Unit(const ModelProfile& model, size_t modelcount) :
 	GameEntity(model->GetName(), model->GetFaction()),
-	TypeModel(model),
-	mEntityName(model->GetName()),
-	mPointValue(model->GetUnitCost()* (count / model->GetUnitSize())),
-	mLosses(0)
 {
 	for (size_t i = 0; i < count; i++) 
 	{ 
@@ -21,9 +17,9 @@ Unit::~Unit()
 
 // Attack a target.
 // Takes the profile model of the enemy unit and generate attacks.
-UnitAttack Unit::MakeMeleeAttack(UnitProfile& target, const int frontage = 10)
+UnitAttackProfile Unit::MakeMeleeAttack(UnitProfile& target, const int frontage = 10)
 {
-	UnitAttack resultAttacks;
+	UnitAttackProfile resultAttacks;
 
 	size_t i = 0;
 	for (size_t i = 0; i < mUnitProfile.currentModels.size(); ++i)
@@ -38,7 +34,7 @@ UnitAttack Unit::MakeMeleeAttack(UnitProfile& target, const int frontage = 10)
 }
 
 //Allocates wounds.
-void Unit::TakeAttacks(UnitAttack attacks)
+void Unit::TakeAttacks(UnitAttackProfile attacks)
 {
 	
 	//TODO: Feed attack items through modifier stack

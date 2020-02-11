@@ -45,9 +45,6 @@
     <ClInclude Include="Die.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Profiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DataWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,6 +58,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Encyclopedia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProfileTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "Model.h"
-#include "Profiles.h"
+#include "ProfileTypes.h"
+#include "ActionTypes.h"
 
 // ### Unit: ### //
 /* A unit consists of one or more models (as defined by the warscroll). 
@@ -12,33 +13,29 @@
 class Unit : public GameEntity
 {
 public:
-	Unit(const std::shared_ptr<Model> model, size_t size);
+	Unit(const ModelProfile& modelprofile, const size_t modelcount);
 	~Unit();
 
-	UnitAttack MakeMeleeAttack( UnitProfile& target, const int frontage = 10);
-	UnitAttack MakeRangedAttack(const UnitProfile& target) {};
+	UnitAttackAction MakeMeleeAttack( UnitProfile& target, const int frontage = 10);
+	UnitAttackAction MakeRangedAttack(const UnitProfile& target) {};
 
-	void TakeAttacks(const UnitAttack& attacks);
+	void TakeAttacks(const UnitAttackAction& attacks);
 	void TakeBattleshock();
 
 	void EndTurn();
 	void PrintStats() {};
 
 	const UnitProfile& GetUnitProfile() const { return mUnitProfile;  }
-	const Model& GetTypeModel() const { return mTypeModel; }
+	const ModelProfile& GetTypeModel() const { return mUnitProfile.typeModel; }
 	const size_t GetSurvivingModelsCount() const { return mUnitProfile.currentModels.size(); }
-	const size_t GetLosses() const { return mLosses; }	
+	const size_t GetLosses() const { return mUnitProfile.startingModelCount - mUnitProfile.currentModels.size(); }
 
 private:
-
 	friend class DataWriter;
-	bool MakeSaves(AttackProfile attack);
+	bool MakeSaves(AttackAction attack);
 	
 	UnitProfile mUnitProfile;
-	Model mTypeModel;
-
-	size_t mPointValue;
-	size_t mMaxBatches;
-	size_t mLosses;
+	std::vector<WeaponProfile> mMeleeWeaponProfiles;
+	std::vector<WeaponProfile> mRangedWeaponProfiles;
 };
 

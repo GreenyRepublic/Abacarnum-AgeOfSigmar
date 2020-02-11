@@ -14,13 +14,13 @@ Model::Model(
 	const size_t wounds,
 	const size_t unitsize,
 	const size_t cost) :
-	mModelProfile(name, move, save, bravery, wounds, keywords),
+	mModel(name, move, save, bravery, wounds, keywords),
 	mMatchedPlayProfile(unitsize, 4, cost)
 {
 }
 
 Model::Model(const Model& ref) :
-	mModelProfile(ref.mModelProfile), 
+	mModel(ref.mModel), 
 	mMatchedPlayProfile(ref.mMatchedPlayProfile),
 	mMeleeWeapons(ref.mMeleeWeapons),
 	mRangedWeapos(ref.mRangedWeapos)
@@ -51,14 +51,14 @@ void Model::AddWeapon(std::shared_ptr<Weapon> weapon)
 
 void Model::AddKeyword(const std::string keyword)
 {
-	mModelProfile.keywords.insert(keyword);
+	mModel.keywords.insert(keyword);
 }
 
 void Model::EndTurn()
 {
 }
 
-std::vector<AttackProfile> Model::MeleeAttack(ModelProfile& target)
+std::vector<AttackProfile> Model::MeleeAttack(Model& target)
 {
 	std::vector<AttackProfile> attacks;
 	for (auto& weapon : mMeleeWeapons)

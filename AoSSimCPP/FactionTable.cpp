@@ -59,7 +59,7 @@ bool FactionTable::LoadFaction( std::filesystem::directory_entry file )
 	for (auto&& modelEntry : luabridge::pairs(factionLuaTable["models"]))
 	{
 		//Core stats
-		std::shared_ptr<Model> model = std::make_shared<Model>(
+		std::shared_ptr<ModelProfile> model = std::make_shared<ModelProfile>(
 			modelEntry.second["name"].tostring(),
 			modelEntry.second["stats"]["move"],
 			modelEntry.second["stats"]["save"],
@@ -125,7 +125,7 @@ std::shared_ptr<FactionData> FactionTable::GetFaction( const std::string faction
 	return FactionEntries.at(factionName);
 }
 
-std::shared_ptr<Model> FactionTable::GetModel(const std::string modelName, const std::string factionName) const
+std::shared_ptr<ModelProfile> FactionTable::GetModel(const std::string modelName, const std::string factionName) const
 {
 	if (!factionName.empty())
 	{
@@ -149,7 +149,7 @@ std::shared_ptr<Model> FactionTable::GetModel(const std::string modelName, const
 	}
 }
 
-std::shared_ptr<Model> FactionTable::GetModelUsingMenu()
+std::shared_ptr<ModelProfile> FactionTable::GetModelUsingMenu()
 {
 	return nullptr;
 }

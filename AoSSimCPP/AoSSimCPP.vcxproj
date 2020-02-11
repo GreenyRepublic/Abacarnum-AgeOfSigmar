@@ -153,6 +153,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionTypes.h" />
     <ClInclude Include="AoSSim.h" />
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Die.h" />
@@ -163,7 +164,7 @@
     <ClInclude Include="DataWriter.h" />
     <ClInclude Include="MenuOptions.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="Profiles.h" />
+    <ClInclude Include="ProfileTypes.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Unit.h" />

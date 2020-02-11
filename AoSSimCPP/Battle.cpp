@@ -55,7 +55,7 @@ Battle::BattleStats Battle::FightBattle( BattlePhase startPhase )
 	return stats;
 }
 
-void Battle::SetUnit(std::shared_ptr<Model> model, size_t count, Side side)
+void Battle::SetUnit(std::shared_ptr<ModelProfile> model, size_t count, Side side)
 {
 	switch (side)
 	{
@@ -72,7 +72,7 @@ void Battle::SetUnit(std::shared_ptr<Model> model, size_t count, Side side)
 
 BattlePhase Battle::ResolveFight()
 {
-	UnitAttack atk;
+	UnitAttackProfile atk;
 	{
 		atk = AttackingUnit->MakeMeleeAttack(*DefendingUnit, 10);
 		DefendingUnit->TakeAttacks(atk);

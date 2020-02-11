@@ -33,7 +33,7 @@ void DataWriter::PrintData(const Weapon& weapon)
 		<< std::endl;
 }
 
-void DataWriter::PrintData(const Model& model)
+void DataWriter::PrintData(const ModelProfile& model)
 {
 	std::cout << std::endl;
 	std::cout << "|<>| " << DataWriter::ToUpper(model.mEntityName) << " |<>|" << std::endl;

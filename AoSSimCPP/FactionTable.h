@@ -19,8 +19,8 @@ public:
 	void InitialiseFactionTable();
 
 	std::shared_ptr<FactionData> GetFaction(const std::string faction) const;
-	std::shared_ptr<Model> GetModel(const std::string model, const std::string faction = "") const;
-	std::shared_ptr<Model> GetModelUsingMenu();
+	std::shared_ptr<ModelProfile> GetModel(const std::string model, const std::string faction = "") const;
+	std::shared_ptr<ModelProfile> GetModelUsingMenu();
 	size_t GetFactionCount() const { return FactionEntries.size(); }
 
 	void StartEncyclopedia();

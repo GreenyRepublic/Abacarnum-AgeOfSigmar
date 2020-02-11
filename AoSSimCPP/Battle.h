@@ -30,7 +30,7 @@ public:
 	~Battle();
 	void SingleBattle( BattlePhase start = BattlePhase::Fight );
 	void BatchBattle( BattlePhase start = BattlePhase::Fight );
-	void SetUnit( std::shared_ptr<Model> model, size_t count, Side side);
+	void SetUnit( std::shared_ptr<ModelProfile> model, size_t count, Side side);
 
 	/*virtual BattlePhase ResolveHero();
 	virtual BattlePhase ResolveMovement();
