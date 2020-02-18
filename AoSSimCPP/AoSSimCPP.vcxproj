@@ -90,13 +90,13 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnablePREfast>true</EnablePREfast>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)/include/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/include/;$(ProjectDir)/include/external/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,41 +153,33 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ActionTypes.h" />
-    <ClInclude Include="AoSSim.h" />
-    <ClInclude Include="Battle.h" />
-    <ClInclude Include="Die.h" />
-    <ClInclude Include="Encyclopedia.h" />
-    <ClInclude Include="FactionData.h" />
-    <ClInclude Include="FactionTable.h" />
-    <ClInclude Include="GameEntity.h" />
-    <ClInclude Include="DataWriter.h" />
-    <ClInclude Include="MenuOptions.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="ProfileTypes.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="Unit.h" />
-    <ClInclude Include="Weapon.h" />
+    <ClCompile Include="source\AoSSim.cpp" />
+    <ClCompile Include="source\Battle.cpp" />
+    <ClCompile Include="source\DataWriter.cpp" />
+    <ClCompile Include="source\Die.cpp" />
+    <ClCompile Include="source\Encyclopedia.cpp" />
+    <ClCompile Include="source\FactionData.cpp" />
+    <ClCompile Include="source\FactionTable.cpp" />
+    <ClCompile Include="source\GameEntity.cpp" />
+    <ClCompile Include="source\stdafx.cpp" />
+    <ClCompile Include="source\Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AoSSim.cpp" />
-    <ClCompile Include="Battle.cpp" />
-    <ClCompile Include="Die.cpp" />
-    <ClCompile Include="Encyclopedia.cpp" />
-    <ClCompile Include="FactionData.cpp" />
-    <ClCompile Include="FactionTable.cpp" />
-    <ClCompile Include="GameEntity.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="DataWriter.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="Unit.cpp" />
-    <ClCompile Include="Weapon.cpp" />
+    <ClInclude Include="include\AoSSim.h" />
+    <ClInclude Include="include\Battle.h" />
+    <ClInclude Include="include\CombatData.h" />
+    <ClInclude Include="include\DataWriter.h" />
+    <ClInclude Include="include\Die.h" />
+    <ClInclude Include="include\Encyclopedia.h" />
+    <ClInclude Include="include\FactionData.h" />
+    <ClInclude Include="include\FactionTable.h" />
+    <ClInclude Include="include\GameEntity.h" />
+    <ClInclude Include="include\MenuOptions.h" />
+    <ClInclude Include="include\stdafx.h" />
+    <ClInclude Include="include\targetver.h" />
+    <ClInclude Include="include\types\ActionTypes.h" />
+    <ClInclude Include="include\types\ProfileTypes.h" />
+    <ClInclude Include="include\Unit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

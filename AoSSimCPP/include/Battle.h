@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "types/ActionTypes.h"
 #include "Unit.h"
 
 enum class Side
@@ -30,7 +31,7 @@ public:
 	~Battle();
 	void SingleBattle( BattlePhase start = BattlePhase::Fight );
 	void BatchBattle( BattlePhase start = BattlePhase::Fight );
-	void SetUnit( std::shared_ptr<ModelProfile> model, size_t count, Side side);
+	void SetUnit( const ModelProfile& model, size_t count, Side side);
 
 	/*virtual BattlePhase ResolveHero();
 	virtual BattlePhase ResolveMovement();

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "DataWriter.h"
-#include "Weapon.h"
-#include "Model.h"
+
+
 #include "Unit.h"
 #include "Battle.h"
 
@@ -21,42 +21,41 @@ void DataWriter::PrintData(const FactionData& faction)
 
 }
 
-void DataWriter::PrintData(const Weapon& weapon)
+void DataWriter::PrintData(const WeaponProfile& weapon)
 {
-	std::cout << "	 |o| " << weapon.mEntityName << " "
-		<< " |- " << "Range: " << (int)weapon.weaponProfile.range << '"'
-		<< " | Attacks: " << (int)weapon.weaponProfile.attacks
-		<< " | To Hit: " << (int)weapon.weaponProfile.tohit << "+"
-		<< " | To Wound: " << (int)weapon.weaponProfile.towound << "+"
-		<< " | Rend: " << -((int)weapon.weaponProfile.rend)
-		<< " | Damage: " << (int)weapon.weaponProfile.damage
+	std::cout << "	 |o| " << weapon.name << " "
+		<< " |- " << "Range: " << (int)weapon.range << '"'
+		<< " | Attacks: " << (int)weapon.attacks
+		<< " | To Hit: " << (int)weapon.tohit << "+"
+		<< " | To Wound: " << (int)weapon.towound << "+"
+		<< " | Rend: " << -((int)weapon.rend)
+		<< " | Damage: " << (int)weapon.damage
 		<< std::endl;
 }
 
 void DataWriter::PrintData(const ModelProfile& model)
 {
 	std::cout << std::endl;
-	std::cout << "|<>| " << DataWriter::ToUpper(model.mEntityName) << " |<>|" << std::endl;
+	std::cout << "|<>| " << DataWriter::ToUpper(model.name) << " |<>|" << std::endl;
 	std::cout << std::endl;
 	std::cout << "	|==| STATS |==|" << std::endl;
-	std::cout << "	 |o| Move: " << (int)model.mModelProfile.move << '"' << std::endl;
-	std::cout << "	 |o| Wounds: " << (int)model.mModelProfile.wounds << std::endl;
-	std::cout << "	 |o| Bravery: " << (int)model.mModelProfile.bravery << std::endl;
-	std::cout << "	 |o| Save: " << (int)model.mModelProfile.save << "+" << std::endl;
+	std::cout << "	 |o| Move: " << (int)model.move << '"' << std::endl;
+	std::cout << "	 |o| Wounds: " << (int)model.wounds << std::endl;
+	std::cout << "	 |o| Bravery: " << (int)model.bravery << std::endl;
+	std::cout << "	 |o| Save: " << (int)model.save << "+" << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "	|==| MELEE WEAPONS |==|" << std::endl;
-	for (auto& w : model.mMeleeWeapons) (PrintData(*w));
+	for (auto& weapon : model.meleeWeapons) (PrintData(weapon));
 
 	std::cout << std::endl;
 	std::cout << "	|==| RANGED WEAPONS |==|" << std::endl;
-	for (auto& w : model.mRangedWeapos) PrintData(*w);
+	for (auto& weapon : model.rangedWeapons) PrintData(weapon);
 
 	std::cout << std::endl;
 	std::cout << "	|==| METADATA |==|" << std::endl;
-	std::cout << "	 |o| Unit Size: " << (int)model.mMatchedUnitSize << std::endl;
-	std::cout << "	 |o| Points Cost: " << (int)model.mMatchedUnitCost << std::endl;
 	std::cout << "	 |o| Keywords: ";
+
 	for (auto& keyword : model.keywords)
 	{
 		std::cout << keyword << ", ";
@@ -65,11 +64,11 @@ void DataWriter::PrintData(const ModelProfile& model)
 	std::cout << std::endl;
 }
 
-void DataWriter::PrintData(const Unit& unit)
+void DataWriter::PrintData(const UnitProfile& unit)
 {
-	DataWriter::PrintHeader("Unit: " + unit.mEntityName, HeaderType::LevelOneHeader);
+	DataWriter::PrintHeader("Unit: " + unit.typeModel.name, HeaderType::LevelOneHeader);
 	DataWriter::PrintHeader("Type Model", HeaderType::LevelTwoHeader);
-	PrintData(*unit.TypeModel);
+	PrintData(unit.typeModel);
 }
 
 void DataWriter::PrintData(const BattleStats& stats)

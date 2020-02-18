@@ -4,6 +4,27 @@
 // Data containers for bundles of data that are generally owned and tied to behaviours, but also need to be thrown around into other processes
 // E.g. a weapon has a profile and behaviours (attack, etc), but we may need to reference the profile information elsewhere when resolving special abilities
 
+struct WeaponProfile
+{
+	std::string name{ "" };
+	size_t range{ 0 };
+	size_t attacks{ 0 };
+	size_t tohit{ 0 };
+	size_t towound{ 0 };
+	size_t rend{ 0 };
+	size_t damage{ 0 };
+
+	WeaponProfile() {};
+	WeaponProfile(std::string name, size_t range, size_t attacks, size_t hit, size_t wound, size_t rend, size_t damage) :
+		name(name),
+		range(range),
+		attacks(attacks),
+		tohit(hit),
+		towound(wound),
+		rend(rend),
+		damage(damage) {};
+};
+
 struct ModelProfile
 {
 	std::string name { "" };
@@ -12,6 +33,8 @@ struct ModelProfile
 	size_t bravery{ 0 };
 	size_t wounds{ 0 };
 	size_t currentWounds{ 0 };
+	std::set<WeaponProfile> meleeWeapons{ {} };
+	std::set<WeaponProfile> rangedWeapons{ {} };
 	std::set<std::string> keywords{ {} };
 
 	ModelProfile() {};
@@ -37,28 +60,6 @@ struct MatchedPlayProfile
 		blockSize(blocksize),
 		maxBlocksPerUnit(maxblocks),
 		blockCost(blockcost) {}
-};
-
-
-struct WeaponProfile
-{
-	std::string name{ "" };
-	size_t range{ 0 };
-	size_t attacks{ 0 };
-	size_t tohit{ 0 };
-	size_t towound{ 0 };
-	size_t rend{ 0 };
-	size_t damage{ 0 };
-
-	WeaponProfile() {};
-	WeaponProfile(std::string name, size_t range, size_t attacks, size_t hit, size_t wound, size_t rend, size_t damage) :
-		name(name),
-		range(range), 
-		attacks(attacks), 
-		tohit(hit), 
-		towound(wound), 
-		rend(rend), 
-		damage(damage) {};
 };
 
 struct UnitProfile

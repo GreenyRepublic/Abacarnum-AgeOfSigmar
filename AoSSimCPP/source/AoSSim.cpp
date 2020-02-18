@@ -2,9 +2,8 @@
 //
 
 #include "stdafx.h"
+
 #include "Die.h"
-#include "Weapon.h"
-#include "Model.h"
 #include "FactionTable.h"
 #include "Unit.h"
 #include "Battle.h"
@@ -64,8 +63,8 @@ void AOSsim::SingleBattle()
 {
 	Battle battle;
 
-	battle.SetUnit(FactionTable::GetFactionTable()->GetModel("Saurus Warriors (Clubs)"), 10, Side::Attacker);
-	battle.SetUnit(FactionTable::GetFactionTable()->GetModel("Liberators (Warhammer and Shield)"), 20, Side::Defender);
+	battle.SetUnit(FactionTable::GetFactionTable()->GetModelProfile("Saurus Warriors (Clubs)"), 10, Side::Attacker);
+	battle.SetUnit(FactionTable::GetFactionTable()->GetModelProfile("Liberators (Warhammer and Shield)"), 20, Side::Defender);
 
 	battle.SingleBattle();
 }
@@ -74,8 +73,8 @@ void AOSsim::BatchBattle()
 {
 	Battle battle;
 
-	battle.SetUnit(FactionTable::GetFactionTable()->GetModel("Saurus Warriors (Clubs)"), 10, Side::Attacker);
-	battle.SetUnit(FactionTable::GetFactionTable()->GetModel("Liberators (Warhammer and Shield)"), 20, Side::Defender);
+	battle.SetUnit(FactionTable::GetFactionTable()->GetModelProfile("Saurus Warriors (Clubs)"), 10, Side::Attacker);
+	battle.SetUnit(FactionTable::GetFactionTable()->GetModelProfile("Liberators (Warhammer and Shield)"), 20, Side::Defender);
 
 	battle.BatchBattle();
 }

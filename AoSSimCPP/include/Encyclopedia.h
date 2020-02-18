@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Weapon.h"
-#include "Model.h"
+
+
 #include "DataWriter.h"
 
 

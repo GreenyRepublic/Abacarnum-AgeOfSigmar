@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "FactionTable.h"
 #include "MenuOptions.h"
+#include "types/ProfileTypes.h"
 
 
 bool FactionTable::isInstantiated = false;
@@ -59,32 +60,28 @@ bool FactionTable::LoadFaction( std::filesystem::directory_entry file )
 	for (auto&& modelEntry : luabridge::pairs(factionLuaTable["models"]))
 	{
 		//Core stats
-		std::shared_ptr<ModelProfile> model = std::make_shared<ModelProfile>(
+		ModelProfile model = ModelProfile(
 			modelEntry.second["name"].tostring(),
 			modelEntry.second["stats"]["move"],
 			modelEntry.second["stats"]["save"],
 			modelEntry.second["stats"]["bravery"],
-			modelEntry.second["stats"]["wounds"],
-			modelEntry.second["matchedData"]["unitSize"],
-			modelEntry.second["matchedData"]["unitCost"],
-			facName);
+			modelEntry.second["stats"]["wounds"]);
 		
 		//Melee weapons
 		if (!modelEntry.second["meleeWeapons"].isNil())
 		{ 
 			for (auto&& weaponEntry : luabridge::pairs(modelEntry.second["meleeWeapons"]))
 			{
-				std::shared_ptr<Weapon> weapon = std::make_shared<Weapon>(
+				WeaponProfile weapon = WeaponProfile(
 					weaponEntry.second["name"].tostring(),
 					weaponEntry.second["range"],
 					weaponEntry.second["attacks"],
 					weaponEntry.second["toHit"],
 					weaponEntry.second["toWound"],
 					weaponEntry.second["rend"],
-					weaponEntry.second["damage"],
-					WeaponType::Melee
-					);
-				model->AddWeapon(weapon);
+					weaponEntry.second["damage"]);
+				
+				model.meleeWeapons.insert(weapon);
 			}
 		}
 
@@ -93,27 +90,26 @@ bool FactionTable::LoadFaction( std::filesystem::directory_entry file )
 		{
 			for (auto&& weaponEntry : luabridge::pairs(modelEntry.second["rangedWeapons"]))
 			{
-				std::shared_ptr<Weapon> weapon = std::make_shared<Weapon>(
+				WeaponProfile weapon = WeaponProfile(
 					weaponEntry.second["name"].tostring(),
 					weaponEntry.second["range"],
 					weaponEntry.second["attacks"],
 					weaponEntry.second["toHit"],
 					weaponEntry.second["toWound"],
 					weaponEntry.second["rend"],
-					weaponEntry.second["damage"],
-					WeaponType::Ranged
-					);
-				model->AddWeapon(weapon);
+					weaponEntry.second["damage"]); 
+
+				model.rangedWeapons.insert(weapon);
 			}
 		}
 
 		//Keywords
 		for (auto&& keyword : luabridge::pairs(modelEntry.second["keywords"]))
 		{
-			model->AddKeyword(keyword.second.tostring());
+			model.keywords.insert(keyword.second.tostring());
 		}
 
-		faction->AddModel(model);
+		faction->AddModelProfile(model);
 	}
 
 	FactionEntries.insert(std::pair<std::string, FactionData*>(facName, faction));
@@ -125,11 +121,11 @@ std::shared_ptr<FactionData> FactionTable::GetFaction( const std::string faction
 	return FactionEntries.at(factionName);
 }
 
-std::shared_ptr<ModelProfile> FactionTable::GetModel(const std::string modelName, const std::string factionName) const
+ModelProfile FactionTable::GetModelProfile(const std::string modelName, const std::string factionName) const
 {
 	if (!factionName.empty())
 	{
-		return (FactionEntries.at(factionName)->GetModel(modelName));
+		return (FactionEntries.at(factionName)->GetModelProfile(modelName));
 	}
 
 	else
@@ -138,7 +134,7 @@ std::shared_ptr<ModelProfile> FactionTable::GetModel(const std::string modelName
 		{
 			try { 
 				auto& faction = factionPair.second;
-				return faction->GetModel(modelName);
+				return faction->GetModelProfile(modelName);
 			}
 			catch (std::out_of_range exception)
 			{
@@ -149,9 +145,9 @@ std::shared_ptr<ModelProfile> FactionTable::GetModel(const std::string modelName
 	}
 }
 
-std::shared_ptr<ModelProfile> FactionTable::GetModelUsingMenu()
+ModelProfile FactionTable::GetModelUsingMenu()
 {
-	return nullptr;
+	return ModelProfile();
 }
 
 void FactionTable::StartEncyclopedia()

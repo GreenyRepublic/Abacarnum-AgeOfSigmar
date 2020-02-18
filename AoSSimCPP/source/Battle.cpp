@@ -55,7 +55,7 @@ Battle::BattleStats Battle::FightBattle( BattlePhase startPhase )
 	return stats;
 }
 
-void Battle::SetUnit(std::shared_ptr<ModelProfile> model, size_t count, Side side)
+void Battle::SetUnit(const ModelProfile& model, size_t count, Side side)
 {
 	switch (side)
 	{
@@ -72,18 +72,17 @@ void Battle::SetUnit(std::shared_ptr<ModelProfile> model, size_t count, Side sid
 
 BattlePhase Battle::ResolveFight()
 {
-	UnitAttackProfile atk;
 	{
-		atk = AttackingUnit->MakeMeleeAttack(*DefendingUnit, 10);
+		auto atk = AttackingUnit->MakeMeleeAttack(DefendingUnit->GetUnitProfile(), 10);
 		DefendingUnit->TakeAttacks(atk);
 	}
 	{
-		atk = DefendingUnit->MakeMeleeAttack(*AttackingUnit, 10);
+		auto atk = DefendingUnit->MakeMeleeAttack(AttackingUnit->GetUnitProfile(), 10);
 		AttackingUnit->TakeAttacks(atk);
 	}
 
-	if (AttackingUnit->GetSurvivingModelsCount() == 0 ||
-		DefendingUnit->GetSurvivingModelsCount() == 0)
+	if (! AttackingUnit->GetSurvivingModelsCount() ||
+		! DefendingUnit->GetSurvivingModelsCount())
 	{
 		return BattlePhase::EndBattle;
 	}
@@ -92,21 +91,15 @@ BattlePhase Battle::ResolveFight()
 
 BattlePhase Battle::ResolveBattleshock()
 {
-	if (AttackingUnit->GetLosses() > 0)
-	{
-		AttackingUnit->TakeBattleshock();
-	}
-
-	if (DefendingUnit->GetLosses() > 0)
-	{
-		AttackingUnit->TakeBattleshock();
-	}
-
+	AttackingUnit->TakeBattleshock();
+	DefendingUnit->TakeBattleshock();
+	
 	if (AttackingUnit->GetSurvivingModelsCount() == 0 ||
 		DefendingUnit->GetSurvivingModelsCount() == 0)
 	{
 		return BattlePhase::EndBattle;
 	}
+
 	return BattlePhase::EndTurn;
 }
 

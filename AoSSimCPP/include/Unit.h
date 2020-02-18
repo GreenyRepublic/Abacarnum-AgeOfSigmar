@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
-#include "Model.h"
-#include "ProfileTypes.h"
-#include "ActionTypes.h"
+#include "GameEntity.h"
+#include "types/ProfileTypes.h"
+#include "types/ActionTypes.h"
 
 // ### Unit: ### //
 /* A unit consists of one or more models (as defined by the warscroll). 
@@ -16,8 +16,8 @@ public:
 	Unit(const ModelProfile& modelprofile, const size_t modelcount);
 	~Unit();
 
-	UnitAttackAction MakeMeleeAttack( UnitProfile& target, const int frontage = 10);
-	UnitAttackAction MakeRangedAttack(const UnitProfile& target) {};
+	UnitAttackAction MakeMeleeAttack( const UnitProfile& target, const int frontage = 10);
+	UnitAttackAction MakeRangedAttack( const UnitProfile& target) {};
 
 	void TakeAttacks(const UnitAttackAction& attacks);
 	void TakeBattleshock();

@@ -18,7 +18,7 @@ protected:
 	std::string mEntityFaction;
 
 public:
-	GameEntity(std::string, std::string);
+	GameEntity(std::string name, std::string faction = "");
 	virtual ~GameEntity();
 	
 	const std::string GetName() const { return mEntityName; }
