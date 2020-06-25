@@ -23,6 +23,11 @@ struct WeaponProfile
 		towound(wound),
 		rend(rend),
 		damage(damage) {};
+
+	bool operator<(const WeaponProfile& other) const
+	{
+		return name.compare(other.name) < 0;
+	}
 };
 
 struct ModelProfile
@@ -66,7 +71,7 @@ struct UnitProfile
 {
 	ModelProfile typeModel{ ModelProfile() };
 	size_t startingModelCount{ 0 };
-	std::set<size_t> currentModels{};
+	std::vector<size_t> currentModels{};
 
 	UnitProfile() {};
 	UnitProfile(const ModelProfile& typemodel, const size_t modelcount) :

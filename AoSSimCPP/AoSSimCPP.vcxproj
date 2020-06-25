@@ -174,7 +174,7 @@
     <ClInclude Include="include\FactionData.h" />
     <ClInclude Include="include\FactionTable.h" />
     <ClInclude Include="include\GameEntity.h" />
-    <ClInclude Include="include\MenuOptions.h" />
+    <ClInclude Include="include\NumberedMenu.h" />
     <ClInclude Include="include\stdafx.h" />
     <ClInclude Include="include\targetver.h" />
     <ClInclude Include="include\types\ActionTypes.h" />

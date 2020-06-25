@@ -8,7 +8,7 @@
 #include "Unit.h"
 #include "Battle.h"
 #include "DataWriter.h"
-#include "MenuOptions.h"
+#include "NumberedMenu.h"
 #include "AoSSim.h"
 
 static constexpr float version = 0.6;
@@ -98,23 +98,22 @@ size_t AOSsim::MainLoop()
 	CreateDirectoryA("records", NULL);
 
 	//Begin menu loop.
-	CREATE_NUMBERED_MENU(MainMenu, void,
-		std::initializer_list<MenuOption>({
-			{ MenuOption(std::string("Fight Single Battle"),	[=]() {this->SingleBattle(); })},
-			{ MenuOption(std::string("Fight Batch Battle"),		[=]() {this->BatchBattle(); }) },
-			{ MenuOption(std::string("Encyclopedia"),			[=]() {this->Encyclopedia(); } ) },
-			{ MenuOption(std::string("Exit"),					[=]() {this->Exit(); }) }
+	CREATE_NUMBERED_MENU_INIT(MainMenu, int, 
+		std::initializer_list<NumberedMenu::MenuOption>({
+			{ MenuOption(std::string("Fight Single Battle"),	[=]() {this->SingleBattle(); return 0; })},
+			{ MenuOption(std::string("Fight Batch Battle"),		[=]() {this->BatchBattle(); return 0; }) },
+			{ MenuOption(std::string("Encyclopedia"),			[=]() {this->Encyclopedia(); return 0; } ) },
+			{ MenuOption(std::string("Exit"),					[=]() {this->Exit(); return 0; }) }
 			}));
 
 	std::string input;
 	while (true)
 	{
 		MainMenu.PrintMenu();
-
 		input.clear();
 		std::cin >> input;
 		int option = static_cast<int>(std::stoi(input));
-		MainMenu( option );
+		//MainMenu.SelectOption(option);
 	}
 
 	return EXIT_SUCCESS;

@@ -8,6 +8,7 @@ StardrakeShield =
     type = "",
     effect = 
         function ()
+            if (AttackAction.WeaponProfile.Rend < 2) then AttackAction.WeaponProfile.Rend = 0 end
         end 
 }
 StarBuckler = StardrakeShield
@@ -15,9 +16,9 @@ StarBuckler = StardrakeShield
 OrderedCohort =
 {
     name = "OrderedCohort",
-    type = "",
-    effect = 
-        function ()
+    phase = "",
+    effect =
+        function()
         end 
 }
 EnergyTransference = {}

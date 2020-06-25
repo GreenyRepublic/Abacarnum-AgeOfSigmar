@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "FactionTable.h"
-#include "MenuOptions.h"
+#include "NumberedMenu.h"
 #include "types/ProfileTypes.h"
 
 
@@ -170,7 +170,7 @@ void FactionTable::StartEncyclopedia()
 
 		if (option == 0) break;
 		currentEncycOption = option;
-		EncyclopediaMenu(option);
+		EncyclopediaMenu.SelectOption(option);
 	}
 }
 

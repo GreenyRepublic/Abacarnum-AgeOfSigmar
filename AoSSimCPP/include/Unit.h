@@ -20,7 +20,7 @@ public:
 	UnitAttackAction MakeRangedAttack( const UnitProfile& target) {};
 
 	void TakeAttacks(const UnitAttackAction& attacks);
-	void TakeBattleshock();
+	void TakeBattleshock();	
 
 	void EndTurn();
 	void PrintStats() {};

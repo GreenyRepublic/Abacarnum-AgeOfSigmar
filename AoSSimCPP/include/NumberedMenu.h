@@ -9,17 +9,14 @@ public:
 	typedef std::pair < std::string, std::function<T()>> MenuOption;
 
 	NumberedMenu() {};
-	NumberedMenu(std::initializer_list<MenuOption> items) : MenuData()
+	NumberedMenu(const std::initializer_list<MenuOption> options) : MenuData()
 	{
-		for (auto& item : items)
-		{
-			MenuData.push_back(item);
-		}
+		AddOptions(options);
 	}
 
 	~NumberedMenu() {};
-		
-	inline T operator()(size_t option)
+
+	inline T SelectOption(const size_t option)
 	{
 		int correctedOpt = option - 1;
 		if ( correctedOpt <= MenuData.size())
@@ -33,7 +30,15 @@ public:
 		}
 	};
 
-	void AddOption(MenuOption& option)
+	void AddOptions(const std::initializer_list<MenuOption> options)
+	{
+		for (auto& opt : options)
+		{
+			MenuData.push_back(opt);
+		}
+	}
+
+	void AddOption(const MenuOption& option)
 	{
 		MenuData.push_back(option);
 	}
@@ -51,6 +56,6 @@ private:
 };
 
 #define CREATE_NUMBERED_MENU(NAME, RETURNTYPE) using NumberedMenu = NumberedMenu<RETURNTYPE>; using MenuOption = NumberedMenu::MenuOption; NumberedMenu NAME = NumberedMenu(); 
-#define CREATE_NUMBERED_MENU(NAME, RETURNTYPE, INITLIST) using NumberedMenu = NumberedMenu<RETURNTYPE>; using MenuOption = NumberedMenu::MenuOption; NumberedMenu NAME = NumberedMenu(INITLIST); 
+#define CREATE_NUMBERED_MENU_INIT(NAME, RETURNTYPE, INITLIST) using NumberedMenu = NumberedMenu<RETURNTYPE>; using MenuOption = NumberedMenu::MenuOption; NumberedMenu NAME = NumberedMenu(INITLIST); 
 
 #endif

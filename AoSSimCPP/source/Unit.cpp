@@ -47,5 +47,5 @@ void Unit::EndTurn()
 
 bool Unit::MakeSaves(AttackAction attack)
 {
-
+	return false;
 }
