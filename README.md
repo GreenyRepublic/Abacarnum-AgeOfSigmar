@@ -1,6 +1,6 @@
-# Age of Sigmar Combat Simulator
+# Abacarnum - Age of Sigmar Game Virtualisation
 
-This command-line app simulates rounds of combat from the Warhammer: Age of Sigmar tabletop game.
+This app simulates rounds of combat from the Warhammer: Age of Sigmar tabletop game.
 
 Input should be self-explanatory, though bear in mind that this is at a minimum viable product stage and much is yet to be done on the side of user experience and error handling. This will break easily, please play nicely. Oh, and there are *no* special abilities at the moment, they will come later I hope.
 
