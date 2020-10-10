@@ -1,35 +1,43 @@
 #pragma once
 #include "types/ProfileTypes.h"
+#include "Die.h"
 #include <set>
 
 
 struct BattleshockProfile
 {
-	size_t losses;
+	size_t mLosses;
 	BattleshockProfile(size_t losses) :
-		losses(losses) {};
+		mLosses(losses) {};
 };
 
+// A unit generates attacks and sends it to a target
 struct AttackAction
 {
-	WeaponProfile attackingWeapon{ WeaponProfile() };
-	ModelProfile attackingModel{ ModelProfile() };
-	ModelProfile defendingModel{ ModelProfile() };
-
-	size_t hits{ 0 };
-	size_t wounds{ 0 };
-	size_t mortalWounds{ 0 };
-
+	struct WeaponAttack
+	{
+		WeaponAttack(const WeaponProfile& weaponprofile)
+			: mWeaponProfile(weaponprofile) {};
+		WeaponProfile mWeaponProfile;
+		std::vector<DieRoll> mHitRolls;
+		std::vector<DieRoll> mWoundRolls;
+	};
 	AttackAction() {};
-	AttackAction(WeaponProfile& weapon, ModelProfile& attackmodel, ModelProfile& defmodel, size_t hits, size_t wounds, size_t mortalwounds) :
-		attackingWeapon(weapon),
-		attackingModel(attackmodel),
-		defendingModel(defmodel) {};
+	ModelProfile mAttackingModel{};
+	ModelProfile mTargetModel{};
+	std::vector<WeaponAttack> mWeaponAttacks;
+
+	std::size_t mMortalWounds{ 0 };
+};
+
+// Unit takes save rolls against wounds
+struct SaveAction
+{
+	std::vector<WeaponProfile> mAttackingWeaponProfiles;
+	std::vector<DieRoll> mSaveRolls;
 };
 
 struct UnitAttackAction
 {
-	UnitProfile UnitProfile;
-	std::vector<AttackAction> AttackProfiles;
+	std::vector<AttackAction> mAttackProfiles;
 };
-

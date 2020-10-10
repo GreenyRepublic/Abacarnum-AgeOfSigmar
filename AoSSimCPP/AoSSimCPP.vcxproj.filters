@@ -30,13 +30,7 @@
     <ClCompile Include="source\Die.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\Encyclopedia.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\FactionData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\FactionTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\GameEntity.cpp">
@@ -46,6 +40,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Unit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FactionDatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProfileTypes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,13 +65,7 @@
     <ClInclude Include="include\Die.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Encyclopedia.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\FactionData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\FactionTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\GameEntity.h">
@@ -92,7 +86,7 @@
     <ClInclude Include="include\types\ProfileTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\NumberedMenu.h">
+    <ClInclude Include="include\FactionDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

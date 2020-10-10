@@ -59,8 +59,9 @@ faction =
             },
             matchedData =
             {
-                unitSize = 5,
-                unitCost = 100
+                blockSize = 5,
+                blockCost = 100,
+                maxBlocks = 4
             },
             keywords = 
             {
@@ -85,7 +86,7 @@ faction =
             },
             abilities = 
             {
-                SigmariteShields,
+                SigmariteShields
             }
         }
     }

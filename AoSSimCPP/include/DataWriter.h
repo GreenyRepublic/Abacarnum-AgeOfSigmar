@@ -7,7 +7,7 @@ class NumberedMenu;
 class FactionData;
 struct WeaponProfile;
 struct ModelProfile;
-struct UnitProfile;
+struct WarscrollProfile;
 struct BattleStats;
 struct BatchBattleData;
 
@@ -28,7 +28,6 @@ public:
 	static void PrintData(const FactionData& faction);
 	static void PrintData(const WeaponProfile& weapon);
 	static void PrintData(const ModelProfile& model);
-	static void PrintData(const UnitProfile& unit);
 	static void PrintData(const BattleStats& stats);
 	static void PrintData(const BatchBattleData& batchdata);
 

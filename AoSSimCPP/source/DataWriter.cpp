@@ -23,52 +23,45 @@ void DataWriter::PrintData(const FactionData& faction)
 
 void DataWriter::PrintData(const WeaponProfile& weapon)
 {
-	std::cout << "	 |o| " << weapon.name << " "
-		<< " |- " << "Range: " << (int)weapon.range << '"'
-		<< " | Attacks: " << (int)weapon.attacks
-		<< " | To Hit: " << (int)weapon.tohit << "+"
-		<< " | To Wound: " << (int)weapon.towound << "+"
-		<< " | Rend: " << -((int)weapon.rend)
-		<< " | Damage: " << (int)weapon.damage
+	std::cout << "	 |o| " << weapon.mWeaponName << " "
+		<< " |- " << "Range: " << (int)weapon.mRange << '"'
+		<< " | Attacks: " << (int)weapon.mAttacks
+		<< " | To Hit: " << (int)weapon.mToHit << "+"
+		<< " | To Wound: " << (int)weapon.mToWound << "+"
+		<< " | Rend: " << -((int)weapon.mRend)
+		<< " | Damage: " << (int)weapon.mDamage
 		<< std::endl;
 }
 
 void DataWriter::PrintData(const ModelProfile& model)
 {
 	std::cout << std::endl;
-	std::cout << "|<>| " << DataWriter::ToUpper(model.name) << " |<>|" << std::endl;
+	std::cout << "|<>| " << DataWriter::ToUpper(model.mName) << " |<>|" << std::endl;
 	std::cout << std::endl;
 	std::cout << "	|==| STATS |==|" << std::endl;
-	std::cout << "	 |o| Move: " << (int)model.move << '"' << std::endl;
-	std::cout << "	 |o| Wounds: " << (int)model.wounds << std::endl;
-	std::cout << "	 |o| Bravery: " << (int)model.bravery << std::endl;
-	std::cout << "	 |o| Save: " << (int)model.save << "+" << std::endl;
+	std::cout << "	 |o| Move: " << (int)model.mMove << '"' << std::endl;
+	std::cout << "	 |o| Wounds: " << (int)model.mWounds << std::endl;
+	std::cout << "	 |o| Bravery: " << (int)model.mBravery << std::endl;
+	std::cout << "	 |o| Save: " << (int)model.mSave << "+" << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "	|==| MELEE WEAPONS |==|" << std::endl;
-	for (auto& weapon : model.meleeWeapons) (PrintData(weapon));
+	for (auto& weapon : model.mMeleeWeaponProfiles) (PrintData(weapon));
 
 	std::cout << std::endl;
 	std::cout << "	|==| RANGED WEAPONS |==|" << std::endl;
-	for (auto& weapon : model.rangedWeapons) PrintData(weapon);
+	for (auto& weapon : model.mRangedWeaponProfiles) PrintData(weapon);
 
 	std::cout << std::endl;
 	std::cout << "	|==| METADATA |==|" << std::endl;
 	std::cout << "	 |o| Keywords: ";
 
-	for (auto& keyword : model.keywords)
+	for (auto& keyword : model.mKeywords)
 	{
 		std::cout << keyword << ", ";
 	}
 	std::cout << std::endl;
 	std::cout << std::endl;
-}
-
-void DataWriter::PrintData(const UnitProfile& unit)
-{
-	DataWriter::PrintHeader("Unit: " + unit.typeModel.name, HeaderType::LevelOneHeader);
-	DataWriter::PrintHeader("Type Model", HeaderType::LevelTwoHeader);
-	PrintData(unit.typeModel);
 }
 
 void DataWriter::PrintData(const BattleStats& stats)

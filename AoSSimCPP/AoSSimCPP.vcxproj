@@ -96,11 +96,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <EnablePREfast>true</EnablePREfast>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)/include/;$(ProjectDir)/include/external/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/include/;$(ProjectDir)/include/external/;$(WXWIN)\include;$(WXWIN)\include\msvc</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>lua53.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -157,10 +158,10 @@
     <ClCompile Include="source\Battle.cpp" />
     <ClCompile Include="source\DataWriter.cpp" />
     <ClCompile Include="source\Die.cpp" />
-    <ClCompile Include="source\Encyclopedia.cpp" />
     <ClCompile Include="source\FactionData.cpp" />
-    <ClCompile Include="source\FactionTable.cpp" />
+    <ClCompile Include="source\FactionDatabase.cpp" />
     <ClCompile Include="source\GameEntity.cpp" />
+    <ClCompile Include="source\ProfileTypes.cpp" />
     <ClCompile Include="source\stdafx.cpp" />
     <ClCompile Include="source\Unit.cpp" />
   </ItemGroup>
@@ -170,11 +171,9 @@
     <ClInclude Include="include\CombatData.h" />
     <ClInclude Include="include\DataWriter.h" />
     <ClInclude Include="include\Die.h" />
-    <ClInclude Include="include\Encyclopedia.h" />
     <ClInclude Include="include\FactionData.h" />
-    <ClInclude Include="include\FactionTable.h" />
+    <ClInclude Include="include\FactionDatabase.h" />
     <ClInclude Include="include\GameEntity.h" />
-    <ClInclude Include="include\NumberedMenu.h" />
     <ClInclude Include="include\stdafx.h" />
     <ClInclude Include="include\targetver.h" />
     <ClInclude Include="include\types\ActionTypes.h" />

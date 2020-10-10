@@ -3,8 +3,8 @@
 #include "types/ProfileTypes.h"
 
 FactionData::FactionData(std::string name, std::string grandalliance)
-	: FactionName(name),
-	GrandAlliance(grandalliance)
+	: mFactionName(name),
+	mGrandAlliance(grandalliance)
 {}
 
 FactionData::~FactionData()
@@ -13,10 +13,10 @@ FactionData::~FactionData()
 
 void FactionData::AddModelProfile( const ModelProfile& model )
 {
-	FactionModels.insert(std::pair<std::string, ModelProfile>(model.name, model));
+	mFactionModelProfiles.insert(std::pair<std::string, ModelProfile>(model.mName, model));
 }
 
-ModelProfile FactionData::GetModelProfile(const std::string name) const
+const ModelProfile& FactionData::GetModelProfile(const std::string name) const
 {
-	return FactionModels.at(name);
+	return mFactionModelProfiles.at(name);
 }

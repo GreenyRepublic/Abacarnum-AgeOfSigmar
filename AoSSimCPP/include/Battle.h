@@ -11,14 +11,16 @@ enum class Side
 
 enum class BattlePhase
 {
-	Hero,
-	Move,
-	Shoot,	
-	Charge,
-	Fight,
-	Battleshock,
-	EndTurn,
-	EndBattle
+	Hero		= 0,
+	Move		= 1,
+	Shoot		= 2,
+	Charge		= 3,
+	Fight		= 4,
+	Battleshock	= 5,
+	EndTurn		= 6,
+	EndBattle	= 7,
+
+	PhaseCount
 };
 
 class Battle
@@ -33,60 +35,76 @@ public:
 	void BatchBattle( BattlePhase start = BattlePhase::Fight );
 	void SetUnit( const ModelProfile& model, size_t count, Side side);
 
-	/*virtual BattlePhase ResolveHero();
-	virtual BattlePhase ResolveMovement();
-	virtual BattlePhase ResolveShooting();
-	virtual BattlePhase ResolveCharge();*/
+	BattlePhase ResolveHero() { return BattlePhase::EndTurn; }
+	BattlePhase ResolveMovement() { return BattlePhase::EndTurn; }
+	BattlePhase ResolveShooting() { return BattlePhase::EndTurn; }
+	BattlePhase ResolveCharge() { return BattlePhase::EndTurn; }
 	BattlePhase ResolveFight();
 	BattlePhase ResolveBattleshock();
 	BattlePhase ResolveEndTurn();
 	
 	std::map<BattlePhase, std::function<BattlePhase(void)>> PhaseFunctions;
-	BattlePhase CurrentPhase;
-	size_t TurnCount;
-
-	std::unique_ptr<Unit> AttackingUnit;
-	std::unique_ptr<Unit> DefendingUnit;
 
 private:
 	friend class DataWriter;
-	struct BattleStats
+	class BattleStats
 	{
-		std::string Winner{ "" };
-		size_t Survivors{ 0 };
-		size_t Turns{ 0 };
+	public:
+		void SetWinner(const Unit& unit) 
+		{
+			mWinnerName = unit.GetName();
+			mSurvivingModels = unit.GetSurvivingModels();
+		}
+		
+		void SetTurns(const size_t turns)
+		{
+			mTurns = turns;
+		}
+
+		std::string GetWinnerName() const { return mWinnerName; }
+		size_t GetWinnerSurvivingModels() const { return mSurvivingModels; }
+		size_t GetNumberOfTurns() const { return mTurns; }
+
+	private:
+		std::string mWinnerName{ "" };
+		size_t mSurvivingModels{ 0 };
+		size_t mTurns{ 0 };
 	};
 
 	struct BatchBattleData
 	{
-		BatchBattleData() : totalWins() {};
+		BatchBattleData() {};
 
 		inline BatchBattleData& operator+=(BattleStats& stats)
 		{
-			size_t prevDenom = TotalBattles++;
-			AverageSurvivors *= (static_cast<float>(prevDenom) / TotalBattles);
-			AverageTurns *= (static_cast<float>(prevDenom) / TotalBattles);
+			size_t prevDenom = mTotalBattles++;
+			mAverageSurvivors *= (static_cast<float>(prevDenom) / mTotalBattles);
+			mAverageTurns *= (static_cast<float>(prevDenom) / mTotalBattles);
 
-			AverageSurvivors += (static_cast<float>(stats.Survivors)) / TotalBattles;
-			AverageTurns += (static_cast<float>(stats.Turns)) / TotalBattles;
+			mAverageSurvivors += (static_cast<float>(stats.GetWinnerSurvivingModels())) / mTotalBattles;
+			mAverageTurns += (static_cast<float>(stats.GetNumberOfTurns())) / mTotalBattles;
 
-			totalWins[stats.Winner] += 1;
-			if (totalWins[stats.Winner] > currentMax)
+			mTotalWins[stats.GetWinnerName()] += 1;
+			if (mTotalWins[stats.GetWinnerName()] > mCurrentMax)
 			{
-				currentMax = totalWins[stats.Winner];
-				MostWins = stats.Winner;
+				mCurrentMax = mTotalWins[stats.GetWinnerName()];
+				mMostWins = stats.GetWinnerName();
 			}
 			return *this;
 		}
 
-		std::string MostWins{ "" };
-		size_t TotalBattles{ 0 };
-		float AverageSurvivors{ 0 };
-		float AverageTurns{ 0 };
+		std::string mMostWins{ "" };
+		size_t mTotalBattles{ 0 };
+		float mAverageSurvivors{ 0 };
+		float mAverageTurns{ 0 };
 
-		std::map<std::string, size_t> totalWins;
-		size_t currentMax{ 0 };
+		std::map<std::string, size_t> mTotalWins{};
+		size_t mCurrentMax{ 0 };
 	};
 
 	BattleStats FightBattle( BattlePhase start );
+
+	BattlePhase mCurrentPhase;
+	size_t mTurnCount;
+	std::map<Side, std::shared_ptr<Unit>> mCombatants;
 };

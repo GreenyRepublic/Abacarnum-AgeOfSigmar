@@ -13,29 +13,33 @@
 class Unit : public GameEntity
 {
 public:
-	Unit(const ModelProfile& modelprofile, const size_t modelcount);
+	Unit(const ModelProfile& warscrollprofile, const size_t modelcount);
 	~Unit();
 
-	UnitAttackAction MakeMeleeAttack( const UnitProfile& target, const int frontage = 10);
-	UnitAttackAction MakeRangedAttack( const UnitProfile& target) {};
+	UnitAttackAction MakeMeleeAttack( const Unit& target, const int frontage = 10);
+	UnitAttackAction MakeRangedAttack( const Unit& target) {};
 
-	void TakeAttacks(const UnitAttackAction& attacks);
-	void TakeBattleshock();	
+	void ReceiveAttack( UnitAttackAction& attacks);
+	void TakeBattleshock();		
+
+	const ModelProfile& GetTypeModelProfile() const { return mTypeModel; }
+	const size_t GetSurvivingModels() const { return mModelWoundCounts.size(); }
+	const size_t GetTotalLosses() const { return mUnitSize - mModelWoundCounts.size(); }
+	const size_t GetLossesThisTurn() const { return mLossesThisTurn; }
 
 	void EndTurn();
 	void PrintStats() {};
 
-	const UnitProfile& GetUnitProfile() const { return mUnitProfile;  }
-	const ModelProfile& GetTypeModel() const { return mUnitProfile.typeModel; }
-	const size_t GetSurvivingModelsCount() const { return mUnitProfile.currentModels.size(); }
-	const size_t GetLosses() const { return mUnitProfile.startingModelCount - mUnitProfile.currentModels.size(); }
-
 private:
+
 	friend class DataWriter;
+
 	bool MakeSaves(AttackAction attack);
-	
-	UnitProfile mUnitProfile;
-	std::vector<WeaponProfile> mMeleeWeaponProfiles;
-	std::vector<WeaponProfile> mRangedWeaponProfiles;
+	bool TakeDamage(size_t count);
+
+	const ModelProfile mTypeModel;
+	const size_t mUnitSize;				//How many models we start off with.
+	std::vector<size_t> mModelWoundCounts;	//Models are homogenous across a unit (for now!) so we represent them as a simple array of wound counts.
+	size_t mLossesThisTurn;
 };
 

@@ -1,14 +1,17 @@
---Abilities declared globally as most are used multiple times
+dofile("../AbilityTypes")
+
+-- Abilities declared globally as most are used multiple times
 -- These are all incomplete and unimplemented as the mechanisms need to be added to the cpp side
 StardrakeIcon = {}
 Wardrum = {}
 StardrakeShield =
 {   
     name = "Stardrake Shield",
-    type = "",
+    phase = SaveRoll,
     effect = 
-        function ()
-            if (AttackAction.WeaponProfile.Rend < 2) then AttackAction.WeaponProfile.Rend = 0 end
+        function (SaveAction)
+            if (AttackAction.WeaponProfile.Rend > -2) then AttackAction.WeaponProfile.Rend = 0 end
+            return AttackAction
         end 
 }
 StarBuckler = StardrakeShield
@@ -48,8 +51,9 @@ faction =
             },
             matchedData =
             {
-                unitSize = 5,
-                unitCost = 100
+                blockSize = 5,
+                blockCost = 100
+                maxBlocks = 4
             },
             keywords = 
             {
@@ -81,8 +85,9 @@ faction =
             },
             matchedData =
             {
-                unitSize = 10,
-                unitCost = 90
+                blockSize = 10,
+                blockCost = 90,
+                maxBlocks = 4
             },
             keywords = 
             {
@@ -135,8 +140,9 @@ faction =
             },
             matchedData =
             {
-                unitSize = 10,
-                unitCost = 90
+                blockSize = 10,
+                blockCost = 90,
+                maxBlocks = 4
             },
             keywords = 
             {
@@ -189,8 +195,9 @@ faction =
             },
             matchedData =
             {
-                unitSize = 5,
-                unitCost = 100
+                blockSize = 5,
+                blockCost = 100,
+                maxBlocks = 4
             },
             keywords = 
             {
@@ -244,8 +251,9 @@ faction =
 
             matchedData =
             {
-                unitSize = 10,
-                unitCost = 80
+                blockSize = 10,
+                blockCost = 80,
+                maxBlocks = 4
             },
             keywords = 
             {
@@ -296,8 +304,9 @@ faction =
             },
             matchedData =
             {
-                unitSize = 3,
-                unitCost = 180
+                blockSize = 3,
+                blockCost = 180,
+                maxBlocks = 4
             },
             keywords = 
             {

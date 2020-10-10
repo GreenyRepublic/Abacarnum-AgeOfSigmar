@@ -4,13 +4,15 @@
 
 Battle::Battle() :
 	PhaseFunctions(),
-	CurrentPhase( BattlePhase::Hero ),
-	TurnCount(0)
+	mCurrentPhase( BattlePhase::Hero ),
+	mTurnCount(0)
 {
 	PhaseFunctions.insert({
 		{ BattlePhase::Fight,			[=]() { return this->Battle::ResolveFight(); } },
 		{ BattlePhase::Battleshock,		[=]() { return this->Battle::ResolveBattleshock(); } },
+		{ BattlePhase::EndTurn,			[=]() { return this->Battle::ResolveEndTurn(); } },
 		});
+
 }
 
 Battle::~Battle()
@@ -21,81 +23,63 @@ Battle::~Battle()
 void Battle::SingleBattle(BattlePhase start)
 {
 	BattleStats stats = FightBattle(start);
-
-	
 }
 
 void Battle::BatchBattle(BattlePhase start)
 {
-
 }
 
-Battle::BattleStats Battle::FightBattle( BattlePhase startPhase )
+Battle::BattleStats Battle::FightBattle( BattlePhase startPhase)
 {
-	CurrentPhase = startPhase;
+	mCurrentPhase = startPhase;
 
-	while (CurrentPhase != BattlePhase::EndBattle)
+	while (mCurrentPhase != BattlePhase::EndBattle)
 	{
-		CurrentPhase = (PhaseFunctions[CurrentPhase])();
+		mCurrentPhase = (PhaseFunctions[mCurrentPhase])();
 	}
 
 	BattleStats stats; 
-	if (AttackingUnit->GetSurvivingModelsCount() > 0)
-	{
-		stats.Winner = AttackingUnit->GetName();
-		stats.Survivors = AttackingUnit->GetSurvivingModelsCount();
-	}
-	else
-	{
-		stats.Winner = DefendingUnit->GetName();
-		stats.Survivors = DefendingUnit->GetSurvivingModelsCount();
-	}
 
-	stats.Turns = TurnCount;
+	(mCombatants[Side::Attacker]->GetSurvivingModels() > 0) ? 
+		stats.SetWinner(*mCombatants[Side::Attacker]) : 
+		stats.SetWinner(*mCombatants[Side::Defender]) ;
+
+	stats.SetTurns(mTurnCount);
+
 	return stats;
 }
 
 void Battle::SetUnit(const ModelProfile& model, size_t count, Side side)
 {
-	switch (side)
-	{
-	case Side::Attacker:
-		AttackingUnit = std::make_unique<Unit>(model, count);
-		break;
-	case Side::Defender:
-		DefendingUnit = std::make_unique<Unit>(model, count);
-		break;
-	default:
-		break;
-	}
+	mCombatants[side] = std::make_shared<Unit>(model, count);
 }
 
 BattlePhase Battle::ResolveFight()
 {
+	for (size_t i = 0; i <= 1; ++i)
 	{
-		auto atk = AttackingUnit->MakeMeleeAttack(DefendingUnit->GetUnitProfile(), 10);
-		DefendingUnit->TakeAttacks(atk);
-	}
-	{
-		auto atk = DefendingUnit->MakeMeleeAttack(AttackingUnit->GetUnitProfile(), 10);
-		AttackingUnit->TakeAttacks(atk);
-	}
+		Side currentSide = static_cast<Side>(i);
+		Side otherSide = static_cast<Side>((i + 1) % 2);
 
-	if (! AttackingUnit->GetSurvivingModelsCount() ||
-		! DefendingUnit->GetSurvivingModelsCount())
-	{
-		return BattlePhase::EndBattle;
+		auto attack = mCombatants[currentSide]->MakeMeleeAttack(*mCombatants[otherSide]);
+		mCombatants[otherSide]->ReceiveAttack(attack);
+
+		if (!mCombatants[currentSide]->GetSurvivingModels() ||
+			!mCombatants[otherSide]->GetSurvivingModels())
+		{
+			return BattlePhase::EndBattle;
+		}
 	}
 	return BattlePhase::Battleshock;
 }
 
 BattlePhase Battle::ResolveBattleshock()
 {
-	AttackingUnit->TakeBattleshock();
-	DefendingUnit->TakeBattleshock();
+	mCombatants[Side::Attacker]->TakeBattleshock();
+	mCombatants[Side::Defender]->TakeBattleshock();
 	
-	if (AttackingUnit->GetSurvivingModelsCount() == 0 ||
-		DefendingUnit->GetSurvivingModelsCount() == 0)
+	if (mCombatants[Side::Attacker]->GetSurvivingModels() == 0 ||
+		mCombatants[Side::Defender]->GetSurvivingModels() == 0)
 	{
 		return BattlePhase::EndBattle;
 	}
@@ -105,6 +89,6 @@ BattlePhase Battle::ResolveBattleshock()
 
 BattlePhase Battle::ResolveEndTurn()
 {
-	TurnCount++;
+	mTurnCount++;
 	return BattlePhase::Fight;
 }
